@@ -55,3 +55,22 @@ foreach ($person as $key => $value) {
 
 // User Input Handling
 echo "\nPlease enter your name: ";
+$userInput = trim(fgets(STDIN));  // Reading console input
+echo "Welcome, $userInput!\n";
+
+// POST handling (for web forms)
+/*
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'] ?? '';
+    $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+}
+*/
+
+// Error Handling
+function divideNumbers($a, $b) {
+    try {
+        if ($b == 0) {
+            throw new Exception("Division by zero!");
+        }
+        return $a / $b;
+    } catch (Exception $e) {
