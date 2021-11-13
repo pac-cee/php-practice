@@ -17,3 +17,22 @@ if ($age >= 18) {
     echo "You are a minor\n";
 }
 
+// Loops
+// For loop
+for ($i = 0; $i < 3; $i++) {
+    echo "Counter: $i\n";
+}
+
+// While loop
+$counter = 0;
+while ($counter < 3) {
+    echo "While counter: $counter\n";
+    $counter++;
+}
+
+// Functions
+function greet($person) {
+    return "Hello, $person!";
+}
+
+echo greet($name);
