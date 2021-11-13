@@ -55,3 +55,25 @@ class ResourceController extends Controller
             $resource = $this->resourceService->create($request->validated());
             event(new ResourceCreated($resource));
             return response()->json($resource, 201);
+        } catch (\Exception $e) {
+            report($e);
+            return response()->json(['error' => 'Creation Failed'], 422);
+        }
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/resources/{id}",
+     *     summary="Get resource details"
+     * )
+     */
+    public function show(int $id): JsonResponse
+    {
+        try {
+            $resource = $this->resourceService->findOrFail($id);
+            return response()->json($resource);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Resource not found'], 404);
+        }
+    }
+} 
