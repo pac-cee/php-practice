@@ -17,3 +17,22 @@ class ResourceService
     {
         $this->repository = $repository;
     }
+
+    public function getAllWithCache(): Collection
+    {
+        return Cache::remember('resources.all', $this->cacheTime, function () {
+            return $this->repository->getAllWithRelations();
+        });
+    }
+
+    public function create(array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $resource = $this->repository->create($data);
+            
+            // Process any additional business logic
+            if (isset($data['attachments'])) {
+                $this->processAttachments($resource, $data['attachments']);
+            }
+
