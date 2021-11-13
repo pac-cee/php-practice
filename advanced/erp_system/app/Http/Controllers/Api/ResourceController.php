@@ -17,3 +17,22 @@ use OpenApi\Annotations as OA;
 class ResourceController extends Controller
 {
     protected $resourceService;
+
+    public function __construct(ResourceService $resourceService)
+    {
+        $this->resourceService = $resourceService;
+        $this->middleware('auth:sanctum');
+        $this->middleware('role:admin')->only(['store', 'update', 'destroy']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/resources",
+     *     summary="List all resources",
+     *     @OA\Response(response="200", description="List of resources")
+     * )
+     */
+    public function index(): JsonResponse
+    {
+        try {
+            $resources = $this->resourceService->getAllWithCache();
