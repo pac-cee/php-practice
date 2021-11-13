@@ -74,3 +74,22 @@ function divideNumbers($a, $b) {
         }
         return $a / $b;
     } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+}
+
+echo divideNumbers(10, 2) . "\n";  // Output: 5
+echo divideNumbers(10, 0) . "\n";  // Output: Error message
+
+// Classes and Objects
+class Person {
+    private $name;
+    private $age;
+
+    public function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+
+    public function getInfo() {
+        return "Name: {$this->name}, Age: {$this->age}";
