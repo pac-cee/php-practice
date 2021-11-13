@@ -36,3 +36,22 @@ function greet($person) {
 }
 
 echo greet($name);
+
+// Associative array
+$person = [
+    "name" => "John",
+    "age" => 25,
+    "city" => "New York"
+];
+
+// Accessing associative array
+echo "\nPerson details:\n";
+foreach ($person as $key => $value) {
+    echo "$key: $value\n";
+}
+
+
+// ...existing code...
+
+// User Input Handling
+echo "\nPlease enter your name: ";
