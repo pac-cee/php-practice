@@ -36,3 +36,25 @@ class ResourceService
                 $this->processAttachments($resource, $data['attachments']);
             }
 
+            DB::commit();
+            Cache::tags(['resources'])->flush();
+            
+            return $resource;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    protected function processAttachments($resource, array $attachments)
+    {
+        foreach ($attachments as $attachment) {
+            $path = $attachment->store('attachments', 'public');
+            $resource->attachments()->create([
+                'path' => $path,
+                'type' => $attachment->getClientMimeType(),
+                'size' => $attachment->getSize()
+            ]);
+        }
+    }
+} 
