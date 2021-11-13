@@ -17,3 +17,22 @@ class ProcessResourceData implements ShouldQueue
     protected $resourceId;
     protected $data;
     public $tries = 3;
+    public $timeout = 300;
+
+    public function __construct(int $resourceId, array $data)
+    {
+        $this->resourceId = $resourceId;
+        $this->data = $data;
+    }
+
+    public function handle(ResourceService $service)
+    {
+        try {
+            Log::info('Starting resource processing', [
+                'resource_id' => $this->resourceId
+            ]);
+
+            // Process the resource data
+            $resource = $service->findOrFail($this->resourceId);
+            $service->processData($resource, $this->data);
+
