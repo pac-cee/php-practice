@@ -36,3 +36,22 @@ class ResourceController extends Controller
     {
         try {
             $resources = $this->resourceService->getAllWithCache();
+            return response()->json($resources);
+        } catch (\Exception $e) {
+            report($e);
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/resources",
+     *     summary="Create a new resource"
+     * )
+     */
+    public function store(ResourceRequest $request): JsonResponse
+    {
+        try {
+            $resource = $this->resourceService->create($request->validated());
+            event(new ResourceCreated($resource));
+            return response()->json($resource, 201);
