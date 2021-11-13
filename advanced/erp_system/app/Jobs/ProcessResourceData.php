@@ -36,3 +36,24 @@ class ProcessResourceData implements ShouldQueue
             $resource = $service->findOrFail($this->resourceId);
             $service->processData($resource, $this->data);
 
+            Log::info('Resource processing completed', [
+                'resource_id' => $this->resourceId
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Resource processing failed', [
+                'resource_id' => $this->resourceId,
+                'error' => $e->getMessage()
+            ]);
+            
+            throw $e;
+        }
+    }
+
+    public function failed(\Throwable $exception)
+    {
+        Log::error('Resource job failed', [
+            'resource_id' => $this->resourceId,
+            'error' => $exception->getMessage()
+        ]);
+    }
+} 
