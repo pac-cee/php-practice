@@ -112,3 +112,16 @@ $email = "test@example.com";
 if (preg_match($pattern, $email)) {
     echo "\nValid email format";
 }
+
+// Date and Time Handling
+$date = new DateTime();
+echo "\nCurrent date: " . $date->format('Y-m-d H:i:s');
+
+// Array Functions
+$numbers = [1, 2, 3, 4, 5];
+$squared = array_map(function($n) {
+    return $n * $n;
+}, $numbers);
+echo "\nSquared numbers: " . implode(", ", $squared);
+
+?>
