@@ -93,3 +93,22 @@ class Person {
 
     public function getInfo() {
         return "Name: {$this->name}, Age: {$this->age}";
+    }
+}
+
+$person1 = new Person("Alice", 30);
+echo $person1->getInfo() . "\n";
+
+// Working with Files
+$filename = "test.txt";
+// Writing to file
+file_put_contents($filename, "Hello World\n");
+// Reading from file
+echo "File contents: " . file_get_contents($filename);
+
+// Regular Expressions
+$pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+$email = "test@example.com";
+if (preg_match($pattern, $email)) {
+    echo "\nValid email format";
+}
