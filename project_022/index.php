@@ -17,3 +17,11 @@ if (($handle = fopen($filename, 'r')) !== false) {
         foreach ($row as $cell) {
             echo "<td>" . htmlspecialchars($cell) . "</td>";
         }
+        echo "</tr>";
+    }
+    echo "</table>";
+    fclose($handle);
+} else {
+    echo "Could not open CSV file.";
+}
+?>
