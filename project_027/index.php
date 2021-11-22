@@ -17,3 +17,9 @@ $tasks = $db->query('SELECT * FROM tasks')->fetchAll(PDO::FETCH_ASSOC);
 <form method="post">
 <input name="task"><button name="add">Add</button>
 </form>
+<ul>
+<?php foreach($tasks as $t): ?>
+<li><?=htmlspecialchars($t['name'])?> <form style="display:inline" method="post"><input type="hidden" name="id" value="<?=$t['id']?>"><button name="delete">Delete</button></form></li>
+<?php endforeach; ?>
+</ul>
+</body></html>
