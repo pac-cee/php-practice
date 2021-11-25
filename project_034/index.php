@@ -17,3 +17,15 @@ if (isset($_POST['login'])) {
     } else {
         $msg = 'Login failed!';
     }
+}
+if (isset($_GET['logout'])) { unset($_SESSION['user']); }
+?><form method="post">
+<input name="user" placeholder="Username">
+<input name="pass" type="password" placeholder="Password">
+<button name="login">Login</button>
+<button name="register">Register</button>
+</form>
+<?php if($msg) echo $msg; ?>
+<?php if(!empty($_SESSION['user'])): ?>
+<p>Welcome, <?=htmlspecialchars($_SESSION['user'])?>! <a href="?logout=1">Logout</a></p>
+<?php endif; ?>
