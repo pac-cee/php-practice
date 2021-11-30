@@ -17,3 +17,12 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_FILES['img'])) {
         imagedestroy($src); imagedestroy($thumb);
     }
 }
+?><form method="post" enctype="multipart/form-data">
+<input type="file" name="img" accept="image/jpeg">
+<button>Upload</button>
+</form>
+<hr>
+<h2>Thumbnails</h2>
+<?php foreach(array_filter(scandir($thumbs),function($f){return $f[0]!=='.';}) as $img): ?>
+<img src="thumbs/<?=urlencode($img)?>">
+<?php endforeach; ?>
