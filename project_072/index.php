@@ -17,3 +17,9 @@ if (isset($_POST['action']) && isset($_FILES['file'])) {
     }
 }
 ?>
+<form method="post" enctype="multipart/form-data">
+<input type="file" name="file">
+<button name="action" value="encrypt">Encrypt</button>
+<button name="action" value="decrypt">Decrypt</button>
+</form>
+<?=$msg?>
