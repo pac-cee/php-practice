@@ -17,3 +17,9 @@ $rows = $filter ? ($q->execute(["%$filter%"]), $q->fetchAll()) : $q->fetchAll();
 </form>
 <form method="get">
 <input name="tag" placeholder="Filter by tag"><button>Filter</button>
+</form>
+<div>
+<?php foreach($rows as $r): ?>
+<img src="<?=$r['fname']?>" height="60"> Tags: <?=htmlspecialchars($r['tags'])?><br>
+<?php endforeach; ?>
+</div>
