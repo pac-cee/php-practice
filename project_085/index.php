@@ -17,3 +17,17 @@ class DbSessionHandler implements SessionHandlerInterface {
         $ts = time();
         $st = $this->db->prepare('REPLACE INTO sessions (id, data, ts) VALUES (?,?,?)');
         return $st->execute([$id, $data, $ts]);
+    }
+    public function destroy($id) {
+        $st = $this->db->prepare('DELETE FROM sessions WHERE id=?');
+        return $st->execute([$id]);
+    }
+    public function gc($maxlifetime) {
+        $st = $this->db->prepare('DELETE FROM sessions WHERE ts < ?');
+        return $st->execute([time()-$maxlifetime]);
+    }
+}
+session_set_save_handler(new DbSessionHandler(), true);
+session_start();
+$_SESSION['test'] = ($_SESSION['test'] ?? 0) + 1;
+echo 'Session test value: '.$_SESSION['test'];
