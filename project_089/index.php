@@ -17,3 +17,14 @@ $posts = $db->query('SELECT * FROM posts')->fetchAll();
 </form>
 <?php foreach($posts as $p): ?>
 <h2><?=htmlspecialchars($p['title'])?></h2>
+<p><?=nl2br(htmlspecialchars($p['body']))?></p>
+<form method="post">
+<input type="hidden" name="post_id" value="<?=$p['id']?>">
+<input name="comment" placeholder="Add comment"><button>Comment</button>
+</form>
+<ul>
+<?php foreach($db->query('SELECT * FROM comments WHERE post_id='.$p['id']) as $c): ?>
+<li><?=htmlspecialchars($c['text'])?></li>
+<?php endforeach; ?>
+</ul>
+<?php endforeach; ?>
