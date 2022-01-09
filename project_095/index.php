@@ -17,3 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to'], $_POST['msg']))
         $msg = 'Email sent!';
     }
 }
+?>
+<form method="post">
+<input name="to" placeholder="Recipient email">
+<textarea name="msg" placeholder="Message"></textarea>
+<button>Send Email</button>
+</form>
+<?=$msg?>
