@@ -17,3 +17,26 @@ if ($action === 'login') {
     echo json_encode(['jwt'=>$jwt, 'refresh'=>$refresh]);
 } elseif ($action === 'refresh' && isset($_POST['refresh'])) {
     $refresh = $_POST['refresh'];
+    if (isset($refreshTokens[$refresh])) {
+        $user = $refreshTokens[$refresh];
+        $payload = ['sub'=>$user, 'exp'=>time()+60];
+        $jwt = JWT::encode($payload, $key, 'HS256');
+        // rotate token
+        unset($refreshTokens[$refresh]);
+        $newRefresh = bin2hex(random_bytes(16));
+        $refreshTokens[$newRefresh] = $user;
+        file_put_contents($refreshFile, json_encode($refreshTokens));
+        echo json_encode(['jwt'=>$jwt, 'refresh'=>$newRefresh]);
+    } else {
+        http_response_code(401); echo json_encode(['error'=>'Invalid refresh token']);
+    }
+} elseif ($action === 'logout' && isset($_POST['refresh'])) {
+    $refresh = $_POST['refresh'];
+    unset($refreshTokens[$refresh]);
+    file_put_contents($refreshFile, json_encode($refreshTokens));
+    echo json_encode(['status'=>'logged out']);
+} else {
+    echo '<form method="post">';
+    echo '<button name="action" value="login">Login</button>';
+    echo '</form>';
+}
