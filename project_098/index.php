@@ -17,3 +17,10 @@ if (!$secret) {
     if (isset($_POST['code'])) {
         $totp = TOTP::create($secret);
         if ($totp->verify($_POST['code'])) {
+            echo 'MFA success!';
+        } else {
+            echo 'Invalid code.';
+        }
+    }
+    echo '<form method="post"><input name="code" placeholder="TOTP Code"><button>Verify</button></form>';
+}
