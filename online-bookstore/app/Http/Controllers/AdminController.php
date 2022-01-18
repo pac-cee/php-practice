@@ -17,3 +17,22 @@ class AdminController extends Controller
             if ($request->has('type')) {
                 $query->where('type', $request->type);
             }
+            $reports = $query->with('school')->get();
+            return response()->json($reports);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    // List all users
+    public function users()
+    {
+        try {
+            $users = User::all();
+            return response()->json($users);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    // Update user (admin)
