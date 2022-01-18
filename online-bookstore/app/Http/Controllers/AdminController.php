@@ -36,3 +36,22 @@ class AdminController extends Controller
     }
 
     // Update user (admin)
+    public function updateUser(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $validated = $request->validate([
+                'name' => 'sometimes|required|string',
+                'email' => 'sometimes|required|email',
+                'role' => 'sometimes|required|string',
+                'school_id' => 'nullable|exists:schools,id',
+            ]);
+            $user->update($validated);
+            return response()->json($user);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['message' => 'User not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
