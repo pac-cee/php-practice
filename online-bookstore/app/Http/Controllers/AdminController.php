@@ -74,3 +74,22 @@ class AdminController extends Controller
     // Admin CRUD for books
     public function storeBook(Request $request)
     {
+        try {
+            $validated = $request->validate([
+                'title' => 'required|string',
+                'author_id' => 'required|exists:authors,id',
+                'genre' => 'nullable|string',
+                'format' => 'nullable|string',
+                'description' => 'nullable|string',
+                'price' => 'required|numeric|min:0',
+                'cover_image' => 'nullable|string',
+            ]);
+            $book = Book::create($validated);
+            return response()->json($book, 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+    public function updateBook(Request $request, $id)
