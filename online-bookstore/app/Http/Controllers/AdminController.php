@@ -93,3 +93,22 @@ class AdminController extends Controller
         }
     }
     public function updateBook(Request $request, $id)
+    {
+        try {
+            $book = Book::findOrFail($id);
+            $validated = $request->validate([
+                'title' => 'sometimes|required|string',
+                'author_id' => 'sometimes|required|exists:authors,id',
+                'genre' => 'nullable|string',
+                'format' => 'nullable|string',
+                'description' => 'nullable|string',
+                'price' => 'sometimes|required|numeric|min:0',
+                'cover_image' => 'nullable|string',
+            ]);
+            $book->update($validated);
+            return response()->json($book);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['message' => 'Book not found'], 404);
+        } catch (\Exception $e) {
