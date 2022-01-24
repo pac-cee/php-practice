@@ -36,3 +36,22 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            return response()->json(['message' => 'Login successful', 'user' => $user]);
+        }
+        return response()->json(['message' => 'Invalid credentials'], 401);
+    }
+
+    // Logout
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return response()->json(['message' => 'Logged out successfully']);
+    }
+
+    // Password reset request
+    public function sendResetLinkEmail(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+        if ($validator->fails()) {
