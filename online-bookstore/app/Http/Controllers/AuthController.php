@@ -55,3 +55,10 @@ class AuthController extends Controller
             'email' => 'required|email|exists:users,email',
         ]);
         if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        // Here you would send a reset email using PHPMailer or Laravel's Mail
+        // For now, just mock response
+        return response()->json(['message' => 'Password reset link sent (mock)']);
+    }
+}
