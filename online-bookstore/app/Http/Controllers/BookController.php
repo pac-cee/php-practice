@@ -74,3 +74,23 @@ class BookController extends Controller
             return response()->json(['errors' => $e->errors()], 422);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['message' => 'Book not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    // Admin: delete a book
+    public function destroy($id)
+    {
+        try {
+            $this->authorize('admin');
+            $book = Book::findOrFail($id);
+            $book->delete();
+            return response()->json(['message' => 'Book deleted']);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['message' => 'Book not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+}
