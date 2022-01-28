@@ -36,3 +36,22 @@ class OrderController extends Controller
     {
         try {
             $validated = $request->validate([
+                'book_id' => 'required|exists:books,id',
+                'status' => 'required|string',
+                'payment_id' => 'nullable|string',
+            ]);
+            $order = Order::create([
+                'user_id' => Auth::id(),
+                'book_id' => $validated['book_id'],
+                'status' => $validated['status'],
+                'date' => now(),
+                'payment_id' => $validated['payment_id'] ?? null,
+            ]);
+            return response()->json($order, 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+}
