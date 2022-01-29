@@ -36,3 +36,18 @@ class QuizController extends Controller
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
         } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    // Get user's quiz results
+    public function userResults()
+    {
+        try {
+            $results = QuizResult::where('user_id', Auth::id())->with('quiz')->get();
+            return response()->json($results);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+}
