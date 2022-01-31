@@ -17,3 +17,22 @@ class AuthWebController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/dashboard');
+        }
+        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+    }
+
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user = \App\Models\User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
