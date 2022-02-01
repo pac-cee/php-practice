@@ -36,3 +36,15 @@ class AuthWebController extends Controller
         $user = \App\Models\User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+        Auth::login($user);
+        return redirect('/dashboard');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+}
