@@ -17,3 +17,12 @@ class BookWebController extends Controller
             $query->where('genre', $request->genre);
         }
         $books = $query->paginate(20);
+        return view('books.index', compact('books'));
+    }
+
+    public function show($id)
+    {
+        $book = Book::with('author')->findOrFail($id);
+        return view('books.show', compact('book'));
+    }
+}
