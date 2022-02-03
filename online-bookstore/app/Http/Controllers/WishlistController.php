@@ -36,3 +36,19 @@ class WishlistController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    // Remove book from wishlist
+    public function destroy($book_id)
+    {
+        try {
+            $deleted = Wishlist::where('user_id', Auth::id())->where('book_id', $book_id)->delete();
+            if ($deleted) {
+                return response()->json(['message' => 'Removed from wishlist']);
+            } else {
+                return response()->json(['message' => 'Item not found in wishlist'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+}
