@@ -17,3 +17,9 @@ class ProfileWebController extends Controller
         $user = Auth::user();
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        ]);
+        $user->update($data);
+        return back()->with('message', 'Profile updated!');
+    }
+}
