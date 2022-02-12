@@ -36,3 +36,11 @@ This document describes the REST API endpoints for BookVerse.
 ## Admin
 - `GET /api/admin/reports` — Get analytics reports
 - `POST /api/admin/books` — Add/edit book
+- `DELETE /api/admin/books/{id}` — Delete book
+- `GET /api/admin/users` — List users
+- `PUT /api/admin/users/{id}` — Update user
+- `DELETE /api/admin/users/{id}` — Delete user
+
+---
+
+All endpoints require authentication unless marked as public. Use JWT or session-based auth as configured.
