@@ -36,3 +36,16 @@ See ERD in `docs/diagrams/ERD.drawio` and migrations in `database/migrations/`.
 
 ## Coding Standards
 - PHP: PSR-12
+- JS: ES6+
+- CSS: BEM, Grid/Flexbox
+
+## API Overview
+See `docs/APISpec.md` for REST endpoints and usage.
+
+## Deployment
+- Deploy to Render.com using the deployment guide.
+- Environment variables in `.env`.
+
+---
+
+For questions, contact the maintainer or open an issue.
