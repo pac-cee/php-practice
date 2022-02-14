@@ -17,3 +17,22 @@ See the root README for a directory overview. Main folders:
 - `resources/views/` — Blade templates
 - `resources/js/` — Frontend JS
 - `public/` — Public assets
+- `database/` — Migrations and seeders
+- `tests/` — Unit/integration tests
+
+## Setup & Installation
+1. Clone the repo.
+2. Copy `.env.example` to `.env` and set credentials.
+3. Run `composer install` and `npm install`.
+4. Run migrations and seeders.
+5. Start the dev server.
+
+## Database Schema
+See ERD in `docs/diagrams/ERD.drawio` and migrations in `database/migrations/`.
+
+## Running Tests
+- Use PHPUnit for backend tests: `vendor/bin/phpunit`
+- JS tests: (add framework if used)
+
+## Coding Standards
+- PHP: PSR-12
