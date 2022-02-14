@@ -17,3 +17,13 @@ This guide explains how to deploy BookVerse to Render.com (or similar cloud plat
 5. Run database migrations: `php artisan migrate --seed`
 6. Build frontend assets: `npm run build`
 7. Set up web service (Nginx by default on Render).
+8. Configure domain and HTTPS.
+9. Set up SMTP credentials for PHPMailer.
+
+## Notes
+- For local development, use `php artisan serve` and `npm run dev`.
+- For troubleshooting, check logs in the Render dashboard.
+
+---
+
+For advanced configuration or issues, see the official Render docs or open an issue in the repo.
