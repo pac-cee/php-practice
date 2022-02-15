@@ -17,3 +17,22 @@ This folder contains all system diagrams for BookVerse, including prompts to hel
   - User → BookVerse: Registration, Login, Book Search, Reading Log, Quizzes, Recommendations
   - BookVerse → User: Book List, Recommendations, Quiz Results, Notifications
   - School Admin ↔ BookVerse: Analytics Requests/Reports
+  - BookVerse → Payment Provider: Payment Requests
+  - Payment Provider → BookVerse: Payment Confirmations
+  - BookVerse → Email Provider: Email Notifications (password reset, etc.)
+
+---
+
+## 2. DFD Level 1 (Main Modules)
+**Prompt:**
+- Title: BookVerse – DFD Level 1
+- Central System: BookVerse (rectangle/process in the center)
+- Sub-processes (rectangles inside BookVerse):
+  - Authentication
+  - Catalog & Search
+  - Reading Tracker
+  - Recommendations Engine
+  - Quiz/Game Engine
+  - Analytics & Reports
+  - Admin Panel
+  - Payment Processing
