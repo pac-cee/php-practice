@@ -36,3 +36,22 @@ _Metrics tracked via integrated analytics dashboard._
 - Individual readers (12+)
 - Book clubs
 - School media centers (admins and students)
+- Authors
+
+---
+
+## 4. Features Overview
+
+**Core Features**
+- Centralized reading log & progress tracking
+- AI mood-based recommendations
+- Integrated quizzes/games for comprehension
+- Analytics dashboards (individual & school-admin)
+- Exportable reports (CSV/PDF)
+- Robust sorting/filtering for analytics
+
+**Security & Compliance**
+- Secure authentication (social login, strong passwords, GDPR-ready)
+- Data export/delete for users
+- Audit logging for admins
+
