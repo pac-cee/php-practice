@@ -74,3 +74,11 @@ This folder contains all system diagrams for BookVerse, including prompts to hel
 
 ---
 
+**Tips:**
+- Use color coding: Indigo/Navy (#1A237E) for entities/processes, Coral (#FF6F61) for highlights, White (#FFFFFF) for backgrounds.
+- Keep diagrams clean and minimal, with clear arrows and labels.
+- Save as both .drawio (for editing) and .png/.svg (for embedding in docs).
+
+---
+
+When finished, export your diagrams as images and update this folder with the latest versions for reference in the main documentation.
