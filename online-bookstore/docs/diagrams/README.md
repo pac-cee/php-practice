@@ -36,3 +36,22 @@ This folder contains all system diagrams for BookVerse, including prompts to hel
   - Analytics & Reports
   - Admin Panel
   - Payment Processing
+- External Entities (ellipses around):
+  - User
+  - School Admin
+- Data Flows (arrows):
+  - User ↔ Authentication: Register/Login/Logout
+  - User ↔ Catalog & Search: Browse/Search Books
+  - User ↔ Reading Tracker: Log Progress
+  - User ↔ Recommendations Engine: Get Suggestions
+  - User ↔ Quiz/Game Engine: Play Quizzes, Get Results
+  - User ↔ Payment Processing: Checkout, Payment Status
+  - School Admin ↔ Analytics & Reports: Request/View Reports
+  - Admin Panel ↔ All Modules: Management Actions
+
+---
+
+## 3. ERD (Entity Relationship Diagram)
+**Prompt:**
+- Title: BookVerse – ERD
+- Entities (rectangles, with key fields):
