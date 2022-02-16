@@ -55,3 +55,22 @@ This folder contains all system diagrams for BookVerse, including prompts to hel
 **Prompt:**
 - Title: BookVerse – ERD
 - Entities (rectangles, with key fields):
+  - User (user_id, name, email, password, role, etc.)
+  - Book (book_id, title, author_id, genre, format, etc.)
+  - Author (author_id, name, bio, etc.)
+  - Order (order_id, user_id, book_id, status, date, payment_id, etc.)
+  - Quiz (quiz_id, book_id, title, etc.)
+  - QuizResult (result_id, quiz_id, user_id, score, date, etc.)
+  - Wishlist (wishlist_id, user_id, book_id, etc.)
+  - School (school_id, name, address, etc.)
+  - Report (report_id, school_id, type, generated_at, etc.)
+- Relationships (lines/arrows):
+  - User 1—* Order *—1 Book
+  - User 1—* QuizResult *—1 Quiz
+  - Author 1—* Book
+  - School 1—* User (as students)
+  - School 1—* Report
+  - Book 1—* Quiz
+
+---
+
