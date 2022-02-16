@@ -17,3 +17,22 @@ Modern readers, schools, and authors lack a unified platform to track reading, r
 
 ---
 
+## 2. Objectives & Success Metrics
+
+| Objective            | Metric (KPI)                    | Target (6 months) |
+|----------------------|---------------------------------|-------------------|
+| User adoption        | # registered users              | 5,000 sign-ups    |
+| Engagement           | Monthly active users (MAU)      | 60% of sign-ups   |
+| Reading completion   | % books marked “read”           | 50% completion    |
+| Author contributions | # books added by authors        | 200 titles        |
+| Revenue              | Gross sales (physical + digital)| $10,000 / month   |
+
+_Metrics tracked via integrated analytics dashboard._
+
+---
+
+## 3. Target Audience
+
+- Individual readers (12+)
+- Book clubs
+- School media centers (admins and students)
