@@ -55,3 +55,22 @@ _Metrics tracked via integrated analytics dashboard._
 - Data export/delete for users
 - Audit logging for admins
 
+**UI/UX**
+- Responsive, mobile-first UI
+
+---
+
+## 5. Technical Stack & Deployment
+
+- **Backend:** PHP (Laravel-style MVC)
+- **Frontend:** HTML5, CSS3 (Grid/Flexbox), ES6+ JS, Blade templates
+- **Database:** MySQL
+- **Hosting:** Render.com (cloud)
+- **Web Server:** Nginx (default)
+- **Email:** PHPMailer (mock/test SMTP)
+- **Payments:** Stripe & PayPal
+
+---
+
+## 6. Compliance & Security
+
