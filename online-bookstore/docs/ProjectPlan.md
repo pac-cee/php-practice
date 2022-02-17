@@ -74,3 +74,22 @@ _Metrics tracked via integrated analytics dashboard._
 
 ## 6. Compliance & Security
 
+- GDPR-ready (consent, data export/delete)
+- Rate-limited login, strong password enforcement
+- Secure headers (CSP, HSTS)
+- Audit logging for admin actions
+
+---
+
+## 7. Visual & UX Inspiration
+
+- Goodreads, Duolingo, Netflix (carousel/recommendations)
+- Minimal navigation, clear CTAs, mobile-first
+
+---
+
+## 8. Documentation & Deliverables
+
+- Diagrams: DFD Level 0 & 1, ERD (source + image)
+- Markdown documentation (user, developer, API, deployment guides)
+- Screenshots: included in user guide and case study
