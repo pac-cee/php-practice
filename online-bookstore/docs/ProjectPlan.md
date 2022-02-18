@@ -93,3 +93,9 @@ _Metrics tracked via integrated analytics dashboard._
 - Diagrams: DFD Level 0 & 1, ERD (source + image)
 - Markdown documentation (user, developer, API, deployment guides)
 - Screenshots: included in user guide and case study
+
+---
+
+## 9. Case Study Report (to be completed at project end)
+
+- Screenshots, summary, lessons learned, enhancements, conclusion
