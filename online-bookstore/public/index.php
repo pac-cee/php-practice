@@ -17,3 +17,10 @@ $result = $conn->query("SELECT * FROM books");
         <?php while ($row = $result->fetch_assoc()): ?>
             <li>
                 <a href="book.php?id=<?php echo $row['id']; ?>">
+                    <?php echo htmlspecialchars($row['title']); ?>
+                </a>
+            </li>
+        <?php endwhile; ?>
+    </ul>
+</body>
+</html>
