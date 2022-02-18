@@ -36,3 +36,17 @@ Visit [BookVerse](http://localhost) and create an account or browse as a guest.
 - Test your comprehension after finishing a book.
 - Play mini-games for fun and learning.
 
+## Managing Your Account
+- Update your profile, change password, and manage privacy settings.
+- View your reading analytics and export your data.
+
+## Exporting Reports
+- Download your reading logs and quiz results as CSV or PDF.
+
+## FAQ
+- For help, visit the support section or contact us at support@bookverse.com.
+
+---
+
+**Screenshots:**
+(Embed annotated screenshots of all major screens here as you develop the UI.)
