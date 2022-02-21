@@ -55,3 +55,22 @@ BookVerse/
 - [Project Plan](docs/ProjectPlan.md)
 - [User Guide](docs/UserGuide.md)
 - [Developer Guide](docs/DeveloperGuide.md)
+- [API Spec](docs/APISpec.md)
+- [Deployment Guide](docs/DeploymentGuide.md)
+
+---
+
+## License
+MIT License
+
+---
+
+## Branding & Colors
+- Indigo/Navy: #1A237E
+- Coral Accent: #FF6F61
+- White: #FFFFFF
+
+---
+
+## Contact
+For questions or contributions, please open an issue or contact the maintainer.
