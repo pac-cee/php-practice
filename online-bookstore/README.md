@@ -36,3 +36,22 @@ BookVerse/
 ```
 
 ---
+
+## Features
+- Secure auth (register/login/logout, CSRF, password reset)
+- Responsive, mobile-first UI (light/dark mode, animated navbar)
+- Product catalog, carousel, infinite scroll, lightbox, fly-to-cart
+- Cart & checkout wizard (Stripe/PayPal)
+- User dashboard (orders, wishlist, profile)
+- Admin panel (sales charts, CRUD, order management)
+- Advanced: full-text search, recommendations, REST API
+- Animations (GSAP, ripples, transitions)
+- Performance & security: lazy loading, prepared statements, rate limits
+- Testing: unit/integration tests, manual UI test plan
+
+---
+
+## Documentation
+- [Project Plan](docs/ProjectPlan.md)
+- [User Guide](docs/UserGuide.md)
+- [Developer Guide](docs/DeveloperGuide.md)
