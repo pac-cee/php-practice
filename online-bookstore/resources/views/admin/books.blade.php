@@ -17,3 +17,18 @@
         <tr style="border-bottom:1px solid #eee;">
             <td>{{ $book->title }}</td>
             <td>{{ $book->author->name ?? '' }}</td>
+            <td>{{ $book->genre }}</td>
+            <td>${{ number_format($book->price, 2) }}</td>
+            <td>
+                <a href="/admin/books/{{ $book->id }}/edit" class="btn">Edit</a>
+                <form action="/admin/books/{{ $book->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn" type="submit" onclick="return confirm('Delete this book?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
