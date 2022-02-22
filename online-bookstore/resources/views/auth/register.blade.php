@@ -17,3 +17,11 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
         @error('password')<div class="error">{{ $message }}</div>@enderror
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation">Confirm Password</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" required>
+    </div>
+    <button class="btn" type="submit">Register</button>
+</form>
+@endsection
