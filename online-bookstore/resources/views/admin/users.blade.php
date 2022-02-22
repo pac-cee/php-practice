@@ -17,3 +17,17 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->role }}</td>
+            <td>{{ $user->school->name ?? '' }}</td>
+            <td>
+                <a href="/admin/users/{{ $user->id }}/edit" class="btn">Edit</a>
+                <form action="/admin/users/{{ $user->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn" type="submit" onclick="return confirm('Delete this user?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
