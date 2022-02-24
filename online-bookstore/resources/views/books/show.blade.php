@@ -17,3 +17,11 @@
                 <button class="btn" type="submit">Order Book</button>
             </form>
             <form method="POST" action="/user/wishlist" style="margin-top:0.5rem;">
+                @csrf
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <button class="btn" type="submit">Add to Wishlist</button>
+            </form>
+        @endauth
+    </div>
+</div>
+@endsection
