@@ -17,3 +17,22 @@
         label { font-weight: bold; }
         input, select, textarea { width: 100%; padding: 0.5rem; border: 1px solid #1A237E; border-radius: 4px; margin-top: 0.2rem; }
         .error { color: #FF6F61; margin-top: 0.2rem; font-size: 0.95em; }
+    </style>
+    @yield('head')
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="/" class="brand">BookVerse</a>
+            <a href="/books">Books</a>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+        <div>
+            @auth
+                <span>Welcome, {{ Auth::user()->name }}</span>
+                <a href="/logout">Logout</a>
+            @else
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            @endauth
+        </div>
