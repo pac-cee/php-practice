@@ -36,3 +36,10 @@
                 <a href="/register">Register</a>
             @endauth
         </div>
+    </nav>
+    <div class="container">
+        @yield('content')
+    </div>
+    @yield('scripts')
+</body>
+</html>
