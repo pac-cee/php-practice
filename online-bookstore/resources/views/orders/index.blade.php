@@ -17,3 +17,10 @@
             <td>{{ $order->id }}</td>
             <td>{{ $order->book->title ?? '' }}</td>
             <td>{{ ucfirst($order->status) }}</td>
+            <td>{{ $order->date }}</td>
+            <td>{{ $order->payment_id ?? 'N/A' }}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
