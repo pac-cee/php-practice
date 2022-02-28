@@ -17,3 +17,14 @@
             <td>{{ $item->book->title }}</td>
             <td>{{ $item->book->author->name ?? '' }}</td>
             <td>
+                <form method="POST" action="/user/wishlist/{{ $item->book_id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn" type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
