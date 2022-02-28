@@ -36,3 +36,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/quizzes/{quiz_id}/submit', [QuizController::class, 'submit']);
     Route::get('/user/quiz-results', [QuizController::class, 'userResults']);
 });
+
+// Wishlist
+Route::middleware('auth')->group(function () {
+    Route::get('/user/wishlist', [WishlistController::class, 'index']);
+    Route::post('/user/wishlist', [WishlistController::class, 'store']);
+    Route::delete('/user/wishlist/{book_id}', [WishlistController::class, 'destroy']);
+});
+
+// Admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/reports', [AdminController::class, 'reports']);
+    Route::get('/admin/users', [AdminController::class, 'users']);
+    Route::put('/admin/users/{id}', [AdminController::class, 'updateUser']);
+    Route::delete('/admin/users/{id}', [AdminController::class, 'deleteUser']);
+    Route::post('/admin/books', [AdminController::class, 'storeBook']);
+    Route::put('/admin/books/{id}', [AdminController::class, 'updateBook']);
+    Route::delete('/admin/books/{id}', [AdminController::class, 'deleteBook']);
+});
