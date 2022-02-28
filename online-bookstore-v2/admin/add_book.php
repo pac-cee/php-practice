@@ -17,3 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cover_image      = trim($_POST['cover_image']); // assume URL or path
     $category_id      = intval($_POST['category_id']);
     $isbn             = trim($_POST['isbn']);
+    $publisher        = trim($_POST['publisher']);
+    $publication_date = trim($_POST['publication_date']);
+    $pages            = intval($_POST['pages']);
+    $language         = trim($_POST['language']);
+    $stock_quantity   = intval($_POST['stock_quantity']);
+    $featured         = isset($_POST['featured']) ? 1 : 0;
+
+    // If edit_id present → update; else → insert
+    if (!empty($_POST['edit_id'])) {
+        // UPDATE flow
+        $edit_id = intval($_POST['edit_id']);
+        $stmt = $conn->prepare("
+            UPDATE books
+            SET title = ?, author = ?, price = ?, original_price = ?, description = ?, cover_image = ?,
+                category_id = ?, isbn = ?, publisher = ?, publication_date = ?, pages = ?, language = ?,
+                stock_quantity = ?, featured = ?
+            WHERE id = ?
+        ");
+        $stmt->bind_param(
