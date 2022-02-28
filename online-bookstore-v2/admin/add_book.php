@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE id = ?
         ");
         $stmt->bind_param(
+            'ssddssisssiiiii',
+            $title,
+            $author,
+            $price,
+            $original_price,
+            $description,
+            $cover_image,
+            $category_id,
+            $isbn,
+            $publisher,
+            $publication_date,
+            $pages,
+            $language,
+            $stock_quantity,
+            $featured,
+            $edit_id
+        );
+        if ($stmt->execute()) {
+            $message = 'Book updated successfully.';
