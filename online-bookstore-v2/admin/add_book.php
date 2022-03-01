@@ -112,3 +112,22 @@ $catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
   <title><?= $editData ? 'Edit Book' : 'Add Book' ?> • Admin</title>
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title"><?= $editData ? 'Edit Book' : 'Add New Book' ?></h1>
+
+    <?php if ($message): ?>
+      <div class="alert-admin alert-success"><?= htmlspecialchars($message) ?></div>
+    <?php elseif ($error): ?>
+      <div class="alert-admin alert-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form action="add_book.php<?= $editData ? '?edit_id=' . $editData['id'] : '' ?>" method="POST" class="form-admin">
+      <?php if ($editData): ?>
+        <input type="hidden" name="edit_id" value="<?= intval($editData['id']) ?>">
+      <?php endif; ?>
+
