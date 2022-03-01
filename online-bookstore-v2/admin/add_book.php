@@ -93,3 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // If editing, fetch existing data
+$editData = null;
+if (isset($_GET['edit_id'])) {
+    $edit_id = intval($_GET['edit_id']);
+    $stmt = $conn->prepare("SELECT * FROM books WHERE id = ? LIMIT 1");
+    $stmt->bind_param('i', $edit_id);
+    $stmt->execute();
+    $editData = $stmt->get_result()->fetch_assoc();
+}
+
+// Fetch categories for the dropdown
+$catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><?= $editData ? 'Edit Book' : 'Add Book' ?> • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
