@@ -55,3 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
         if ($stmt->execute()) {
             $message = 'Book updated successfully.';
+        } else {
+            $error = 'Error updating book: ' . $conn->error;
+        }
+    } else {
+        // INSERT flow
+        $stmt = $conn->prepare("
+            INSERT INTO books
+            (title, author, price, original_price, description, cover_image,
+             category_id, isbn, publisher, publication_date, pages, language,
+             stock_quantity, featured)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->bind_param(
+            'ssddssisssiiii',
+            $title,
+            $author,
+            $price,
+            $original_price,
+            $description,
