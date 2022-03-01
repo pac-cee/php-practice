@@ -131,3 +131,22 @@ $catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
         <input type="hidden" name="edit_id" value="<?= intval($editData['id']) ?>">
       <?php endif; ?>
 
+      <label for="title">Title*</label>
+      <input type="text" name="title" id="title" required
+             value="<?= $editData ? htmlspecialchars($editData['title']) : '' ?>">
+
+      <label for="author">Author*</label>
+      <input type="text" name="author" id="author" required
+             value="<?= $editData ? htmlspecialchars($editData['author']) : '' ?>">
+
+      <label for="price">Price (e.g. 19.99)*</label>
+      <input type="number" step="0.01" name="price" id="price" required
+             value="<?= $editData ? htmlspecialchars($editData['price']) : '' ?>">
+
+      <label for="original_price">Original Price</label>
+      <input type="number" step="0.01" name="original_price" id="original_price"
+             value="<?= $editData ? htmlspecialchars($editData['original_price']) : '' ?>">
+
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="4"><?= $editData ? htmlspecialchars($editData['description']) : '' ?></textarea>
+
