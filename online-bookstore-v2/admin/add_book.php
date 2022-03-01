@@ -74,3 +74,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $price,
             $original_price,
             $description,
+            $cover_image,
+            $category_id,
+            $isbn,
+            $publisher,
+            $publication_date,
+            $pages,
+            $language,
+            $stock_quantity,
+            $featured
+        );
+        if ($stmt->execute()) {
+            $message = 'Book added successfully.';
+        } else {
+            $error = 'Error adding book: ' . $conn->error;
+        }
+    }
+}
+
+// If editing, fetch existing data
