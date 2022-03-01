@@ -150,3 +150,22 @@ $catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
       <label for="description">Description</label>
       <textarea name="description" id="description" rows="4"><?= $editData ? htmlspecialchars($editData['description']) : '' ?></textarea>
 
+      <label for="cover_image">Cover Image URL</label>
+      <input type="text" name="cover_image" id="cover_image"
+             value="<?= $editData ? htmlspecialchars($editData['cover_image']) : '' ?>">
+
+      <label for="category_id">Category*</label>
+      <select name="category_id" id="category_id" required>
+        <option value="">-- Select Category --</option>
+        <?php while ($cat = $catRes->fetch_assoc()): ?>
+          <option value="<?= $cat['id'] ?>"
+            <?= $editData && $editData['category_id'] == $cat['id'] ? 'selected' : '' ?>>
+            <?= htmlspecialchars($cat['name']) ?>
+          </option>
+        <?php endwhile; ?>
+      </select>
+
+      <label for="isbn">ISBN</label>
+      <input type="text" name="isbn" id="isbn"
+             value="<?= $editData ? htmlspecialchars($editData['isbn']) : '' ?>">
+
