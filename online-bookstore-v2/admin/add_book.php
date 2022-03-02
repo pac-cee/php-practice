@@ -169,3 +169,22 @@ $catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
       <input type="text" name="isbn" id="isbn"
              value="<?= $editData ? htmlspecialchars($editData['isbn']) : '' ?>">
 
+      <label for="publisher">Publisher</label>
+      <input type="text" name="publisher" id="publisher"
+             value="<?= $editData ? htmlspecialchars($editData['publisher']) : '' ?>">
+
+      <label for="publication_date">Publication Date</label>
+      <input type="date" name="publication_date" id="publication_date"
+             value="<?= $editData ? htmlspecialchars($editData['publication_date']) : '' ?>">
+
+      <label for="pages">Pages</label>
+      <input type="number" name="pages" id="pages"
+             value="<?= $editData ? htmlspecialchars($editData['pages']) : '' ?>">
+
+      <label for="language">Language</label>
+      <input type="text" name="language" id="language"
+             value="<?= $editData ? htmlspecialchars($editData['language']) : '' ?>">
+
+      <label for="stock_quantity">Stock Quantity*</label>
+      <input type="number" name="stock_quantity" id="stock_quantity" required
+             value="<?= $editData ? htmlspecialchars($editData['stock_quantity']) : '0' ?>">
