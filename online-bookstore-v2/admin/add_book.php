@@ -188,3 +188,16 @@ $catRes = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
       <label for="stock_quantity">Stock Quantity*</label>
       <input type="number" name="stock_quantity" id="stock_quantity" required
              value="<?= $editData ? htmlspecialchars($editData['stock_quantity']) : '0' ?>">
+
+      <label>
+        <input type="checkbox" name="featured" <?= $editData && $editData['featured'] ? 'checked' : '' ?>>
+        Featured Book
+      </label>
+
+      <button type="submit" class="btn-admin"><?= $editData ? 'Update Book' : 'Add Book' ?></button>
+    </form>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
