@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Check if user exists
         if ($stmt->num_rows === 1) {
+            // Bind the columns
+            $stmt->bind_result($id, $username, $hash, $role);
+            $stmt->fetch();
+
+            // Check role & password
+            if ($role === 'admin' && password_verify($password, $hash)) {
+                // Login successful
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
+                
+                // Redirect to dashboard
+                header('Location: dashboard.php');
+                exit;
+            } else {
+                // Login failed - provide appropriate error
+                if ($role !== 'admin') {
+                    $error = 'This account does not have admin privileges.';
+                } else {
