@@ -112,3 +112,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       font-size: 1rem;
       color: #333;
     }
+    .login-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0069ff;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .login-container button:hover {
+      background: #0057dd;
+    }
+    .error-msg {
+      background: #ffe5e5;
+      color: #d8000c;
+      padding: 0.75rem;
