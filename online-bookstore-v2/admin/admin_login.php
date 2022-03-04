@@ -17,3 +17,22 @@ $error = '';
 $debug = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if ($email === '' || $password === '') {
+        $error = 'Please enter both email and password.';
+    } else {
+        // Prepare & execute lookup
+        $stmt = $conn->prepare("
+            SELECT id, username, password, role
+            FROM users
+            WHERE email = ?
+            LIMIT 1
+        ");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        // Check if user exists
+        if ($stmt->num_rows === 1) {
