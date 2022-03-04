@@ -55,3 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($role !== 'admin') {
                     $error = 'This account does not have admin privileges.';
                 } else {
+                    $error = 'Invalid password.';
+                }
+            }
+        } else {
+            $error = 'No account found with that email.';
+        }
+
+        $stmt->close();
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login • OnlineBookstore</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    /* Centered login box */
