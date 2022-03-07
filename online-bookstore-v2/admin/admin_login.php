@@ -150,3 +150,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </style>
 </head>
 <body>
+  <div class="login-container">
+    <h2>Admin Login</h2>
+
+    <?php if ($error): ?>
+      <div class="error-msg"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form action="admin_login.php" method="POST">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+        autocomplete="email"
+      >
+
+      <label for="password">Password</label>
