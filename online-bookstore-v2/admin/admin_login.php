@@ -131,3 +131,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       background: #ffe5e5;
       color: #d8000c;
       padding: 0.75rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .register-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .register-link a {
+      color: #0069ff;
+      text-decoration: none;
+    }
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
