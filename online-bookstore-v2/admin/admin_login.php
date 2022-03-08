@@ -169,3 +169,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       >
 
       <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        required
+        autocomplete="current-password"
+      >
+
+      <button type="submit">Log In</button>
+    </form>
+    
+    <div class="register-link">
+      Need an admin account? <a href="register_admin.php">Register here</a>
+    </div>
+    <div class="home-link" style="text-align:center; margin-bottom:1rem;">
+  <a href="/index.php" class="btn-home">
+    <i class="fas fa-home"></i> Home
+  </a>
+</div>
