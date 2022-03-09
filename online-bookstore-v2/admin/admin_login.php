@@ -188,3 +188,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <i class="fas fa-home"></i> Home
   </a>
 </div>
+    <div class="admin-login-link" style="text-align:center;">
+      <p>Are you a user? <a href="../views/login.php">Login here</a></p>
+    </div>
+  </div>
+</body>
+</html>
