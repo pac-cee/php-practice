@@ -74,3 +74,22 @@ body {
   display: inline-block;
 }
 .btn-admin:hover {
+  background-color: #0056b3;
+}
+
+/* 7) Forms */
+.form-admin {
+  margin-bottom: 1.5rem;
+}
+.form-admin label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.form-admin input[type="text"],
+.form-admin input[type="number"],
+.form-admin input[type="email"],
+.form-admin input[type="password"],
+.form-admin select,
+.form-admin textarea,
+.form-admin input[type="date"] {
