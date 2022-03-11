@@ -93,3 +93,22 @@ body {
 .form-admin select,
 .form-admin textarea,
 .form-admin input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+/* 8) Alerts */
+.alert-admin {
+  padding: 0.75rem 1rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.alert-error {
