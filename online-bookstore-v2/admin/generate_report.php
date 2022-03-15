@@ -150,3 +150,22 @@ if ($type === 'users') {
       <label for="type">Report Type*</label>
       <select name="type" id="type" required onchange="toggleFilters()">
         <option value="">-- Select Report --</option>
+        <option value="books" <?= $type === 'books' ? 'selected' : '' ?>>Books Report</option>
+        <option value="sales" <?= $type === 'sales' ? 'selected' : '' ?>>Sales Report</option>
+        <option value="users" <?= $type === 'users' ? 'selected' : '' ?>>User Activity Report</option>
+      </select>
+
+      <div id="filter-dates" style="display:none;">
+        <label for="date_from">Date From</label>
+        <input type="date" name="date_from" id="date_from" value="<?= htmlspecialchars($dateFrom) ?>">
+        <label for="date_to">Date To</label>
+        <input type="date" name="date_to" id="date_to" value="<?= htmlspecialchars($dateTo) ?>">
+      </div>
+
+      <div id="filter-category" style="display:none;">
+        <?php
+        $resCats = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
+        ?>
+        <label for="category_id">Category</label>
+        <select name="category_id" id="category_id">
+          <option value="">-- All Categories --</option>
