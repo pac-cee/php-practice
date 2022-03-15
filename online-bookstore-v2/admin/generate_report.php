@@ -188,3 +188,26 @@ if ($type === 'users') {
           <?php while ($u = $resUsers->fetch_assoc()): ?>
             <option value="<?= $u['id'] ?>"
               <?= $userId == $u['id'] ? 'selected' : '' ?>>
+              <?= htmlspecialchars($u['username']) ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-admin">Generate PDF</button>
+    </form>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+
+  <script>
+    function toggleFilters() {
+      var type = document.getElementById('type').value;
+      document.getElementById('filter-dates').style.display = (type === 'sales' || type === 'users') ? 'block' : 'none';
+      document.getElementById('filter-category').style.display = (type === 'books') ? 'block' : 'none';
+      document.getElementById('filter-user').style.display = (type === 'users') ? 'block' : 'none';
+    }
+    document.addEventListener('DOMContentLoaded', toggleFilters);
+  </script>
+</body>
+</html>
