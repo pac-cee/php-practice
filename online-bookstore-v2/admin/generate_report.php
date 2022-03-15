@@ -74,3 +74,22 @@ if ($type === 'sales') {
       ORDER BY o.order_date ASC
     ";
     $res = $conn->query($sql);
+
+    $rows = [];
+    while ($r = $res->fetch_assoc()) {
+        $rows[] = [
+            $r['order_id'],
+            $r['username'],
+            number_format($r['total_amount'], 2),
+            $r['status'],
+            date('Y-m-d', strtotime($r['order_date']))
+        ];
+    }
+
+    generatePDF("Sales Report ({$dateFrom} to {$dateTo})", $columns, $rows, "sales_report_{$dateFrom}_{$dateTo}.pdf");
+}
+
+if ($type === 'users') {
+    // User Activity Report: users + their total orders & total spent in given range
+    if (empty($dateFrom) || empty($dateTo)) {
+        die("<p style='color:red;'>Date range required. <a href='view_users.php'>Go back</a></p>");
