@@ -112,3 +112,22 @@ if ($type === 'users') {
       GROUP BY u.id, u.username, u.email
       ORDER BY total_spent DESC
     ";
+    $res = $conn->query($sql);
+
+    $rows = [];
+    while ($r = $res->fetch_assoc()) {
+        $rows[] = [
+            $r['id'],
+            $r['username'],
+            $r['email'],
+            intval($r['total_orders']),
+            number_format($r['total_spent'], 2)
+        ];
+    }
+
+    generatePDF("User Activity Report ({$dateFrom} to {$dateTo})", $columns, $rows, "user_activity_{$dateFrom}_{$dateTo}.pdf");
+}
+
+// Fallback: show the form to pick report type / filters
+?>
+<!DOCTYPE html>
