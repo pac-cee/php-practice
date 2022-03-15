@@ -36,3 +36,22 @@ if ($type === 'books') {
     $res = $conn->query($sql);
 
     $rows = [];
+    while ($r = $res->fetch_assoc()) {
+        $rows[] = [
+            $r['id'],
+            $r['title'],
+            $r['author'],
+            $r['category'],
+            number_format($r['price'], 2),
+            intval($r['stock_quantity'])
+        ];
+    }
+
+    generatePDF("Books Report{$suffix}", $columns, $rows, "books_report{$suffix}.pdf");
+}
+
+if ($type === 'sales') {
+    // Sales Report: orders (with total amount) between date range
+    if (empty($dateFrom) || empty($dateTo)) {
+        die("<p style='color:red;'>Date range required. <a href='view_orders.php'>Go back</a></p>");
+    }
