@@ -74,3 +74,17 @@ $pendingOrders = getPendingOrders();
     </div>
 
     <!-- Quick Links -->
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="add_book.php" class="btn-admin">➕ Add New Book</a>
+      <a href="view_books.php" class="btn-admin">📚 View All Books</a>
+      <a href="view_users.php" class="btn-admin">👥 View All Users</a>
+      <a href="view_orders.php" class="btn-admin">🛒 View All Orders</a>
+      <a href="generate_report.php" class="btn-admin">📄 Generate Report</a>
+      <a href="settings.php" class="btn-admin">⚙️ Settings</a>
+      <a href="../index.php" class="btn-admin">🏠 Return to Homepage</a>
+    </div>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
