@@ -55,3 +55,22 @@ if ($type === 'sales') {
     if (empty($dateFrom) || empty($dateTo)) {
         die("<p style='color:red;'>Date range required. <a href='view_orders.php'>Go back</a></p>");
     }
+    $columns = ['Order ID','User','Total ($)','Status','Order Date'];
+    $df = $conn->real_escape_string($dateFrom) . " 00:00:00";
+    $dt = $conn->real_escape_string($dateTo) . " 23:59:59";
+
+    $sql = "
+      SELECT 
+        o.id AS order_id,
+        u.username,
+        IFNULL(SUM(oi.price * oi.quantity), 0) AS total_amount,
+        o.status,
+        o.order_date
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+      LEFT JOIN order_items oi ON o.id = oi.order_id
+      WHERE o.order_date BETWEEN '$df' AND '$dt'
+      GROUP BY o.id, u.username, o.status, o.order_date
+      ORDER BY o.order_date ASC
+    ";
+    $res = $conn->query($sql);
