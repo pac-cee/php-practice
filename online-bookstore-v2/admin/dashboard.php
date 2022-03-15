@@ -55,3 +55,22 @@ $pendingOrders = getPendingOrders();
           </ul>
           <a href="view_books.php" class="btn-admin">Manage Books</a>
         <?php else: ?>
+          <p>All stocks are sufficient.</p>
+        <?php endif; ?>
+      </div>
+      <div class="admin-card" style="flex: 1 1 300px;">
+        <h4>Pending Orders</h4>
+        <?php if ($pendingOrders->num_rows): ?>
+          <ul>
+            <?php while ($o = $pendingOrders->fetch_assoc()): ?>
+              <li>Order #<?= $o['id'] ?> by User ID <?= $o['user_id'] ?> (<?= date('Y-m-d', strtotime($o['order_date'])) ?>)</li>
+            <?php endwhile; ?>
+          </ul>
+          <a href="view_orders.php" class="btn-admin">Manage Orders</a>
+        <?php else: ?>
+          <p>No pending orders.</p>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
