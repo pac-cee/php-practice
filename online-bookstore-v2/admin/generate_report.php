@@ -131,3 +131,22 @@ if ($type === 'users') {
 // Fallback: show the form to pick report type / filters
 ?>
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Report • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title">Generate PDF Report</h1>
+    <p>Select the report type and any filters below, then click “Generate PDF.”</p>
+
+    <form action="generate_report.php" method="GET" class="form-admin">
+      <label for="type">Report Type*</label>
+      <select name="type" id="type" required onchange="toggleFilters()">
+        <option value="">-- Select Report --</option>
