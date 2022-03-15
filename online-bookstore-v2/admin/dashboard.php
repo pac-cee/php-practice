@@ -36,3 +36,22 @@ $pendingOrders = getPendingOrders();
       <div class="admin-card" style="flex: 1 1 200px;">
         <h3>Total Orders</h3>
         <p style="font-size: 2rem;"><?= intval($stats['total_orders']) ?></p>
+      </div>
+      <div class="admin-card" style="flex: 1 1 200px;">
+        <h3>Total Revenue</h3>
+        <p style="font-size: 2rem;">$<?= number_format($stats['total_revenue'], 2) ?></p>
+      </div>
+    </div>
+
+    <!-- Notifications: Low‐stock + Pending Orders -->
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+      <div class="admin-card" style="flex: 1 1 300px;">
+        <h4>Low‐Stock Books (&lt; 5)</h4>
+        <?php if ($lowStockRes->num_rows): ?>
+          <ul>
+            <?php while ($row = $lowStockRes->fetch_assoc()): ?>
+              <li><?= htmlspecialchars($row['title']) ?> – <?= intval($row['stock_quantity']) ?> left</li>
+            <?php endwhile; ?>
+          </ul>
+          <a href="view_books.php" class="btn-admin">Manage Books</a>
+        <?php else: ?>
