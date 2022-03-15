@@ -93,3 +93,22 @@ if ($type === 'users') {
     // User Activity Report: users + their total orders & total spent in given range
     if (empty($dateFrom) || empty($dateTo)) {
         die("<p style='color:red;'>Date range required. <a href='view_users.php'>Go back</a></p>");
+    }
+    $columns = ['User ID','Username','Email','Total Orders','Total Spent ($)'];
+    $df = $conn->real_escape_string($dateFrom) . " 00:00:00";
+    $dt = $conn->real_escape_string($dateTo) . " 23:59:59";
+
+    $sql = "
+      SELECT 
+        u.id,
+        u.username,
+        u.email,
+        COUNT(o.id) AS total_orders,
+        IFNULL(SUM(oi.price * oi.quantity), 0) AS total_spent
+      FROM users u
+      LEFT JOIN orders o ON u.id = o.user_id 
+          AND o.order_date BETWEEN '$df' AND '$dt'
+      LEFT JOIN order_items oi ON o.id = oi.order_id
+      GROUP BY u.id, u.username, u.email
+      ORDER BY total_spent DESC
+    ";
