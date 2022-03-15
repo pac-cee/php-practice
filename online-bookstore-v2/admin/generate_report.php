@@ -169,3 +169,22 @@ if ($type === 'users') {
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id">
           <option value="">-- All Categories --</option>
+          <?php while ($c = $resCats->fetch_assoc()): ?>
+            <option value="<?= $c['id'] ?>"
+              <?= $categoryId == $c['id'] ? 'selected' : '' ?>>
+              <?= htmlspecialchars($c['name']) ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
+      </div>
+
+      <div id="filter-user" style="display:none;">
+        <?php
+        $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC");
+        ?>
+        <label for="user_id">User</label>
+        <select name="user_id" id="user_id">
+          <option value="">-- All Users --</option>
+          <?php while ($u = $resUsers->fetch_assoc()): ?>
+            <option value="<?= $u['id'] ?>"
+              <?= $userId == $u['id'] ? 'selected' : '' ?>>
