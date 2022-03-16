@@ -36,3 +36,22 @@ if ($membershipsQuery) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get form data
+    $name = trim($_POST['name'] ?? '');
+    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirmPassword = $_POST['confirm_password'] ?? '';
+    $schoolId = !empty($_POST['school_id']) ? (int)$_POST['school_id'] : null;
+    $membershipId = !empty($_POST['membership_id']) ? (int)$_POST['membership_id'] : null;
+    
+    // Validation
+    $errors = [];
+    
+    if (empty($name)) {
+        $errors[] = "Name is required";
+    }
+    
+    if (empty($username)) {
+        $errors[] = "Username is required";
+    } else {
