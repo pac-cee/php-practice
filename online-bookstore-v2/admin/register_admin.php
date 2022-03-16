@@ -17,3 +17,22 @@ $conn = $db->getConnection();
 $message = '';
 $messageType = '';
 
+// Get schools for dropdown (if needed)
+$schools = [];
+$schoolsQuery = $conn->query("SELECT id, name FROM schools ORDER BY name");
+if ($schoolsQuery) {
+    while ($row = $schoolsQuery->fetch_assoc()) {
+        $schools[$row['id']] = $row['name'];
+    }
+}
+
+// Get memberships for dropdown (if needed)
+$memberships = [];
+$membershipsQuery = $conn->query("SELECT id, name FROM memberships ORDER BY name");
+if ($membershipsQuery) {
+    while ($row = $membershipsQuery->fetch_assoc()) {
+        $memberships[$row['id']] = $row['name'];
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
