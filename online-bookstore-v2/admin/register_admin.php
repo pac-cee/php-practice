@@ -207,3 +207,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .login-link a {
       color: #0069ff;
       text-decoration: none;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    .optional-label {
+      font-weight: normal;
+      font-size: 0.8rem;
+      color: #777;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register Admin Account</h2>
+
+    <?php if ($message): ?>
+      <div class="message <?= $messageType === 'success' ? 'success-msg' : 'error-msg' ?>">
+        <?= $message ?>
