@@ -93,3 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // If no errors, insert the new admin user
+    if (empty($errors)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $role = 'admin'; // Always set role to admin for this page
+        
+        $stmt = $conn->prepare("
+            INSERT INTO users (name, username, email, password, role, school_id, membership_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ");
+        
+        $stmt->bind_param('sssssii', $name, $username, $email, $hashedPassword, $role, $schoolId, $membershipId);
+        
+        if ($stmt->execute()) {
+            $messageType = 'success';
+            $message = "Admin account created successfully! Redirecting to login page...";
+            // Set a redirect with JavaScript after displaying the message
+            header("refresh:3;url=admin_login.php");
+        } else {
+            $messageType = 'error';
+            $message = "Error creating account: " . $conn->error;
