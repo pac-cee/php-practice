@@ -112,3 +112,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $messageType = 'error';
             $message = "Error creating account: " . $conn->error;
+        }
+        
+        $stmt->close();
+    } else {
+        $messageType = 'error';
+        $message = implode("<br>", $errors);
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Admin • OnlineBookstore</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      background: #f7f9fc;
+      font-family: 'Poppins', sans-serif;
