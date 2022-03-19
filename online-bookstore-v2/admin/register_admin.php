@@ -150,3 +150,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       margin-bottom: 1.5rem;
       color: #333;
       text-align: center;
+      font-size: 1.5rem;
+    }
+    .register-container label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #555;
+    }
+    .register-container input,
+    .register-container select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      color: #333;
+    }
+    .register-container button {
