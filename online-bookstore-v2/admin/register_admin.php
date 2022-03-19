@@ -131,3 +131,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     body {
       background: #f7f9fc;
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .register-container {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .register-container h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+      text-align: center;
