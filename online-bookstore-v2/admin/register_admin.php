@@ -188,3 +188,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     .message {
       padding: 0.75rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .success-msg {
+      background: #e5ffea;
+      color: #00a32a;
+    }
+    .error-msg {
+      background: #ffe5e5;
+      color: #d8000c;
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .login-link a {
+      color: #0069ff;
+      text-decoration: none;
