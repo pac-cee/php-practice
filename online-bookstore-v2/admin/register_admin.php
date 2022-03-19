@@ -169,3 +169,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       color: #333;
     }
     .register-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0069ff;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .register-container button:hover {
+      background: #0057dd;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .message {
+      padding: 0.75rem;
