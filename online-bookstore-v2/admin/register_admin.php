@@ -226,3 +226,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($message): ?>
       <div class="message <?= $messageType === 'success' ? 'success-msg' : 'error-msg' ?>">
         <?= $message ?>
+      </div>
+    <?php endif; ?>
+
+    <form action="register_admin.php" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          required
+          value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
