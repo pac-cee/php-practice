@@ -245,3 +245,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="username">Username</label>
         <input
           type="text"
+          name="username"
+          id="username"
+          required
+          value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+        >
+      </div>
+
+      <div class="form-group">
