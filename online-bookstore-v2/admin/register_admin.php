@@ -283,3 +283,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           required
           minlength="8"
         >
+      </div>
+
+      <?php if (!empty($schools)): ?>
+      <div class="form-group">
+        <label for="school_id">School <span class="optional-label">(Optional)</span></label>
+        <select name="school_id" id="school_id">
+          <option value="">-- Select School --</option>
+          <?php foreach ($schools as $id => $schoolName): ?>
+            <option value="<?= $id ?>" <?= (isset($_POST['school_id']) && $_POST['school_id'] == $id) ? 'selected' : '' ?>>
+              <?= htmlspecialchars($schoolName) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <?php endif; ?>
+
+      <?php if (!empty($memberships)): ?>
+      <div class="form-group">
+        <label for="membership_id">Membership <span class="optional-label">(Optional)</span></label>
