@@ -17,3 +17,22 @@ $error   = '';
 */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $stockThreshold = intval($_POST['stock_threshold']);
+    $salesTax       = floatval($_POST['sales_tax']);
+    $emailVerify    = isset($_POST['email_verify']) ? '1' : '0';
+
+    // Helper to insert/update
+    $pairs = [
+      ['stock_threshold', $stockThreshold],
+      ['sales_tax', $salesTax],
+      ['email_verify', $emailVerify]
+    ];
+    foreach ($pairs as $pair) {
+        $key = $pair[0];
+        $val = (string)$pair[1];
+        $stmt = $conn->prepare("
+          INSERT INTO settings (setting_key, setting_value)
+          VALUES (?, ?)
+          ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)
+        ");
+        $stmt->bind_param('ss', $key, $val);
