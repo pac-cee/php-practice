@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)
         ");
         $stmt->bind_param('ss', $key, $val);
+        $stmt->execute();
+    }
+    $message = 'Settings saved.';
+}
+
+// Fetch current settings
+$res = $conn->query("SELECT setting_key, setting_value FROM settings");
+$settings = [];
+while ($r = $res->fetch_assoc()) {
+    $settings[$r['setting_key']] = $r['setting_value'];
+}
+
+$stockThreshold = $settings['stock_threshold'] ?? 5;
+$salesTax       = $settings['sales_tax'] ?? 0;
+$emailVerify    = $settings['email_verify'] ?? '0';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
