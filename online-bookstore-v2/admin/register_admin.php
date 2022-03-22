@@ -302,3 +302,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <?php if (!empty($memberships)): ?>
       <div class="form-group">
         <label for="membership_id">Membership <span class="optional-label">(Optional)</span></label>
+        <select name="membership_id" id="membership_id">
+          <option value="">-- Select Membership --</option>
+          <?php foreach ($memberships as $id => $membershipName): ?>
+            <option value="<?= $id ?>" <?= (isset($_POST['membership_id']) && $_POST['membership_id'] == $id) ? 'selected' : '' ?>>
+              <?= htmlspecialchars($membershipName) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <?php endif; ?>
+
+      <button type="submit">Register Admin</button>
+      
+      <div class="login-link">
+        Already have an account? <a href="admin_login.php">Login</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
