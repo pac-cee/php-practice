@@ -74,3 +74,24 @@ $emailVerify    = $settings['email_verify'] ?? '0';
     <?php endif; ?>
 
     <form action="settings.php" method="POST" class="form-admin">
+      <label for="stock_threshold">Low‐Stock Threshold</label>
+      <input type="number" name="stock_threshold" id="stock_threshold" 
+             value="<?= intval($stockThreshold) ?>" required>
+
+      <label for="sales_tax">Sales Tax (%)</label>
+      <input type="number" step="0.01" name="sales_tax" id="sales_tax" 
+             value="<?= htmlspecialchars($salesTax) ?>">
+
+      <label>
+        <input type="checkbox" name="email_verify" 
+          <?= $emailVerify === '1' ? 'checked' : '' ?>>
+        Require Email Verification for New Users
+      </label>
+
+      <button type="submit" class="btn-admin">Save Settings</button>
+    </form>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
