@@ -55,3 +55,22 @@ if (!empty($_GET['search'])) {
 
 // Modify the books query to include active status
 $sql = "
+  SELECT 
+    b.id, b.title, b.author, c.name AS category, 
+    b.price, b.stock_quantity, b.active
+  FROM books b
+  LEFT JOIN categories c ON b.category_id = c.id
+  $whereClause
+  ORDER BY b.title ASC
+";
+$resBooks = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Books • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
