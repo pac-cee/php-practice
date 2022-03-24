@@ -36,3 +36,22 @@ if (isset($_GET['delete_id'])) {
             $_SESSION['message'] = "Book deleted successfully.";
         }
         
+        header('Location: view_books.php');
+        exit;
+    } catch (Exception $e) {
+        $_SESSION['error'] = "Error: " . $e->getMessage();
+        header('Location: view_books.php');
+        exit;
+    }
+}
+
+// Search/filter
+$search = '';
+$whereClause = '';
+if (!empty($_GET['search'])) {
+    $search = $conn->real_escape_string(trim($_GET['search']));
+    $whereClause = "WHERE b.title LIKE '%$search%' OR b.author LIKE '%$search%'";
+}
+
+// Modify the books query to include active status
+$sql = "
