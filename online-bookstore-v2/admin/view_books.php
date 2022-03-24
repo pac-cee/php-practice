@@ -74,3 +74,22 @@ $resBooks = $conn->query($sql);
   <link rel="stylesheet" href="/css/dashboard.css">
   <link rel="stylesheet" href="/admin/css/admin.css">
 </head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title">All Books</h1>
+
+    <form method="GET" action="view_books.php" style="margin-bottom: 1rem;">
+      <input type="text" name="search" placeholder="Search by title or author" 
+             value="<?= htmlspecialchars($search) ?>">
+      <button type="submit" class="btn-admin">Search</button>
+      <a href="add_book.php" class="btn-admin" style="margin-left: 1rem;">Add New Book</a>
+    </form>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Author</th>
