@@ -93,3 +93,22 @@ $resBooks = $conn->query($sql);
           <th>#</th>
           <th>Title</th>
           <th>Author</th>
+          <th>Category</th>
+          <th>Price ($)</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($resBooks->num_rows): ?>
+          <?php $i = 1; while ($book = $resBooks->fetch_assoc()): ?>
+            <tr>
+              <td><?= $i++ ?></td>
+              <td><?= htmlspecialchars($book['title']) ?></td>
+              <td><?= htmlspecialchars($book['author']) ?></td>
+              <td><?= htmlspecialchars($book['category']) ?></td>
+              <td><?= number_format($book['price'], 2) ?></td>
+              <td <?= $book['stock_quantity'] < 5 ? 'style="color:#dc3545;"' : '' ?>>
+                <?= intval($book['stock_quantity']) ?>
+              </td>
