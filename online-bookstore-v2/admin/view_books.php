@@ -112,3 +112,27 @@ $resBooks = $conn->query($sql);
               <td <?= $book['stock_quantity'] < 5 ? 'style="color:#dc3545;"' : '' ?>>
                 <?= intval($book['stock_quantity']) ?>
               </td>
+              <td>
+                <?= $book['active'] ? 'Active' : 'Inactive' ?>
+              </td>
+              <td>
+                <a href="add_book.php?edit_id=<?= $book['id'] ?>" class="btn-admin">Edit</a>
+                <a href="view_books.php?delete_id=<?= $book['id'] ?>" class="btn-admin" 
+                   onclick="return confirm('Delete this book?');">
+                  Delete
+                </a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <tr>
+            <td colspan="8">No books found.</td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
