@@ -55,3 +55,22 @@ $resItems = $stmt2->get_result();
     <div class="admin-card">
       <p><strong>User:</strong> <?= htmlspecialchars($orderInfo['username']) ?> (<?= htmlspecialchars($orderInfo['email']) ?>)</p>
       <p><strong>Status:</strong> <?= htmlspecialchars($orderInfo['status']) ?></p>
+      <p><strong>Date:</strong> <?= htmlspecialchars(date('Y-m-d', strtotime($orderInfo['order_date']))) ?></p>
+    </div>
+
+    <h3>Ordered Items</h3>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Book Title</th>
+          <th>Quantity</th>
+          <th>Price ($)</th>
+          <th>Subtotal ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($resItems->num_rows): ?>
+          <?php 
+            $i = 1;
+            $grandTotal = 0;
