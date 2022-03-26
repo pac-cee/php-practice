@@ -36,3 +36,22 @@ $stmt2 = $conn->prepare("
 $stmt2->bind_param('i', $order_id);
 $stmt2->execute();
 $resItems = $stmt2->get_result();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order #<?= $orderInfo['id'] ?> Details • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title">Order #<?= $orderInfo['id'] ?> Details</h1>
+
+    <div class="admin-card">
+      <p><strong>User:</strong> <?= htmlspecialchars($orderInfo['username']) ?> (<?= htmlspecialchars($orderInfo['email']) ?>)</p>
+      <p><strong>Status:</strong> <?= htmlspecialchars($orderInfo['status']) ?></p>
