@@ -74,3 +74,22 @@ $resItems = $stmt2->get_result();
           <?php 
             $i = 1;
             $grandTotal = 0;
+            while ($item = $resItems->fetch_assoc()):
+              $subtotal = $item['price'] * $item['quantity'];
+              $grandTotal += $subtotal;
+          ?>
+            <tr>
+              <td><?= $i++ ?></td>
+              <td><?= htmlspecialchars($item['title']) ?></td>
+              <td><?= intval($item['quantity']) ?></td>
+              <td><?= number_format($item['price'], 2) ?></td>
+              <td><?= number_format($subtotal, 2) ?></td>
+            </tr>
+          <?php endwhile; ?>
+          <tr>
+            <td colspan="4" style="text-align:right;"><strong>Grand Total:</strong></td>
+            <td><strong>$<?= number_format($grandTotal, 2) ?></strong></td>
+          </tr>
+        <?php else: ?>
+          <tr>
+            <td colspan="5">No items found for this order.</td>
