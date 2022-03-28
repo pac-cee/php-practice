@@ -93,3 +93,14 @@ $resItems = $stmt2->get_result();
         <?php else: ?>
           <tr>
             <td colspan="5">No items found for this order.</td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+
+    <a href="view_orders.php" class="btn-admin">← Back to Orders</a>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
