@@ -55,3 +55,22 @@ $sql = "
     u.username,
     o.status,
     o.order_date,
+    IFNULL(SUM(oi.price * oi.quantity), 0) AS total_amount
+  FROM orders o
+  JOIN users u ON o.user_id = u.id
+  LEFT JOIN order_items oi ON o.id = oi.order_id
+  $whereSQL
+  GROUP BY o.id, u.username, o.status, o.order_date
+  ORDER BY o.order_date DESC
+";
+$resOrders = $conn->query($sql);
+
+// 4) Fetch all users for “search by user” dropdown
+$resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Orders • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
