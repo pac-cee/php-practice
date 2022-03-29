@@ -74,3 +74,22 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
   <meta charset="UTF-8">
   <title>View Orders • Admin</title>
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title">All Orders</h1>
+
+    <?php if ($message): ?>
+      <div class="alert-admin alert-success"><?= htmlspecialchars($message) ?></div>
+    <?php elseif ($error): ?>
+      <div class="alert-admin alert-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form method="GET" action="view_orders.php" class="form-admin" 
+          style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <label for="search_user">By User:</label>
+      <select name="search_user" id="search_user">
