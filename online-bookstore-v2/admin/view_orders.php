@@ -112,3 +112,22 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
             <?= ucfirst($st) ?>
           </option>
         <?php endforeach; ?>
+      </select>
+
+      <label for="date_from">From:</label>
+      <input type="date" name="date_from" id="date_from" 
+        value="<?= htmlspecialchars($_GET['date_from'] ?? '') ?>">
+
+      <label for="date_to">To:</label>
+      <input type="date" name="date_to" id="date_to" 
+        value="<?= htmlspecialchars($_GET['date_to'] ?? '') ?>">
+
+      <button type="submit" class="btn-admin">Filter</button>
+      <a href="generate_report.php?type=sales
+               &date_from=<?= htmlspecialchars($_GET['date_from'] ?? '') ?>
+               &date_to=<?= htmlspecialchars($_GET['date_to'] ?? '') ?>" 
+         class="btn-admin" style="margin-left:auto;">
+        Generate Sales PDF
+      </a>
+    </form>
+
