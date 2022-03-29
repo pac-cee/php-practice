@@ -93,3 +93,22 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
           style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <label for="search_user">By User:</label>
       <select name="search_user" id="search_user">
+        <option value="">-- All Users --</option>
+        <?php while ($u = $resUsers->fetch_assoc()): ?>
+          <option value="<?= $u['id'] ?>" 
+            <?= isset($_GET['search_user']) && intval($_GET['search_user']) === intval($u['id']) 
+                ? 'selected' : '' ?>>
+            <?= htmlspecialchars($u['username']) ?>
+          </option>
+        <?php endwhile; ?>
+      </select>
+
+      <label for="status_filter">By Status:</label>
+      <select name="status_filter" id="status_filter">
+        <option value="">-- All --</option>
+        <?php foreach (['pending','paid','shipped','completed'] as $st): ?>
+          <option value="<?= $st ?>" 
+            <?= isset($_GET['status_filter']) && $_GET['status_filter'] === $st ? 'selected' : '' ?>>
+            <?= ucfirst($st) ?>
+          </option>
+        <?php endforeach; ?>
