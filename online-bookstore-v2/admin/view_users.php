@@ -169,3 +169,22 @@ $resUsers = $conn->query($sql);
         <label for="username">Username*</label>
         <input type="text" name="username" id="username" required>
 
+        <label for="email">Email*</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Password*</label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="confirm_password">Confirm Password*</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+
+        <button type="submit" class="btn-admin">Create Admin</button>
+      </form>
+    </div>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+
+  <script>
+    // Close modal when pressing Escape
+    document.addEventListener('keydown', function(e) {
