@@ -150,3 +150,22 @@ $resUsers = $conn->query($sql);
           <?php endwhile; ?>
         <?php else: ?>
           <tr>
+            <td colspan="6">No users found.</td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Create Admin Modal -->
+  <div id="createAdminModal" class="modal-overlay" onclick="this.style.display='none';">
+    <div class="modal-content fade-in" onclick="event.stopPropagation();">
+      <span class="modal-close" onclick="document.getElementById('createAdminModal').style.display='none';">
+        &times;
+      </span>
+      <h2>Create New Admin</h2>
+      <form action="view_users.php" method="POST" class="form-admin">
+        <input type="hidden" name="create_admin" value="1">
+        <label for="username">Username*</label>
+        <input type="text" name="username" id="username" required>
+
