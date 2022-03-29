@@ -36,3 +36,22 @@ if (isset($_POST['create_admin'])) {
             $stmt2->bind_param('ssss', $username, $username, $hash, $email);
             if ($stmt2->execute()) {
                 $message = 'New admin account created.';
+            } else {
+                $error = 'Error creating admin: ' . $conn->error;
+            }
+        }
+    }
+}
+
+// 2) Handle Promote / Demote via GET param ?toggle_role=USER_ID
+if (isset($_GET['toggle_role'])) {
+    $uid = intval($_GET['toggle_role']);
+    // Fetch current role
+    $stmt = $conn->prepare("SELECT role FROM users WHERE id = ? LIMIT 1");
+    $stmt->bind_param('i', $uid);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    if ($res->num_rows === 1) {
+        $row = $res->fetch_assoc();
+        $newRole = ($row['role'] === 'admin') ? 'individual' : 'admin';
+        $stmt2 = $conn->prepare("UPDATE users SET role = ? WHERE id = ?");
