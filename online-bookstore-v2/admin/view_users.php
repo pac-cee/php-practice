@@ -131,3 +131,22 @@ $resUsers = $conn->query($sql);
       <tbody>
         <?php if ($resUsers->num_rows): ?>
           <?php $i = 1; while ($user = $resUsers->fetch_assoc()): ?>
+            <tr>
+              <td><?= $i++ ?></td>
+              <td><?= htmlspecialchars($user['username']) ?></td>
+              <td><?= htmlspecialchars($user['email']) ?></td>
+              <td><?= htmlspecialchars($user['role']) ?></td>
+              <td><?= htmlspecialchars(date('Y-m-d', strtotime($user['created_at']))) ?></td>
+              <td>
+                <a href="view_users.php?toggle_role=<?= $user['id'] ?>" class="btn-admin">
+                  <?= $user['role'] === 'admin' ? 'Demote to Individual' : 'Promote to Admin' ?>
+                </a>
+                <a href="view_users.php?delete_id=<?= $user['id'] ?>" class="btn-admin" 
+                   onclick="return confirm('Delete this user?');">
+                  Delete
+                </a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <tr>
