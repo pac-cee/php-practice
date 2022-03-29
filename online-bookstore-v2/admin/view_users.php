@@ -112,3 +112,22 @@ $resUsers = $conn->query($sql);
       <input type="text" name="search" placeholder="Search by username or email" 
              value="<?= htmlspecialchars($search) ?>">
       <button type="submit" class="btn-admin">Search</button>
+      <button type="button" class="btn-admin" onclick="document.getElementById('createAdminModal').style.display='flex';">
+        Create Admin
+      </button>
+    </form>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($resUsers->num_rows): ?>
+          <?php $i = 1; while ($user = $resUsers->fetch_assoc()): ?>
