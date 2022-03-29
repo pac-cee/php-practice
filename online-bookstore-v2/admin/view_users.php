@@ -74,3 +74,22 @@ if (isset($_GET['delete_id'])) {
 
 // 4) Fetch all users (with optional search)
 $search = '';
+$whereClause = '';
+if (!empty($_GET['search'])) {
+    $search = $conn->real_escape_string(trim($_GET['search']));
+    $whereClause = "WHERE username LIKE '%$search%' OR email LIKE '%$search%'";
+}
+$sql = "
+  SELECT id, username, email, role, created_at
+  FROM users
+  $whereClause
+  ORDER BY created_at DESC
+";
+$resUsers = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Users • Admin</title>
+  <link rel="stylesheet" href="/css/index.css">
