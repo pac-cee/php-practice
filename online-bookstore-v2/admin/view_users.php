@@ -188,3 +188,10 @@ $resUsers = $conn->query($sql);
   <script>
     // Close modal when pressing Escape
     document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('createAdminModal').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
