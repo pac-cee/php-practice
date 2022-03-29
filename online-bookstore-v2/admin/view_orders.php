@@ -131,3 +131,22 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
       </a>
     </form>
 
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th>Total ($)</th>
+          <th>Status</th>
+          <th>Order Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($resOrders->num_rows): ?>
+          <?php $i = 1; while ($order = $resOrders->fetch_assoc()): ?>
+            <tr>
+              <td><?= $i++ ?></td>
+              <td><?= htmlspecialchars($order['username']) ?></td>
+              <td><?= number_format($order['total_amount'], 2) ?></td>
+              <td><?= htmlspecialchars($order['status']) ?></td>
