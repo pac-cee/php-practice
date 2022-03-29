@@ -150,3 +150,22 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
               <td><?= htmlspecialchars($order['username']) ?></td>
               <td><?= number_format($order['total_amount'], 2) ?></td>
               <td><?= htmlspecialchars($order['status']) ?></td>
+              <td><?= htmlspecialchars(date('Y-m-d', strtotime($order['order_date']))) ?></td>
+              <td>
+                <a href="view_order_detail.php?order_id=<?= $order['order_id'] ?>" 
+                   class="btn-admin">Details</a>
+                <?php if ($order['status'] === 'pending'): ?>
+                  <a href="view_orders.php?update_id=<?= $order['order_id'] ?>&status=paid" 
+                     class="btn-admin">Mark Paid</a>
+                <?php elseif ($order['status'] === 'paid'): ?>
+                  <a href="view_orders.php?update_id=<?= $order['order_id'] ?>&status=shipped" 
+                     class="btn-admin">Mark Shipped</a>
+                <?php elseif ($order['status'] === 'shipped'): ?>
+                  <a href="view_orders.php?update_id=<?= $order['order_id'] ?>&status=completed" 
+                     class="btn-admin">Mark Completed</a>
+                <?php endif; ?>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <tr>
