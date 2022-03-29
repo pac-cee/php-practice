@@ -93,3 +93,22 @@ $resUsers = $conn->query($sql);
   <meta charset="UTF-8">
   <title>View Users • Admin</title>
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="admin-container">
+    <h1 class="admin-title">All Users</h1>
+
+    <?php if ($message): ?>
+      <div class="alert-admin alert-success"><?= htmlspecialchars($message) ?></div>
+    <?php elseif ($error): ?>
+      <div class="alert-admin alert-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form method="GET" action="view_users.php" style="margin-bottom: 1rem;">
+      <input type="text" name="search" placeholder="Search by username or email" 
+             value="<?= htmlspecialchars($search) ?>">
+      <button type="submit" class="btn-admin">Search</button>
