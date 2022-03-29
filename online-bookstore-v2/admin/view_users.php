@@ -55,3 +55,22 @@ if (isset($_GET['toggle_role'])) {
         $row = $res->fetch_assoc();
         $newRole = ($row['role'] === 'admin') ? 'individual' : 'admin';
         $stmt2 = $conn->prepare("UPDATE users SET role = ? WHERE id = ?");
+        $stmt2->bind_param('si', $newRole, $uid);
+        $stmt2->execute();
+    }
+    header('Location: view_users.php');
+    exit;
+}
+
+// 3) Handle Delete user via GET param ?delete_id=USER_ID
+if (isset($_GET['delete_id'])) {
+    $did = intval($_GET['delete_id']);
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->bind_param('i', $did);
+    $stmt->execute();
+    header('Location: view_users.php');
+    exit;
+}
+
+// 4) Fetch all users (with optional search)
+$search = '';
