@@ -169,3 +169,13 @@ $resUsers = $conn->query("SELECT id, username FROM users ORDER BY username ASC")
           <?php endwhile; ?>
         <?php else: ?>
           <tr>
+            <td colspan="6">No orders found.</td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
