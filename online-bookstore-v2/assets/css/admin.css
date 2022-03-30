@@ -36,3 +36,22 @@ th {
     color: white;
     font-weight: 600;
     text-align: left;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #eef0f4;
+}
+
+tr:hover td {
+    background: #f6faff;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
