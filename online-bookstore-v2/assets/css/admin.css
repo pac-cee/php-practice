@@ -17,3 +17,22 @@
 .alert i {
     font-size: 1.2rem;
 }
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(42,82,152,0.08);
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    text-align: left;
