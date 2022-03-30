@@ -93,3 +93,10 @@ body.dark .table-container {
 }
 
 body.dark td {
+    border-bottom-color: #2a3558;
+    color: #b8c7fa;
+}
+
+body.dark tr:hover td {
+    background: #2a3558;
+}
