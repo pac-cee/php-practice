@@ -74,3 +74,22 @@ tr:hover td {
 
 .status-badge.completed {
     background: #d1e7dd;
+    color: #0f5132;
+}
+
+.btn-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Dark theme support */
+body.dark .table-container {
+    background: #23263a;
+}
+
+body.dark td {
