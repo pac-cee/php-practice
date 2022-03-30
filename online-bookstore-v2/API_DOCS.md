@@ -36,3 +36,24 @@ This document describes the main API endpoints for the OnlineBookstore web appli
 ## Example Request: Register
 ```http
 POST /api/register
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "password": "secret",
+  "email": "alice@example.com",
+  "role": "student"
+}
+```
+
+## Example Response
+```json
+{
+  "success": true,
+  "user_id": 42
+}
+```
+
+---
+
+For more details, see [DEVELOPER_README.md](DEVELOPER_README.md) and [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md).
