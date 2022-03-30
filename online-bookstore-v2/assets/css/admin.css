@@ -1,0 +1,19 @@
+/* Admin-specific styles */
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert i {
+    font-size: 1.2rem;
+}
