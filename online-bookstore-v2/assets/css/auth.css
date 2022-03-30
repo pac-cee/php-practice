@@ -1,0 +1,19 @@
+/* Auth pages (Login & Register) styles */
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container {
+    max-width: 480px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    animation: slideIn 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
