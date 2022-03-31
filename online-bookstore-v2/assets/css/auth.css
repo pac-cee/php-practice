@@ -55,3 +55,22 @@
 .form-group input:focus {
     border-color: var(--primary);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.form-group .icon {
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;
+    color: var(--primary);
+}
+
+.auth-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
