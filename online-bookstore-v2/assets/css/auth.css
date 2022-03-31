@@ -112,3 +112,22 @@
     font-weight: 500;
 }
 
+.auth-links a:hover {
+    text-decoration: underline;
+}
+/* assets/css/auth.css */
+
+/* Container resets */
+body.auth-page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Shared box for both user and admin login */
+.auth-container,
+.login-container {
