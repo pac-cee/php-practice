@@ -207,3 +207,22 @@ body.auth-page {
 .login-container button i {
   margin-left: 0.5rem;
 }
+
+/* Links under the form */
+.auth-links,
+.login-container .auth-links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.auth-links a,
+.login-container .auth-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* Error / success messages */
+.auth-message,
+.error-msg {
+  margin-bottom: 1rem;
