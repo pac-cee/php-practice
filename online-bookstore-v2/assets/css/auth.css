@@ -226,3 +226,22 @@ body.auth-page {
 .auth-message,
 .error-msg {
   margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.auth-message.error,
+.error-msg {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.auth-message.success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+/* assets/css/auth.css */
+.btn-home {
+  display: inline-block;
+  padding: 0.5rem 1rem;
