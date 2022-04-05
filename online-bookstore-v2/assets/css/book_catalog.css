@@ -93,3 +93,22 @@
     background: #f4f7fa;
     color: #6c63ff;
     border: none;
+    padding: 0.6em 1.6em;
+    border-radius: 7px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.3em 0 0.3em 0.2em;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #6c63ff11;
+    display: inline-block;
+    transition: background 0.18s, color 0.18s;
+}
+.btn-secondary:hover {
+    background: #6c63ff;
+    color: #fff;
+}
+.actions {
+    display: flex;
+    gap: 0.6em;
+    justify-content: center;
