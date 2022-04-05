@@ -1,0 +1,19 @@
+/* Book management styles */
+.book-management {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Add Book Form */
+.book-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.book-form h1 {
+    color: var(--primary);
