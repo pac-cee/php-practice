@@ -112,3 +112,22 @@
 .message {
     padding: 1rem;
     border-radius: 8px;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message.success {
+    background: var(--success);
+    color: white;
+}
+
+.message.error {
+    background: var(--error);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .books-table th, 
+    .books-table td {
+        padding: 0.8rem;
