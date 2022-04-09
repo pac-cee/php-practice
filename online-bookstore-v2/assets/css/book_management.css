@@ -93,3 +93,22 @@
     font-weight: 500;
 }
 
+.edit-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.delete-btn {
+    background: var(--error);
+    color: white;
+}
+
+.book-actions button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Success/Error Messages */
+.message {
+    padding: 1rem;
+    border-radius: 8px;
