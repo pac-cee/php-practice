@@ -55,3 +55,22 @@
     box-shadow: var(--shadow);
     overflow: hidden;
     margin-top: 2rem;
+}
+
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.books-table th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+}
+
+.books-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--bg);
+}
