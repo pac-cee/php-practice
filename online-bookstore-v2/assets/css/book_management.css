@@ -131,3 +131,23 @@
     .books-table th, 
     .books-table td {
         padding: 0.8rem;
+    }
+    
+    .book-actions {
+        flex-direction: column;
+    }
+    
+    .book-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-form {
+        padding: 1rem;
+    }
+    
+    .books-table {
+        font-size: 0.9rem;
+    }
+}
