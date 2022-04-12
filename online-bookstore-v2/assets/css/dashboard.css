@@ -17,3 +17,16 @@
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 4px 24px #6c63ff22;
+    padding: 2em 2.5em;
+}
+.dashboard-link {
+    color: #6c63ff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.18s;
+}
+.dashboard-link:hover {
+    color: #2a5298;
+    text-decoration: underline;
+}
+/* Add more dashboard-specific styles as needed */
