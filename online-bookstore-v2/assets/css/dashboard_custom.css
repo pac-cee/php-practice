@@ -36,3 +36,22 @@ body, html {
     font-weight: bold;
     color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-right: 2.2em;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+.nav-logo:hover { color: #ffb300; }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.6em;
+    margin: 0;
+    flex: 1 1 auto;
+}
+.nav-links a {
+    color: #e9e0ff;
+    text-decoration: none;
