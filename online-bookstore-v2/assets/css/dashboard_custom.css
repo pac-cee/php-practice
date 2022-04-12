@@ -74,3 +74,22 @@ body, html {
 .nav-actions {
     display: flex;
     align-items: center;
+    gap: 1.1em;
+    margin-left: 2em;
+}
+#theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.45em;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.2em 0.3em;
+    border-radius: 50%;
+}
+#theme-btn:hover { color: #ffb300; background: rgba(255,255,255,0.08); }
+
+.profile-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
