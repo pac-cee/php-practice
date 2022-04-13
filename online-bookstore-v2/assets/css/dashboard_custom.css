@@ -93,3 +93,22 @@ body, html {
     position: relative;
     display: flex;
     align-items: center;
+}
+#profileBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    border-radius: 8px;
+    padding: 0.38em 1em;
+    transition: background 0.2s, color 0.2s;
+}
+#profileBtn:hover, #profileBtn:focus {
+    background: #fff;
+    color: #6c63ff;
+    outline: none;
+}
