@@ -112,3 +112,22 @@ body, html {
     color: #6c63ff;
     outline: none;
 }
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #fff;
+    color: #2a5298;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px #6c63ff22;
+    min-width: 150px;
+    z-index: 100;
+    padding: 0.4em 0;
+    animation: fadeSlideIn 0.3s cubic-bezier(.4,0,.2,1);
+}
+.profile-dropdown.open .profile-menu {
+    display: block;
+}
+.profile-menu a, .profile-menu button.logout-btn {
+    display: block;
