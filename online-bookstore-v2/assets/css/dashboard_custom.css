@@ -131,3 +131,22 @@ body, html {
 }
 .profile-menu a, .profile-menu button.logout-btn {
     display: block;
+    width: 100%;
+    padding: 0.8em 1.2em;
+    color: #2a5298;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+.profile-menu a:hover, .profile-menu button.logout-btn:hover {
+    background: #f4f7fa;
+}
+
+/* Responsive Nav */
+@media (max-width: 900px) {
+    .main-nav {
+        flex-direction: column;
