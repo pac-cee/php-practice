@@ -207,3 +207,22 @@ body, html {
         padding: 0.6em 0.5em;
         font-size: 0.97em;
     }
+}
+body.dark .dashboard-progress-card {
+    background: #23263a;
+    color: #f8fafc;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.23);
+}
+body.dark .dashboard-progress-table th {
+    background: #1b1e2a;
+    color: #b8c7fa;
+}
+body.dark .dashboard-progress-table td {
+    color: #f8fafc;
+}
+body.dark .dashboard-progress-table tbody tr:hover {
+    background: #292c3f;
+}
+
+.dashboard-orders-card {
+    max-width: 900px;
