@@ -188,3 +188,22 @@ body, html {
     border-bottom: 1px solid #eef0f4;
     text-align: left;
 }
+.dashboard-progress-table th {
+    background: #f4f7fa;
+    font-weight: 700;
+    color: #23263a;
+}
+.dashboard-progress-table tr:last-child td {
+    border-bottom: none;
+}
+.dashboard-progress-table tbody tr:hover {
+    background: #f6faff;
+}
+@media (max-width: 600px) {
+    .dashboard-progress-card {
+        padding: 1.2em 0.4em 1em 0.4em;
+    }
+    .dashboard-progress-table th, .dashboard-progress-table td {
+        padding: 0.6em 0.5em;
+        font-size: 0.97em;
+    }
