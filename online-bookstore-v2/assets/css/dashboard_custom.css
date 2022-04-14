@@ -150,3 +150,22 @@ body, html {
 @media (max-width: 900px) {
     .main-nav {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7em 1em;
+    }
+    .nav-logo { margin-bottom: 0.8em; }
+    .nav-links { flex-wrap: wrap; gap: 0.7em; }
+    .nav-actions { margin-left: 0; margin-top: 0.7em; }
+}
+
+/* Book Catalog Dashboard Styles */
+
+/* Quiz Dashboard Styles */
+
+/* Quiz Results Dashboard Styles */
+
+/* Orders Dashboard Styles */
+.dashboard-orders-card {
+
+/* Progress Dashboard Styles */
+.dashboard-progress-card {
