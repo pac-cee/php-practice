@@ -245,3 +245,22 @@ body.dark .dashboard-progress-table tbody tr:hover {
     text-align: left;
 }
 .dashboard-orders-table th {
+    background: #f4f7fa;
+    font-weight: 700;
+    color: #23263a;
+}
+.dashboard-orders-table tr:last-child td {
+    border-bottom: none;
+}
+.dashboard-orders-table tbody tr:hover {
+    background: #f6faff;
+}
+@media (max-width: 600px) {
+    .dashboard-orders-card {
+        padding: 1.2em 0.4em 1em 0.4em;
+    }
+    .dashboard-orders-table th, .dashboard-orders-table td {
+        padding: 0.6em 0.5em;
+        font-size: 0.97em;
+    }
+}
