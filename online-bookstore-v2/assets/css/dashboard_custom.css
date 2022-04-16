@@ -264,3 +264,22 @@ body.dark .dashboard-progress-table tbody tr:hover {
         font-size: 0.97em;
     }
 }
+body.dark .dashboard-orders-card {
+    background: #23263a;
+    color: #f8fafc;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.23);
+}
+body.dark .dashboard-orders-table th {
+    background: #1b1e2a;
+    color: #b8c7fa;
+}
+body.dark .dashboard-orders-table td {
+    color: #f8fafc;
+}
+body.dark .dashboard-orders-table tbody tr:hover {
+    background: #292c3f;
+}
+
+.dashboard-results-card {
+    max-width: 900px;
+    margin: 0 auto 2.5em auto;
