@@ -302,3 +302,22 @@ body.dark .dashboard-orders-table tbody tr:hover {
 }
 .dashboard-results-table th {
     background: #f4f7fa;
+    font-weight: 700;
+    color: #23263a;
+}
+.dashboard-results-table tr:last-child td {
+    border-bottom: none;
+}
+.dashboard-results-table tbody tr:hover {
+    background: #f6faff;
+}
+.dashboard-link {
+    color: #6c63ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.18s;
+}
+.dashboard-link:hover {
+    color: #2a5298;
+    text-decoration: underline;
+}
