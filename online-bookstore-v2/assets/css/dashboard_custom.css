@@ -321,3 +321,22 @@ body.dark .dashboard-orders-table tbody tr:hover {
     color: #2a5298;
     text-decoration: underline;
 }
+@media (max-width: 600px) {
+    .dashboard-results-card {
+        padding: 1.2em 0.4em 1em 0.4em;
+    }
+    .dashboard-results-table th, .dashboard-results-table td {
+        padding: 0.6em 0.5em;
+        font-size: 0.97em;
+    }
+}
+body.dark .dashboard-results-card {
+    background: #23263a;
+    color: #f8fafc;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.23);
+}
+body.dark .dashboard-results-table th {
+    background: #1b1e2a;
+    color: #b8c7fa;
+}
+body.dark .dashboard-results-table td {
