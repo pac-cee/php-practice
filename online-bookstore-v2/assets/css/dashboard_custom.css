@@ -340,3 +340,22 @@ body.dark .dashboard-results-table th {
     color: #b8c7fa;
 }
 body.dark .dashboard-results-table td {
+    color: #f8fafc;
+}
+body.dark .dashboard-results-table tbody tr:hover {
+    background: #292c3f;
+}
+body.dark .dashboard-link {
+    color: #ffb300;
+}
+body.dark .dashboard-link:hover {
+    color: #6c63ff;
+}
+
+.dashboard-quiz-list {
+    max-width: 800px;
+    margin: 0 auto 2.5em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+}
