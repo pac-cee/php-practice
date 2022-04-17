@@ -359,3 +359,22 @@ body.dark .dashboard-link:hover {
     flex-direction: column;
     gap: 1.6em;
 }
+.dashboard-quiz-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(42,82,152,0.10);
+    padding: 1.5em 1.4em 1.2em 1.4em;
+    transition: box-shadow 0.2s, transform 0.2s;
+    margin-bottom: 0.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.dashboard-quiz-card:hover {
+    box-shadow: 0 8px 32px rgba(108,99,255,0.18);
+    transform: translateY(-2px) scale(1.012);
+}
+.dashboard-quiz-card h3 {
+    margin: 0 0 0.3em 0;
+    font-size: 1.10em;
+    font-weight: 700;
