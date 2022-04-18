@@ -378,3 +378,22 @@ body.dark .dashboard-link:hover {
     margin: 0 0 0.3em 0;
     font-size: 1.10em;
     font-weight: 700;
+    color: #23263a;
+}
+.dashboard-quiz-card p {
+    margin: 0 0 1.1em 0;
+    color: #555;
+    font-size: 1em;
+}
+.dashboard-quiz-card .quick-btn {
+    align-self: flex-start;
+}
+@media (max-width: 600px) {
+    .dashboard-quiz-list {
+        padding: 0 0.3em;
+    }
+    .dashboard-quiz-card {
+        padding: 1em 0.7em 0.9em 0.7em;
+    }
+}
+
