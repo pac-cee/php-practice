@@ -454,3 +454,22 @@ body.dark .dashboard-quiz-card .quick-btn:hover {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(42,82,152,0.09);
+}
+.book-card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+}
+.book-title {
+    font-size: 1.13em;
+    font-weight: 700;
+    margin: 0.4em 0 0.1em 0;
+    text-align: center;
+    color: #23263a;
+}
+.book-author {
+    font-size: 1em;
+    color: #6c63ff;
