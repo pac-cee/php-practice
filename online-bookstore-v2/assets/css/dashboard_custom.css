@@ -492,3 +492,22 @@ body.dark .dashboard-quiz-card .quick-btn:hover {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+.quick-btn {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.6em;
+    border-radius: 7px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.19s, color 0.19s, box-shadow 0.18s;
+    margin-top: 0.2em;
+    box-shadow: 0 2px 8px rgba(108,99,255,0.08);
+}
+.quick-btn:hover {
+    background: #ffb300;
+    color: #23263a;
+}
+
