@@ -511,3 +511,22 @@ body.dark .dashboard-quiz-card .quick-btn:hover {
     color: #23263a;
 }
 
+@media (max-width: 700px) {
+    .dashboard-book-list {
+        grid-template-columns: 1fr;
+        gap: 1.3em;
+        padding: 0;
+    }
+    .dashboard-book-card {
+        padding: 1.3em 0.7em 1em 0.7em;
+    }
+}
+
+/* Dark Theme for Book Cards */
+body.dark .dashboard-book-card {
+    background: #23263a;
+    color: #f8fafc;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.23);
+}
+body.dark .book-title {
+    color: #b8c7fa;
