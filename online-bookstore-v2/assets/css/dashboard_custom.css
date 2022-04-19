@@ -587,3 +587,22 @@ body.dark .profile-menu a, body.dark .profile-menu button.logout-btn {
 }
 body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover {
     background: #323a4c;
+    color: #ffb300;
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 2rem; 
+    margin: 0 0 2.2rem 0; 
+    justify-content: center; 
+}
+.nav-links a { 
+    text-decoration: none; 
+    color: #2a5298; 
+    font-weight: 600; 
+    letter-spacing: 0.01em; 
+    font-size: 1.1rem; 
+    transition: color 0.2s; 
+    position: relative; 
+    padding: 0.2rem 0.7rem; 
+    border-radius: 7px; 
