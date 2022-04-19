@@ -549,3 +549,22 @@ body.dark .quick-btn:hover {
     color: #fff;
 }
 
+/* Dark Theme Nav */
+body.dark .main-nav, html.dark .main-nav {
+    background: linear-gradient(90deg, #23263a 0%, #2a3558 100%);
+}
+body.dark .nav-logo, html.dark .nav-logo {
+    color: #ffb300;
+}
+body.dark .nav-links a {
+    color: #b8c7fa;
+}
+body.dark .nav-links a:hover, body.dark .nav-links a.active {
+    background: #d32f2f;
+    color: #fff;
+}
+body.dark #theme-btn {
+    color: #ffb300;
+}
+body.dark #theme-btn:hover {
+    background: rgba(255,255,255,0.08);
