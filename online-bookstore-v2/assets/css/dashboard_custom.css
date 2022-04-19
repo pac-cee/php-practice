@@ -473,3 +473,22 @@ body.dark .dashboard-quiz-card .quick-btn:hover {
 .book-author {
     font-size: 1em;
     color: #6c63ff;
+    margin-bottom: 0.2em;
+}
+.book-price {
+    font-size: 1.07em;
+    font-weight: 600;
+    color: #2a5298;
+    margin-bottom: 0.3em;
+}
+.book-desc {
+    font-size: 0.99em;
+    color: #555;
+    margin-bottom: 0.8em;
+    text-align: center;
+    min-height: 2.2em;
+}
+.dashboard-book-card form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
