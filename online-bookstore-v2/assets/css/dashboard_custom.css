@@ -530,3 +530,22 @@ body.dark .dashboard-book-card {
 }
 body.dark .book-title {
     color: #b8c7fa;
+}
+body.dark .book-author {
+    color: #ffb300;
+}
+body.dark .book-price {
+    color: #ffb300;
+}
+body.dark .book-desc {
+    color: #b8c7fa;
+}
+body.dark .quick-btn {
+    background: #ffb300;
+    color: #23263a;
+}
+body.dark .quick-btn:hover {
+    background: #6c63ff;
+    color: #fff;
+}
+
