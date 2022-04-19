@@ -568,3 +568,22 @@ body.dark #theme-btn {
 }
 body.dark #theme-btn:hover {
     background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+body.dark #profileBtn {
+    color: #ffb300;
+}
+body.dark #profileBtn:hover, body.dark #profileBtn:focus {
+    background: #23263a;
+    color: #fff;
+}
+body.dark .profile-menu {
+    background: #23263a;
+    color: #b8c7fa;
+    box-shadow: 0 4px 24px #23263a44;
+}
+body.dark .profile-menu a, body.dark .profile-menu button.logout-btn {
+    color: #b8c7fa;
+}
+body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover {
+    background: #323a4c;
