@@ -644,3 +644,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     position: relative;
 }
 #profileBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: #fff;
+    color: #2a5298;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px #6c63ff22;
+    min-width: 150px;
