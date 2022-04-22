@@ -682,3 +682,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     background: #f4f7fa;
 }
 .profile-dropdown.open .profile-menu {
+    display: block;
+}
+.dashboard-hero {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin: 2.5em 0 1.5em 0;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #6c63ff22;
+    padding: 2em 2.5em;
+}
+.dashboard-hero-img img {
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px #6c63ff22;
+}
+.hero-text h1 {
+    font-size: 2.2em;
