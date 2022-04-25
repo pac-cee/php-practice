@@ -758,3 +758,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     background: linear-gradient(120deg, #d9e4f7 0%, #f6fafd 100%); 
 }
 @keyframes popIn { 
+    from { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    } 
+}
+.insight-title { 
+    font-size: 1.18rem; 
+    color: #5a5a8c; 
+    margin-bottom: 0.6rem; 
+}
+.insight-value { 
+    font-size: 2.7rem; 
+    font-weight: 800; 
+    color: #2a5298; 
+    margin-bottom: 0.2rem; 
