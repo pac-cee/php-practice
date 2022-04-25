@@ -796,3 +796,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 }
 .dashboard-left, .dashboard-right {
     flex: 1 1 0;
+    min-width: 260px;
+}
+.dashboard-widget.currently-reading {
+    background: linear-gradient(120deg, #e9f0fb 0%, #f5f8ff 100%);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px #6c63ff12;
+    padding: 1.2em 1.5em;
+    margin-top: 1.5em;
+    border-left: 5px solid #ffb300;
+    color: #2a5298;
+    animation: fadeSlideIn 0.8s cubic-bezier(.4,0,.2,1) 0.35s forwards;
+    opacity: 0;
+    transform: translateY(14px);
+}
+.dashboard-widget.currently-reading .reading-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 0.2em;
+}
