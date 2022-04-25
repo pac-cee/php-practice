@@ -720,3 +720,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     color: #fff;
     padding: 0.7em 1.7em;
     border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #6c63ff22;
+    transition: background 0.3s, color 0.3s, transform 0.18s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+.quick-btn:hover {
+    background: #fff;
+    color: #6c63ff;
+    transform: scale(1.07);
+    box-shadow: 0 4px 18px #6c63ff33;
+}
+.dashboard-insights { 
+    display: flex; 
+    gap: 2.2rem; 
+    margin-bottom: 0.2rem; 
+    justify-content: center; 
