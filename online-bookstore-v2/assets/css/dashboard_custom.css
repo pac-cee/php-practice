@@ -777,3 +777,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     font-weight: 800; 
     color: #2a5298; 
     margin-bottom: 0.2rem; 
+    transition: color 0.3s; 
+    letter-spacing: 0.03em; 
+}
+.insight-card:hover .insight-value { 
+    color: #d32f2f; 
+}
+.last-score { 
+    font-size: 1.1rem; 
+    color: #4caf50; 
+    font-weight: 500; 
+}
+.dashboard-features {
+    display: flex;
+    gap: 2.5em;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+.dashboard-left, .dashboard-right {
+    flex: 1 1 0;
