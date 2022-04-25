@@ -739,3 +739,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
     gap: 2.2rem; 
     margin-bottom: 0.2rem; 
     justify-content: center; 
+    flex-wrap: wrap; 
+}
+.insight-card { 
+    background: linear-gradient(120deg, #e3ecfc 0%, #fff 100%); 
+    border-radius: 18px; 
+    box-shadow: 0 2px 14px rgba(42,82,152,0.09); 
+    padding: 1.7rem 2.2rem; 
+    min-width: 200px; 
+    text-align: center; 
+    transition: transform 0.25s, box-shadow 0.25s, background 0.3s; 
+    cursor: pointer; 
+    animation: popIn 0.7s cubic-bezier(.4,0,.2,1); 
+}
+.insight-card:hover { 
+    transform: translateY(-8px) scale(1.05); 
+    box-shadow: 0 8px 24px rgba(42,82,152,0.17); 
+    background: linear-gradient(120deg, #d9e4f7 0%, #f6fafd 100%); 
+}
+@keyframes popIn { 
