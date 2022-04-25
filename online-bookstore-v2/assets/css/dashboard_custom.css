@@ -834,3 +834,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 .recent-activity h3, .notifications h3, .recommendations h3, .stats-graphs h3 {
     color: #6c63ff;
     margin-bottom: 0.8em;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+#activity-feed, #notifications-feed, #recommendations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#activity-feed li, #notifications-feed li, #recommendations-list li {
+    padding: 0.6em 0.2em;
+    border-bottom: 1px solid #f0f0f0;
+    color: #2a5298;
+    font-size: 0.98em;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeSlideIn 0.7s cubic-bezier(.4,0,.2,1) forwards;
+}
+#activity-feed li:nth-child(1), #recommendations-list li:nth-child(1) { animation-delay: 0.05s; }
+#activity-feed li:nth-child(2), #recommendations-list li:nth-child(2) { animation-delay: 0.15s; }
