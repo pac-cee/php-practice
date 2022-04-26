@@ -853,3 +853,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 }
 #activity-feed li:nth-child(1), #recommendations-list li:nth-child(1) { animation-delay: 0.05s; }
 #activity-feed li:nth-child(2), #recommendations-list li:nth-child(2) { animation-delay: 0.15s; }
+#activity-feed li:nth-child(3), #recommendations-list li:nth-child(3) { animation-delay: 0.25s; }
+#activity-feed li:nth-child(4), #recommendations-list li:nth-child(4) { animation-delay: 0.35s; }
+#activity-feed li:nth-child(5), #recommendations-list li:nth-child(5) { animation-delay: 0.45s; }
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#activity-feed li:last-child, #notifications-feed li:last-child, #recommendations-list li:last-child {
+    border-bottom: none;
+}
+.stats-graphs canvas {
+    width: 100% !important;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+@media (max-width: 900px) {
