@@ -891,3 +891,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 .rec-action:hover {
     background: #ffb300;
     color: #23263a;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dashboard-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(42,82,152,0.08);
+}
+
+.activity-feed {
+    margin-top: 1rem;
+}
