@@ -910,3 +910,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 .activity-feed {
     margin-top: 1rem;
 }
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item i {
+    color: #4A90E2;
+}
+
+.activity-item small {
+    margin-left: auto;
