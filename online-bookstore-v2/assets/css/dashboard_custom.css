@@ -929,3 +929,22 @@ body.dark .profile-menu a:hover, body.dark .profile-menu button.logout-btn:hover
 
 .activity-item small {
     margin-left: auto;
+    color: #6c7a89;
+}
+
+#progressChart {
+    height: 300px;
+    margin-top: 1rem;
+}
+
+/* Dark Theme */ body.dark { background: linear-gradient(135deg, #22263a 0%, #323a4c 100%); } body.dark .dashboard { background: #23263a; color: #f8fafc; box-shadow: 0 4px 24px rgba(0,0,0,0.23); } body.dark .nav-links a { color: #b8c7fa; } body.dark .nav-links a:hover { background: #d32f2f; color: #fff; } body.dark .insight-card { background: linear-gradient(120deg, #2a3558 0%, #23263a 100%); color: #f8fafc; } body.dark .insight-title { color: #b8c7fa; } body.dark .insight-card:hover { background: linear-gradient(120deg, #23263a 0%, #2a3558 100%); } body.dark .insight-card .insight-value { color: #f8fafc; } body.dark .insight-card:hover .insight-value { color: #ffb300; } body.dark #theme-btn { color: #ffb300; }
+body.dark .main-nav, html.dark .main-nav {
+    background: linear-gradient(90deg, #23263a 0%, #2a3558 100%);
+}
+body.dark .dashboard-hero, html.dark .dashboard-hero,
+body.dark .dashboard-insights, html.dark .dashboard-insights,
+body.dark .recent-activity, html.dark .notifications, html.dark .recommendations, html.dark .stats-graphs, body.dark .dashboard-widget.currently-reading {
+    background: #23263a;
+    color: #f8fafc;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.23);
+}
