@@ -967,3 +967,18 @@ body.dark .dashboard-widget.currently-reading .reading-none {
 body.dark .insight-card {
     background: linear-gradient(120deg, #2a3558 0%, #23263a 100%);
     color: #f8fafc;
+}
+body.dark .insight-title {
+    color: #b8c7fa;
+}
+body.dark .insight-card:hover {
+    background: linear-gradient(120deg, #23263a 0%, #2a3558 100%);
+}
+body.dark .insight-card .insight-value {
+    color: #f8fafc;
+}
+body.dark .insight-card:hover .insight-value {
+    color: #ffb300;
+}
+body.dark #theme-btn { color: #ffb300; }
+}
