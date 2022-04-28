@@ -93,3 +93,22 @@
 }
 
 .profile-form {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 500px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--bg);
