@@ -1,0 +1,19 @@
+/* Orders-specific styles for OnlineBookstore */
+.dashboard-orders-card {
+    max-width: 900px;
+    margin: 0 auto 2.5em auto;
+    background: #fff;
+    padding: 2.2em 2em 1.5em 2em;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(42,82,152,0.10);
+}
+.dashboard-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.1em;
+    font-size: 1em;
+    background: transparent;
+}
+.dashboard-orders-table th, .dashboard-orders-table td {
+    padding: 0.8em 1.1em;
+    border-bottom: 1px solid #eef0f4;
