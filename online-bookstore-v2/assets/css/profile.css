@@ -55,3 +55,22 @@
 
 .stat-card:hover {
     transform: translateY(-5px);
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text);
+    opacity: 0.8;
+}
