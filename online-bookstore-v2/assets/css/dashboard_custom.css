@@ -948,3 +948,22 @@ body.dark .recent-activity, html.dark .notifications, html.dark .recommendations
     color: #f8fafc;
     box-shadow: 0 4px 24px rgba(0,0,0,0.23);
 }
+body.dark .dashboard-widget.currently-reading {
+    border-left: 5px solid #ffb300;
+    color: #f8fafc;
+}
+body.dark .recommendations {
+    border-left: 5px solid #6c63ff;
+    background: linear-gradient(120deg, #23263a 0%, #2a3558 100%);
+}
+body.dark .dashboard-widget.currently-reading .reading-title,
+body.dark .dashboard-widget.currently-reading .reading-pages,
+body.dark .dashboard-widget.currently-reading .reading-date {
+    color: #b8c7fa;
+}
+body.dark .dashboard-widget.currently-reading .reading-none {
+    color: #888;
+}
+body.dark .insight-card {
+    background: linear-gradient(120deg, #2a3558 0%, #23263a 100%);
+    color: #f8fafc;
