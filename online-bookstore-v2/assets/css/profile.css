@@ -150,3 +150,16 @@
     .profile-container {
         padding: 1rem;
     }
+    
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .profile-details {
+        padding: 1rem;
+    }
+}
