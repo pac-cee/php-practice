@@ -74,3 +74,22 @@
 }
 
 .option-button:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.option-button.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.quiz-button {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
