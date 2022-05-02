@@ -17,3 +17,22 @@
     color: var(--primary);
     font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+.quiz-description {
+    color: #666;
+    margin: 1rem 0 2rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.quiz-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.progress-fill {
