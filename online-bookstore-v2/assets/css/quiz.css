@@ -93,3 +93,22 @@
 .quiz-button {
     padding: 0.8rem 2rem;
     border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-button.next {
+    background: var(--primary);
+    color: white;
+}
+
+.quiz-button.prev {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.quiz-button:hover {
+    transform: translateY(-2px);
+}
