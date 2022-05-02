@@ -55,3 +55,22 @@
     margin-bottom: 1.5rem;
     color: var(--text);
 }
+
+.options-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-button {
+    background: var(--bg);
+    border: 2px solid var(--primary);
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.option-button:hover {
