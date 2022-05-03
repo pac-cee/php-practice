@@ -131,3 +131,22 @@
     margin: 2rem auto;
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.result-message {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: var(--text);
+}
+
+.answers-review {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.review-item {
+    background: white;
