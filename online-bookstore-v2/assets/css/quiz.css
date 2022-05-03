@@ -112,3 +112,22 @@
 .quiz-button:hover {
     transform: translateY(-2px);
 }
+
+.quiz-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.quiz-results {
+    text-align: center;
+    padding: 2rem;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid var(--primary);
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
