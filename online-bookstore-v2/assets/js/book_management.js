@@ -17,3 +17,22 @@ function initializeBookForms() {
 }
 
 function validateBookForm(form) {
+    let isValid = true;
+    const inputs = form.querySelectorAll('input[required]');
+    
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            showError(input, 'This field is required');
+            isValid = false;
+        } else {
+            removeError(input);
+            
+            if (input.name === 'price') {
+                const price = parseFloat(input.value);
+                if (isNaN(price) || price <= 0) {
+                    showError(input, 'Please enter a valid price');
+                    isValid = false;
+                }
+            }
+        }
+    });
