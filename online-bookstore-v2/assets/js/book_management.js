@@ -112,3 +112,22 @@ function handleDelete(id, row) {
             method: 'DELETE'
         }).then(response => {
             if (!response.ok) {
+                showToast('Error deleting book', 'error');
+            } else {
+                showToast('Book deleted successfully', 'success');
+            }
+        });
+    }
+}
+
+function initializeSearch() {
+    const searchInput = document.querySelector('.search-input');
+    if (!searchInput) return;
+
+    let timeout = null;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            filterBooks(this.value.toLowerCase());
+        }, 300);
+    });
