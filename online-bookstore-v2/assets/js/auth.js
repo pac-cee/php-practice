@@ -55,3 +55,22 @@ function showError(input, message) {
 }
 
 function removeError(input) {
+    input.classList.remove('error');
+    const errorDiv = input.parentNode.querySelector('.error-message');
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+}
+
+function setupPasswordVisibility() {
+    const passwordInputs = document.querySelectorAll('input[type="password"]');
+    
+    passwordInputs.forEach(input => {
+        const toggleButton = document.createElement('button');
+        toggleButton.type = 'button';
+        toggleButton.className = 'password-toggle';
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+        
+        toggleButton.addEventListener('click', function() {
+            const type = input.type === 'password' ? 'text' : 'password';
+            input.type = type;
