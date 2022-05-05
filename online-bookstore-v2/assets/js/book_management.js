@@ -55,3 +55,22 @@ function setupTableInteractions() {
         row.addEventListener('mouseleave', function() {
             this.style.transform = 'none';
         });
+    });
+
+    // Setup edit buttons
+    const editButtons = table.querySelectorAll('.edit-btn');
+    editButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const row = this.closest('tr');
+            const id = row.querySelector('td:first-child').textContent;
+            handleEdit(id);
+        });
+    });
+
+    // Setup delete buttons
+    const deleteButtons = table.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const row = this.closest('tr');
+            const id = row.querySelector('td:first-child').textContent;
+            handleDelete(id, row);
