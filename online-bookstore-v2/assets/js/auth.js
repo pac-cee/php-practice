@@ -74,3 +74,23 @@ function setupPasswordVisibility() {
         toggleButton.addEventListener('click', function() {
             const type = input.type === 'password' ? 'text' : 'password';
             input.type = type;
+            toggleButton.innerHTML = type === 'password' ? 
+                '<i class="fas fa-eye"></i>' : 
+                '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        input.parentNode.style.position = 'relative';
+        input.parentNode.appendChild(toggleButton);
+    });
+}
+
+// Add smooth transitions for messages
+function fadeOutMessage() {
+    const messages = document.querySelectorAll('.auth-message');
+    messages.forEach(message => {
+        setTimeout(() => {
+            message.style.opacity = '0';
+            setTimeout(() => message.remove(), 300);
+        }, 3000);
+    });
+}
