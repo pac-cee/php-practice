@@ -17,3 +17,26 @@
 .dashboard-results-table th, .dashboard-results-table td {
     padding: 0.8em 1.1em;
     border-bottom: 1px solid #eef0f4;
+    text-align: left;
+}
+.dashboard-results-table th {
+    background: #f4f7fa;
+    font-weight: 700;
+    color: #23263a;
+}
+.dashboard-results-table td {
+    color: #23263a;
+}
+.dashboard-results-table tbody tr:hover {
+    background: #f6faff;
+}
+@media (max-width: 600px) {
+    .dashboard-results-card {
+        padding: 1.2em 0.4em 1em 0.4em;
+    }
+    .dashboard-results-table th, .dashboard-results-table td {
+        padding: 0.6em 0.5em;
+        font-size: 0.97em;
+    }
+}
+/* Add more quiz results-specific styles as needed */
