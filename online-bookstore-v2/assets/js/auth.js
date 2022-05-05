@@ -36,3 +36,22 @@ function validateForm(form) {
             removeError(input);
         }
 
+        if (input.type === 'password' && input.value.length < 6) {
+            showError(input, 'Password must be at least 6 characters');
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+function showError(input, message) {
+    removeError(input);
+    input.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    input.parentNode.appendChild(errorDiv);
+}
+
+function removeError(input) {
