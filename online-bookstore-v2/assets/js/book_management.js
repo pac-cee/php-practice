@@ -36,3 +36,22 @@ function validateBookForm(form) {
             }
         }
     });
+    
+    return isValid;
+}
+
+function setupTableInteractions() {
+    const table = document.querySelector('.books-table');
+    if (!table) return;
+
+    // Add row hover effect
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.transform = 'none';
+        });
