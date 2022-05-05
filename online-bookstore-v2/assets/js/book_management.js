@@ -74,3 +74,22 @@ function setupTableInteractions() {
             const row = this.closest('tr');
             const id = row.querySelector('td:first-child').textContent;
             handleDelete(id, row);
+        });
+    });
+}
+
+function handleEdit(id) {
+    // Create edit form
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    const cells = row.querySelectorAll('td');
+    
+    cells.forEach((cell, index) => {
+        if (index > 0 && index < cells.length - 1) {
+            const text = cell.textContent;
+            const input = document.createElement('input');
+            input.type = index === 3 ? 'number' : 'text';
+            input.value = text;
+            input.step = index === 3 ? '0.01' : null;
+            cell.textContent = '';
+            cell.appendChild(input);
+        }
