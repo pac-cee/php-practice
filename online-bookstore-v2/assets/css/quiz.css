@@ -150,3 +150,22 @@
 
 .review-item {
     background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.review-item.correct {
+    border-left: 4px solid var(--success);
+}
+
+.review-item.incorrect {
+    border-left: 4px solid var(--error);
+}
+
+@media (max-width: 768px) {
+    .quiz-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
