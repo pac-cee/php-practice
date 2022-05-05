@@ -93,3 +93,22 @@ function handleEdit(id) {
             cell.textContent = '';
             cell.appendChild(input);
         }
+    });
+}
+
+function handleDelete(id, row) {
+    if (confirm('Are you sure you want to delete this book?')) {
+        // Add animation before removal
+        row.style.transition = 'all 0.3s ease';
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-100%)';
+        
+        setTimeout(() => {
+            row.remove();
+        }, 300);
+        
+        // Here you would typically make an AJAX call to delete the book
+        fetch(`delete_book.php?id=${id}`, {
+            method: 'DELETE'
+        }).then(response => {
+            if (!response.ok) {
