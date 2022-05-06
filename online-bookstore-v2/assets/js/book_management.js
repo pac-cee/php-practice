@@ -131,3 +131,22 @@ function initializeSearch() {
             filterBooks(this.value.toLowerCase());
         }, 300);
     });
+}
+
+function filterBooks(query) {
+    const rows = document.querySelectorAll('.books-table tbody tr');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+    });
+}
+
+function showError(input, message) {
+    removeError(input);
+    input.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    input.parentNode.appendChild(errorDiv);
+}
+
