@@ -112,3 +112,11 @@ if(statsChart){
                 }]
             },
             options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    };
+    document.head.appendChild(script);
+}
