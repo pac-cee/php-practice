@@ -74,3 +74,22 @@ if (profileBtn && profileMenu) {
 
 // Dummy Data for Activity, Notifications, Recommendations
 const activityFeed = document.getElementById('activity-feed');
+const notificationsFeed = document.getElementById('notifications-feed');
+const recommendationsList = document.getElementById('recommendations-list');
+if(activityFeed){
+    activityFeed.innerHTML = [
+        '<li><i class="fas fa-shopping-cart"></i> Ordered: "The Great Gatsby"</li>',
+        '<li><i class="fas fa-question-circle"></i> Completed quiz: "1984 Quiz"</li>',
+        '<li><i class="fas fa-book-open"></i> Browsed new arrivals</li>'
+    ].join('');
+}
+if(notificationsFeed){
+    notificationsFeed.innerHTML = [
+        '<li><i class="fas fa-bell"></i> New quiz available: "To Kill a Mockingbird Quiz"</li>',
+        '<li><i class="fas fa-bell"></i> Order shipped: "1984"</li>'
+    ].join('');
+}
+if(recommendationsList){
+    recommendationsList.innerHTML = [
+        '<li><i class="fas fa-star"></i> "Brave New World" - Recommended for you</li>',
+        '<li><i class="fas fa-star"></i> "Animal Farm" - Based on your quiz interests</li>'
