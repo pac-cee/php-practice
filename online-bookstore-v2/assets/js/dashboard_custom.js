@@ -93,3 +93,22 @@ if(recommendationsList){
     recommendationsList.innerHTML = [
         '<li><i class="fas fa-star"></i> "Brave New World" - Recommended for you</li>',
         '<li><i class="fas fa-star"></i> "Animal Farm" - Based on your quiz interests</li>'
+    ].join('');
+}
+// Stats Graph (using Chart.js CDN)
+const statsChart = document.getElementById('statsChart');
+if(statsChart){
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    script.onload = () => {
+        new Chart(statsChart.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Quizzes', 'Orders', 'Books'],
+                datasets: [{
+                    label: 'Last 6 Months',
+                    data: [3, 1, 3],
+                    backgroundColor: ['#6c63ff','#2a5298','#ffb300']
+                }]
+            },
+            options: {
