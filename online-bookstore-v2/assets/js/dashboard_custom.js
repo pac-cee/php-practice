@@ -17,3 +17,22 @@ function applyTheme() {
     else if (theme === 'light') setTheme('light');
     else setTheme(prefersDark ? 'dark' : 'light');
 }
+themeBtn.onclick = function() {
+    const current = getTheme();
+    if (current === 'light') setTheme('dark');
+    else if (current === 'dark') setTheme('system');
+    else setTheme('light');
+};
+applyTheme();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+
+// Profile dropdown functionality
+const profileBtn = document.getElementById('profileBtn');
+const profileMenu = document.getElementById('profileMenu');
+
+if (profileBtn && profileMenu) {
+    // Toggle menu on button click
+    profileBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdown = this.closest('.profile-dropdown');
+        dropdown.classList.toggle('open');
