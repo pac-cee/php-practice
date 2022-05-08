@@ -36,3 +36,22 @@ if (profileBtn && profileMenu) {
         e.stopPropagation();
         const dropdown = this.closest('.profile-dropdown');
         dropdown.classList.toggle('open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+            profileBtn.closest('.profile-dropdown').classList.remove('open');
+        }
+    });
+
+    // Handle keyboard navigation
+    profileBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+        }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', function(e) {
