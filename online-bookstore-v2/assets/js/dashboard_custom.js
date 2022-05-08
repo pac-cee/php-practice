@@ -55,3 +55,22 @@ if (profileBtn && profileMenu) {
 
     // Close menu on Escape key
     document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            profileBtn.closest('.profile-dropdown').classList.remove('open');
+        }
+    });
+
+    // Add hover effect
+    const menuItems = profileMenu.querySelectorAll('a, button');
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = 'var(--bg)';
+        });
+        item.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '';
+        });
+    });
+}
+
+// Dummy Data for Activity, Notifications, Recommendations
+const activityFeed = document.getElementById('activity-feed');
