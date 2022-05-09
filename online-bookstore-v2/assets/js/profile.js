@@ -36,3 +36,22 @@ function initializeProfileForm() {
         }
     });
 }
+
+function validateForm() {
+    const newPassword = document.getElementById('new_password');
+    const confirmPassword = document.getElementById('confirm_password');
+    const email = document.getElementById('email');
+    
+    let isValid = true;
+
+    // Validate email
+    if (email.value && !isValidEmail(email.value)) {
+        showError(email, 'Please enter a valid email address');
+        isValid = false;
+    } else {
+        removeError(email);
+    }
+
+    // Validate passwords if either field is filled
+    if (newPassword.value || confirmPassword.value) {
+        if (newPassword.value.length < 6) {
