@@ -74,3 +74,22 @@ function validateForm() {
 
 function initializePasswordValidation() {
     const newPassword = document.getElementById('new_password');
+    const confirmPassword = document.getElementById('confirm_password');
+    
+    if (newPassword && confirmPassword) {
+        confirmPassword.addEventListener('input', function() {
+            if (newPassword.value !== this.value) {
+                showError(this, 'Passwords do not match');
+            } else {
+                removeError(this);
+            }
+        });
+    }
+}
+
+function showError(input, message) {
+    removeError(input);
+    input.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
