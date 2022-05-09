@@ -55,3 +55,22 @@ function validateForm() {
     // Validate passwords if either field is filled
     if (newPassword.value || confirmPassword.value) {
         if (newPassword.value.length < 6) {
+            showError(newPassword, 'Password must be at least 6 characters');
+            isValid = false;
+        } else {
+            removeError(newPassword);
+        }
+
+        if (newPassword.value !== confirmPassword.value) {
+            showError(confirmPassword, 'Passwords do not match');
+            isValid = false;
+        } else {
+            removeError(confirmPassword);
+        }
+    }
+
+    return isValid;
+}
+
+function initializePasswordValidation() {
+    const newPassword = document.getElementById('new_password');
