@@ -131,3 +131,22 @@ class QuizManager {
 
         if (prevButton) {
             prevButton.disabled = this.currentQuestion === 0;
+        }
+
+        if (nextButton) {
+            nextButton.style.display = this.currentQuestion === this.questions.length - 1 ? 'none' : 'block';
+        }
+
+        if (submitButton) {
+            submitButton.style.display = this.currentQuestion === this.questions.length - 1 ? 'block' : 'none';
+        }
+    }
+
+    startTimer() {
+        const timerDisplay = document.querySelector('.timer-display');
+        if (!timerDisplay) return;
+
+        this.timeLeft = parseInt(timerDisplay.dataset.time) || 600; // 10 minutes default
+        this.updateTimerDisplay();
+
+        this.timer = setInterval(() => {
