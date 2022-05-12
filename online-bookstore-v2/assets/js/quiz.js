@@ -93,3 +93,22 @@ class QuizManager {
         // Enable next button
         const nextButton = document.querySelector('.quiz-button.next');
         if (nextButton) {
+            nextButton.disabled = false;
+        }
+    }
+
+    nextQuestion() {
+        if (this.currentQuestion < this.questions.length - 1) {
+            this.currentQuestion++;
+            this.renderQuestion();
+        }
+    }
+
+    previousQuestion() {
+        if (this.currentQuestion > 0) {
+            this.currentQuestion--;
+            this.renderQuestion();
+        }
+    }
+
+    updateProgress() {
