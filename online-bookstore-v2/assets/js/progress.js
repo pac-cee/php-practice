@@ -93,3 +93,22 @@ class ProgressTracker {
             if (!achievement.classList.contains('locked')) {
                 achievement.addEventListener('click', () => {
                     this.showAchievementDetails(achievement);
+                });
+            }
+        });
+    }
+
+    showAchievementDetails(achievement) {
+        const title = achievement.querySelector('.achievement-title').textContent;
+        const desc = achievement.querySelector('.achievement-desc').textContent;
+        const date = achievement.dataset.date;
+
+        const modal = document.createElement('div');
+        modal.className = 'achievement-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h3>${title}</h3>
+                <p>${desc}</p>
+                <p class="achievement-date">Unlocked on: ${date}</p>
+                <button class="modal-close">Close</button>
+            </div>
