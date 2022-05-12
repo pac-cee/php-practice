@@ -150,3 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Example of updating progress with new data
     // This would typically come from an API call
+    const updateButton = document.querySelector('.update-progress');
+    if (updateButton) {
+        updateButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('update_progress.php');
+                const data = await response.json();
+                progressTracker.updateProgress(data);
+            } catch (error) {
+                console.error('Error updating progress:', error);
+            }
+        });
+    }
+});
