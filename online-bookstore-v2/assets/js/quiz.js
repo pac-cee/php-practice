@@ -188,3 +188,22 @@ class QuizManager {
                 },
                 body: JSON.stringify({
                     answers: this.answers,
+                    timeSpent: 600 - this.timeLeft
+                })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                this.showResults(result);
+            } else {
+                throw new Error('Failed to submit quiz');
+            }
+        } catch (error) {
+            console.error('Error submitting quiz:', error);
+            alert('Failed to submit quiz. Please try again.');
+        }
+    }
+
+    showResults(result) {
+        const quizContainer = document.querySelector('.quiz-container');
+        if (!quizContainer) return;
