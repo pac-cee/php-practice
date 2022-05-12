@@ -55,3 +55,22 @@ class QuizManager {
         const question = this.questions[this.currentQuestion];
         if (!question) return;
 
+        const questionText = document.querySelector('.question-text');
+        const optionsGrid = document.querySelector('.options-grid');
+
+        if (questionText) {
+            questionText.textContent = question.text;
+        }
+
+        if (optionsGrid) {
+            optionsGrid.innerHTML = question.options.map((option, index) => `
+                <button class="option-button ${this.answers[this.currentQuestion] === index ? 'selected' : ''}" 
+                        data-index="${index}">
+                    ${option}
+                </button>
+            `).join('');
+
+            // Reattach event listeners
+            optionsGrid.querySelectorAll('.option-button').forEach(button => {
+                button.addEventListener('click', (e) => this.selectOption(e));
+            });
