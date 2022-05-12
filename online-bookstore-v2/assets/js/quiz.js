@@ -169,3 +169,22 @@ class QuizManager {
 
         if (this.timeLeft <= 60) {
             timerDisplay.classList.add('warning');
+        }
+    }
+
+    async submitQuiz() {
+        clearInterval(this.timer);
+
+        const unanswered = this.answers.length < this.questions.length;
+        if (unanswered && !confirm('You have unanswered questions. Submit anyway?')) {
+            return;
+        }
+
+        try {
+            const response = await fetch('submit_quiz.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    answers: this.answers,
