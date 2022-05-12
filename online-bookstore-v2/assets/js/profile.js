@@ -93,3 +93,22 @@ function showError(input, message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
+    input.parentNode.appendChild(errorDiv);
+}
+
+function removeError(input) {
+    input.classList.remove('error');
+    const errorDiv = input.parentNode.querySelector('.error-message');
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+}
+
+function showMessage(message, type = 'success') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+    messageDiv.textContent = message;
+    
+    const form = document.getElementById('profileUpdateForm');
+    form.insertAdjacentElement('beforebegin', messageDiv);
+    
