@@ -74,3 +74,22 @@ class ProgressTracker {
         });
     }
 
+    animateNumber(element, target) {
+        let current = 0;
+        const increment = target / 50; // Adjust for animation speed
+        const interval = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(interval);
+            }
+            element.textContent = Math.round(current);
+        }, 20);
+    }
+
+    initializeAchievements() {
+        const achievements = document.querySelectorAll('.achievement-card');
+        achievements.forEach(achievement => {
+            if (!achievement.classList.contains('locked')) {
+                achievement.addEventListener('click', () => {
+                    this.showAchievementDetails(achievement);
