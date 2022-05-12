@@ -150,3 +150,22 @@ class QuizManager {
         this.updateTimerDisplay();
 
         this.timer = setInterval(() => {
+            this.timeLeft--;
+            this.updateTimerDisplay();
+
+            if (this.timeLeft <= 0) {
+                this.submitQuiz();
+            }
+        }, 1000);
+    }
+
+    updateTimerDisplay() {
+        const timerDisplay = document.querySelector('.timer-display');
+        if (!timerDisplay) return;
+
+        const minutes = Math.floor(this.timeLeft / 60);
+        const seconds = this.timeLeft % 60;
+        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+        if (this.timeLeft <= 60) {
+            timerDisplay.classList.add('warning');
