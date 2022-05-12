@@ -74,3 +74,22 @@ class QuizManager {
             optionsGrid.querySelectorAll('.option-button').forEach(button => {
                 button.addEventListener('click', (e) => this.selectOption(e));
             });
+        }
+
+        this.updateProgress();
+        this.updateNavigation();
+    }
+
+    selectOption(event) {
+        const selectedIndex = parseInt(event.target.dataset.index);
+        this.answers[this.currentQuestion] = selectedIndex;
+
+        // Update UI
+        document.querySelectorAll('.option-button').forEach(button => {
+            button.classList.remove('selected');
+        });
+        event.target.classList.add('selected');
+
+        // Enable next button
+        const nextButton = document.querySelector('.quiz-button.next');
+        if (nextButton) {
