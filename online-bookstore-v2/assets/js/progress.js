@@ -36,3 +36,22 @@ class ProgressTracker {
             data: {
                 labels: config.labels,
                 datasets: [{
+                    label: config.title,
+                    data: config.data,
+                    borderColor: getComputedStyle(document.documentElement)
+                        .getPropertyValue('--primary').trim(),
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(108, 99, 255, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: config.title
