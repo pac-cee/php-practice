@@ -55,3 +55,22 @@ class ProgressTracker {
                     title: {
                         display: true,
                         text: config.title
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    animateStats() {
+        const stats = document.querySelectorAll('.stat-value');
+        stats.forEach(stat => {
+            const target = parseInt(stat.dataset.value);
+            this.animateNumber(stat, target);
+        });
+    }
+
