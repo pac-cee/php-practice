@@ -36,3 +36,22 @@ class QuizManager {
 
             if (nextButton) {
                 nextButton.addEventListener('click', () => this.nextQuestion());
+            }
+            if (prevButton) {
+                prevButton.addEventListener('click', () => this.previousQuestion());
+            }
+            if (submitButton) {
+                submitButton.addEventListener('click', () => this.submitQuiz());
+            }
+
+            // Setup option selection
+            document.querySelectorAll('.option-button').forEach(button => {
+                button.addEventListener('click', (e) => this.selectOption(e));
+            });
+        });
+    }
+
+    renderQuestion() {
+        const question = this.questions[this.currentQuestion];
+        if (!question) return;
+
