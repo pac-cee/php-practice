@@ -17,3 +17,22 @@ class ProgressTracker {
             data: [10, 15, 12, 25, 18, 30],
             title: 'Reading Progress'
         });
+
+        // Quiz Performance Chart
+        this.createProgressChart('quizProgress', {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            data: [75, 82, 88, 95],
+            title: 'Quiz Performance'
+        });
+    }
+
+    createProgressChart(elementId, config) {
+        const chartElement = document.getElementById(elementId);
+        if (!chartElement) return;
+
+        const ctx = chartElement.getContext('2d');
+        this.charts[elementId] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: config.labels,
+                datasets: [{
