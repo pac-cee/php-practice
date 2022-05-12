@@ -131,3 +131,22 @@ class ProgressTracker {
             if (progressData[target]) {
                 const fill = bar.querySelector('.progress-fill');
                 fill.style.width = progressData[target] + '%';
+            }
+        });
+
+        // Update charts
+        Object.keys(this.charts).forEach(chartId => {
+            if (progressData[chartId]) {
+                this.charts[chartId].data.datasets[0].data = progressData[chartId];
+                this.charts[chartId].update();
+            }
+        });
+    }
+}
+
+// Initialize progress tracking when document is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const progressTracker = new ProgressTracker();
+
+    // Example of updating progress with new data
+    // This would typically come from an API call
