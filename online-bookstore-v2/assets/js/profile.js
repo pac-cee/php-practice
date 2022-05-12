@@ -112,3 +112,27 @@ function showMessage(message, type = 'success') {
     const form = document.getElementById('profileUpdateForm');
     form.insertAdjacentElement('beforebegin', messageDiv);
     
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Update profile photo preview if file input exists
+const photoInput = document.getElementById('profile_photo');
+const photoPreview = document.getElementById('photoPreview');
+if (photoInput && photoPreview) {
+    photoInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                photoPreview.style.backgroundImage = `url(${e.target.result})`;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
