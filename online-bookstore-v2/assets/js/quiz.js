@@ -112,3 +112,22 @@ class QuizManager {
     }
 
     updateProgress() {
+        const progress = ((this.currentQuestion + 1) / this.questions.length) * 100;
+        const progressBar = document.querySelector('.progress-fill');
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+
+        const progressText = document.querySelector('.progress-text');
+        if (progressText) {
+            progressText.textContent = `Question ${this.currentQuestion + 1} of ${this.questions.length}`;
+        }
+    }
+
+    updateNavigation() {
+        const prevButton = document.querySelector('.quiz-button.prev');
+        const nextButton = document.querySelector('.quiz-button.next');
+        const submitButton = document.querySelector('.quiz-button.submit');
+
+        if (prevButton) {
+            prevButton.disabled = this.currentQuestion === 0;
