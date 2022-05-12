@@ -112,3 +112,22 @@ class ProgressTracker {
                 <p class="achievement-date">Unlocked on: ${date}</p>
                 <button class="modal-close">Close</button>
             </div>
+        `;
+
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.add('show'), 10);
+
+        modal.querySelector('.modal-close').addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
+        });
+    }
+
+    updateProgress(progressData) {
+        // Update progress bars
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            const target = bar.dataset.target;
+            if (progressData[target]) {
+                const fill = bar.querySelector('.progress-fill');
+                fill.style.width = progressData[target] + '%';
