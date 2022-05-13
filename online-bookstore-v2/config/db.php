@@ -17,3 +17,12 @@ class Database {
             $this->port
         );
         if ($this->conn->connect_error) {
+            die("❌ Connection failed: " . $this->conn->connect_error);
+        }
+    }
+
+    public function getConnection() {
+        return $this->conn;
+    }
+}
+?>
