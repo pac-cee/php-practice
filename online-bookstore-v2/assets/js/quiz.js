@@ -207,3 +207,26 @@ class QuizManager {
     showResults(result) {
         const quizContainer = document.querySelector('.quiz-container');
         if (!quizContainer) return;
+
+        const percentage = Math.round((result.score / this.questions.length) * 100);
+        
+        quizContainer.innerHTML = `
+            <div class="quiz-results">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">${percentage}%</div>
+                <p class="result-message">
+                    You answered ${result.score} out of ${this.questions.length} questions correctly.
+                </p>
+                <div class="quiz-controls">
+                    <a href="quiz.php" class="quiz-button">Take Another Quiz</a>
+                    <a href="quiz_results.php" class="quiz-button next">View All Results</a>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Initialize quiz when document is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const quiz = new QuizManager();
+});
