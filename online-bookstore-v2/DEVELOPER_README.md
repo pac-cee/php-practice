@@ -36,3 +36,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 - User registration and authentication (students, teachers, admins, individuals)
 - Book catalog with search, filter, and detailed views
 - Book ordering and order management
+- Online reading (PDF/HTML) and audiobook streaming
+- Quizzes linked to books, with results tracking
+- User dashboard with stats, progress, and recommendations
+- Admin/teacher dashboards for managing users, books, quizzes, and analytics
+- Reading progress tracking
+- Personalized recommendations
+- Responsive, modern UI
+
+---
+
+## 4. Non-Functional Requirements
+- **Performance**: Fast page loads, efficient database queries
+- **Security**: Password hashing, prepared statements, session management, XSS protection
+- **Scalability**: Modular codebase, scalable database structure
+- **Maintainability**: Clear code organization, documentation, and comments
+- **Usability**: Intuitive navigation, accessibility for all users
+- **Portability**: Runs on standard LAMP/WAMP stack
+- **Reliability**: Error handling, data validation, backup strategies
+
