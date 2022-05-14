@@ -74,3 +74,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 - Draw DFDs, ERDs, and UI wireframes.
 - Define database schema and API endpoints.
 - Plan directory structure and coding standards.
+
+### 6.3. Implementation
+- Set up version control (Git recommended).
+- Scaffold project directories.
+- Implement features module-by-module:
+  - Auth, Catalog, Orders, Reading, Audio, Quizzes, Dashboard, Admin
+- Write clear, reusable code with comments.
+
+### 6.4. Testing
+- Write unit tests for PHP functions/classes.
+- Test database queries and edge cases.
+- Perform integration and user acceptance testing.
+
+### 6.5. Deployment
+- Prepare database and server configs.
+- Deploy to production/staging environment.
+- Monitor logs and fix post-launch issues.
+
+### 6.6. Maintenance
