@@ -17,3 +17,22 @@
   ```sh
   mysql -u <user> -p <database> < setup.sql
   ```
+- Ensure the DB user has appropriate privileges.
+
+## 4. File Structure
+- `/books/` and `/audio/` directories must be writable by the web server for uploads.
+- Place cover images in `/covers/`.
+
+## 5. Installing Dependencies
+- (Optional) Run `composer install` if using Composer for PHP dependencies.
+- (Optional) Run `npm install` if using any Node.js tooling.
+
+## 6. Running the Application
+- Deploy files to the web root (e.g., `/var/www/html/OnlineBookstore`).
+- Access the app via your browser at `http://localhost/OnlineBookstore`.
+
+## 7. Security & Permissions
+- Set correct file permissions (e.g., `chmod 755` for directories, `chmod 644` for files).
+- Restrict direct access to sensitive files (e.g., `.env`, `config.php`).
+- Use HTTPS in production.
+
