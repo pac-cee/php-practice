@@ -36,3 +36,16 @@
 - Restrict direct access to sensitive files (e.g., `.env`, `config.php`).
 - Use HTTPS in production.
 
+## 8. Post-Deployment
+- Test registration, login, book upload, and ordering.
+- Monitor logs for errors.
+- Set up regular database and file backups.
+
+## 9. Troubleshooting
+- Check server logs for PHP or DB errors.
+- Verify DB connection settings in `config.php`.
+- Ensure all directories are writable as needed.
+
+---
+
+For further help, see [README.md](README.md) or contact the maintainer.
