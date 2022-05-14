@@ -55,3 +55,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 - **Portability**: Runs on standard LAMP/WAMP stack
 - **Reliability**: Error handling, data validation, backup strategies
 
+---
+
+## 5. System Architecture & Technology Stack
+- **Frontend**: HTML5, CSS3 (Flexbox/Grid), JavaScript (vanilla + Chart.js)
+- **Backend**: PHP (OOP/MVC structure recommended)
+- **Database**: MySQL (normalized schema, foreign keys)
+- **Other**: FontAwesome, Google Fonts, AJAX for dynamic features
+
+---
+
+## 6. Development Phases
+### 6.1. Requirements Analysis
+- Interview stakeholders, define user stories, and clarify all features.
+- Document all requirements in a shared location.
+
+### 6.2. System Design
+- Draw DFDs, ERDs, and UI wireframes.
+- Define database schema and API endpoints.
+- Plan directory structure and coding standards.
