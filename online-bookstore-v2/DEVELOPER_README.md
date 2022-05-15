@@ -150,3 +150,22 @@ Document your backend endpoints for clarity and reusability. Example:
   - **Response:** `{ "success": true, "order_id": 456 }`
 
 ---
+
+## 12. Example Code Snippets
+
+### Registration (PHP, OOP style)
+```php
+// RegistrationController.php
+public function register($data) {
+    $username = $data['username'];
+    $password = password_hash($data['password'], PASSWORD_DEFAULT);
+    // ...validate and insert into DB using prepared statements
+}
+```
+
+### Catalog Query (PHP)
+```php
+$stmt = $conn->prepare('SELECT * FROM books WHERE title LIKE ?');
+$search = "%$searchTerm%";
+$stmt->bind_param('s', $search);
+$stmt->execute();
