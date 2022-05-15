@@ -112,3 +112,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 - Limit file upload types and sanitize filenames.
 - Enforce strong password policies.
 - Regularly audit code for vulnerabilities.
+
+---
+
+## 9. Testing & Quality Assurance
+- Use PHPUnit (or similar) for backend testing.
+- Manual and automated browser testing for UI.
+- Validate forms on both client and server.
+- Test for SQL injection, XSS, and authentication bypasses.
+
+---
+
+## 10. Deployment & Maintenance
+- Use environment variables for sensitive configs.
+- Back up database and files regularly.
+- Document deployment steps in a `DEPLOY.md` file.
+- Monitor for errors and performance issues.
+
+---
+
