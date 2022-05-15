@@ -131,3 +131,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 
 ---
 
+## 11. Example API Endpoints
+Document your backend endpoints for clarity and reusability. Example:
+
+### User Registration
+- **POST** `/api/register`
+  - **Body:** `{ "username": "string", "password": "string", "email": "string", "role": "string" }`
+  - **Response:** `{ "success": true, "user_id": 123 }`
+
+### Book Catalog
+- **GET** `/api/books`
+  - **Query Params:** `?search=term&author=authorname`
+  - **Response:** `[ { "id": 1, "title": "Book Title", ... }, ... ]`
+
+### Place Order
+- **POST** `/api/order`
+  - **Body:** `{ "user_id": 123, "book_id": 5 }`
+  - **Response:** `{ "success": true, "order_id": 456 }`
+
+---
