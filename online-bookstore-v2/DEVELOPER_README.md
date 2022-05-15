@@ -93,3 +93,22 @@ The development of OnlineBookstore follows a structured software engineering pro
 - Monitor logs and fix post-launch issues.
 
 ### 6.6. Maintenance
+- Regularly update dependencies and patch security issues.
+- Gather user feedback for improvements.
+
+---
+
+## 7. Database Design
+- See `setup.sql` for full schema.
+- Use foreign keys for referential integrity.
+- Store passwords hashed (never plain text).
+- Use prepared statements for all queries.
+
+---
+
+## 8. Security Practices
+- Escape all user input/output (prevent XSS).
+- Use HTTPS in production.
+- Limit file upload types and sanitize filenames.
+- Enforce strong password policies.
+- Regularly audit code for vulnerabilities.
