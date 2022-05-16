@@ -169,3 +169,22 @@ $stmt = $conn->prepare('SELECT * FROM books WHERE title LIKE ?');
 $search = "%$searchTerm%";
 $stmt->bind_param('s', $search);
 $stmt->execute();
+$result = $stmt->get_result();
+```
+
+### Place Order (PHP)
+```php
+$stmt = $conn->prepare('INSERT INTO orders (user_id, book_id) VALUES (?, ?)');
+$stmt->bind_param('ii', $userId, $bookId);
+$stmt->execute();
+```
+
+---
+
+## 13. Testing & Quality Assurance (Expanded)
+- **Unit Testing:** Use PHPUnit for backend logic, functions, and classes.
+- **Integration Testing:** Test workflows (e.g., registration to order) using tools like Postman or automated scripts.
+- **End-to-End (E2E) Testing:** Use Selenium, Cypress, or Playwright to test user flows in the browser.
+- **Manual Testing:** Validate UI/UX, edge cases, and accessibility.
+- **Security Testing:** Attempt SQL injection, XSS, and authentication bypasses.
+
