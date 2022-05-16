@@ -17,3 +17,16 @@ A: Check your username and password. If you forgot your password, use the reset 
 A: Only admins and teachers can upload. Go to the admin dashboard and use the upload forms.
 
 **Q: Where are my files stored?**
+A: Uploaded books are in `/books/`, audio files in `/audio/`, and cover images in `/covers/`.
+
+## Security
+**Q: How is my data protected?**
+A: Passwords are hashed, all user input is sanitized, and files are securely stored.
+
+## Contribution
+**Q: How can I contribute?**
+A: See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+For more, see [USER_GUIDE.md](USER_GUIDE.md) and [README.md](README.md).
