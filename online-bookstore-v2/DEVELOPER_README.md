@@ -226,3 +226,10 @@ $stmt->execute();
 - **CONTRIBUTING.md:** How to contribute (branching, PRs, code style, reviews).
 - **CHANGELOG.md:** Chronological list of releases and major changes.
 - **SECURITY.md:** Security practices and how to report vulnerabilities.
+- **API_DOCS.md:** In-depth API endpoint documentation with examples.
+- **USER_GUIDE.md:** End-user manual, screenshots, and feature walkthroughs.
+- **FAQ.md:** Common questions and troubleshooting.
+
+---
+
+This expanded guide ensures any developer or team can build, extend, or maintain the OnlineBookstore project to professional standards. For diagrams and more, see SYSTEM_DESIGN.md.
