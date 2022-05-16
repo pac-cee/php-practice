@@ -207,3 +207,22 @@ $stmt->execute();
 - **Pull Requests:** Require review and CI checks before merging.
 
 ---
+
+## 16. Extended Appendix & Documentation Links
+- [README.md](README.md): Project overview and user guide
+- [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md): Architecture, diagrams, API specs
+- [setup.sql](setup.sql): Database schema
+- [DEPLOY.md](DEPLOY.md): Deployment instructions (create this file)
+- [CONTRIBUTING.md](CONTRIBUTING.md): Contribution guidelines (suggested)
+- [CHANGELOG.md](CHANGELOG.md): Track major changes (suggested)
+- [SECURITY.md](SECURITY.md): Security policies and reporting (suggested)
+- [API_DOCS.md](API_DOCS.md): Detailed endpoint docs (suggested)
+
+---
+
+## Suggested Additional Documentation Files
+- **SYSTEM_DESIGN.md:** System and architecture diagrams, flows, and specs.
+- **DEPLOY.md:** Step-by-step deployment guide (server setup, environment variables, DB import, etc.).
+- **CONTRIBUTING.md:** How to contribute (branching, PRs, code style, reviews).
+- **CHANGELOG.md:** Chronological list of releases and major changes.
+- **SECURITY.md:** Security practices and how to report vulnerabilities.
