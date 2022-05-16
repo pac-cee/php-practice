@@ -188,3 +188,22 @@ $stmt->execute();
 - **Manual Testing:** Validate UI/UX, edge cases, and accessibility.
 - **Security Testing:** Attempt SQL injection, XSS, and authentication bypasses.
 
+---
+
+## 14. CI/CD & Deployment Automation
+- Use GitHub Actions, GitLab CI, or similar for automated testing and deployment.
+- Example workflow:
+  - On push: run linting, run tests, build assets, deploy to staging.
+  - On release: deploy to production, run post-deploy checks.
+- Store secrets (DB credentials, API keys) in environment variables.
+- Document deployment in `DEPLOY.md`.
+
+---
+
+## 15. Project Conventions
+- **Branching:** Use `main`/`master` for production, `develop` for staging, feature branches for new features.
+- **Code Style:** PSR-12 for PHP, ESLint for JS, Prettier for formatting.
+- **Commit Messages:** Use Conventional Commits (e.g., `feat: add user registration`, `fix: correct SQL bug`).
+- **Pull Requests:** Require review and CI checks before merging.
+
+---
