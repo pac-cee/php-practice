@@ -93,3 +93,22 @@ function GetInfoFromTrueType($file, $embed, $subset, $map)
 	$k = 1000/$ttf->unitsPerEm;
 	$info['FontName'] = $ttf->postScriptName;
 	$info['Bold'] = $ttf->bold;
+	$info['ItalicAngle'] = $ttf->italicAngle;
+	$info['IsFixedPitch'] = $ttf->isFixedPitch;
+	$info['Ascender'] = round($k*$ttf->typoAscender);
+	$info['Descender'] = round($k*$ttf->typoDescender);
+	$info['UnderlineThickness'] = round($k*$ttf->underlineThickness);
+	$info['UnderlinePosition'] = round($k*$ttf->underlinePosition);
+	$info['FontBBox'] = array(round($k*$ttf->xMin), round($k*$ttf->yMin), round($k*$ttf->xMax), round($k*$ttf->yMax));
+	$info['CapHeight'] = round($k*$ttf->capHeight);
+	$info['MissingWidth'] = round($k*$ttf->glyphs[0]['w']);
+	$widths = array_fill(0, 256, $info['MissingWidth']);
+	foreach($map as $c=>$v)
+	{
+		if($v['name']!='.notdef')
+		{
+			if(isset($ttf->chars[$v['uv']]))
+			{
+				$id = $ttf->chars[$v['uv']];
+				$w = $ttf->glyphs[$id]['w'];
+				$widths[$c] = round($k*$w);
