@@ -55,3 +55,22 @@ function LoadMap($enc)
 		$uv = hexdec(substr($e[1],2));
 		$name = $e[2];
 		$map[$c] = array('uv'=>$uv, 'name'=>$name);
+	}
+	return $map;
+}
+
+function GetInfoFromTrueType($file, $embed, $subset, $map)
+{
+	// Return information from a TrueType font
+	try
+	{
+		$ttf = new TTFParser($file);
+		$ttf->Parse();
+	}
+	catch(Exception $e)
+	{
+		Error($e->getMessage());
+	}
+	if($embed)
+	{
+		if(!$ttf->embeddable)
