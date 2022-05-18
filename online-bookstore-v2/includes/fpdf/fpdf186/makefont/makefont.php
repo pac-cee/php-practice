@@ -74,3 +74,22 @@ function GetInfoFromTrueType($file, $embed, $subset, $map)
 	if($embed)
 	{
 		if(!$ttf->embeddable)
+			Error('Font license does not allow embedding');
+		if($subset)
+		{
+			$chars = array();
+			foreach($map as $v)
+			{
+				if($v['name']!='.notdef')
+					$chars[] = $v['uv'];
+			}
+			$ttf->Subset($chars);
+			$info['Data'] = $ttf->Build();
+		}
+		else
+			$info['Data'] = file_get_contents($file);
+		$info['OriginalSize'] = strlen($info['Data']);
+	}
+	$k = 1000/$ttf->unitsPerEm;
+	$info['FontName'] = $ttf->postScriptName;
+	$info['Bold'] = $ttf->bold;
