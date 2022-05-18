@@ -112,3 +112,22 @@ function GetInfoFromTrueType($file, $embed, $subset, $map)
 				$id = $ttf->chars[$v['uv']];
 				$w = $ttf->glyphs[$id]['w'];
 				$widths[$c] = round($k*$w);
+			}
+			else
+				Warning('Character '.$v['name'].' is missing');
+		}
+	}
+	$info['Widths'] = $widths;
+	return $info;
+}
+
+function GetInfoFromType1($file, $embed, $map)
+{
+	// Return information from a Type1 font
+	if($embed)
+	{
+		$f = fopen($file, 'rb');
+		if(!$f)
+			Error('Can\'t open font file');
+		// Read first segment
+		$a = unpack('Cmarker/Ctype/Vsize', fread($f,6));
