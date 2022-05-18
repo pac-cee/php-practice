@@ -17,3 +17,22 @@ function Message($txt, $severity='')
 			echo "$severity: ";
 		echo "$txt\n";
 	}
+	else
+	{
+		if($severity)
+			echo "<b>$severity</b>: ";
+		echo "$txt<br>";
+	}
+}
+
+function Notice($txt)
+{
+	Message($txt, 'Notice');
+}
+
+function Warning($txt)
+{
+	Message($txt, 'Warning');
+}
+
+function Error($txt)
