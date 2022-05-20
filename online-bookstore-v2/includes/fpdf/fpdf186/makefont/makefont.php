@@ -264,3 +264,22 @@ function MakeWidthArray($widths)
 		elseif($c>=32 && $c<=126)
 			$s .= "'".chr($c)."'";
 		else
+			$s .= "chr($c)";
+		$s .= '=>'.$widths[$c];
+		if($c<255)
+			$s .= ',';
+		if(($c+1)%22==0)
+			$s .= "\n\t";
+	}
+	$s .= ')';
+	return $s;
+}
+
+function MakeFontEncoding($map)
+{
+	// Build differences from reference encoding
+	$ref = LoadMap('cp1252');
+	$s = '';
+	$last = 0;
+	for($c=32;$c<=255;$c++)
+	{
