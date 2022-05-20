@@ -207,3 +207,22 @@ function GetInfoFromType1($file, $embed, $map)
 		{
 			if(isset($cw[$v['name']]))
 				$widths[$c] = $cw[$v['name']];
+			else
+				Warning('Character '.$v['name'].' is missing');
+		}
+	}
+	$info['Widths'] = $widths;
+	return $info;
+}
+
+function MakeFontDescriptor($info)
+{
+	// Ascent
+	$fd = "array('Ascent'=>".$info['Ascender'];
+	// Descent
+	$fd .= ",'Descent'=>".$info['Descender'];
+	// CapHeight
+	if(!empty($info['CapHeight']))
+		$fd .= ",'CapHeight'=>".$info['CapHeight'];
+	else
+		$fd .= ",'CapHeight'=>".$info['Ascender'];
