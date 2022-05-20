@@ -150,3 +150,22 @@ function GetInfoFromType1($file, $embed, $map)
 	$afm = substr($file, 0, -3).'afm';
 	if(!file_exists($afm))
 		Error('AFM font file not found: '.$afm);
+	$a = file($afm);
+	if(empty($a))
+		Error('AFM file empty or not readable');
+	foreach($a as $line)
+	{
+		$e = explode(' ', rtrim($line));
+		if(count($e)<2)
+			continue;
+		$entry = $e[0];
+		if($entry=='C')
+		{
+			$w = $e[4];
+			$name = $e[7];
+			$cw[$name] = $w;
+		}
+		elseif($entry=='FontName')
+			$info['FontName'] = $e[1];
+		elseif($entry=='Weight')
+			$info['Weight'] = $e[1];
