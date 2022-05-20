@@ -169,3 +169,22 @@ function GetInfoFromType1($file, $embed, $map)
 			$info['FontName'] = $e[1];
 		elseif($entry=='Weight')
 			$info['Weight'] = $e[1];
+		elseif($entry=='ItalicAngle')
+			$info['ItalicAngle'] = (int)$e[1];
+		elseif($entry=='Ascender')
+			$info['Ascender'] = (int)$e[1];
+		elseif($entry=='Descender')
+			$info['Descender'] = (int)$e[1];
+		elseif($entry=='UnderlineThickness')
+			$info['UnderlineThickness'] = (int)$e[1];
+		elseif($entry=='UnderlinePosition')
+			$info['UnderlinePosition'] = (int)$e[1];
+		elseif($entry=='IsFixedPitch')
+			$info['IsFixedPitch'] = ($e[1]=='true');
+		elseif($entry=='FontBBox')
+			$info['FontBBox'] = array((int)$e[1], (int)$e[2], (int)$e[3], (int)$e[4]);
+		elseif($entry=='CapHeight')
+			$info['CapHeight'] = (int)$e[1];
+		elseif($entry=='StdVW')
+			$info['StdVW'] = (int)$e[1];
+	}
