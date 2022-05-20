@@ -188,3 +188,22 @@ function GetInfoFromType1($file, $embed, $map)
 		elseif($entry=='StdVW')
 			$info['StdVW'] = (int)$e[1];
 	}
+
+	if(!isset($info['FontName']))
+		Error('FontName missing in AFM file');
+	if(!isset($info['Ascender']))
+		$info['Ascender'] = $info['FontBBox'][3];
+	if(!isset($info['Descender']))
+		$info['Descender'] = $info['FontBBox'][1];
+	$info['Bold'] = isset($info['Weight']) && preg_match('/bold|black/i', $info['Weight']);
+	if(isset($cw['.notdef']))
+		$info['MissingWidth'] = $cw['.notdef'];
+	else
+		$info['MissingWidth'] = 0;
+	$widths = array_fill(0, 256, $info['MissingWidth']);
+	foreach($map as $c=>$v)
+	{
+		if($v['name']!='.notdef')
+		{
+			if(isset($cw[$v['name']]))
+				$widths[$c] = $cw[$v['name']];
