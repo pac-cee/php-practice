@@ -226,3 +226,22 @@ function MakeFontDescriptor($info)
 		$fd .= ",'CapHeight'=>".$info['CapHeight'];
 	else
 		$fd .= ",'CapHeight'=>".$info['Ascender'];
+	// Flags
+	$flags = 0;
+	if($info['IsFixedPitch'])
+		$flags += 1<<0;
+	$flags += 1<<5;
+	if($info['ItalicAngle']!=0)
+		$flags += 1<<6;
+	$fd .= ",'Flags'=>".$flags;
+	// FontBBox
+	$fbb = $info['FontBBox'];
+	$fd .= ",'FontBBox'=>'[".$fbb[0].' '.$fbb[1].' '.$fbb[2].' '.$fbb[3]."]'";
+	// ItalicAngle
+	$fd .= ",'ItalicAngle'=>".$info['ItalicAngle'];
+	// StemV
+	if(isset($info['StdVW']))
+		$stemv = $info['StdVW'];
+	elseif($info['Bold'])
+		$stemv = 120;
+	else
