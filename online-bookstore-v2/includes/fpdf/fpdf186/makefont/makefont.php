@@ -245,3 +245,22 @@ function MakeFontDescriptor($info)
 	elseif($info['Bold'])
 		$stemv = 120;
 	else
+		$stemv = 70;
+	$fd .= ",'StemV'=>".$stemv;
+	// MissingWidth
+	$fd .= ",'MissingWidth'=>".$info['MissingWidth'].')';
+	return $fd;
+}
+
+function MakeWidthArray($widths)
+{
+	$s = "array(\n\t";
+	for($c=0;$c<=255;$c++)
+	{
+		if(chr($c)=="'")
+			$s .= "'\\''";
+		elseif(chr($c)=="\\")
+			$s .= "'\\\\'";
+		elseif($c>=32 && $c<=126)
+			$s .= "'".chr($c)."'";
+		else
