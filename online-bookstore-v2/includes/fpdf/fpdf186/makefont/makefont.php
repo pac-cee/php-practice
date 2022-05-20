@@ -131,3 +131,22 @@ function GetInfoFromType1($file, $embed, $map)
 			Error('Can\'t open font file');
 		// Read first segment
 		$a = unpack('Cmarker/Ctype/Vsize', fread($f,6));
+		if($a['marker']!=128)
+			Error('Font file is not a valid binary Type1');
+		$size1 = $a['size'];
+		$data = fread($f, $size1);
+		// Read second segment
+		$a = unpack('Cmarker/Ctype/Vsize', fread($f,6));
+		if($a['marker']!=128)
+			Error('Font file is not a valid binary Type1');
+		$size2 = $a['size'];
+		$data .= fread($f, $size2);
+		fclose($f);
+		$info['Data'] = $data;
+		$info['Size1'] = $size1;
+		$info['Size2'] = $size2;
+	}
+
+	$afm = substr($file, 0, -3).'afm';
+	if(!file_exists($afm))
+		Error('AFM font file not found: '.$afm);
