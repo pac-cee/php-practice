@@ -359,3 +359,22 @@ function MakeDefinitionFile($file, $type, $enc, $embed, $subset, $map, $info)
 	$s .= '$cw = '.MakeWidthArray($info['Widths']).";\n";
 	$s .= '$enc = \''.$enc."';\n";
 	$diff = MakeFontEncoding($map);
+	if($diff)
+		$s .= '$diff = \''.$diff."';\n";
+	$s .= '$uv = '.MakeUnicodeArray($map).";\n";
+	if($embed)
+	{
+		$s .= '$file = \''.$info['File']."';\n";
+		if($type=='Type1')
+		{
+			$s .= '$size1 = '.$info['Size1'].";\n";
+			$s .= '$size2 = '.$info['Size2'].";\n";
+		}
+		else
+		{
+			$s .= '$originalsize = '.$info['OriginalSize'].";\n";
+			if($subset)
+				$s .= "\$subsetted = true;\n";
+		}
+	}
+	$s .= "?>\n";
