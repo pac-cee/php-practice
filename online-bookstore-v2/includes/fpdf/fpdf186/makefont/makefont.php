@@ -378,3 +378,22 @@ function MakeDefinitionFile($file, $type, $enc, $embed, $subset, $map, $info)
 		}
 	}
 	$s .= "?>\n";
+	SaveToFile($file, $s, 't');
+}
+
+function MakeFont($fontfile, $enc='cp1252', $embed=true, $subset=true)
+{
+	// Generate a font definition file
+	if(!file_exists($fontfile))
+		Error('Font file not found: '.$fontfile);
+	$ext = strtolower(substr($fontfile,-3));
+	if($ext=='ttf' || $ext=='otf')
+		$type = 'TrueType';
+	elseif($ext=='pfb')
+		$type = 'Type1';
+	else
+		Error('Unrecognized font file extension: '.$ext);
+
+	$map = LoadMap($enc);
+
+	if($type=='TrueType')
