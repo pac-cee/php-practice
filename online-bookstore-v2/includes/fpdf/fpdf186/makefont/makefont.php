@@ -340,3 +340,22 @@ function MakeUnicodeArray($map)
 }
 
 function SaveToFile($file, $s, $mode)
+{
+	$f = fopen($file, 'w'.$mode);
+	if(!$f)
+		Error('Can\'t write to file '.$file);
+	fwrite($f, $s);
+	fclose($f);
+}
+
+function MakeDefinitionFile($file, $type, $enc, $embed, $subset, $map, $info)
+{
+	$s = "<?php\n";
+	$s .= '$type = \''.$type."';\n";
+	$s .= '$name = \''.$info['FontName']."';\n";
+	$s .= '$desc = '.MakeFontDescriptor($info).";\n";
+	$s .= '$up = '.$info['UnderlinePosition'].";\n";
+	$s .= '$ut = '.$info['UnderlineThickness'].";\n";
+	$s .= '$cw = '.MakeWidthArray($info['Widths']).";\n";
+	$s .= '$enc = \''.$enc."';\n";
+	$diff = MakeFontEncoding($map);
