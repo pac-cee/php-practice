@@ -283,3 +283,22 @@ function MakeFontEncoding($map)
 	$last = 0;
 	for($c=32;$c<=255;$c++)
 	{
+		if($map[$c]['name']!=$ref[$c]['name'])
+		{
+			if($c!=$last+1)
+				$s .= $c.' ';
+			$last = $c;
+			$s .= '/'.$map[$c]['name'].' ';
+		}
+	}
+	return rtrim($s);
+}
+
+function MakeUnicodeArray($map)
+{
+	// Build mapping to Unicode values
+	$ranges = array();
+	foreach($map as $c=>$v)
+	{
+		$uv = $v['uv'];
+		if($uv!=-1)
