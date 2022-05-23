@@ -302,3 +302,22 @@ function MakeUnicodeArray($map)
 	{
 		$uv = $v['uv'];
 		if($uv!=-1)
+		{
+			if(isset($range))
+			{
+				if($c==$range[1]+1 && $uv==$range[3]+1)
+				{
+					$range[1]++;
+					$range[3]++;
+				}
+				else
+				{
+					$ranges[] = $range;
+					$range = array($c, $c, $uv, $uv);
+				}
+			}
+			else
+				$range = array($c, $c, $uv, $uv);
+		}
+	}
+	$ranges[] = $range;
