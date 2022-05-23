@@ -321,3 +321,22 @@ function MakeUnicodeArray($map)
 		}
 	}
 	$ranges[] = $range;
+
+	foreach($ranges as $range)
+	{
+		if(isset($s))
+			$s .= ',';
+		else
+			$s = 'array(';
+		$s .= $range[0].'=>';
+		$nb = $range[1]-$range[0]+1;
+		if($nb>1)
+			$s .= 'array('.$range[2].','.$nb.')';
+		else
+			$s .= $range[2];
+	}
+	$s .= ')';
+	return $s;
+}
+
+function SaveToFile($file, $s, $mode)
