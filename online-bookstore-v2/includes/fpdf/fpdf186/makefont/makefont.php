@@ -416,3 +416,22 @@ function MakeFont($fontfile, $enc='cp1252', $embed=true, $subset=true)
 			$info['File'] = basename($fontfile);
 			$subset = false;
 			Notice('Font file could not be compressed (zlib extension not available)');
+		}
+	}
+
+	MakeDefinitionFile($basename.'.php', $type, $enc, $embed, $subset, $map, $info);
+	Message('Font definition file generated: '.$basename.'.php');
+}
+
+if(PHP_SAPI=='cli')
+{
+	// Command-line interface
+	ini_set('log_errors', '0');
+	if($argc==1)
+		die("Usage: php makefont.php fontfile [encoding] [embed] [subset]\n");
+	$fontfile = $argv[1];
+	if($argc>=3)
+		$enc = $argv[2];
+	else
+		$enc = 'cp1252';
+	if($argc>=4)
