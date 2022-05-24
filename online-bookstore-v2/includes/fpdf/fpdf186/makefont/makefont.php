@@ -397,3 +397,22 @@ function MakeFont($fontfile, $enc='cp1252', $embed=true, $subset=true)
 	$map = LoadMap($enc);
 
 	if($type=='TrueType')
+		$info = GetInfoFromTrueType($fontfile, $embed, $subset, $map);
+	else
+		$info = GetInfoFromType1($fontfile, $embed, $map);
+
+	$basename = substr(basename($fontfile), 0, -4);
+	if($embed)
+	{
+		if(function_exists('gzcompress'))
+		{
+			$file = $basename.'.z';
+			SaveToFile($file, gzcompress($info['Data']), 'b');
+			$info['File'] = $file;
+			Message('Font file compressed: '.$file);
+		}
+		else
+		{
+			$info['File'] = basename($fontfile);
+			$subset = false;
+			Notice('Font file could not be compressed (zlib extension not available)');
