@@ -435,3 +435,13 @@ if(PHP_SAPI=='cli')
 	else
 		$enc = 'cp1252';
 	if($argc>=4)
+		$embed = ($argv[3]=='true' || $argv[3]=='1');
+	else
+		$embed = true;
+	if($argc>=5)
+		$subset = ($argv[4]=='true' || $argv[4]=='1');
+	else
+		$subset = true;
+	MakeFont($fontfile, $enc, $embed, $subset);
+}
+?>
