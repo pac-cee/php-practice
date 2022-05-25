@@ -112,3 +112,22 @@ class TTFParser
 		$this->numGlyphs = $this->ReadUShort();
 	}
 
+	function ParseHmtx()
+	{
+		$this->Seek('hmtx');
+		$this->glyphs = array();
+		for($i=0;$i<$this->numberOfHMetrics;$i++)
+		{
+			$advanceWidth = $this->ReadUShort();
+			$lsb = $this->ReadShort();
+			$this->glyphs[$i] = array('w'=>$advanceWidth, 'lsb'=>$lsb);
+		}
+		for($i=$this->numberOfHMetrics;$i<$this->numGlyphs;$i++)
+		{
+			$lsb = $this->ReadShort();
+			$this->glyphs[$i] = array('w'=>$advanceWidth, 'lsb'=>$lsb);
+		}
+	}
+
+	function ParseLoca()
+	{
