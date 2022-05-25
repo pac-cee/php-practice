@@ -93,3 +93,22 @@ class TTFParser
 		$this->xMin = $this->ReadShort();
 		$this->yMin = $this->ReadShort();
 		$this->xMax = $this->ReadShort();
+		$this->yMax = $this->ReadShort();
+		$this->Skip(3*2); // macStyle, lowestRecPPEM, fontDirectionHint
+		$this->indexToLocFormat = $this->ReadShort();
+	}
+
+	function ParseHhea()
+	{
+		$this->Seek('hhea');
+		$this->Skip(4+15*2);
+		$this->numberOfHMetrics = $this->ReadUShort();
+	}
+
+	function ParseMaxp()
+	{
+		$this->Seek('maxp');
+		$this->Skip(4);
+		$this->numGlyphs = $this->ReadUShort();
+	}
+
