@@ -131,3 +131,22 @@ class TTFParser
 
 	function ParseLoca()
 	{
+		$this->Seek('loca');
+		$offsets = array();
+		if($this->indexToLocFormat==0)
+		{
+			// Short format
+			for($i=0;$i<=$this->numGlyphs;$i++)
+				$offsets[] = 2*$this->ReadUShort();
+		}
+		else
+		{
+			// Long format
+			for($i=0;$i<=$this->numGlyphs;$i++)
+				$offsets[] = $this->ReadULong();
+		}
+		for($i=0;$i<$this->numGlyphs;$i++)
+		{
+			$this->glyphs[$i]['offset'] = $offsets[$i];
+			$this->glyphs[$i]['length'] = $offsets[$i+1] - $offsets[$i];
+		}
