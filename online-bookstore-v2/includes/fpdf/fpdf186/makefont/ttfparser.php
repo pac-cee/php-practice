@@ -17,3 +17,22 @@ class TTFParser
 	protected $indexToLocFormat;
 	protected $subsettedChars;
 	protected $subsettedGlyphs;
+	public $chars;
+	public $glyphs;
+	public $unitsPerEm;
+	public $xMin, $yMin, $xMax, $yMax;
+	public $postScriptName;
+	public $embeddable;
+	public $bold;
+	public $typoAscender;
+	public $typoDescender;
+	public $capHeight;
+	public $italicAngle;
+	public $underlinePosition;
+	public $underlineThickness;
+	public $isFixedPitch;
+
+	function __construct($file)
+	{
+		$this->f = fopen($file, 'rb');
+		if(!$this->f)
