@@ -36,3 +36,22 @@ class TTFParser
 	{
 		$this->f = fopen($file, 'rb');
 		if(!$this->f)
+			$this->Error('Can\'t open file: '.$file);
+	}
+
+	function __destruct()
+	{
+		if(is_resource($this->f))
+			fclose($this->f);
+	}
+
+	function Parse()
+	{
+		$this->ParseOffsetTable();
+		$this->ParseHead();
+		$this->ParseHhea();
+		$this->ParseMaxp();
+		$this->ParseHmtx();
+		$this->ParseLoca();
+		$this->ParseGlyf();
+		$this->ParseCmap();
