@@ -55,3 +55,22 @@ class TTFParser
 		$this->ParseLoca();
 		$this->ParseGlyf();
 		$this->ParseCmap();
+		$this->ParseName();
+		$this->ParseOS2();
+		$this->ParsePost();
+	}
+
+	function ParseOffsetTable()
+	{
+		$version = $this->Read(4);
+		if($version=='OTTO')
+			$this->Error('OpenType fonts based on PostScript outlines are not supported');
+		if($version!="\x00\x01\x00\x00")
+			$this->Error('Unrecognized file format');
+		$numTables = $this->ReadUShort();
+		$this->Skip(3*2); // searchRange, entrySelector, rangeShift
+		$this->tables = array();
+		for($i=0;$i<$numTables;$i++)
+		{
+			$tag = $this->Read(4);
+			$checkSum = $this->Read(4);
