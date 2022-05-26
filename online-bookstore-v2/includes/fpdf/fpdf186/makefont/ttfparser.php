@@ -283,3 +283,22 @@ class TTFParser
 				$this->postScriptName = $s;
 				break;
 			}
+		}
+		if($this->postScriptName=='')
+			$this->Error('PostScript name not found');
+	}
+
+	function ParseOS2()
+	{
+		$this->Seek('OS/2');
+		$version = $this->ReadUShort();
+		$this->Skip(3*2); // xAvgCharWidth, usWeightClass, usWidthClass
+		$fsType = $this->ReadUShort();
+		$this->embeddable = ($fsType!=2) && ($fsType & 0x200)==0;
+		$this->Skip(11*2+10+4*4+4);
+		$fsSelection = $this->ReadUShort();
+		$this->bold = ($fsSelection & 32)!=0;
+		$this->Skip(2*2); // usFirstCharIndex, usLastCharIndex
+		$this->typoAscender = $this->ReadShort();
+		$this->typoDescender = $this->ReadShort();
+		if($version>=2)
