@@ -169,3 +169,22 @@ class TTFParser
 					do
 					{
 						$flags = $this->ReadUShort();
+						$index = $this->ReadUShort();
+						$a[$offset+2] = $index;
+						if($flags & 1) // ARG_1_AND_2_ARE_WORDS
+							$skip = 2*2;
+						else
+							$skip = 2;
+						if($flags & 8) // WE_HAVE_A_SCALE
+							$skip += 2;
+						elseif($flags & 64) // WE_HAVE_AN_X_AND_Y_SCALE
+							$skip += 2*2;
+						elseif($flags & 128) // WE_HAVE_A_TWO_BY_TWO
+							$skip += 4*2;
+						$this->Skip($skip);
+						$offset += 2*2 + $skip;
+					}
+					while($flags & 32); // MORE_COMPONENTS
+					$glyph['components'] = $a;
+				}
+			}
