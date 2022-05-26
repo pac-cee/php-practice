@@ -188,3 +188,22 @@ class TTFParser
 					$glyph['components'] = $a;
 				}
 			}
+		}
+	}
+
+	function ParseCmap()
+	{
+		$this->Seek('cmap');
+		$this->Skip(2); // version
+		$numTables = $this->ReadUShort();
+		$offset31 = 0;
+		for($i=0;$i<$numTables;$i++)
+		{
+			$platformID = $this->ReadUShort();
+			$encodingID = $this->ReadUShort();
+			$offset = $this->ReadULong();
+			if($platformID==3 && $encodingID==1)
+				$offset31 = $offset;
+		}
+		if($offset31==0)
+			$this->Error('No Unicode encoding found');
