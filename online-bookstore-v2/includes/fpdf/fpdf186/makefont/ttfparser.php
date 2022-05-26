@@ -302,3 +302,22 @@ class TTFParser
 		$this->typoAscender = $this->ReadShort();
 		$this->typoDescender = $this->ReadShort();
 		if($version>=2)
+		{
+			$this->Skip(3*2+2*4+2);
+			$this->capHeight = $this->ReadShort();
+		}
+		else
+			$this->capHeight = 0;
+	}
+
+	function ParsePost()
+	{
+		$this->Seek('post');
+		$version = $this->ReadULong();
+		$this->italicAngle = $this->ReadShort();
+		$this->Skip(2); // Skip decimal part
+		$this->underlinePosition = $this->ReadShort();
+		$this->underlineThickness = $this->ReadShort();
+		$this->isFixedPitch = ($this->ReadULong()!=0);
+		if($version==0x20000)
+		{
