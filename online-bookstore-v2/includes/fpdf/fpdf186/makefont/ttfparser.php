@@ -150,3 +150,22 @@ class TTFParser
 			$this->glyphs[$i]['offset'] = $offsets[$i];
 			$this->glyphs[$i]['length'] = $offsets[$i+1] - $offsets[$i];
 		}
+	}
+
+	function ParseGlyf()
+	{
+		$tableOffset = $this->tables['glyf']['offset'];
+		foreach($this->glyphs as &$glyph)
+		{
+			if($glyph['length']>0)
+			{
+				fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
+				if($this->ReadShort()<0)
+				{
+					// Composite glyph
+					$this->Skip(4*2); // xMin, yMin, xMax, yMax
+					$offset = 5*2;
+					$a = array();
+					do
+					{
+						$flags = $this->ReadUShort();
