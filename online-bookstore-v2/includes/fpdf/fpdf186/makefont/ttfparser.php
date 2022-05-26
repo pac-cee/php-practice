@@ -245,3 +245,22 @@ class TTFParser
 					break;
 				if($ro>0)
 				{
+					$gid = $this->ReadUShort();
+					if($gid>0)
+						$gid += $d;
+				}
+				else
+					$gid = $c+$d;
+				if($gid>=65536)
+					$gid -= 65536;
+				if($gid>0)
+					$this->chars[$c] = $gid;
+			}
+		}
+	}
+
+	function ParseName()
+	{
+		$this->Seek('name');
+		$tableOffset = $this->tables['name']['offset'];
+		$this->postScriptName = '';
