@@ -264,3 +264,22 @@ class TTFParser
 		$this->Seek('name');
 		$tableOffset = $this->tables['name']['offset'];
 		$this->postScriptName = '';
+		$this->Skip(2); // format
+		$count = $this->ReadUShort();
+		$stringOffset = $this->ReadUShort();
+		for($i=0;$i<$count;$i++)
+		{
+			$this->Skip(3*2); // platformID, encodingID, languageID
+			$nameID = $this->ReadUShort();
+			$length = $this->ReadUShort();
+			$offset = $this->ReadUShort();
+			if($nameID==6)
+			{
+				// PostScript name
+				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_SET);
+				$s = $this->Read($length);
+				$s = str_replace(chr(0), '', $s);
+				$s = preg_replace('|[ \[\](){}<>/%]|', '', $s);
+				$this->postScriptName = $s;
+				break;
+			}
