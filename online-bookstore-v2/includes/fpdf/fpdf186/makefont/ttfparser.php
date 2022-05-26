@@ -207,3 +207,22 @@ class TTFParser
 		}
 		if($offset31==0)
 			$this->Error('No Unicode encoding found');
+
+		$startCount = array();
+		$endCount = array();
+		$idDelta = array();
+		$idRangeOffset = array();
+		$this->chars = array();
+		fseek($this->f, $this->tables['cmap']['offset']+$offset31, SEEK_SET);
+		$format = $this->ReadUShort();
+		if($format!=4)
+			$this->Error('Unexpected subtable format: '.$format);
+		$this->Skip(2*2); // length, language
+		$segCount = $this->ReadUShort()/2;
+		$this->Skip(3*2); // searchRange, entrySelector, rangeShift
+		for($i=0;$i<$segCount;$i++)
+			$endCount[$i] = $this->ReadUShort();
+		$this->Skip(2); // reservedPad
+		for($i=0;$i<$segCount;$i++)
+			$startCount[$i] = $this->ReadUShort();
+		for($i=0;$i<$segCount;$i++)
