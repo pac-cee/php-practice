@@ -226,3 +226,22 @@ class TTFParser
 		for($i=0;$i<$segCount;$i++)
 			$startCount[$i] = $this->ReadUShort();
 		for($i=0;$i<$segCount;$i++)
+			$idDelta[$i] = $this->ReadShort();
+		$offset = ftell($this->f);
+		for($i=0;$i<$segCount;$i++)
+			$idRangeOffset[$i] = $this->ReadUShort();
+
+		for($i=0;$i<$segCount;$i++)
+		{
+			$c1 = $startCount[$i];
+			$c2 = $endCount[$i];
+			$d = $idDelta[$i];
+			$ro = $idRangeOffset[$i];
+			if($ro>0)
+				fseek($this->f, $offset+2*$i+$ro, SEEK_SET);
+			for($c=$c1;$c<=$c2;$c++)
+			{
+				if($c==0xFFFF)
+					break;
+				if($ro>0)
+				{
