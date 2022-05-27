@@ -397,3 +397,22 @@ class TTFParser
 	{
 		if(!isset($this->subsettedChars))
 			return;
+
+		// Divide charset in contiguous segments
+		$chars = $this->subsettedChars;
+		sort($chars);
+		$segments = array();
+		$segment = array($chars[0], $chars[0]);
+		for($i=1;$i<count($chars);$i++)
+		{
+			if($chars[$i]>$segment[1]+1)
+			{
+				$segments[] = $segment;
+				$segment = array($chars[$i], $chars[$i]);
+			}
+			else
+				$segment[1]++;
+		}
+		$segments[] = $segment;
+		$segments[] = array(0xFFFF, 0xFFFF);
+		$segCount = count($segments);
