@@ -378,3 +378,22 @@ class TTFParser
 				foreach($this->glyphs[$id]['components'] as $cid)
 					$this->AddGlyph($cid);
 			}
+		}
+	}
+
+	function Build()
+	{
+		$this->BuildCmap();
+		$this->BuildHhea();
+		$this->BuildHmtx();
+		$this->BuildLoca();
+		$this->BuildGlyf();
+		$this->BuildMaxp();
+		$this->BuildPost();
+		return $this->BuildFont();
+	}
+
+	function BuildCmap()
+	{
+		if(!isset($this->subsettedChars))
+			return;
