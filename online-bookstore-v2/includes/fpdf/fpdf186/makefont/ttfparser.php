@@ -435,3 +435,22 @@ class TTFParser
 				$idRangeOffset[] = strlen($glyphIdArray) + ($segCount-$i)*2;
 				for($c=$start;$c<=$end;$c++)
 				{
+					$ssid = $this->glyphs[$this->chars[$c]]['ssid'];
+					$glyphIdArray .= pack('n', $ssid);
+				}
+			}
+			else
+			{
+				// Segment with a single char
+				if($start<0xFFFF)
+					$ssid = $this->glyphs[$this->chars[$start]]['ssid'];
+				else
+					$ssid = 0;
+				$idDelta[] = $ssid - $start;
+				$idRangeOffset[] = 0;
+			}
+		}
+		$entrySelector = 0;
+		$n = $segCount;
+		while($n!=1)
+		{
