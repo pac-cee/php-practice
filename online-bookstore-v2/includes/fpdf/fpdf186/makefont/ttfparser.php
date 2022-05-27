@@ -359,3 +359,22 @@ class TTFParser
 		$this->subsettedChars = array();
 		foreach($chars as $char)
 		{
+			if(isset($this->chars[$char]))
+			{
+				$this->subsettedChars[] = $char;
+				$this->AddGlyph($this->chars[$char]);
+			}
+		}
+	}
+
+	function AddGlyph($id)
+	{
+		if(!isset($this->glyphs[$id]['ssid']))
+		{
+			$this->glyphs[$id]['ssid'] = count($this->subsettedGlyphs);
+			$this->subsettedGlyphs[] = $id;
+			if(isset($this->glyphs[$id]['components']))
+			{
+				foreach($this->glyphs[$id]['components'] as $cid)
+					$this->AddGlyph($cid);
+			}
