@@ -340,3 +340,22 @@ class TTFParser
 				$names[] = $this->Read($len);
 			}
 			foreach($glyphNameIndex as $i=>$index)
+			{
+				if($index>=258)
+					$this->glyphs[$i]['name'] = $names[$index-258];
+				else
+					$this->glyphs[$i]['name'] = $index;
+			}
+			$this->glyphNames = true;
+		}
+		else
+			$this->glyphNames = false;
+	}
+
+	function Subset($chars)
+	{
+		$this->subsettedGlyphs = array();
+		$this->AddGlyph(0);
+		$this->subsettedChars = array();
+		foreach($chars as $char)
+		{
