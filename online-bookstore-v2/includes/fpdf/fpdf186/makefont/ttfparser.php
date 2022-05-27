@@ -416,3 +416,22 @@ class TTFParser
 		$segments[] = $segment;
 		$segments[] = array(0xFFFF, 0xFFFF);
 		$segCount = count($segments);
+
+		// Build a Format 4 subtable
+		$startCount = array();
+		$endCount = array();
+		$idDelta = array();
+		$idRangeOffset = array();
+		$glyphIdArray = '';
+		for($i=0;$i<$segCount;$i++)
+		{
+			list($start, $end) = $segments[$i];
+			$startCount[] = $start;
+			$endCount[] = $end;
+			if($start!=$end)
+			{
+				// Segment with multiple chars
+				$idDelta[] = 0;
+				$idRangeOffset[] = strlen($glyphIdArray) + ($segCount-$i)*2;
+				for($c=$start;$c<=$end;$c++)
+				{
