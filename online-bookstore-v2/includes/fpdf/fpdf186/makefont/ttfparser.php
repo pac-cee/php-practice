@@ -454,3 +454,22 @@ class TTFParser
 		$n = $segCount;
 		while($n!=1)
 		{
+			$n = $n>>1;
+			$entrySelector++;
+		}
+		$searchRange = (1<<$entrySelector)*2;
+		$rangeShift = 2*$segCount - $searchRange;
+		$cmap = pack('nnnn', 2*$segCount, $searchRange, $entrySelector, $rangeShift);
+		foreach($endCount as $val)
+			$cmap .= pack('n', $val);
+		$cmap .= pack('n', 0); // reservedPad
+		foreach($startCount as $val)
+			$cmap .= pack('n', $val);
+		foreach($idDelta as $val)
+			$cmap .= pack('n', $val);
+		foreach($idRangeOffset as $val)
+			$cmap .= pack('n', $val);
+		$cmap .= $glyphIdArray;
+
+		$data = pack('nn', 0, 1); // version, numTables
+		$data .= pack('nnN', 3, 1, 12); // platformID, encodingID, offset
