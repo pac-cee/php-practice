@@ -473,3 +473,22 @@ class TTFParser
 
 		$data = pack('nn', 0, 1); // version, numTables
 		$data .= pack('nnN', 3, 1, 12); // platformID, encodingID, offset
+		$data .= pack('nnn', 4, 6+strlen($cmap), 0); // format, length, language
+		$data .= $cmap;
+		$this->SetTable('cmap', $data);
+	}
+
+	function BuildHhea()
+	{
+		$this->LoadTable('hhea');
+		$numberOfHMetrics = count($this->subsettedGlyphs);
+		$data = substr_replace($this->tables['hhea']['data'], pack('n',$numberOfHMetrics), 4+15*2, 2);
+		$this->SetTable('hhea', $data);
+	}
+
+	function BuildHmtx()
+	{
+		$data = '';
+		foreach($this->subsettedGlyphs as $id)
+		{
+			$glyph = $this->glyphs[$id];
