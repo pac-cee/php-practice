@@ -321,3 +321,22 @@ class TTFParser
 		$this->isFixedPitch = ($this->ReadULong()!=0);
 		if($version==0x20000)
 		{
+			// Extract glyph names
+			$this->Skip(4*4); // min/max usage
+			$this->Skip(2); // numberOfGlyphs
+			$glyphNameIndex = array();
+			$names = array();
+			$numNames = 0;
+			for($i=0;$i<$this->numGlyphs;$i++)
+			{
+				$index = $this->ReadUShort();
+				$glyphNameIndex[] = $index;
+				if($index>=258 && $index-257>$numNames)
+					$numNames = $index-257;
+			}
+			for($i=0;$i<$numNames;$i++)
+			{
+				$len = ord($this->Read(1));
+				$names[] = $this->Read($len);
+			}
+			foreach($glyphNameIndex as $i=>$index)
