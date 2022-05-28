@@ -492,3 +492,22 @@ class TTFParser
 		foreach($this->subsettedGlyphs as $id)
 		{
 			$glyph = $this->glyphs[$id];
+			$data .= pack('nn', $glyph['w'], $glyph['lsb']);
+		}
+		$this->SetTable('hmtx', $data);
+	}
+
+	function BuildLoca()
+	{
+		$data = '';
+		$offset = 0;
+		foreach($this->subsettedGlyphs as $id)
+		{
+			if($this->indexToLocFormat==0)
+				$data .= pack('n', $offset/2);
+			else
+				$data .= pack('N', $offset);
+			$offset += $this->glyphs[$id]['length'];
+		}
+		if($this->indexToLocFormat==0)
+			$data .= pack('n', $offset/2);
