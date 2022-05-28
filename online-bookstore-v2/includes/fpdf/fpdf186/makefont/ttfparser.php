@@ -530,3 +530,22 @@ class TTFParser
 				// Composite glyph
 				foreach($glyph['components'] as $offset=>$cid)
 				{
+					$ssid = $this->glyphs[$cid]['ssid'];
+					$glyph_data = substr_replace($glyph_data, pack('n',$ssid), $offset, 2);
+				}
+			}
+			$data .= $glyph_data;
+		}
+		$this->SetTable('glyf', $data);
+	}
+
+	function BuildMaxp()
+	{
+		$this->LoadTable('maxp');
+		$numGlyphs = count($this->subsettedGlyphs);
+		$data = substr_replace($this->tables['maxp']['data'], pack('n',$numGlyphs), 4, 2);
+		$this->SetTable('maxp', $data);
+	}
+
+	function BuildPost()
+	{
