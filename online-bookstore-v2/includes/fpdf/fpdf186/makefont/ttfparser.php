@@ -549,3 +549,22 @@ class TTFParser
 
 	function BuildPost()
 	{
+		$this->Seek('post');
+		if($this->glyphNames)
+		{
+			// Version 2.0
+			$numberOfGlyphs = count($this->subsettedGlyphs);
+			$numNames = 0;
+			$names = '';
+			$data = $this->Read(2*4+2*2+5*4);
+			$data .= pack('n', $numberOfGlyphs);
+			foreach($this->subsettedGlyphs as $id)
+			{
+				$name = $this->glyphs[$id]['name'];
+				if(is_string($name))
+				{
+					$data .= pack('n', 258+$numNames);
+					$names .= chr(strlen($name)).$name;
+					$numNames++;
+				}
+				else
