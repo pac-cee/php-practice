@@ -511,3 +511,22 @@ class TTFParser
 		}
 		if($this->indexToLocFormat==0)
 			$data .= pack('n', $offset/2);
+		else
+			$data .= pack('N', $offset);
+		$this->SetTable('loca', $data);
+	}
+
+	function BuildGlyf()
+	{
+		$tableOffset = $this->tables['glyf']['offset'];
+		$data = '';
+		foreach($this->subsettedGlyphs as $id)
+		{
+			$glyph = $this->glyphs[$id];
+			fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
+			$glyph_data = $this->Read($glyph['length']);
+			if(isset($glyph['components']))
+			{
+				// Composite glyph
+				foreach($glyph['components'] as $offset=>$cid)
+				{
