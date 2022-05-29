@@ -625,3 +625,22 @@ class TTFParser
 		$high = 0xB1B0 + ($a[1]^0xFFFF);
 		$low = 0xAFBA + ($a[2]^0xFFFF) + 1;
 		$checkSumAdjustment = pack('nn', $high+($low>>16), $low);
+		$this->tables['head']['data'] = substr_replace($this->tables['head']['data'], $checkSumAdjustment, 8, 4);
+
+		$font = $offsetTable;
+		foreach($tags as $tag)
+			$font .= $this->tables[$tag]['data'];
+
+		return $font;
+	}
+
+	function LoadTable($tag)
+	{
+		$this->Seek($tag);
+		$length = $this->tables[$tag]['length'];
+		$n = $length % 4;
+		if($n>0)
+			$length += 4 - $n;
+		$this->tables[$tag]['data'] = $this->Read($length);
+	}
+
