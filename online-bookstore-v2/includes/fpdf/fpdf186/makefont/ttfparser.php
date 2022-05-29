@@ -644,3 +644,22 @@ class TTFParser
 		$this->tables[$tag]['data'] = $this->Read($length);
 	}
 
+	function SetTable($tag, $data)
+	{
+		$length = strlen($data);
+		$n = $length % 4;
+		if($n>0)
+			$data = str_pad($data, $length+4-$n, "\x00");
+		$this->tables[$tag]['data'] = $data;
+		$this->tables[$tag]['length'] = $length;
+		$this->tables[$tag]['checkSum'] = $this->CheckSum($data);
+	}
+
+	function Seek($tag)
+	{
+		if(!isset($this->tables[$tag]))
+			$this->Error('Table not found: '.$tag);
+		fseek($this->f, $this->tables[$tag]['offset'], SEEK_SET);
+	}
+
+	function Skip($n)
