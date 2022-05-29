@@ -701,3 +701,14 @@ class TTFParser
 		for($i=0;$i<$n;$i+=4)
 		{
 			$high += (ord($s[$i])<<8) + ord($s[$i+1]);
+			$low += (ord($s[$i+2])<<8) + ord($s[$i+3]);
+		}
+		return pack('nn', $high+($low>>16), $low);
+	}
+
+	function Error($msg)
+	{
+		throw new Exception($msg);
+	}
+}
+?>
