@@ -606,3 +606,22 @@ class TTFParser
 		while($n!=1)
 		{
 			$n = $n>>1;
+			$entrySelector++;
+		}
+		$searchRange = 16*(1<<$entrySelector);
+		$rangeShift = 16*$numTables - $searchRange;
+		$offsetTable = pack('nnnnnn', 1, 0, $numTables, $searchRange, $entrySelector, $rangeShift);
+		foreach($tags as $tag)
+		{
+			$table = $this->tables[$tag];
+			$offsetTable .= $tag.$table['checkSum'].pack('NN', $table['offset'], $table['length']);
+		}
+
+		// Compute checkSumAdjustment (0xB1B0AFBA - font checkSum)
+		$s = $this->CheckSum($offsetTable);
+		foreach($tags as $tag)
+			$s .= $this->tables[$tag]['checkSum'];
+		$a = unpack('n2', $this->CheckSum($s));
+		$high = 0xB1B0 + ($a[1]^0xFFFF);
+		$low = 0xAFBA + ($a[2]^0xFFFF) + 1;
+		$checkSumAdjustment = pack('nn', $high+($low>>16), $low);
