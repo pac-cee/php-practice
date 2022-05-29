@@ -568,3 +568,22 @@ class TTFParser
 					$numNames++;
 				}
 				else
+					$data .= pack('n', $name);
+			}
+			$data .= $names;
+		}
+		else
+		{
+			// Version 3.0
+			$this->Skip(4);
+			$data = "\x00\x03\x00\x00";
+			$data .= $this->Read(4+2*2+5*4);
+		}
+		$this->SetTable('post', $data);
+	}
+
+	function BuildFont()
+	{
+		$tags = array();
+		foreach(array('cmap', 'cvt ', 'fpgm', 'glyf', 'head', 'hhea', 'hmtx', 'loca', 'maxp', 'name', 'post', 'prep') as $tag)
+		{
