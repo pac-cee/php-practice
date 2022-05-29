@@ -663,3 +663,22 @@ class TTFParser
 	}
 
 	function Skip($n)
+	{
+		fseek($this->f, $n, SEEK_CUR);
+	}
+
+	function Read($n)
+	{
+		return $n>0 ? fread($this->f, $n) : '';
+	}
+
+	function ReadUShort()
+	{
+		$a = unpack('nn', fread($this->f,2));
+		return $a['n'];
+	}
+
+	function ReadShort()
+	{
+		$a = unpack('nn', fread($this->f,2));
+		$v = $a['n'];
