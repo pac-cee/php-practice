@@ -587,3 +587,22 @@ class TTFParser
 		$tags = array();
 		foreach(array('cmap', 'cvt ', 'fpgm', 'glyf', 'head', 'hhea', 'hmtx', 'loca', 'maxp', 'name', 'post', 'prep') as $tag)
 		{
+			if(isset($this->tables[$tag]))
+				$tags[] = $tag;
+		}
+		$numTables = count($tags);
+		$offset = 12 + 16*$numTables;
+		foreach($tags as $tag)
+		{
+			if(!isset($this->tables[$tag]['data']))
+				$this->LoadTable($tag);
+			$this->tables[$tag]['offset'] = $offset;
+			$offset += strlen($this->tables[$tag]['data']);
+		}
+
+		// Build offset table
+		$entrySelector = 0;
+		$n = $numTables;
+		while($n!=1)
+		{
+			$n = $n>>1;
