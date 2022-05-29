@@ -682,3 +682,22 @@ class TTFParser
 	{
 		$a = unpack('nn', fread($this->f,2));
 		$v = $a['n'];
+		if($v>=0x8000)
+			$v -= 65536;
+		return $v;
+	}
+
+	function ReadULong()
+	{
+		$a = unpack('NN', fread($this->f,4));
+		return $a['N'];
+	}
+
+	function CheckSum($s)
+	{
+		$n = strlen($s);
+		$high = 0;
+		$low = 0;
+		for($i=0;$i<$n;$i+=4)
+		{
+			$high += (ord($s[$i])<<8) + ord($s[$i+1]);
