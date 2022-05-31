@@ -36,3 +36,22 @@ function Footer()
 function SetCol($col)
 {
 	// Set position at a given column
+	$this->col = $col;
+	$x = 10+$col*65;
+	$this->SetLeftMargin($x);
+	$this->SetX($x);
+}
+
+function AcceptPageBreak()
+{
+	// Method accepting or not automatic page break
+	if($this->col<2)
+	{
+		// Go to next column
+		$this->SetCol($this->col+1);
+		// Set ordinate to top
+		$this->SetY($this->y0);
+		// Keep on page
+		return false;
+	}
+	else
