@@ -55,3 +55,27 @@ function ChapterBody($file)
 	// Times 12
 	$this->SetFont('Times','',12);
 	// Output justified text
+	$this->MultiCell(0,5,$txt);
+	// Line break
+	$this->Ln();
+	// Mention in italics
+	$this->SetFont('','I');
+	$this->Cell(0,5,'(end of excerpt)');
+}
+
+function PrintChapter($num, $title, $file)
+{
+	$this->AddPage();
+	$this->ChapterTitle($num,$title);
+	$this->ChapterBody($file);
+}
+}
+
+$pdf = new PDF();
+$title = '20000 Leagues Under the Seas';
+$pdf->SetTitle($title);
+$pdf->SetAuthor('Jules Verne');
+$pdf->PrintChapter(1,'A RUNAWAY REEF','20k_c1.txt');
+$pdf->PrintChapter(2,'THE PROS AND CONS','20k_c2.txt');
+$pdf->Output();
+?>
