@@ -74,3 +74,22 @@ function ChapterTitle($num, $label)
 	$this->y0 = $this->GetY();
 }
 
+function ChapterBody($file)
+{
+	// Read text file
+	$txt = file_get_contents($file);
+	// Font
+	$this->SetFont('Times','',12);
+	// Output text in a 6 cm width column
+	$this->MultiCell(60,5,$txt);
+	$this->Ln();
+	// Mention
+	$this->SetFont('','I');
+	$this->Cell(0,5,'(end of excerpt)');
+	// Go back to first column
+	$this->SetCol(0);
+}
+
+function PrintChapter($num, $title, $file)
+{
+	// Add chapter
