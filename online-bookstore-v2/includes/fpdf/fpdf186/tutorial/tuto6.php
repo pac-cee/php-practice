@@ -55,3 +55,22 @@ function OpenTag($tag, $attr)
 	if($tag=='BR')
 		$this->Ln(5);
 }
+
+function CloseTag($tag)
+{
+	// Closing tag
+	if($tag=='B' || $tag=='I' || $tag=='U')
+		$this->SetStyle($tag,false);
+	if($tag=='A')
+		$this->HREF = '';
+}
+
+function SetStyle($tag, $enable)
+{
+	// Modify style and select corresponding font
+	$this->$tag += ($enable ? 1 : -1);
+	$style = '';
+	foreach(array('B', 'I', 'U') as $s)
+	{
+		if($this->$s>0)
+			$style .= $s;
