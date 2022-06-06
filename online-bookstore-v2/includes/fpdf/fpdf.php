@@ -55,3 +55,22 @@ protected $ColorFlag;          // indicates whether fill and text colors are dif
 protected $WithAlpha;          // indicates whether alpha channel is used
 protected $ws;                 // word spacing
 protected $images;             // array of used images
+protected $PageLinks;          // array of links in pages
+protected $links;              // array of internal links
+protected $AutoPageBreak;      // automatic page breaking
+protected $PageBreakTrigger;   // threshold used to trigger page breaks
+protected $InHeader;           // flag set when processing header
+protected $InFooter;           // flag set when processing footer
+protected $AliasNbPages;       // alias for total number of pages
+protected $ZoomMode;           // zoom display mode
+protected $LayoutMode;         // layout display mode
+protected $metadata;           // document properties
+protected $CreationDate;       // document creation date
+protected $PDFVersion;         // PDF version number
+
+/*******************************************************************************
+*                               Public methods                                 *
+*******************************************************************************/
+
+function __construct($orientation='P', $unit='mm', $size='A4')
+{
