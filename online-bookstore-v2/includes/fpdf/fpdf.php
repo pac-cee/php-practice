@@ -36,3 +36,22 @@ protected $cMargin;            // cell margin
 protected $x, $y;              // current position in user unit
 protected $lasth;              // height of last printed cell
 protected $LineWidth;          // line width in user unit
+protected $fontpath;           // directory containing fonts
+protected $CoreFonts;          // array of core font names
+protected $fonts;              // array of used fonts
+protected $FontFiles;          // array of font files
+protected $encodings;          // array of encodings
+protected $cmaps;              // array of ToUnicode CMaps
+protected $FontFamily;         // current font family
+protected $FontStyle;          // current font style
+protected $underline;          // underlining flag
+protected $CurrentFont;        // current font info
+protected $FontSizePt;         // current font size in points
+protected $FontSize;           // current font size in user unit
+protected $DrawColor;          // commands for drawing color
+protected $FillColor;          // commands for filling color
+protected $TextColor;          // commands for text color
+protected $ColorFlag;          // indicates whether fill and text colors are different
+protected $WithAlpha;          // indicates whether alpha channel is used
+protected $ws;                 // word spacing
+protected $images;             // array of used images
