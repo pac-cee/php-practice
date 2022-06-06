@@ -17,3 +17,22 @@ function WriteHTML($html)
 	{
 		if($i%2==0)
 		{
+			// Text
+			if($this->HREF)
+				$this->PutLink($this->HREF,$e);
+			else
+				$this->Write(5,$e);
+		}
+		else
+		{
+			// Tag
+			if($e[0]=='/')
+				$this->CloseTag(strtoupper(substr($e,1)));
+			else
+			{
+				// Extract attributes
+				$a2 = explode(' ',$e);
+				$tag = strtoupper(array_shift($a2));
+				$attr = array();
+				foreach($a2 as $v)
+				{
