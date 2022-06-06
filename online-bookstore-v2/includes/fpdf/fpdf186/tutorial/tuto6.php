@@ -74,3 +74,22 @@ function SetStyle($tag, $enable)
 	{
 		if($this->$s>0)
 			$style .= $s;
+	}
+	$this->SetFont('',$style);
+}
+
+function PutLink($URL, $txt)
+{
+	// Put a hyperlink
+	$this->SetTextColor(0,0,255);
+	$this->SetStyle('U',true);
+	$this->Write(5,$txt,$URL);
+	$this->SetStyle('U',false);
+	$this->SetTextColor(0);
+}
+}
+
+$html = 'You can now easily print text mixing different styles: <b>bold</b>, <i>italic</i>,
+<u>underlined</u>, or <b><i><u>all at once</u></i></b>!<br><br>You can also insert links on
+text, such as <a href="http://www.fpdf.org">www.fpdf.org</a>, or on an image: click on the logo.';
+
