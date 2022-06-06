@@ -36,3 +36,22 @@ function WriteHTML($html)
 				$attr = array();
 				foreach($a2 as $v)
 				{
+					if(preg_match('/([^=]*)=["\']?([^"\']*)/',$v,$a3))
+						$attr[strtoupper($a3[1])] = $a3[2];
+				}
+				$this->OpenTag($tag,$attr);
+			}
+		}
+	}
+}
+
+function OpenTag($tag, $attr)
+{
+	// Opening tag
+	if($tag=='B' || $tag=='I' || $tag=='U')
+		$this->SetStyle($tag,true);
+	if($tag=='A')
+		$this->HREF = $attr['HREF'];
+	if($tag=='BR')
+		$this->Ln(5);
+}
