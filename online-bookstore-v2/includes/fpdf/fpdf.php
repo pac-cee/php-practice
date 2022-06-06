@@ -74,3 +74,22 @@ protected $PDFVersion;         // PDF version number
 
 function __construct($orientation='P', $unit='mm', $size='A4')
 {
+	// Initialization of properties
+	$this->state = 0;
+	$this->page = 0;
+	$this->n = 2;
+	$this->buffer = '';
+	$this->pages = array();
+	$this->PageInfo = array();
+	$this->fonts = array();
+	$this->FontFiles = array();
+	$this->encodings = array();
+	$this->cmaps = array();
+	$this->images = array();
+	$this->links = array();
+	$this->InHeader = false;
+	$this->InFooter = false;
+	$this->lasth = 0;
+	$this->FontFamily = '';
+	$this->FontStyle = '';
+	$this->FontSizePt = 12;
