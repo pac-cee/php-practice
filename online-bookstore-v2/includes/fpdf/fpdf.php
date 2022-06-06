@@ -93,3 +93,22 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->FontFamily = '';
 	$this->FontStyle = '';
 	$this->FontSizePt = 12;
+	$this->underline = false;
+	$this->DrawColor = '0 G';
+	$this->FillColor = '0 g';
+	$this->TextColor = '0 g';
+	$this->ColorFlag = false;
+	$this->WithAlpha = false;
+	$this->ws = 0;
+	$this->iconv = function_exists('iconv');
+	// Font path
+	if(defined('FPDF_FONTPATH'))
+		$this->fontpath = FPDF_FONTPATH;
+	else
+		$this->fontpath = dirname(__FILE__).'/font/';
+	// Core fonts
+	$this->CoreFonts = array('courier', 'helvetica', 'times', 'symbol', 'zapfdingbats');
+	// Scale factor
+	if($unit=='pt')
+		$this->k = 1;
+	elseif($unit=='mm')
