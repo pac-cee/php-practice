@@ -150,3 +150,22 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$margin = 28.35/$this->k;
 	$this->SetMargins($margin,$margin);
 	// Interior cell margin (1 mm)
+	$this->cMargin = $margin/10;
+	// Line width (0.2 mm)
+	$this->LineWidth = .567/$this->k;
+	// Automatic page break
+	$this->SetAutoPageBreak(true,2*$margin);
+	// Default display mode
+	$this->SetDisplayMode('default');
+	// Enable compression
+	$this->SetCompression(true);
+	// Metadata
+	$this->metadata = array('Producer'=>'FPDF '.self::VERSION);
+	// Set default PDF version number
+	$this->PDFVersion = '1.3';
+}
+
+function SetMargins($left, $top, $right=null)
+{
+	// Set left, top and right margins
+	$this->lMargin = $left;
