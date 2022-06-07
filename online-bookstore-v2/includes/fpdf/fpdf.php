@@ -131,3 +131,22 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	{
 		$this->DefOrientation = 'P';
 		$this->w = $size[0];
+		$this->h = $size[1];
+	}
+	elseif($orientation=='l' || $orientation=='landscape')
+	{
+		$this->DefOrientation = 'L';
+		$this->w = $size[1];
+		$this->h = $size[0];
+	}
+	else
+		$this->Error('Incorrect orientation: '.$orientation);
+	$this->CurOrientation = $this->DefOrientation;
+	$this->wPt = $this->w*$this->k;
+	$this->hPt = $this->h*$this->k;
+	// Page rotation
+	$this->CurRotation = 0;
+	// Page margins (1 cm)
+	$margin = 28.35/$this->k;
+	$this->SetMargins($margin,$margin);
+	// Interior cell margin (1 mm)
