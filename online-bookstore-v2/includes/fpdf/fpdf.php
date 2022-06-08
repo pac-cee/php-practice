@@ -245,3 +245,22 @@ function SetSubject($subject, $isUTF8=false)
 
 function SetKeywords($keywords, $isUTF8=false)
 {
+	// Keywords of document
+	$this->metadata['Keywords'] = $isUTF8 ? $keywords : $this->_UTF8encode($keywords);
+}
+
+function SetCreator($creator, $isUTF8=false)
+{
+	// Creator of document
+	$this->metadata['Creator'] = $isUTF8 ? $creator : $this->_UTF8encode($creator);
+}
+
+function AliasNbPages($alias='{nb}')
+{
+	// Define an alias for total number of pages
+	$this->AliasNbPages = $alias;
+}
+
+function Error($msg)
+{
+	// Fatal error
