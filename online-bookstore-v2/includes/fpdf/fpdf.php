@@ -454,3 +454,22 @@ function AddFont($family, $style='', $file='', $dir='')
 		return;
 	if(strpos($file,'/')!==false || strpos($file,"\\")!==false)
 		$this->Error('Incorrect font definition file name: '.$file);
+	if($dir=='')
+		$dir = $this->fontpath;
+	if(substr($dir,-1)!='/' && substr($dir,-1)!='\\')
+		$dir .= '/';
+	$info = $this->_loadfont($dir.$file);
+	$info['i'] = count($this->fonts)+1;
+	if(!empty($info['file']))
+	{
+		// Embedded font
+		$info['file'] = $dir.$info['file'];
+		if($info['type']=='TrueType')
+			$this->FontFiles[$info['file']] = array('length1'=>$info['originalsize']);
+		else
+			$this->FontFiles[$info['file']] = array('length1'=>$info['size1'], 'length2'=>$info['size2']);
+	}
+	$this->fonts[$fontkey] = $info;
+}
+
+function SetFont($family, $style='', $size=0)
