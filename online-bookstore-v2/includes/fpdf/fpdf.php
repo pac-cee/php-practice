@@ -207,3 +207,22 @@ function SetDisplayMode($zoom, $layout='default')
 {
 	// Set display mode in viewer
 	if($zoom=='fullpage' || $zoom=='fullwidth' || $zoom=='real' || $zoom=='default' || !is_string($zoom))
+		$this->ZoomMode = $zoom;
+	else
+		$this->Error('Incorrect zoom display mode: '.$zoom);
+	if($layout=='single' || $layout=='continuous' || $layout=='two' || $layout=='default')
+		$this->LayoutMode = $layout;
+	else
+		$this->Error('Incorrect layout display mode: '.$layout);
+}
+
+function SetCompression($compress)
+{
+	// Set page compression
+	if(function_exists('gzcompress'))
+		$this->compress = $compress;
+	else
+		$this->compress = false;
+}
+
+function SetTitle($title, $isUTF8=false)
