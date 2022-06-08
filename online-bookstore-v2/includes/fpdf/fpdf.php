@@ -359,3 +359,22 @@ function Header()
 }
 
 function Footer()
+{
+	// To be implemented in your own inherited class
+}
+
+function PageNo()
+{
+	// Get current page number
+	return $this->page;
+}
+
+function SetDrawColor($r, $g=null, $b=null)
+{
+	// Set color for all stroking operations
+	if(($r==0 && $g==0 && $b==0) || $g===null)
+		$this->DrawColor = sprintf('%.3F G',$r/255);
+	else
+		$this->DrawColor = sprintf('%.3F %.3F %.3F RG',$r/255,$g/255,$b/255);
+	if($this->page>0)
+		$this->_out($this->DrawColor);
