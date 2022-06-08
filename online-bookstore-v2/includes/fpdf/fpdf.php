@@ -473,3 +473,22 @@ function AddFont($family, $style='', $file='', $dir='')
 }
 
 function SetFont($family, $style='', $size=0)
+{
+	// Select a font; size given in points
+	if($family=='')
+		$family = $this->FontFamily;
+	else
+		$family = strtolower($family);
+	$style = strtoupper($style);
+	if(strpos($style,'U')!==false)
+	{
+		$this->underline = true;
+		$style = str_replace('U','',$style);
+	}
+	else
+		$this->underline = false;
+	if($style=='IB')
+		$style = 'BI';
+	if($size==0)
+		$size = $this->FontSizePt;
+	// Test if font is already selected
