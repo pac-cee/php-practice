@@ -283,3 +283,22 @@ function Close()
 	// Close document
 	$this->_enddoc();
 }
+
+function AddPage($orientation='', $size='', $rotation=0)
+{
+	// Start a new page
+	if($this->state==3)
+		$this->Error('The document is closed');
+	$family = $this->FontFamily;
+	$style = $this->FontStyle.($this->underline ? 'U' : '');
+	$fontsize = $this->FontSizePt;
+	$lw = $this->LineWidth;
+	$dc = $this->DrawColor;
+	$fc = $this->FillColor;
+	$tc = $this->TextColor;
+	$cf = $this->ColorFlag;
+	if($this->page>0)
+	{
+		// Page footer
+		$this->InFooter = true;
+		$this->Footer();
