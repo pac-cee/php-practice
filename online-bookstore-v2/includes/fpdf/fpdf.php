@@ -511,3 +511,22 @@ function SetFont($family, $style='', $size=0)
 		}
 		else
 			$this->Error('Undefined font: '.$family.' '.$style);
+	}
+	// Select it
+	$this->FontFamily = $family;
+	$this->FontStyle = $style;
+	$this->FontSizePt = $size;
+	$this->FontSize = $size/$this->k;
+	$this->CurrentFont = $this->fonts[$fontkey];
+	if($this->page>0)
+		$this->_out(sprintf('BT /F%d %.2F Tf ET',$this->CurrentFont['i'],$this->FontSizePt));
+}
+
+function SetFontSize($size)
+{
+	// Set font size in points
+	if($this->FontSizePt==$size)
+		return;
+	$this->FontSizePt = $size;
+	$this->FontSize = $size/$this->k;
+	if($this->page>0 && isset($this->CurrentFont))
