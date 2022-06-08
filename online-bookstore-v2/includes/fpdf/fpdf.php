@@ -321,3 +321,22 @@ function AddPage($orientation='', $size='', $rotation=0)
 	if($dc!='0 G')
 		$this->_out($dc);
 	$this->FillColor = $fc;
+	if($fc!='0 g')
+		$this->_out($fc);
+	$this->TextColor = $tc;
+	$this->ColorFlag = $cf;
+	// Page header
+	$this->InHeader = true;
+	$this->Header();
+	$this->InHeader = false;
+	// Restore line width
+	if($this->LineWidth!=$lw)
+	{
+		$this->LineWidth = $lw;
+		$this->_out(sprintf('%.2F w',$lw*$this->k));
+	}
+	// Restore font
+	if($family)
+		$this->SetFont($family,$style,$fontsize);
+	// Restore colors
+	if($this->DrawColor!=$dc)
