@@ -435,3 +435,22 @@ function Rect($x, $y, $w, $h, $style='')
 		$op = 'f';
 	elseif($style=='FD' || $style=='DF')
 		$op = 'B';
+	else
+		$op = 'S';
+	$this->_out(sprintf('%.2F %.2F %.2F %.2F re %s',$x*$this->k,($this->h-$y)*$this->k,$w*$this->k,-$h*$this->k,$op));
+}
+
+function AddFont($family, $style='', $file='', $dir='')
+{
+	// Add a TrueType, OpenType or Type1 font
+	$family = strtolower($family);
+	if($file=='')
+		$file = str_replace(' ','',$family).strtolower($style).'.php';
+	$style = strtoupper($style);
+	if($style=='IB')
+		$style = 'BI';
+	$fontkey = $family.$style;
+	if(isset($this->fonts[$fontkey]))
+		return;
+	if(strpos($file,'/')!==false || strpos($file,"\\")!==false)
+		$this->Error('Incorrect font definition file name: '.$file);
