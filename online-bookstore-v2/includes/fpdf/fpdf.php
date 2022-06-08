@@ -397,3 +397,22 @@ function SetTextColor($r, $g=null, $b=null)
 	// Set color for text
 	if(($r==0 && $g==0 && $b==0) || $g===null)
 		$this->TextColor = sprintf('%.3F g',$r/255);
+	else
+		$this->TextColor = sprintf('%.3F %.3F %.3F rg',$r/255,$g/255,$b/255);
+	$this->ColorFlag = ($this->FillColor!=$this->TextColor);
+}
+
+function GetStringWidth($s)
+{
+	// Get width of a string in the current font
+	$cw = $this->CurrentFont['cw'];
+	$w = 0;
+	$s = (string)$s;
+	$l = strlen($s);
+	for($i=0;$i<$l;$i++)
+		$w += $cw[$s[$i]];
+	return $w*$this->FontSize/1000;
+}
+
+function SetLineWidth($width)
+{
