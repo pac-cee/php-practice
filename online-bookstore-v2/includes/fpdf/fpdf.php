@@ -416,3 +416,22 @@ function GetStringWidth($s)
 
 function SetLineWidth($width)
 {
+	// Set line width
+	$this->LineWidth = $width;
+	if($this->page>0)
+		$this->_out(sprintf('%.2F w',$width*$this->k));
+}
+
+function Line($x1, $y1, $x2, $y2)
+{
+	// Draw a line
+	$this->_out(sprintf('%.2F %.2F m %.2F %.2F l S',$x1*$this->k,($this->h-$y1)*$this->k,$x2*$this->k,($this->h-$y2)*$this->k));
+}
+
+function Rect($x, $y, $w, $h, $style='')
+{
+	// Draw a rectangle
+	if($style=='F')
+		$op = 'f';
+	elseif($style=='FD' || $style=='DF')
+		$op = 'B';
