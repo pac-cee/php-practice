@@ -340,3 +340,22 @@ function AddPage($orientation='', $size='', $rotation=0)
 		$this->SetFont($family,$style,$fontsize);
 	// Restore colors
 	if($this->DrawColor!=$dc)
+	{
+		$this->DrawColor = $dc;
+		$this->_out($dc);
+	}
+	if($this->FillColor!=$fc)
+	{
+		$this->FillColor = $fc;
+		$this->_out($fc);
+	}
+	$this->TextColor = $tc;
+	$this->ColorFlag = $cf;
+}
+
+function Header()
+{
+	// To be implemented in your own inherited class
+}
+
+function Footer()
