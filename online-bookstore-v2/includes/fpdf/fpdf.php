@@ -302,3 +302,22 @@ function AddPage($orientation='', $size='', $rotation=0)
 		// Page footer
 		$this->InFooter = true;
 		$this->Footer();
+		$this->InFooter = false;
+		// Close page
+		$this->_endpage();
+	}
+	// Start new page
+	$this->_beginpage($orientation,$size,$rotation);
+	// Set line cap style to square
+	$this->_out('2 J');
+	// Set line width
+	$this->LineWidth = $lw;
+	$this->_out(sprintf('%.2F w',$lw*$this->k));
+	// Set font
+	if($family)
+		$this->SetFont($family,$style,$fontsize);
+	// Set colors
+	$this->DrawColor = $dc;
+	if($dc!='0 G')
+		$this->_out($dc);
+	$this->FillColor = $fc;
