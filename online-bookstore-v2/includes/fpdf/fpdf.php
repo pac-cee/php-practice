@@ -492,3 +492,22 @@ function SetFont($family, $style='', $size=0)
 	if($size==0)
 		$size = $this->FontSizePt;
 	// Test if font is already selected
+	if($this->FontFamily==$family && $this->FontStyle==$style && $this->FontSizePt==$size)
+		return;
+	// Test if font is already loaded
+	$fontkey = $family.$style;
+	if(!isset($this->fonts[$fontkey]))
+	{
+		// Test if one of the core fonts
+		if($family=='arial')
+			$family = 'helvetica';
+		if(in_array($family,$this->CoreFonts))
+		{
+			if($family=='symbol' || $family=='zapfdingbats')
+				$style = '';
+			$fontkey = $family.$style;
+			if(!isset($this->fonts[$fontkey]))
+				$this->AddFont($family,$style);
+		}
+		else
+			$this->Error('Undefined font: '.$family.' '.$style);
