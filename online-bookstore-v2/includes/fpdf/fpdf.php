@@ -226,3 +226,22 @@ function SetCompression($compress)
 }
 
 function SetTitle($title, $isUTF8=false)
+{
+	// Title of document
+	$this->metadata['Title'] = $isUTF8 ? $title : $this->_UTF8encode($title);
+}
+
+function SetAuthor($author, $isUTF8=false)
+{
+	// Author of document
+	$this->metadata['Author'] = $isUTF8 ? $author : $this->_UTF8encode($author);
+}
+
+function SetSubject($subject, $isUTF8=false)
+{
+	// Subject of document
+	$this->metadata['Subject'] = $isUTF8 ? $subject : $this->_UTF8encode($subject);
+}
+
+function SetKeywords($keywords, $isUTF8=false)
+{
