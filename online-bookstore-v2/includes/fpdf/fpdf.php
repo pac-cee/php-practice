@@ -188,3 +188,22 @@ function SetTopMargin($margin)
 	// Set top margin
 	$this->tMargin = $margin;
 }
+
+function SetRightMargin($margin)
+{
+	// Set right margin
+	$this->rMargin = $margin;
+}
+
+function SetAutoPageBreak($auto, $margin=0)
+{
+	// Set auto page break mode and triggering margin
+	$this->AutoPageBreak = $auto;
+	$this->bMargin = $margin;
+	$this->PageBreakTrigger = $this->h-$margin;
+}
+
+function SetDisplayMode($zoom, $layout='default')
+{
+	// Set display mode in viewer
+	if($zoom=='fullpage' || $zoom=='fullwidth' || $zoom=='real' || $zoom=='default' || !is_string($zoom))
