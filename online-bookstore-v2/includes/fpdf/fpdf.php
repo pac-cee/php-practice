@@ -264,3 +264,22 @@ function AliasNbPages($alias='{nb}')
 function Error($msg)
 {
 	// Fatal error
+	throw new Exception('FPDF error: '.$msg);
+}
+
+function Close()
+{
+	// Terminate document
+	if($this->state==3)
+		return;
+	if($this->page==0)
+		$this->AddPage();
+	// Page footer
+	$this->InFooter = true;
+	$this->Footer();
+	$this->InFooter = false;
+	// Close page
+	$this->_endpage();
+	// Close document
+	$this->_enddoc();
+}
