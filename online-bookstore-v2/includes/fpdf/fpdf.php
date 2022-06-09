@@ -530,3 +530,22 @@ function SetFontSize($size)
 	$this->FontSizePt = $size;
 	$this->FontSize = $size/$this->k;
 	if($this->page>0 && isset($this->CurrentFont))
+		$this->_out(sprintf('BT /F%d %.2F Tf ET',$this->CurrentFont['i'],$this->FontSizePt));
+}
+
+function AddLink()
+{
+	// Create a new internal link
+	$n = count($this->links)+1;
+	$this->links[$n] = array(0, 0);
+	return $n;
+}
+
+function SetLink($link, $y=0, $page=-1)
+{
+	// Set destination of internal link
+	if($y==-1)
+		$y = $this->y;
+	if($page==-1)
+		$page = $this->page;
+	$this->links[$link] = array($page, $y);
