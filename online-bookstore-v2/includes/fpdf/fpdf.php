@@ -549,3 +549,22 @@ function SetLink($link, $y=0, $page=-1)
 	if($page==-1)
 		$page = $this->page;
 	$this->links[$link] = array($page, $y);
+}
+
+function Link($x, $y, $w, $h, $link)
+{
+	// Put a link on the page
+	$this->PageLinks[$this->page][] = array($x*$this->k, $this->hPt-$y*$this->k, $w*$this->k, $h*$this->k, $link);
+}
+
+function Text($x, $y, $txt)
+{
+	// Output a string
+	if(!isset($this->CurrentFont))
+		$this->Error('No font has been set');
+	$txt = (string)$txt;
+	$s = sprintf('BT %.2F %.2F Td (%s) Tj ET',$x*$this->k,($this->h-$y)*$this->k,$this->_escape($txt));
+	if($this->underline && $txt!=='')
+		$s .= ' '.$this->_dounderline($x,$y,$txt);
+	if($this->ColorFlag)
+		$s = 'q '.$this->TextColor.' '.$s.' Q';
