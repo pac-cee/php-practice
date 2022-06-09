@@ -568,3 +568,22 @@ function Text($x, $y, $txt)
 		$s .= ' '.$this->_dounderline($x,$y,$txt);
 	if($this->ColorFlag)
 		$s = 'q '.$this->TextColor.' '.$s.' Q';
+	$this->_out($s);
+}
+
+function AcceptPageBreak()
+{
+	// Accept automatic page break or not
+	return $this->AutoPageBreak;
+}
+
+function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+{
+	// Output a cell
+	$k = $this->k;
+	if($this->y+$h>$this->PageBreakTrigger && !$this->InHeader && !$this->InFooter && $this->AcceptPageBreak())
+	{
+		// Automatic page break
+		$x = $this->x;
+		$ws = $this->ws;
+		if($ws>0)
