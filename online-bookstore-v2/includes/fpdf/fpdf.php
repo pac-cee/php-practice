@@ -606,3 +606,22 @@ function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link
 	{
 		if($fill)
 			$op = ($border==1) ? 'B' : 'f';
+		else
+			$op = 'S';
+		$s = sprintf('%.2F %.2F %.2F %.2F re %s ',$this->x*$k,($this->h-$this->y)*$k,$w*$k,-$h*$k,$op);
+	}
+	if(is_string($border))
+	{
+		$x = $this->x;
+		$y = $this->y;
+		if(strpos($border,'L')!==false)
+			$s .= sprintf('%.2F %.2F m %.2F %.2F l S ',$x*$k,($this->h-$y)*$k,$x*$k,($this->h-($y+$h))*$k);
+		if(strpos($border,'T')!==false)
+			$s .= sprintf('%.2F %.2F m %.2F %.2F l S ',$x*$k,($this->h-$y)*$k,($x+$w)*$k,($this->h-$y)*$k);
+		if(strpos($border,'R')!==false)
+			$s .= sprintf('%.2F %.2F m %.2F %.2F l S ',($x+$w)*$k,($this->h-$y)*$k,($x+$w)*$k,($this->h-($y+$h))*$k);
+		if(strpos($border,'B')!==false)
+			$s .= sprintf('%.2F %.2F m %.2F %.2F l S ',$x*$k,($this->h-($y+$h))*$k,($x+$w)*$k,($this->h-($y+$h))*$k);
+	}
+	$txt = (string)$txt;
+	if($txt!=='')
