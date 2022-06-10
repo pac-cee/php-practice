@@ -587,3 +587,22 @@ function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link
 		$x = $this->x;
 		$ws = $this->ws;
 		if($ws>0)
+		{
+			$this->ws = 0;
+			$this->_out('0 Tw');
+		}
+		$this->AddPage($this->CurOrientation,$this->CurPageSize,$this->CurRotation);
+		$this->x = $x;
+		if($ws>0)
+		{
+			$this->ws = $ws;
+			$this->_out(sprintf('%.3F Tw',$ws*$k));
+		}
+	}
+	if($w==0)
+		$w = $this->w-$this->rMargin-$this->x;
+	$s = '';
+	if($fill || $border==1)
+	{
+		if($fill)
+			$op = ($border==1) ? 'B' : 'f';
