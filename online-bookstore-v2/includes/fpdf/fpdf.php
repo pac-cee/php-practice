@@ -663,3 +663,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 	// Output text with automatic or explicit line breaks
 	if(!isset($this->CurrentFont))
 		$this->Error('No font has been set');
+	$cw = $this->CurrentFont['cw'];
+	if($w==0)
+		$w = $this->w-$this->rMargin-$this->x;
+	$wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s = str_replace("\r",'',(string)$txt);
+	$nb = strlen($s);
+	if($nb>0 && $s[$nb-1]=="\n")
+		$nb--;
+	$b = 0;
+	if($border)
+	{
+		if($border==1)
+		{
+			$border = 'LTRB';
+			$b = 'LRT';
+			$b2 = 'LR';
+		}
+		else
+		{
