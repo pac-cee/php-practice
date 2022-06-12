@@ -644,3 +644,22 @@ function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link
 		if($link)
 			$this->Link($this->x+$dx,$this->y+.5*$h-.5*$this->FontSize,$this->GetStringWidth($txt),$this->FontSize,$link);
 	}
+	if($s)
+		$this->_out($s);
+	$this->lasth = $h;
+	if($ln>0)
+	{
+		// Go to next line
+		$this->y += $h;
+		if($ln==1)
+			$this->x = $this->lMargin;
+	}
+	else
+		$this->x += $w;
+}
+
+function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
+{
+	// Output text with automatic or explicit line breaks
+	if(!isset($this->CurrentFont))
+		$this->Error('No font has been set');
