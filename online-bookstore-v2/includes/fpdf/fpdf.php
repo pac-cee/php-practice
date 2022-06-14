@@ -720,3 +720,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 			continue;
 		}
 		if($c==' ')
+		{
+			$sep = $i;
+			$ls = $l;
+			$ns++;
+		}
+		$l += $cw[$c];
+		if($l>$wmax)
+		{
+			// Automatic line break
+			if($sep==-1)
+			{
+				if($i==$j)
+					$i++;
+				if($this->ws>0)
+				{
+					$this->ws = 0;
+					$this->_out('0 Tw');
+				}
+				$this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
