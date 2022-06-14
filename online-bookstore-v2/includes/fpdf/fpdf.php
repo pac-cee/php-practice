@@ -701,3 +701,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 		// Get next character
 		$c = $s[$i];
 		if($c=="\n")
+		{
+			// Explicit line break
+			if($this->ws>0)
+			{
+				$this->ws = 0;
+				$this->_out('0 Tw');
+			}
+			$this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+			$i++;
+			$sep = -1;
+			$j = $i;
+			$l = 0;
+			$ns = 0;
+			$nl++;
+			if($border && $nl==2)
+				$b = $b2;
+			continue;
+		}
+		if($c==' ')
