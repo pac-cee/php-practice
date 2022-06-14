@@ -739,3 +739,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 					$this->_out('0 Tw');
 				}
 				$this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+			}
+			else
+			{
+				if($align=='J')
+				{
+					$this->ws = ($ns>1) ? ($wmax-$ls)/1000*$this->FontSize/($ns-1) : 0;
+					$this->_out(sprintf('%.3F Tw',$this->ws*$this->k));
+				}
+				$this->Cell($w,$h,substr($s,$j,$sep-$j),$b,2,$align,$fill);
+				$i = $sep+1;
+			}
+			$sep = -1;
+			$j = $i;
+			$l = 0;
+			$ns = 0;
+			$nl++;
+			if($border && $nl==2)
+				$b = $b2;
+		}
