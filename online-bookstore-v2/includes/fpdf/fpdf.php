@@ -682,3 +682,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 		}
 		else
 		{
+			$b2 = '';
+			if(strpos($border,'L')!==false)
+				$b2 .= 'L';
+			if(strpos($border,'R')!==false)
+				$b2 .= 'R';
+			$b = (strpos($border,'T')!==false) ? $b2.'T' : $b2;
+		}
+	}
+	$sep = -1;
+	$i = 0;
+	$j = 0;
+	$l = 0;
+	$ns = 0;
+	$nl = 1;
+	while($i<$nb)
+	{
+		// Get next character
+		$c = $s[$i];
+		if($c=="\n")
