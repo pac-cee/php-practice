@@ -872,3 +872,22 @@ function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
 	if($file=='')
 		$this->Error('Image file name is empty');
 	if(!isset($this->images[$file]))
+	{
+		// First use of this image, get info
+		if($type=='')
+		{
+			$pos = strrpos($file,'.');
+			if(!$pos)
+				$this->Error('Image file has no extension and no type was specified: '.$file);
+			$type = substr($file,$pos+1);
+		}
+		$type = strtolower($type);
+		if($type=='jpeg')
+			$type = 'jpg';
+		$mtd = '_parse'.$type;
+		if(!method_exists($this,$mtd))
+			$this->Error('Unsupported image type: '.$type);
+		$info = $this->$mtd($file);
+		$info['i'] = count($this->images)+1;
+		$this->images[$file] = $info;
+	}
