@@ -777,3 +777,22 @@ function Write($h, $txt, $link='')
 {
 	// Output text in flowing mode
 	if(!isset($this->CurrentFont))
+		$this->Error('No font has been set');
+	$cw = $this->CurrentFont['cw'];
+	$w = $this->w-$this->rMargin-$this->x;
+	$wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s = str_replace("\r",'',(string)$txt);
+	$nb = strlen($s);
+	$sep = -1;
+	$i = 0;
+	$j = 0;
+	$l = 0;
+	$nl = 1;
+	while($i<$nb)
+	{
+		// Get next character
+		$c = $s[$i];
+		if($c=="\n")
+		{
+			// Explicit line break
+			$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',false,$link);
