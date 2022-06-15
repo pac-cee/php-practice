@@ -948,3 +948,22 @@ function GetX()
 	// Get x position
 	return $this->x;
 }
+
+function SetX($x)
+{
+	// Set x position
+	if($x>=0)
+		$this->x = $x;
+	else
+		$this->x = $this->w+$x;
+}
+
+function GetY()
+{
+	// Get y position
+	return $this->y;
+}
+
+function SetY($y, $resetX=true)
+{
+	// Set y position and optionally reset x
