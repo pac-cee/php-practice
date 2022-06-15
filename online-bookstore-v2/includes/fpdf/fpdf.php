@@ -758,3 +758,22 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 			if($border && $nl==2)
 				$b = $b2;
 		}
+		else
+			$i++;
+	}
+	// Last chunk
+	if($this->ws>0)
+	{
+		$this->ws = 0;
+		$this->_out('0 Tw');
+	}
+	if($border && strpos($border,'B')!==false)
+		$b .= 'B';
+	$this->Cell($w,$h,substr($s,$j,$i-$j),$b,2,$align,$fill);
+	$this->x = $this->lMargin;
+}
+
+function Write($h, $txt, $link='')
+{
+	// Output text in flowing mode
+	if(!isset($this->CurrentFont))
