@@ -815,3 +815,22 @@ function Write($h, $txt, $link='')
 		if($l>$wmax)
 		{
 			// Automatic line break
+			if($sep==-1)
+			{
+				if($this->x>$this->lMargin)
+				{
+					// Move to next line
+					$this->x = $this->lMargin;
+					$this->y += $h;
+					$w = $this->w-$this->rMargin-$this->x;
+					$wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+					$i++;
+					$nl++;
+					continue;
+				}
+				if($i==$j)
+					$i++;
+				$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',false,$link);
+			}
+			else
+			{
