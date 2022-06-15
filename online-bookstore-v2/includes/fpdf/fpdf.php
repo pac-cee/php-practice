@@ -796,3 +796,22 @@ function Write($h, $txt, $link='')
 		{
 			// Explicit line break
 			$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',false,$link);
+			$i++;
+			$sep = -1;
+			$j = $i;
+			$l = 0;
+			if($nl==1)
+			{
+				$this->x = $this->lMargin;
+				$w = $this->w-$this->rMargin-$this->x;
+				$wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+			}
+			$nl++;
+			continue;
+		}
+		if($c==' ')
+			$sep = $i;
+		$l += $cw[$c];
+		if($l>$wmax)
+		{
+			// Automatic line break
