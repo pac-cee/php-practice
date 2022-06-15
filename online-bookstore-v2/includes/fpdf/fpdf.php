@@ -853,3 +853,22 @@ function Write($h, $txt, $link='')
 	}
 	// Last chunk
 	if($i!=$j)
+		$this->Cell($l/1000*$this->FontSize,$h,substr($s,$j),0,0,'',false,$link);
+}
+
+function Ln($h=null)
+{
+	// Line feed; default value is the last cell height
+	$this->x = $this->lMargin;
+	if($h===null)
+		$this->y += $this->lasth;
+	else
+		$this->y += $h;
+}
+
+function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
+{
+	// Put an image on the page
+	if($file=='')
+		$this->Error('Image file name is empty');
+	if(!isset($this->images[$file]))
