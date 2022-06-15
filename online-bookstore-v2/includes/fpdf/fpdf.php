@@ -910,3 +910,22 @@ function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
 	if($h==0)
 		$h = $w*$info['h']/$info['w'];
 
+	// Flowing mode
+	if($y===null)
+	{
+		if($this->y+$h>$this->PageBreakTrigger && !$this->InHeader && !$this->InFooter && $this->AcceptPageBreak())
+		{
+			// Automatic page break
+			$x2 = $this->x;
+			$this->AddPage($this->CurOrientation,$this->CurPageSize,$this->CurRotation);
+			$this->x = $x2;
+		}
+		$y = $this->y;
+		$this->y += $h;
+	}
+
+	if($x===null)
+		$x = $this->x;
+	$this->_out(sprintf('q %.2F 0 0 %.2F %.2F %.2F cm /I%d Do Q',$w*$this->k,$h*$this->k,$x*$this->k,($this->h-($y+$h))*$this->k,$info['i']));
+	if($link)
+		$this->Link($x,$y,$w,$h,$link);
