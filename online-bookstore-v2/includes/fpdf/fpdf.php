@@ -929,3 +929,22 @@ function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
 	$this->_out(sprintf('q %.2F 0 0 %.2F %.2F %.2F cm /I%d Do Q',$w*$this->k,$h*$this->k,$x*$this->k,($this->h-($y+$h))*$this->k,$info['i']));
 	if($link)
 		$this->Link($x,$y,$w,$h,$link);
+}
+
+function GetPageWidth()
+{
+	// Get current page width
+	return $this->w;
+}
+
+function GetPageHeight()
+{
+	// Get current page height
+	return $this->h;
+}
+
+function GetX()
+{
+	// Get x position
+	return $this->x;
+}
