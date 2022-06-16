@@ -967,3 +967,22 @@ function GetY()
 function SetY($y, $resetX=true)
 {
 	// Set y position and optionally reset x
+	if($y>=0)
+		$this->y = $y;
+	else
+		$this->y = $this->h+$y;
+	if($resetX)
+		$this->x = $this->lMargin;
+}
+
+function SetXY($x, $y)
+{
+	// Set x and y positions
+	$this->SetX($x);
+	$this->SetY($y,false);
+}
+
+function Output($dest='', $name='', $isUTF8=false)
+{
+	// Output PDF to some destination
+	$this->Close();
