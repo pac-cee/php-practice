@@ -986,3 +986,22 @@ function Output($dest='', $name='', $isUTF8=false)
 {
 	// Output PDF to some destination
 	$this->Close();
+	if(strlen($name)==1 && strlen($dest)!=1)
+	{
+		// Fix parameter order
+		$tmp = $dest;
+		$dest = $name;
+		$name = $tmp;
+	}
+	if($dest=='')
+		$dest = 'I';
+	if($name=='')
+		$name = 'doc.pdf';
+	switch(strtoupper($dest))
+	{
+		case 'I':
+			// Send to standard output
+			$this->_checkoutput();
+			if(PHP_SAPI!='cli')
+			{
+				// We send to a browser
