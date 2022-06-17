@@ -1100,3 +1100,22 @@ protected function _beginpage($orientation, $size, $rotation)
 	{
 		// New size or orientation
 		if($orientation=='P')
+		{
+			$this->w = $size[0];
+			$this->h = $size[1];
+		}
+		else
+		{
+			$this->w = $size[1];
+			$this->h = $size[0];
+		}
+		$this->wPt = $this->w*$this->k;
+		$this->hPt = $this->h*$this->k;
+		$this->PageBreakTrigger = $this->h-$this->bMargin;
+		$this->CurOrientation = $orientation;
+		$this->CurPageSize = $size;
+	}
+	if($orientation!=$this->DefOrientation || $size[0]!=$this->DefPageSize[0] || $size[1]!=$this->DefPageSize[1])
+		$this->PageInfo[$this->page]['size'] = array($this->wPt, $this->hPt);
+	if($rotation!=0)
+	{
