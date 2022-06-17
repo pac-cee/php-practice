@@ -1024,3 +1024,22 @@ function Output($dest='', $name='', $isUTF8=false)
 		case 'F':
 			// Save to local file
 			if(!file_put_contents($name,$this->buffer))
+				$this->Error('Unable to create output file: '.$name);
+			break;
+		case 'S':
+			// Return as a string
+			return $this->buffer;
+		default:
+			$this->Error('Incorrect output destination: '.$dest);
+	}
+	return '';
+}
+
+/*******************************************************************************
+*                              Protected methods                               *
+*******************************************************************************/
+
+protected function _checkoutput()
+{
+	if(PHP_SAPI!='cli')
+	{
