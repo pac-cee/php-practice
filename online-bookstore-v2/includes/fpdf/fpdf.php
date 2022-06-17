@@ -1062,3 +1062,22 @@ protected function _checkoutput()
 protected function _getpagesize($size)
 {
 	if(is_string($size))
+	{
+		$size = strtolower($size);
+		if(!isset($this->StdPageSizes[$size]))
+			$this->Error('Unknown page size: '.$size);
+		$a = $this->StdPageSizes[$size];
+		return array($a[0]/$this->k, $a[1]/$this->k);
+	}
+	else
+	{
+		if($size[0]>$size[1])
+			return array($size[1], $size[0]);
+		else
+			return $size;
+	}
+}
+
+protected function _beginpage($orientation, $size, $rotation)
+{
+	$this->page++;
