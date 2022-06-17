@@ -1081,3 +1081,22 @@ protected function _getpagesize($size)
 protected function _beginpage($orientation, $size, $rotation)
 {
 	$this->page++;
+	$this->pages[$this->page] = '';
+	$this->PageLinks[$this->page] = array();
+	$this->state = 2;
+	$this->x = $this->lMargin;
+	$this->y = $this->tMargin;
+	$this->FontFamily = '';
+	// Check page size and orientation
+	if($orientation=='')
+		$orientation = $this->DefOrientation;
+	else
+		$orientation = strtoupper($orientation[0]);
+	if($size=='')
+		$size = $this->DefPageSize;
+	else
+		$size = $this->_getpagesize($size);
+	if($orientation!=$this->CurOrientation || $size[0]!=$this->CurPageSize[0] || $size[1]!=$this->CurPageSize[1])
+	{
+		// New size or orientation
+		if($orientation=='P')
