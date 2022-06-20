@@ -1138,3 +1138,22 @@ protected function _loadfont($path)
 	if(!isset($name))
 		$this->Error('Could not include font definition file: '.$path);
 	if(isset($enc))
+		$enc = strtolower($enc);
+	if(!isset($subsetted))
+		$subsetted = false;
+	return get_defined_vars();
+}
+
+protected function _isascii($s)
+{
+	// Test if string is ASCII
+	$nb = strlen($s);
+	for($i=0;$i<$nb;$i++)
+	{
+		if(ord($s[$i])>127)
+			return false;
+	}
+	return true;
+}
+
+protected function _httpencode($param, $value, $isUTF8)
