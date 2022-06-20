@@ -1119,3 +1119,22 @@ protected function _beginpage($orientation, $size, $rotation)
 		$this->PageInfo[$this->page]['size'] = array($this->wPt, $this->hPt);
 	if($rotation!=0)
 	{
+		if($rotation%90!=0)
+			$this->Error('Incorrect rotation value: '.$rotation);
+		$this->PageInfo[$this->page]['rotation'] = $rotation;
+	}
+	$this->CurRotation = $rotation;
+}
+
+protected function _endpage()
+{
+	$this->state = 1;
+}
+
+protected function _loadfont($path)
+{
+	// Load a font definition file
+	include($path);
+	if(!isset($name))
+		$this->Error('Could not include font definition file: '.$path);
+	if(isset($enc))
