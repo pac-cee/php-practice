@@ -1176,3 +1176,22 @@ protected function _UTF8encode($s)
 	for($i=0;$i<$nb;$i++)
 	{
 		$c = $s[$i];
+		$v = ord($c);
+		if($v>=128)
+		{
+			$res .= chr(0xC0 | ($v >> 6));
+			$res .= chr(0x80 | ($v & 0x3F));
+		}
+		else
+			$res .= $c;
+	}
+	return $res;
+}
+
+protected function _UTF8toUTF16($s)
+{
+	// Convert UTF-8 to UTF-16BE with BOM
+	$res = "\xFE\xFF";
+	if($this->iconv)
+		return $res.iconv('UTF-8','UTF-16BE',$s);
+	$nb = strlen($s);
