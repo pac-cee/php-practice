@@ -1214,3 +1214,22 @@ protected function _UTF8toUTF16($s)
 			$res .= chr(($c1 & 0x1C)>>2);
 			$res .= chr((($c1 & 0x03)<<6) + ($c2 & 0x3F));
 		}
+		else
+		{
+			// Single-byte character
+			$res .= "\0".chr($c1);
+		}
+	}
+	return $res;
+}
+
+protected function _escape($s)
+{
+	// Escape special characters
+	if(strpos($s,'(')!==false || strpos($s,')')!==false || strpos($s,'\\')!==false || strpos($s,"\r")!==false)
+		return str_replace(array('\\','(',')',"\r"), array('\\\\','\\(','\\)','\\r'), $s);
+	else
+		return $s;
+}
+
+protected function _textstring($s)
