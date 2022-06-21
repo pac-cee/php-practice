@@ -1233,3 +1233,22 @@ protected function _escape($s)
 }
 
 protected function _textstring($s)
+{
+	// Format a text string
+	if(!$this->_isascii($s))
+		$s = $this->_UTF8toUTF16($s);
+	return '('.$this->_escape($s).')';
+}
+
+protected function _dounderline($x, $y, $txt)
+{
+	// Underline text
+	$up = $this->CurrentFont['up'];
+	$ut = $this->CurrentFont['ut'];
+	$w = $this->GetStringWidth($txt)+$this->ws*substr_count($txt,' ');
+	return sprintf('%.2F %.2F %.2F %.2F re f',$x*$this->k,($this->h-($y-$up/1000*$this->FontSize))*$this->k,$w*$this->k,-$ut/1000*$this->FontSizePt);
+}
+
+protected function _parsejpg($file)
+{
+	// Extract info from a JPEG file
