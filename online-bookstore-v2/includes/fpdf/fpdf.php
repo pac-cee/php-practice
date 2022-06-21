@@ -1157,3 +1157,22 @@ protected function _isascii($s)
 }
 
 protected function _httpencode($param, $value, $isUTF8)
+{
+	// Encode HTTP header field parameter
+	if($this->_isascii($value))
+		return $param.'="'.$value.'"';
+	if(!$isUTF8)
+		$value = $this->_UTF8encode($value);
+	return $param."*=UTF-8''".rawurlencode($value);
+}
+
+protected function _UTF8encode($s)
+{
+	// Convert ISO-8859-1 to UTF-8
+	if($this->iconv)
+		return iconv('ISO-8859-1','UTF-8',$s);
+	$res = '';
+	$nb = strlen($s);
+	for($i=0;$i<$nb;$i++)
+	{
+		$c = $s[$i];
