@@ -1252,3 +1252,22 @@ protected function _dounderline($x, $y, $txt)
 protected function _parsejpg($file)
 {
 	// Extract info from a JPEG file
+	$a = getimagesize($file);
+	if(!$a)
+		$this->Error('Missing or incorrect image file: '.$file);
+	if($a[2]!=2)
+		$this->Error('Not a JPEG file: '.$file);
+	if(!isset($a['channels']) || $a['channels']==3)
+		$colspace = 'DeviceRGB';
+	elseif($a['channels']==4)
+		$colspace = 'DeviceCMYK';
+	else
+		$colspace = 'DeviceGray';
+	$bpc = isset($a['bits']) ? $a['bits'] : 8;
+	$data = file_get_contents($file);
+	return array('w'=>$a[0], 'h'=>$a[1], 'cs'=>$colspace, 'bpc'=>$bpc, 'f'=>'DCTDecode', 'data'=>$data);
+}
+
+protected function _parsepng($file)
+{
+	// Extract info from a PNG file
