@@ -1309,3 +1309,22 @@ protected function _parsepngstream($f, $file)
 		$this->Error('Unknown filter method: '.$file);
 	if(ord($this->_readstream($f,1))!=0)
 		$this->Error('Interlacing not supported: '.$file);
+	$this->_readstream($f,4);
+	$dp = '/Predictor 15 /Colors '.($colspace=='DeviceRGB' ? 3 : 1).' /BitsPerComponent '.$bpc.' /Columns '.$w;
+
+	// Scan chunks looking for palette, transparency and image data
+	$pal = '';
+	$trns = '';
+	$data = '';
+	do
+	{
+		$n = $this->_readint($f);
+		$type = $this->_readstream($f,4);
+		if($type=='PLTE')
+		{
+			// Read palette
+			$pal = $this->_readstream($f,$n);
+			$this->_readstream($f,4);
+		}
+		elseif($type=='tRNS')
+		{
