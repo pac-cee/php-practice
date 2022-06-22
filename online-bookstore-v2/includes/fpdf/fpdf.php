@@ -1366,3 +1366,22 @@ protected function _parsepngstream($f, $file)
 		$data = gzuncompress($data);
 		$color = '';
 		$alpha = '';
+		if($ct==4)
+		{
+			// Gray image
+			$len = 2*$w;
+			for($i=0;$i<$h;$i++)
+			{
+				$pos = (1+$len)*$i;
+				$color .= $data[$pos];
+				$alpha .= $data[$pos];
+				$line = substr($data,$pos+1,$len);
+				$color .= preg_replace('/(.)./s','$1',$line);
+				$alpha .= preg_replace('/.(.)/s','$1',$line);
+			}
+		}
+		else
+		{
+			// RGB image
+			$len = 4*$w;
+			for($i=0;$i<$h;$i++)
