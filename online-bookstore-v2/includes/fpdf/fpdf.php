@@ -1328,3 +1328,22 @@ protected function _parsepngstream($f, $file)
 		}
 		elseif($type=='tRNS')
 		{
+			// Read transparency info
+			$t = $this->_readstream($f,$n);
+			if($ct==0)
+				$trns = array(ord(substr($t,1,1)));
+			elseif($ct==2)
+				$trns = array(ord(substr($t,1,1)), ord(substr($t,3,1)), ord(substr($t,5,1)));
+			else
+			{
+				$pos = strpos($t,chr(0));
+				if($pos!==false)
+					$trns = array($pos);
+			}
+			$this->_readstream($f,4);
+		}
+		elseif($type=='IDAT')
+		{
+			// Read image data block
+			$data .= $this->_readstream($f,$n);
+			$this->_readstream($f,4);
