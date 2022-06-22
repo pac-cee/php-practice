@@ -1271,3 +1271,22 @@ protected function _parsejpg($file)
 protected function _parsepng($file)
 {
 	// Extract info from a PNG file
+	$f = fopen($file,'rb');
+	if(!$f)
+		$this->Error('Can\'t open image file: '.$file);
+	$info = $this->_parsepngstream($f,$file);
+	fclose($f);
+	return $info;
+}
+
+protected function _parsepngstream($f, $file)
+{
+	// Check signature
+	if($this->_readstream($f,8)!=chr(137).'PNG'.chr(13).chr(10).chr(26).chr(10))
+		$this->Error('Not a PNG file: '.$file);
+
+	// Read header chunk
+	$this->_readstream($f,4);
+	if($this->_readstream($f,4)!='IHDR')
+		$this->Error('Incorrect PNG file: '.$file);
+	$w = $this->_readint($f);
