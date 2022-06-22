@@ -1347,3 +1347,22 @@ protected function _parsepngstream($f, $file)
 			// Read image data block
 			$data .= $this->_readstream($f,$n);
 			$this->_readstream($f,4);
+		}
+		elseif($type=='IEND')
+			break;
+		else
+			$this->_readstream($f,$n+4);
+	}
+	while($n);
+
+	if($colspace=='Indexed' && empty($pal))
+		$this->Error('Missing palette in '.$file);
+	$info = array('w'=>$w, 'h'=>$h, 'cs'=>$colspace, 'bpc'=>$bpc, 'f'=>'FlateDecode', 'dp'=>$dp, 'pal'=>$pal, 'trns'=>$trns);
+	if($ct>=4)
+	{
+		// Extract alpha channel
+		if(!function_exists('gzuncompress'))
+			$this->Error('Zlib not available, can\'t handle alpha channel: '.$file);
+		$data = gzuncompress($data);
+		$color = '';
+		$alpha = '';
