@@ -1290,3 +1290,22 @@ protected function _parsepngstream($f, $file)
 	if($this->_readstream($f,4)!='IHDR')
 		$this->Error('Incorrect PNG file: '.$file);
 	$w = $this->_readint($f);
+	$h = $this->_readint($f);
+	$bpc = ord($this->_readstream($f,1));
+	if($bpc>8)
+		$this->Error('16-bit depth not supported: '.$file);
+	$ct = ord($this->_readstream($f,1));
+	if($ct==0 || $ct==4)
+		$colspace = 'DeviceGray';
+	elseif($ct==2 || $ct==6)
+		$colspace = 'DeviceRGB';
+	elseif($ct==3)
+		$colspace = 'Indexed';
+	else
+		$this->Error('Unknown color type: '.$file);
+	if(ord($this->_readstream($f,1))!=0)
+		$this->Error('Unknown compression method: '.$file);
+	if(ord($this->_readstream($f,1))!=0)
+		$this->Error('Unknown filter method: '.$file);
+	if(ord($this->_readstream($f,1))!=0)
+		$this->Error('Interlacing not supported: '.$file);
