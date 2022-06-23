@@ -1537,3 +1537,22 @@ protected function _putpage($n)
 {
 	$this->_newobj();
 	$this->_put('<</Type /Page');
+	$this->_put('/Parent 1 0 R');
+	if(isset($this->PageInfo[$n]['size']))
+		$this->_put(sprintf('/MediaBox [0 0 %.2F %.2F]',$this->PageInfo[$n]['size'][0],$this->PageInfo[$n]['size'][1]));
+	if(isset($this->PageInfo[$n]['rotation']))
+		$this->_put('/Rotate '.$this->PageInfo[$n]['rotation']);
+	$this->_put('/Resources 2 0 R');
+	if(!empty($this->PageLinks[$n]))
+	{
+		$s = '/Annots [';
+		foreach($this->PageLinks[$n] as $pl)
+			$s .= $pl[5].' 0 R ';
+		$s .= ']';
+		$this->_put($s);
+	}
+	if($this->WithAlpha)
+		$this->_put('/Group <</Type /Group /S /Transparency /CS /DeviceRGB>>');
+	$this->_put('/Contents '.($this->n+1).' 0 R>>');
+	$this->_put('endobj');
+	// Page content
