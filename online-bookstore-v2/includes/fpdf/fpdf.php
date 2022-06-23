@@ -1461,3 +1461,22 @@ protected function _out($s)
 		$this->pages[$this->page] .= $s."\n";
 	elseif($this->state==0)
 		$this->Error('No page has been added yet');
+	elseif($this->state==1)
+		$this->Error('Invalid call');
+	elseif($this->state==3)
+		$this->Error('The document is closed');
+}
+
+protected function _put($s)
+{
+	// Add a line to the document
+	$this->buffer .= $s."\n";
+}
+
+protected function _getoffset()
+{
+	return strlen($this->buffer);
+}
+
+protected function _newobj($n=null)
+{
