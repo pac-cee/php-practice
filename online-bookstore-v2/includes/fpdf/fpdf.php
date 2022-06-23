@@ -1518,3 +1518,22 @@ protected function _putlinks($n)
 		$rect = sprintf('%.2F %.2F %.2F %.2F',$pl[0],$pl[1],$pl[0]+$pl[2],$pl[1]-$pl[3]);
 		$s = '<</Type /Annot /Subtype /Link /Rect ['.$rect.'] /Border [0 0 0] ';
 		if(is_string($pl[4]))
+			$s .= '/A <</S /URI /URI '.$this->_textstring($pl[4]).'>>>>';
+		else
+		{
+			$l = $this->links[$pl[4]];
+			if(isset($this->PageInfo[$l[0]]['size']))
+				$h = $this->PageInfo[$l[0]]['size'][1];
+			else
+				$h = ($this->DefOrientation=='P') ? $this->DefPageSize[1]*$this->k : $this->DefPageSize[0]*$this->k;
+			$s .= sprintf('/Dest [%d 0 R /XYZ 0 %.2F null]>>',$this->PageInfo[$l[0]]['n'],$h-$l[1]*$this->k);
+		}
+		$this->_put($s);
+		$this->_put('endobj');
+	}
+}
+
+protected function _putpage($n)
+{
+	$this->_newobj();
+	$this->_put('<</Type /Page');
