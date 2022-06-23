@@ -1499,3 +1499,22 @@ protected function _putstreamobject($data)
 	if($this->compress)
 	{
 		$entries = '/Filter /FlateDecode ';
+		$data = gzcompress($data);
+	}
+	else
+		$entries = '';
+	$entries .= '/Length '.strlen($data);
+	$this->_newobj();
+	$this->_put('<<'.$entries.'>>');
+	$this->_putstream($data);
+	$this->_put('endobj');
+}
+
+protected function _putlinks($n)
+{
+	foreach($this->PageLinks[$n] as $pl)
+	{
+		$this->_newobj();
+		$rect = sprintf('%.2F %.2F %.2F %.2F',$pl[0],$pl[1],$pl[0]+$pl[2],$pl[1]-$pl[3]);
+		$s = '<</Type /Annot /Subtype /Link /Rect ['.$rect.'] /Border [0 0 0] ';
+		if(is_string($pl[4]))
