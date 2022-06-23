@@ -1404,3 +1404,22 @@ protected function _parsepngstream($f, $file)
 	$info['data'] = $data;
 	return $info;
 }
+
+protected function _readstream($f, $n)
+{
+	// Read n bytes from stream
+	$res = '';
+	while($n>0 && !feof($f))
+	{
+		$s = fread($f,$n);
+		if($s===false)
+			$this->Error('Error while reading stream');
+		$n -= strlen($s);
+		$res .= $s;
+	}
+	if($n>0)
+		$this->Error('Unexpected end of stream');
+	return $res;
+}
+
+protected function _readint($f)
