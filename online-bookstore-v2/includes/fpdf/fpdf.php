@@ -1480,3 +1480,22 @@ protected function _getoffset()
 
 protected function _newobj($n=null)
 {
+	// Begin a new object
+	if($n===null)
+		$n = ++$this->n;
+	$this->offsets[$n] = $this->_getoffset();
+	$this->_put($n.' 0 obj');
+}
+
+protected function _putstream($data)
+{
+	$this->_put('stream');
+	$this->_put($data);
+	$this->_put('endstream');
+}
+
+protected function _putstreamobject($data)
+{
+	if($this->compress)
+	{
+		$entries = '/Filter /FlateDecode ';
