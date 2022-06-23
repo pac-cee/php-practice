@@ -1385,3 +1385,22 @@ protected function _parsepngstream($f, $file)
 			// RGB image
 			$len = 4*$w;
 			for($i=0;$i<$h;$i++)
+			{
+				$pos = (1+$len)*$i;
+				$color .= $data[$pos];
+				$alpha .= $data[$pos];
+				$line = substr($data,$pos+1,$len);
+				$color .= preg_replace('/(.{3})./s','$1',$line);
+				$alpha .= preg_replace('/.{3}(.)/s','$1',$line);
+			}
+		}
+		unset($data);
+		$data = gzcompress($color);
+		$info['smask'] = gzcompress($alpha);
+		$this->WithAlpha = true;
+		if($this->PDFVersion<'1.4')
+			$this->PDFVersion = '1.4';
+	}
+	$info['data'] = $data;
+	return $info;
+}
