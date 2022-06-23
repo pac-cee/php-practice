@@ -1442,3 +1442,22 @@ protected function _parsegif($file)
 	imageinterlace($im,0);
 	ob_start();
 	imagepng($im);
+	$data = ob_get_clean();
+	imagedestroy($im);
+	$f = fopen('php://temp','rb+');
+	if(!$f)
+		$this->Error('Unable to create memory stream');
+	fwrite($f,$data);
+	rewind($f);
+	$info = $this->_parsepngstream($f,$file);
+	fclose($f);
+	return $info;
+}
+
+protected function _out($s)
+{
+	// Add a line to the current page
+	if($this->state==2)
+		$this->pages[$this->page] .= $s."\n";
+	elseif($this->state==0)
+		$this->Error('No page has been added yet');
