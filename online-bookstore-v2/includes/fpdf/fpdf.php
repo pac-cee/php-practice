@@ -1423,3 +1423,22 @@ protected function _readstream($f, $n)
 }
 
 protected function _readint($f)
+{
+	// Read a 4-byte integer from stream
+	$a = unpack('Ni',$this->_readstream($f,4));
+	return $a['i'];
+}
+
+protected function _parsegif($file)
+{
+	// Extract info from a GIF file (via PNG conversion)
+	if(!function_exists('imagepng'))
+		$this->Error('GD extension is required for GIF support');
+	if(!function_exists('imagecreatefromgif'))
+		$this->Error('GD has no GIF read support');
+	$im = imagecreatefromgif($file);
+	if(!$im)
+		$this->Error('Missing or incorrect image file: '.$file);
+	imageinterlace($im,0);
+	ob_start();
+	imagepng($im);
