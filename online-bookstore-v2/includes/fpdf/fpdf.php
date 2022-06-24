@@ -1575,3 +1575,22 @@ protected function _putpages()
 			$pl[5] = ++$n;
 		unset($pl);
 	}
+	for($i=1;$i<=$nb;$i++)
+		$this->_putpage($i);
+	// Pages root
+	$this->_newobj(1);
+	$this->_put('<</Type /Pages');
+	$kids = '/Kids [';
+	for($i=1;$i<=$nb;$i++)
+		$kids .= $this->PageInfo[$i]['n'].' 0 R ';
+	$kids .= ']';
+	$this->_put($kids);
+	$this->_put('/Count '.$nb);
+	if($this->DefOrientation=='P')
+	{
+		$w = $this->DefPageSize[0];
+		$h = $this->DefPageSize[1];
+	}
+	else
+	{
+		$w = $this->DefPageSize[1];
