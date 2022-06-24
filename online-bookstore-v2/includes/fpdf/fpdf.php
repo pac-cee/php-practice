@@ -1556,3 +1556,22 @@ protected function _putpage($n)
 	$this->_put('/Contents '.($this->n+1).' 0 R>>');
 	$this->_put('endobj');
 	// Page content
+	if(!empty($this->AliasNbPages))
+		$this->pages[$n] = str_replace($this->AliasNbPages,$this->page,$this->pages[$n]);
+	$this->_putstreamobject($this->pages[$n]);
+	// Link annotations
+	$this->_putlinks($n);
+}
+
+protected function _putpages()
+{
+	$nb = $this->page;
+	$n = $this->n;
+	for($i=1;$i<=$nb;$i++)
+	{
+		$this->PageInfo[$i]['n'] = ++$n;
+		$n++;
+		foreach($this->PageLinks[$i] as &$pl)
+			$pl[5] = ++$n;
+		unset($pl);
+	}
