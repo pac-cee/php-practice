@@ -1594,3 +1594,22 @@ protected function _putpages()
 	else
 	{
 		$w = $this->DefPageSize[1];
+		$h = $this->DefPageSize[0];
+	}
+	$this->_put(sprintf('/MediaBox [0 0 %.2F %.2F]',$w*$this->k,$h*$this->k));
+	$this->_put('>>');
+	$this->_put('endobj');
+}
+
+protected function _putfonts()
+{
+	foreach($this->FontFiles as $file=>$info)
+	{
+		// Font file embedding
+		$this->_newobj();
+		$this->FontFiles[$file]['n'] = $this->n;
+		$font = file_get_contents($file);
+		if(!$font)
+			$this->Error('Font file not found: '.$file);
+		$compressed = (substr($file,-2)=='.z');
+		if(!$compressed && isset($info['length2']))
