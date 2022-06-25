@@ -1613,3 +1613,22 @@ protected function _putfonts()
 			$this->Error('Font file not found: '.$file);
 		$compressed = (substr($file,-2)=='.z');
 		if(!$compressed && isset($info['length2']))
+			$font = substr($font,6,$info['length1']).substr($font,6+$info['length1']+6,$info['length2']);
+		$this->_put('<</Length '.strlen($font));
+		if($compressed)
+			$this->_put('/Filter /FlateDecode');
+		$this->_put('/Length1 '.$info['length1']);
+		if(isset($info['length2']))
+			$this->_put('/Length2 '.$info['length2'].' /Length3 0');
+		$this->_put('>>');
+		$this->_putstream($font);
+		$this->_put('endobj');
+	}
+	foreach($this->fonts as $k=>$font)
+	{
+		// Encoding
+		if(isset($font['diff']))
+		{
+			if(!isset($this->encodings[$font['enc']]))
+			{
+				$this->_newobj();
