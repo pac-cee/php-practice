@@ -1651,3 +1651,22 @@ protected function _putfonts()
 				$this->cmaps[$cmapkey] = $this->n;
 			}
 		}
+		// Font object
+		$this->fonts[$k]['n'] = $this->n+1;
+		$type = $font['type'];
+		$name = $font['name'];
+		if($font['subsetted'])
+			$name = 'AAAAAA+'.$name;
+		if($type=='Core')
+		{
+			// Core font
+			$this->_newobj();
+			$this->_put('<</Type /Font');
+			$this->_put('/BaseFont /'.$name);
+			$this->_put('/Subtype /Type1');
+			if($name!='Symbol' && $name!='ZapfDingbats')
+				$this->_put('/Encoding /WinAnsiEncoding');
+			if(isset($font['uv']))
+				$this->_put('/ToUnicode '.$this->cmaps[$cmapkey].' 0 R');
+			$this->_put('>>');
+			$this->_put('endobj');
