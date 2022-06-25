@@ -1632,3 +1632,22 @@ protected function _putfonts()
 			if(!isset($this->encodings[$font['enc']]))
 			{
 				$this->_newobj();
+				$this->_put('<</Type /Encoding /BaseEncoding /WinAnsiEncoding /Differences ['.$font['diff'].']>>');
+				$this->_put('endobj');
+				$this->encodings[$font['enc']] = $this->n;
+			}
+		}
+		// ToUnicode CMap
+		if(isset($font['uv']))
+		{
+			if(isset($font['enc']))
+				$cmapkey = $font['enc'];
+			else
+				$cmapkey = $font['name'];
+			if(!isset($this->cmaps[$cmapkey]))
+			{
+				$cmap = $this->_tounicodecmap($font['uv']);
+				$this->_putstreamobject($cmap);
+				$this->cmaps[$cmapkey] = $this->n;
+			}
+		}
