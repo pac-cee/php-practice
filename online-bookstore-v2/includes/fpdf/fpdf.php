@@ -1670,3 +1670,22 @@ protected function _putfonts()
 				$this->_put('/ToUnicode '.$this->cmaps[$cmapkey].' 0 R');
 			$this->_put('>>');
 			$this->_put('endobj');
+		}
+		elseif($type=='Type1' || $type=='TrueType')
+		{
+			// Additional Type1 or TrueType/OpenType font
+			$this->_newobj();
+			$this->_put('<</Type /Font');
+			$this->_put('/BaseFont /'.$name);
+			$this->_put('/Subtype /'.$type);
+			$this->_put('/FirstChar 32 /LastChar 255');
+			$this->_put('/Widths '.($this->n+1).' 0 R');
+			$this->_put('/FontDescriptor '.($this->n+2).' 0 R');
+			if(isset($font['diff']))
+				$this->_put('/Encoding '.$this->encodings[$font['enc']].' 0 R');
+			else
+				$this->_put('/Encoding /WinAnsiEncoding');
+			if(isset($font['uv']))
+				$this->_put('/ToUnicode '.$this->cmaps[$cmapkey].' 0 R');
+			$this->_put('>>');
+			$this->_put('endobj');
