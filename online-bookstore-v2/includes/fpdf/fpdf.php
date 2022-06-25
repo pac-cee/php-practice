@@ -1689,3 +1689,22 @@ protected function _putfonts()
 				$this->_put('/ToUnicode '.$this->cmaps[$cmapkey].' 0 R');
 			$this->_put('>>');
 			$this->_put('endobj');
+			// Widths
+			$this->_newobj();
+			$cw = $font['cw'];
+			$s = '[';
+			for($i=32;$i<=255;$i++)
+				$s .= $cw[chr($i)].' ';
+			$this->_put($s.']');
+			$this->_put('endobj');
+			// Descriptor
+			$this->_newobj();
+			$s = '<</Type /FontDescriptor /FontName /'.$name;
+			foreach($font['desc'] as $k=>$v)
+				$s .= ' /'.$k.' '.$v;
+			if(!empty($font['file']))
+				$s .= ' /FontFile'.($type=='Type1' ? '' : '2').' '.$this->FontFiles[$font['file']]['n'].' 0 R';
+			$this->_put($s.'>>');
+			$this->_put('endobj');
+		}
+		else
