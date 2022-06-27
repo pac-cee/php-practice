@@ -1727,3 +1727,22 @@ protected function _tounicodecmap($uv)
 	foreach($uv as $c=>$v)
 	{
 		if(is_array($v))
+		{
+			$ranges .= sprintf("<%02X> <%02X> <%04X>\n",$c,$c+$v[1]-1,$v[0]);
+			$nbr++;
+		}
+		else
+		{
+			$chars .= sprintf("<%02X> <%04X>\n",$c,$v);
+			$nbc++;
+		}
+	}
+	$s = "/CIDInit /ProcSet findresource begin\n";
+	$s .= "12 dict begin\n";
+	$s .= "begincmap\n";
+	$s .= "/CIDSystemInfo\n";
+	$s .= "<</Registry (Adobe)\n";
+	$s .= "/Ordering (UCS)\n";
+	$s .= "/Supplement 0\n";
+	$s .= ">> def\n";
+	$s .= "/CMapName /Adobe-Identity-UCS def\n";
