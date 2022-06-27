@@ -1765,3 +1765,22 @@ protected function _tounicodecmap($uv)
 	$s .= "endcmap\n";
 	$s .= "CMapName currentdict /CMap defineresource pop\n";
 	$s .= "end\n";
+	$s .= "end";
+	return $s;
+}
+
+protected function _putimages()
+{
+	foreach(array_keys($this->images) as $file)
+	{
+		$this->_putimage($this->images[$file]);
+		unset($this->images[$file]['data']);
+		unset($this->images[$file]['smask']);
+	}
+}
+
+protected function _putimage(&$info)
+{
+	$this->_newobj();
+	$info['n'] = $this->n;
+	$this->_put('<</Type /XObject');
