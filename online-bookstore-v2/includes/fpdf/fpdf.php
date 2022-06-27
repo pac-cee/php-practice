@@ -1784,3 +1784,22 @@ protected function _putimage(&$info)
 	$this->_newobj();
 	$info['n'] = $this->n;
 	$this->_put('<</Type /XObject');
+	$this->_put('/Subtype /Image');
+	$this->_put('/Width '.$info['w']);
+	$this->_put('/Height '.$info['h']);
+	if($info['cs']=='Indexed')
+		$this->_put('/ColorSpace [/Indexed /DeviceRGB '.(strlen($info['pal'])/3-1).' '.($this->n+1).' 0 R]');
+	else
+	{
+		$this->_put('/ColorSpace /'.$info['cs']);
+		if($info['cs']=='DeviceCMYK')
+			$this->_put('/Decode [1 0 1 0 1 0 1 0]');
+	}
+	$this->_put('/BitsPerComponent '.$info['bpc']);
+	if(isset($info['f']))
+		$this->_put('/Filter /'.$info['f']);
+	if(isset($info['dp']))
+		$this->_put('/DecodeParms <<'.$info['dp'].'>>');
+	if(isset($info['trns']) && is_array($info['trns']))
+	{
+		$trns = '';
