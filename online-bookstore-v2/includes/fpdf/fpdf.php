@@ -1746,3 +1746,22 @@ protected function _tounicodecmap($uv)
 	$s .= "/Supplement 0\n";
 	$s .= ">> def\n";
 	$s .= "/CMapName /Adobe-Identity-UCS def\n";
+	$s .= "/CMapType 2 def\n";
+	$s .= "1 begincodespacerange\n";
+	$s .= "<00> <FF>\n";
+	$s .= "endcodespacerange\n";
+	if($nbr>0)
+	{
+		$s .= "$nbr beginbfrange\n";
+		$s .= $ranges;
+		$s .= "endbfrange\n";
+	}
+	if($nbc>0)
+	{
+		$s .= "$nbc beginbfchar\n";
+		$s .= $chars;
+		$s .= "endbfchar\n";
+	}
+	$s .= "endcmap\n";
+	$s .= "CMapName currentdict /CMap defineresource pop\n";
+	$s .= "end\n";
