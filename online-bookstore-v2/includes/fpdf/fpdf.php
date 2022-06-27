@@ -1708,3 +1708,22 @@ protected function _putfonts()
 			$this->_put('endobj');
 		}
 		else
+		{
+			// Allow for additional types
+			$mtd = '_put'.strtolower($type);
+			if(!method_exists($this,$mtd))
+				$this->Error('Unsupported font type: '.$type);
+			$this->$mtd($font);
+		}
+	}
+}
+
+protected function _tounicodecmap($uv)
+{
+	$ranges = '';
+	$nbr = 0;
+	$chars = '';
+	$nbc = 0;
+	foreach($uv as $c=>$v)
+	{
+		if(is_array($v))
