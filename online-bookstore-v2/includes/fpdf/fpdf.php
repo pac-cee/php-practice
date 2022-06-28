@@ -1803,3 +1803,22 @@ protected function _putimage(&$info)
 	if(isset($info['trns']) && is_array($info['trns']))
 	{
 		$trns = '';
+		for($i=0;$i<count($info['trns']);$i++)
+			$trns .= $info['trns'][$i].' '.$info['trns'][$i].' ';
+		$this->_put('/Mask ['.$trns.']');
+	}
+	if(isset($info['smask']))
+		$this->_put('/SMask '.($this->n+1).' 0 R');
+	$this->_put('/Length '.strlen($info['data']).'>>');
+	$this->_putstream($info['data']);
+	$this->_put('endobj');
+	// Soft mask
+	if(isset($info['smask']))
+	{
+		$dp = '/Predictor 15 /Colors 1 /BitsPerComponent 8 /Columns '.$info['w'];
+		$smask = array('w'=>$info['w'], 'h'=>$info['h'], 'cs'=>'DeviceGray', 'bpc'=>8, 'f'=>$info['f'], 'dp'=>$dp, 'data'=>$info['smask']);
+		$this->_putimage($smask);
+	}
+	// Palette
+	if($info['cs']=='Indexed')
+		$this->_putstreamobject($info['pal']);
