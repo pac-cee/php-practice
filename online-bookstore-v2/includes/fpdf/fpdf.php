@@ -1917,3 +1917,18 @@ protected function _enddoc()
 	$offset = $this->_getoffset();
 	$this->_put('xref');
 	$this->_put('0 '.($this->n+1));
+	$this->_put('0000000000 65535 f ');
+	for($i=1;$i<=$this->n;$i++)
+		$this->_put(sprintf('%010d 00000 n ',$this->offsets[$i]));
+	// Trailer
+	$this->_put('trailer');
+	$this->_put('<<');
+	$this->_puttrailer();
+	$this->_put('>>');
+	$this->_put('startxref');
+	$this->_put($offset);
+	$this->_put('%%EOF');
+	$this->state = 3;
+}
+}
+?>
