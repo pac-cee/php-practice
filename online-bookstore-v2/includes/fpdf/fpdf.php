@@ -1841,3 +1841,22 @@ protected function _putresourcedict()
 	$this->_putxobjectdict();
 	$this->_put('>>');
 }
+
+protected function _putresources()
+{
+	$this->_putfonts();
+	$this->_putimages();
+	// Resource dictionary
+	$this->_newobj(2);
+	$this->_put('<<');
+	$this->_putresourcedict();
+	$this->_put('>>');
+	$this->_put('endobj');
+}
+
+protected function _putinfo()
+{
+	$date = @date('YmdHisO',$this->CreationDate);
+	$this->metadata['CreationDate'] = 'D:'.substr($date,0,-2)."'".substr($date,-2)."'";
+	foreach($this->metadata as $key=>$value)
+		$this->_put('/'.$key.' '.$this->_textstring($value));
