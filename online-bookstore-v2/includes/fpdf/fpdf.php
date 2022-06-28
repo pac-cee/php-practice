@@ -1879,3 +1879,22 @@ protected function _putcatalog()
 		$this->_put('/PageLayout /SinglePage');
 	elseif($this->LayoutMode=='continuous')
 		$this->_put('/PageLayout /OneColumn');
+	elseif($this->LayoutMode=='two')
+		$this->_put('/PageLayout /TwoColumnLeft');
+}
+
+protected function _putheader()
+{
+	$this->_put('%PDF-'.$this->PDFVersion);
+}
+
+protected function _puttrailer()
+{
+	$this->_put('/Size '.($this->n+1));
+	$this->_put('/Root '.$this->n.' 0 R');
+	$this->_put('/Info '.($this->n-1).' 0 R');
+}
+
+protected function _enddoc()
+{
+	$this->CreationDate = time();
