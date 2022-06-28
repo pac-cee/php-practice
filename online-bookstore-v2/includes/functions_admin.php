@@ -17,3 +17,22 @@ $conn = $db->getConnection();
  * --------------------
  * Verifies that $_SESSION['role'] === 'admin'. If not, redirect to admin_login.php.
  */
+function redirectIfNotAdmin() {
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+        header('Location: /admin/admin_login.php');
+        exit;
+    }
+}
+
+/**
+ * hashPassword($plainPassword): string
+ * ------------------------------------
+ * Hash a plain‐text password using bcrypt.
+ */
+function hashPassword($plainPassword) {
+    return password_hash($plainPassword, PASSWORD_BCRYPT);
+}
+
+/**
+ * verifyPassword($plainPassword, $hash): bool
+ * -------------------------------------------
