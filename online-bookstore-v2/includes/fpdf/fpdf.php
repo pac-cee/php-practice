@@ -1898,3 +1898,22 @@ protected function _puttrailer()
 protected function _enddoc()
 {
 	$this->CreationDate = time();
+	$this->_putheader();
+	$this->_putpages();
+	$this->_putresources();
+	// Info
+	$this->_newobj();
+	$this->_put('<<');
+	$this->_putinfo();
+	$this->_put('>>');
+	$this->_put('endobj');
+	// Catalog
+	$this->_newobj();
+	$this->_put('<<');
+	$this->_putcatalog();
+	$this->_put('>>');
+	$this->_put('endobj');
+	// Cross-ref
+	$offset = $this->_getoffset();
+	$this->_put('xref');
+	$this->_put('0 '.($this->n+1));
