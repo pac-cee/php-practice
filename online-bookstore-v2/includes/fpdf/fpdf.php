@@ -1860,3 +1860,22 @@ protected function _putinfo()
 	$this->metadata['CreationDate'] = 'D:'.substr($date,0,-2)."'".substr($date,-2)."'";
 	foreach($this->metadata as $key=>$value)
 		$this->_put('/'.$key.' '.$this->_textstring($value));
+}
+
+protected function _putcatalog()
+{
+	$n = $this->PageInfo[1]['n'];
+	$this->_put('/Type /Catalog');
+	$this->_put('/Pages 1 0 R');
+	if($this->ZoomMode=='fullpage')
+		$this->_put('/OpenAction ['.$n.' 0 R /Fit]');
+	elseif($this->ZoomMode=='fullwidth')
+		$this->_put('/OpenAction ['.$n.' 0 R /FitH null]');
+	elseif($this->ZoomMode=='real')
+		$this->_put('/OpenAction ['.$n.' 0 R /XYZ null null 1]');
+	elseif(!is_string($this->ZoomMode))
+		$this->_put('/OpenAction ['.$n.' 0 R /XYZ null null '.sprintf('%.2F',$this->ZoomMode/100).']');
+	if($this->LayoutMode=='single')
+		$this->_put('/PageLayout /SinglePage');
+	elseif($this->LayoutMode=='continuous')
+		$this->_put('/PageLayout /OneColumn');
