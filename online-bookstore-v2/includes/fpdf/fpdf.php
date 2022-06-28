@@ -1822,3 +1822,22 @@ protected function _putimage(&$info)
 	// Palette
 	if($info['cs']=='Indexed')
 		$this->_putstreamobject($info['pal']);
+}
+
+protected function _putxobjectdict()
+{
+	foreach($this->images as $image)
+		$this->_put('/I'.$image['i'].' '.$image['n'].' 0 R');
+}
+
+protected function _putresourcedict()
+{
+	$this->_put('/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
+	$this->_put('/Font <<');
+	foreach($this->fonts as $font)
+		$this->_put('/F'.$font['i'].' '.$font['n'].' 0 R');
+	$this->_put('>>');
+	$this->_put('/XObject <<');
+	$this->_putxobjectdict();
+	$this->_put('>>');
+}
