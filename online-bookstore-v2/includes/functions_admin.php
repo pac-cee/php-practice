@@ -93,3 +93,22 @@ function getLowStockBooks($threshold = 5) {
       WHERE stock_quantity < ?
       ORDER BY stock_quantity ASC
     ");
+    $stmt->bind_param('i', $threshold);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+/**
+ * getPendingOrders(): mysqli_result
+ * ---------------------------------
+ */
+function getPendingOrders() {
+    global $conn;
+    $sql = "
+      SELECT id, user_id, order_date
+      FROM orders
+      WHERE status = 'pending'
+      ORDER BY order_date DESC
+    ";
+    return $conn->query($sql);
+}
