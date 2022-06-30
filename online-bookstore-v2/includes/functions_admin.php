@@ -55,3 +55,22 @@ function getStats() {
     // pull in our global connection
     global $conn;
     $stats = [];
+
+    // 1. Total books
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM books");
+    $stats['total_books'] = (int) $res->fetch_assoc()['cnt'];
+
+    // 2. Total users
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM users");
+    $stats['total_users'] = (int) $res->fetch_assoc()['cnt'];
+
+    // 3. Total orders
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM orders");
+    $stats['total_orders'] = (int) $res->fetch_assoc()['cnt'];
+
+    // 4. Total revenue
+    $sql = "
+      SELECT IFNULL(SUM(oi.price * oi.quantity),0) AS revenue
+      FROM orders o
+      JOIN order_items oi ON o.id = oi.order_id
+      WHERE o.status != 'pending'
