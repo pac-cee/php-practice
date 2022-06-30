@@ -74,3 +74,22 @@ function getStats() {
       FROM orders o
       JOIN order_items oi ON o.id = oi.order_id
       WHERE o.status != 'pending'
+    ";
+    $res = $conn->query($sql);
+    $stats['total_revenue'] = (float) $res->fetch_assoc()['revenue'];
+
+    return $stats;
+}
+
+/**
+ * getLowStockBooks(): mysqli_result
+ * ---------------------------------
+ */
+function getLowStockBooks($threshold = 5) {
+    global $conn;
+    $stmt = $conn->prepare("
+      SELECT id, title, stock_quantity 
+      FROM books 
+      WHERE stock_quantity < ?
+      ORDER BY stock_quantity ASC
+    ");
