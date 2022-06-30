@@ -36,3 +36,22 @@ function hashPassword($plainPassword) {
 /**
  * verifyPassword($plainPassword, $hash): bool
  * -------------------------------------------
+ * Verify a plain‐text password against its bcrypt hash.
+ */
+function verifyPassword($plainPassword, $hash) {
+    return password_verify($plainPassword, $hash);
+}
+
+/**
+ * getStats(): array
+ * -----------------
+ * Returns an associative array of admin KPIs:
+ *  - total_books
+ *  - total_users
+ *  - total_orders
+ *  - total_revenue
+ */
+function getStats() {
+    // pull in our global connection
+    global $conn;
+    $stats = [];
