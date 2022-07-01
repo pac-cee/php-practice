@@ -36,3 +36,22 @@ require_once __DIR__ . '/config/db.php';
         <a href="views/book_catalog.php"><i class="fas fa-book-open"></i> Book Catalog</a>
 
         <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- If a normal user is logged in -->
+            <a href="views/dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="views/quiz.php"><i class="fas fa-question-circle"></i> Quizzes</a>
+            <a href="views/quiz_results.php"><i class="fas fa-list-ol"></i> Quiz Results</a>
+            <a href="views/orders.php"><i class="fas fa-shopping-cart"></i> My Orders</a>
+            <a href="views/progress.php"><i class="fas fa-chart-line"></i> My Progress</a>
+            <a href="views/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <!-- If the logged-in user is an admin, show link to Admin Dashboard -->
+                <a href="admin/dashboard.php"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+            <?php else: ?>
+                <!-- If a normal user is logged in, but not admin, show Admin Login -->
+                <a href="admin/admin_login.php"><i class="fas fa-user-shield"></i> Admin Login</a>
+            <?php endif; ?>
+
+        <?php else: ?>
+            <!-- No one is logged in -->
+            <a href="views/register.php"><i class="fas fa-user-plus"></i> Register</a>
