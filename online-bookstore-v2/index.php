@@ -74,3 +74,22 @@ require_once __DIR__ . '/config/db.php';
                     <li><i class="fas fa-check-circle"></i> Simple registration and secure login</li>
                     <li><i class="fas fa-check-circle"></i> Fast, user-friendly, and mobile-ready</li>
                 </ul>
+                <a href="views/register.php" class="btn btn-primary">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-img">
+                <img
+                    src="https://plus.unsplash.com/premium_photo-1669652639337-c513cc42ead6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0"
+                    alt="Bookstore Illustration"
+                    style="border-radius:12px; box-shadow:0 4px 24px #6c63ff22;">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-book-reader"></i>
+                    <h3>Huge Selection</h3>
+                    <p>Find books from bestsellers to rare finds, all in one place.</p>
