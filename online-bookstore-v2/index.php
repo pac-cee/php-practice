@@ -55,3 +55,22 @@ require_once __DIR__ . '/config/db.php';
         <?php else: ?>
             <!-- No one is logged in -->
             <a href="views/register.php"><i class="fas fa-user-plus"></i> Register</a>
+            <a href="views/login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="admin/admin_login.php"><i class="fas fa-user-shield"></i> Admin Login</a>
+        <?php endif; ?>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Welcome to the Online Bookstore</h1>
+                <p class="hero-description">
+                    Your one-stop shop for discovering, buying, and selling books online. Whether you're a passionate reader,
+                    a student, or a book collector, our platform connects you with thousands of titles and a vibrant community.
+                </p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Browse a vast collection of books across genres</li>
+                    <li><i class="fas fa-check-circle"></i> Add and manage your own books for sale</li>
+                    <li><i class="fas fa-check-circle"></i> Simple registration and secure login</li>
+                    <li><i class="fas fa-check-circle"></i> Fast, user-friendly, and mobile-ready</li>
+                </ul>
