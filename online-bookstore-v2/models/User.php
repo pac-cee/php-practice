@@ -17,3 +17,22 @@ class User {
     public function getId(): int {
         return $this->id;
     }
+
+    public function getUsername(): string {
+        return $this->username;
+    }
+
+    public function getEmail(): string {
+        return $this->email;
+    }
+
+    public function getCreatedAt(): string {
+        return $this->createdAt;
+    }
+
+    /**
+     * Indicates whether the user has admin privileges.
+     */
+    public function isAdmin(): bool {
+        return false;
+    }
