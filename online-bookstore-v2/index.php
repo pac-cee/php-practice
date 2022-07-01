@@ -93,3 +93,25 @@ require_once __DIR__ . '/config/db.php';
                     <i class="fas fa-book-reader"></i>
                     <h3>Huge Selection</h3>
                     <p>Find books from bestsellers to rare finds, all in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is protected and your transactions are safe.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Enjoy a seamless experience on any device, anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support</h3>
+                    <p>Get help fast with our friendly customer support team.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
