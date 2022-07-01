@@ -112,3 +112,22 @@ function getPendingOrders() {
     ";
     return $conn->query($sql);
 }
+
+/**
+ * generatePDF(...)
+ * ----------------
+ */
+function generatePDF($title, $columns, $dataRows, $outputName = 'report.pdf') {
+    // Load FPDF
+    require_once __DIR__ . '/fpdf/fpdf.php';
+
+    $pdf = new FPDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',16);
+    $pdf->Cell(0,10,$title,0,1,'C');
+    $pdf->Ln(5);
+
+    // Header
+    $pdf->SetFont('Arial','B',12);
+    $colW = (int)(180/count($columns));
+    foreach ($columns as $col) {
