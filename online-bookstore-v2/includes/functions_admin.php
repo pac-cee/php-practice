@@ -131,3 +131,19 @@ function generatePDF($title, $columns, $dataRows, $outputName = 'report.pdf') {
     $pdf->SetFont('Arial','B',12);
     $colW = (int)(180/count($columns));
     foreach ($columns as $col) {
+        $pdf->Cell($colW,7,iconv('UTF-8','ISO-8859-1',$col),1,0,'C');
+    }
+    $pdf->Ln();
+
+    // Rows
+    $pdf->SetFont('Arial','',11);
+    foreach ($dataRows as $row) {
+        foreach ($row as $cell) {
+            $pdf->Cell($colW,6,iconv('UTF-8','ISO-8859-1',(string)$cell),1,0,'C');
+        }
+        $pdf->Ln();
+    }
+
+    $pdf->Output('D',$outputName);
+    exit;
+}
