@@ -36,3 +36,22 @@ class User {
     public function isAdmin(): bool {
         return false;
     }
+}
+
+?>
+
+<?php
+// File: models/AdminUser.php
+
+require_once __DIR__ . '/User.php';
+
+class AdminUser extends User {
+    public function __construct(int $id, string $username, string $email, string $createdAt) {
+        parent::__construct($id, $username, $email, $createdAt);
+    }
+
+    /**
+     * Admin users can manage other users
+     */
+    public function canManageUsers(): bool {
+        return true;
