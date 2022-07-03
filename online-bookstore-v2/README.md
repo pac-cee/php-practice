@@ -36,3 +36,22 @@ In the digital era, readers and learners require more than just a place to buy b
 ## 6. Features (Detailed)
 
 ### 1. **User Registration & Login**
+- **What it does:** Enables new users to sign up and existing users to securely log in to their personalized dashboard.
+- **User Workflow:**
+  1. User visits the registration page and fills out the form (username, password, email, and optionally selects a role).
+  2. On submission, the backend validates the input, checks for existing usernames, and hashes the password before storing it in the `users` table.
+  3. User can then log in with their credentials. On successful login, a session is created (`$_SESSION['user_id']` and `$_SESSION['role']`).
+  4. The session persists across pages until logout or session expiration.
+- **Backend Logic:**
+  - Registration and login use prepared SQL statements to prevent SQL injection.
+  - Passwords are hashed using PHP’s `password_hash()` and verified with `password_verify()`.
+  - Sessions are securely started and destroyed on logout.
+- **Integration:**
+  - All protected pages check for an active session before granting access.
+  - User role determines dashboard content and navigation.
+
+### 2. **Book Catalog**
+- **What it does:** Presents a visually appealing, searchable list of all available books, with options to buy, read online, or listen to audiobooks.
+- **User Workflow:**
+  1. User navigates to the "Book Catalog" page from the dashboard.
+  2. The app queries the `books` table (LEFT JOIN with `audio_books`) to fetch all relevant book data.
