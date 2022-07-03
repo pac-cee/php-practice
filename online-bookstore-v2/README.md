@@ -17,3 +17,22 @@ In the digital era, readers and learners require more than just a place to buy b
 
 ---
 
+## 4. Objectives
+- **Unified Experience:** Deliver a single platform for buying, reading, and learning with books.
+- **User Roles:** Support different user types—students, teachers, admins, and individuals—with tailored dashboards and permissions.
+- **Digital Access:** Allow users to read books online (PDF/HTML) and listen to audiobooks directly from the platform.
+- **Learning Tools:** Integrate quizzes and progress tracking to encourage active learning and self-assessment.
+- **Modern UI/UX:** Ensure the interface is visually appealing, responsive, and easy to navigate for all users.
+- **Security:** Protect user data and privacy through strong authentication, password hashing, and secure database queries.
+- **Scalability:** Structure the codebase and database for easy future expansion (e.g., more content types, analytics, social features).
+
+---
+
+## 5. Diagrams (Data Flow Diagrams)
+**[Draw these diagrams by hand or using a tool, and insert images here when ready.]**
+
+![data_flow_diagram](./images/data_flow_diagram.png)
+
+## 6. Features (Detailed)
+
+### 1. **User Registration & Login**
