@@ -55,3 +55,14 @@ class AdminUser extends User {
      */
     public function canManageUsers(): bool {
         return true;
+    }
+
+    /**
+     * Overrides base to indicate admin
+     */
+    public function isAdmin(): bool {
+        return true;
+    }
+}
+
+?>
