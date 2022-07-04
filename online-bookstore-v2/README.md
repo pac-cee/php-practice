@@ -74,3 +74,22 @@ In the digital era, readers and learners require more than just a place to buy b
      - **Navigation Bar:** Quick links to all major sections (catalog, quizzes, orders, progress, etc.).
      - **Hero Section:** Welcome message and motivational quote or insight.
      - **Stats/Insights Grid:** Shows key metrics (books read, quizzes taken, orders made, last quiz score).
+     - **Recent Activity:** Lists recent orders and quiz attempts for quick access.
+     - **Notifications:** Alerts for new books, quizzes, or admin messages.
+     - **Recommendations:** Personalized suggestions for books and quizzes based on user activity.
+     - **Currently Reading Widget:** Highlights the book the user is currently reading, with progress, last read date, and buttons to continue reading or listening if files are available.
+     - **Stats Chart:** A bar graph (using Chart.js) visualizes user activity over time (e.g., books read per month).
+- **Backend Logic:**
+  - Aggregates data from `orders`, `progress`, `quiz_results`, and `recommendations` tables.
+  - Uses session data to filter and personalize content.
+- **Integration:**
+  - Links to all other features (catalog, quizzes, orders, etc.) are provided for seamless navigation.
+  - All dashboard CSS is embedded or imported for a cohesive look.
+  - Chart.js is used for rendering interactive charts.
+
+### 4. **Quizzes**
+- **What it does:** Lets users test their knowledge with quizzes related to books.
+- **How it works:**
+  - Users can take quizzes from the dashboard or catalog.
+  - Quiz results are saved and can be reviewed anytime.
+  - Admins/teachers can create/manage quizzes and view results.
