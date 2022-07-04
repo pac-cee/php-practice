@@ -55,3 +55,22 @@ In the digital era, readers and learners require more than just a place to buy b
 - **User Workflow:**
   1. User navigates to the "Book Catalog" page from the dashboard.
   2. The app queries the `books` table (LEFT JOIN with `audio_books`) to fetch all relevant book data.
+  3. Each book is displayed as a card with its cover, title, author, price, description, and action buttons:
+     - **Buy/Order:** Opens a purchase/order form or triggers a POST request to add the book to the user's orders.
+     - **Read Online:** If the book has a `read_file`, this button opens the file in a new tab for online reading.
+     - **Listen:** If there’s an `audio_file`, this button opens the audio in a player or new tab.
+- **Backend Logic:**
+  - Uses SQL JOINs to aggregate book and audio data efficiently.
+  - Only displays action buttons if the corresponding files exist for the book.
+- **Integration:**
+  - Orders are linked to the user and book in the `orders` table.
+  - Reading/listening actions update the `progress` table.
+
+### 3. **User Dashboard**
+- **What it does:** Serves as the personalized home page for each user, summarizing all recent activity, stats, and recommendations.
+- **User Workflow:**
+  1. After login, user lands on the dashboard.
+  2. The dashboard displays:
+     - **Navigation Bar:** Quick links to all major sections (catalog, quizzes, orders, progress, etc.).
+     - **Hero Section:** Welcome message and motivational quote or insight.
+     - **Stats/Insights Grid:** Shows key metrics (books read, quizzes taken, orders made, last quiz score).
