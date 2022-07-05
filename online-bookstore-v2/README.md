@@ -93,3 +93,22 @@ In the digital era, readers and learners require more than just a place to buy b
   - Users can take quizzes from the dashboard or catalog.
   - Quiz results are saved and can be reviewed anytime.
   - Admins/teachers can create/manage quizzes and view results.
+- **Technical Notes:**
+  - Quizzes are linked to specific books.
+  - Results are stored in the database with scores and timestamps.
+
+### 5. **Reading Progress Tracking**
+- **What it does:** Tracks and displays how much of a book a user has read.
+- **How it works:**
+  - Each time a user reads a book, their progress (pages read, last read date) is updated.
+  - The dashboard and a dedicated progress page show summaries and details.
+- **Technical Notes:**
+  - Progress is stored in the `progress` table, linked to both user and book.
+
+### 6. **Order Management**
+- **What it does:** Allows users to view their past and current book orders.
+- **How it works:**
+  - Orders page lists all books ordered, status (pending, completed, canceled), and order dates.
+  - Users can view order history from the dashboard or dedicated page.
+- **Technical Notes:**
+  - Orders are linked to users and books in the database.
