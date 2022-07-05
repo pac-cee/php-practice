@@ -112,3 +112,22 @@ In the digital era, readers and learners require more than just a place to buy b
   - Users can view order history from the dashboard or dedicated page.
 - **Technical Notes:**
   - Orders are linked to users and books in the database.
+
+### 7. **Audio Books**
+- **What it does:** Enables users to listen to audio versions of books when available.
+- **How it works:**
+  - "Listen" button appears for books with an `audio_file`.
+  - Clicking opens the audio in a new tab or player.
+- **Technical Notes:**
+  - Audio files are managed in the `audio_books` table and stored in `/audio/`.
+
+### 8. **Recommendations**
+- **What it does:** Suggests books and quizzes based on user activity and interests.
+- **How it works:**
+  - Dashboard shows recommended books not yet ordered and quizzes not yet taken.
+  - Recommendations update as user activity changes.
+- **Technical Notes:**
+  - Uses simple SQL queries to exclude already ordered/taken items.
+
+### 9. **Admin/Teacher Dashboard**
+- **What it does:** Provides additional tools for teachers/admins to manage users, quizzes, and view analytics.
