@@ -131,3 +131,22 @@ In the digital era, readers and learners require more than just a place to buy b
 
 ### 9. **Admin/Teacher Dashboard**
 - **What it does:** Provides additional tools for teachers/admins to manage users, quizzes, and view analytics.
+- **How it works:**
+  - Admins/teachers see extra navigation options (e.g., School Dashboard).
+  - Can view/manage students, quizzes, and results.
+- **Technical Notes:**
+  - Role-based access control ensures only authorized users see these features.
+
+### 10. **Professional, Responsive UI**
+- **What it does:** Ensures the app looks and works great on all devices.
+- **How it works:**
+  - Uses modern CSS (Flexbox, Grid), Google Fonts, FontAwesome icons, and responsive breakpoints.
+  - All pages are styled for clarity and ease of use.
+
+---
+
+---
+
+## 7. Database Schema (In-Depth)
+The OnlineBookstore uses a normalized relational database (MySQL) to manage users, books, orders, quizzes, progress, and more. Below is a detailed description of each table and its role:
+
