@@ -226,3 +226,22 @@ Security is a top priority in the OnlineBookstore. Measures are implemented at e
 - User roles (student, teacher, admin, individual) are enforced in PHP, restricting access to admin/teacher-only features.
 - Navigation and dashboard content dynamically change based on role.
 
+### **SQL Injection Prevention**
+- All database queries use prepared statements (`$stmt->bind_param(...)`) to prevent SQL injection.
+- No user input is ever directly interpolated into SQL queries.
+
+### **XSS & Output Escaping**
+- All user-generated content is escaped using `htmlspecialchars()` before being rendered in HTML.
+- Forms and user input fields are validated both client- and server-side.
+
+### **File Security**
+- Uploaded files (cover images, book files, audio) are stored outside the web root or in protected directories.
+- File names are sanitized and validated before saving.
+
+### **Other Best Practices**
+- Password reset and email verification can be added for further security.
+- All sensitive operations (e.g., ordering, quiz submission) require a logged-in user.
+
+---
+
+## 9. Feature Walkthrough (Step-by-Step)
