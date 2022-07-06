@@ -169,3 +169,22 @@ The OnlineBookstore uses a normalized relational database (MySQL) to manage user
 - **Purpose:** Stores user accounts and roles.
 - **Fields:**
   - `id`, `username`, `password` (hashed), `email`
+  - `role`: ENUM (student, teacher, admin, individual)
+  - `membership_id`, `school_id`: Optional, for extended features
+
+### **orders**
+- **Purpose:** Tracks book purchases/orders by users.
+- **Fields:**
+  - `id`, `user_id`, `book_id`, `order_date`, `status`
+
+### **progress**
+- **Purpose:** Tracks user reading progress for each book.
+- **Fields:**
+  - `id`, `user_id`, `book_id`, `pages_read`, `last_read`
+
+### **quizzes**
+- **Purpose:** Stores quiz metadata for books.
+- **Fields:**
+  - `id`, `book_id`, `title`, `questions` (JSON/text)
+
+### **quiz_questions**
