@@ -245,3 +245,22 @@ Security is a top priority in the OnlineBookstore. Measures are implemented at e
 ---
 
 ## 9. Feature Walkthrough (Step-by-Step)
+Below is a typical user journey through the OnlineBookstore, highlighting how each feature works in practice:
+
+### **1. Registration & Login**
+- User visits the registration page, fills out the form, and submits.
+- Backend validates input, hashes the password, and creates a new user in the `users` table.
+- On login, credentials are checked using a secure hash comparison. If correct, a session is started.
+
+### **2. Browsing the Catalog**
+- After login, the user navigates to the catalog page.
+- The app fetches all books from the `books` table (with audio info from `audio_books`).
+- Each book card displays details and available actions (Buy, Read Online, Listen).
+
+### **3. Ordering a Book**
+- User clicks the "Buy/Order" button on a book.
+- The order is recorded in the `orders` table, linked to the user and book.
+- The user can view all their orders from the dashboard or orders page.
+
+### **4. Reading or Listening to a Book**
+- If a book has a `read_file`, the "Read Online" button appears. Clicking it opens the file in a new tab.
