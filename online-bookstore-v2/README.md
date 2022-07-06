@@ -150,3 +150,22 @@ In the digital era, readers and learners require more than just a place to buy b
 ## 7. Database Schema (In-Depth)
 The OnlineBookstore uses a normalized relational database (MySQL) to manage users, books, orders, quizzes, progress, and more. Below is a detailed description of each table and its role:
 
+### **books**
+- **Purpose:** Stores all book metadata.
+- **Fields:**
+  - `id`: Primary key
+  - `title`, `author`, `price`, `description`, `cover_image`: Book info
+  - `read_file`: (Should be added) File name for the online reading version (PDF/HTML)
+
+### **audio_books**
+- **Purpose:** Links audio files to books.
+- **Fields:**
+  - `id`: Primary key
+  - `book_id`: Foreign key to `books`
+  - `audio_file`: File name of the audio version
+  - `duration`: Length in seconds
+
+### **users**
+- **Purpose:** Stores user accounts and roles.
+- **Fields:**
+  - `id`, `username`, `password` (hashed), `email`
