@@ -188,3 +188,22 @@ The OnlineBookstore uses a normalized relational database (MySQL) to manage user
   - `id`, `book_id`, `title`, `questions` (JSON/text)
 
 ### **quiz_questions**
+- **Purpose:** Stores individual questions for quizzes.
+- **Fields:**
+  - `id`, `quiz_id`, `question`, `choices` (JSON), `correct_answer`
+
+### **quiz_results**
+- **Purpose:** Tracks quiz attempts and scores by users.
+- **Fields:**
+  - `id`, `quiz_id`, `user_id`, `score`, `total`, `taken_at`
+
+### **recommendations**
+- **Purpose:** Stores personalized book/quiz recommendations for users.
+- **Fields:**
+  - `id`, `user_id`, `book_id`, `recommended_at`
+
+### **schools, memberships**
+- **Purpose:** Support for institutional users and memberships.
+- **Fields:**
+  - School: `id`, `name`, `address`, `contact_email`
+  - Membership: `id`, `name`, `description`, `price`, `duration_days`
