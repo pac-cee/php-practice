@@ -207,3 +207,22 @@ The OnlineBookstore uses a normalized relational database (MySQL) to manage user
 - **Fields:**
   - School: `id`, `name`, `address`, `contact_email`
   - Membership: `id`, `name`, `description`, `price`, `duration_days`
+
+**Notes:**
+- All foreign keys use `ON DELETE CASCADE` to maintain referential integrity.
+- All sensitive data (e.g., passwords) is stored securely.
+
+---
+
+## 8. Security (In-Depth)
+Security is a top priority in the OnlineBookstore. Measures are implemented at every layer:
+
+### **Authentication & Sessions**
+- Users must register and log in; all pages check for an active session (`$_SESSION['user_id']`).
+- Passwords are hashed (e.g., using `password_hash()` in PHP) before being stored in the database.
+- Sessions are securely managed and destroyed on logout.
+
+### **Authorization & Roles**
+- User roles (student, teacher, admin, individual) are enforced in PHP, restricting access to admin/teacher-only features.
+- Navigation and dashboard content dynamically change based on role.
+
