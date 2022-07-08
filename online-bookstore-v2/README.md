@@ -264,3 +264,22 @@ Below is a typical user journey through the OnlineBookstore, highlighting how ea
 
 ### **4. Reading or Listening to a Book**
 - If a book has a `read_file`, the "Read Online" button appears. Clicking it opens the file in a new tab.
+- If a book has an `audio_file`, the "Listen" button appears. Clicking it opens the audio in a player.
+- The app tracks reading/listening activity in the `progress` table.
+
+### **5. Taking a Quiz**
+- User selects a quiz from the dashboard or catalog.
+- Quiz questions are loaded from the `quizzes` and `quiz_questions` tables.
+- User submits answers, and the app calculates the score, saving it in `quiz_results`.
+
+### **6. Tracking Progress**
+- Each time the user reads a book, the app updates `pages_read` and `last_read` in the `progress` table.
+- The dashboard displays current progress and stats (e.g., books read, quizzes taken).
+
+### **7. Admin/Teacher Actions**
+- Admins/teachers can log in to see extra dashboard options (student management, quiz analytics).
+- They can add/edit quizzes, view quiz results, and manage users.
+
+**This walkthrough illustrates how the app integrates all features into a smooth, secure workflow for every user type.**
+
+---
