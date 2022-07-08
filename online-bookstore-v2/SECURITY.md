@@ -17,3 +17,10 @@
 ## 3. Dependencies
 - Use trusted packages only; keep dependencies up to date.
 - Monitor for security advisories and patch promptly.
+
+## 4. Responsible Disclosure
+- We appreciate responsible disclosure and will respond promptly to all reports.
+
+---
+
+For more details, see [DEVELOPER_README.md](DEVELOPER_README.md) and [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md).
