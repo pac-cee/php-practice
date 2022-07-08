@@ -283,3 +283,22 @@ Below is a typical user journey through the OnlineBookstore, highlighting how ea
 **This walkthrough illustrates how the app integrates all features into a smooth, secure workflow for every user type.**
 
 ---
+
+## 7. Directory Structure
+- `config/` – Database connection
+- `controllers/` – App logic (MVC)
+- `models/` – Data models (Book, User, Order, etc.)
+- `views/` – All user-facing pages (PHP)
+- `assets/` – CSS, images, audio
+- `setup.sql` – MySQL schema for all features
+
+---
+
+## 8. Setup
+1. Import `setup.sql` into your MySQL database (use DB name `bookapp`).
+2. Update `config/db.php` with your DB credentials.
+3. Place project in your web server's root (e.g., `htdocs` for XAMPP).
+4. Access `index.php` to begin using the app.
+
+---
+
