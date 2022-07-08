@@ -302,3 +302,12 @@ Below is a typical user journey through the OnlineBookstore, highlighting how ea
 
 ---
 
+## 9. Security
+- Passwords are hashed
+- SQL injection is prevented via prepared statements
+- Sessions are used for authentication
+
+---
+
+## 10. Credits
+Developed with ❤️ by [pacifique bakundukize]
