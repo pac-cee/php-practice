@@ -55,3 +55,22 @@ CREATE TABLE books (
     category_id INT,
     isbn VARCHAR(13),
     publisher VARCHAR(255),
+    publication_date DATE,
+    pages INT,
+    language VARCHAR(50),
+    stock_quantity INT DEFAULT 0,
+    featured TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    read_file VARCHAR(255),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+-- Audio Books
+CREATE TABLE audio_books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT NOT NULL,
+    audio_file VARCHAR(255) NOT NULL,
+    duration INT,
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
+
