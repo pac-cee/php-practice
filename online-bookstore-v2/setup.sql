@@ -93,3 +93,22 @@ CREATE TABLE addresses (
 
 -- Coupons
 CREATE TABLE coupons (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    code VARCHAR(20) NOT NULL UNIQUE,
+    type ENUM('percentage','fixed') NOT NULL,
+    value DECIMAL(10,2) NOT NULL,
+    min_order_amount DECIMAL(10,2) DEFAULT 0.00,
+    starts_at DATETIME NOT NULL,
+    expires_at DATETIME NOT NULL,
+    is_active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Orders
+CREATE TABLE orders (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) DEFAULT 'pending',
+    FOREIGN KEY (user_id) REFERENCES users(id),
