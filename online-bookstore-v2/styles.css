@@ -17,3 +17,22 @@ body {
 }
 nav {
   background: var(--nav-bg);
+  color: #fff;
+  padding: 1.2em 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  box-shadow: 0 2px 8px rgba(108,99,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  animation: navFadeIn 1s;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.5em 1em;
