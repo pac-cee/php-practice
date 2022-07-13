@@ -131,3 +131,22 @@ CREATE TABLE payment_methods (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     card_type VARCHAR(50) NOT NULL,
+    last_four VARCHAR(4) NOT NULL,
+    expiry_month VARCHAR(2) NOT NULL,
+    expiry_year VARCHAR(4) NOT NULL,
+    is_default TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Progress
+CREATE TABLE progress (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    pages_read INT DEFAULT 0,
+    last_read DATETIME,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
