@@ -188,3 +188,22 @@ CREATE TABLE recommendations (
     user_id INT NOT NULL,
     book_id INT NOT NULL,
     recommended_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
+
+-- Reviews
+CREATE TABLE reviews (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT NOT NULL,
+    user_id INT NOT NULL,
+    rating INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (book_id) REFERENCES books(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Wishlists
+CREATE TABLE wishlists (
