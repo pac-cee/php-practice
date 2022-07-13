@@ -1,0 +1,19 @@
+:root {
+  --primary: #6c63ff;
+  --secondary: #232946;
+  --accent: #ffb86b;
+  --bg: #f4f4f4;
+  --card-bg: #fff;
+  --text: #232946;
+  --nav-bg: linear-gradient(90deg, #6c63ff 0%, #232946 100%);
+}
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+nav {
+  background: var(--nav-bg);
