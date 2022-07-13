@@ -150,3 +150,22 @@ CREATE TABLE progress (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
+
+-- Quizzes
+CREATE TABLE quizzes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    questions TEXT,
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
+
+-- Quiz Questions
+CREATE TABLE quiz_questions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quiz_id INT NOT NULL,
+    question TEXT NOT NULL,
+    choices JSON NOT NULL,
+    correct_answer INT NOT NULL,
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(id)
+);
