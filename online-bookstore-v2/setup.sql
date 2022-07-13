@@ -169,3 +169,22 @@ CREATE TABLE quiz_questions (
     correct_answer INT NOT NULL,
     FOREIGN KEY (quiz_id) REFERENCES quizzes(id)
 );
+
+-- Quiz Results
+CREATE TABLE quiz_results (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quiz_id INT NOT NULL,
+    user_id INT NOT NULL,
+    score INT,
+    taken_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total INT,
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Recommendations
+CREATE TABLE recommendations (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    recommended_at DATETIME DEFAULT CURRENT_TIMESTAMP,
