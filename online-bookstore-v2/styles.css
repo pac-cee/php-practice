@@ -74,3 +74,22 @@ main {
 .hero-img img {
   width: 180px;
   max-width: 90%;
+  animation: fadeInUp 1.2s;
+}
+h1 {
+  font-size: 2.3em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #ffb86b55;
+}
+section {
+  margin-bottom: 2em;
+}
+.features {
+  display: flex;
+  gap: 1.5em;
+  flex-wrap: wrap;
+}
+.feature-card {
