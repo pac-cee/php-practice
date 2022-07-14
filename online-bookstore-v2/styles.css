@@ -131,3 +131,22 @@ input[type="text"], input[type="email"], input[type="password"], select {
   border: 1.5px solid #d1d5db;
   border-radius: 8px;
   margin-top: 0.4em;
+  font-size: 1em;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+input:focus, select:focus {
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 0 0 2px #6c63ff33;
+  outline: none;
+}
+button[type="submit"] {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.9em 2em;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+  box-shadow: 0 2px 8px #6c63ff22;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
