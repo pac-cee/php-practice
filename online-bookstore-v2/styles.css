@@ -150,3 +150,22 @@ button[type="submit"] {
   box-shadow: 0 2px 8px #6c63ff22;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  margin-top: 0.3em;
+}
+button[type="submit"]:hover {
+  background: var(--accent);
+  color: var(--secondary);
+  transform: scale(1.04);
+}
+table {
+  background: var(--card-bg);
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px #6c63ff13;
+  animation: fadeInUp 0.8s;
+}
+th, td {
+  border: 1px solid #e5e7eb;
