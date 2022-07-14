@@ -55,3 +55,22 @@ main {
   border-radius: 18px;
   box-shadow: 0 6px 32px rgba(108,99,255,0.09);
   animation: fadeIn 1s;
+}
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+.hero-text {
+  flex: 1 1 300px;
+}
+.hero-img {
+  flex: 1 1 200px;
+  text-align: center;
+}
+.hero-img img {
+  width: 180px;
+  max-width: 90%;
