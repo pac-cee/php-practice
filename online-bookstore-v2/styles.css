@@ -36,3 +36,22 @@ nav a {
   font-weight: 600;
   letter-spacing: 0.5px;
   padding: 0.5em 1em;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+nav a.active, nav a:hover {
+  background: var(--accent);
+  color: var(--secondary);
+  transform: translateY(-2px) scale(1.04);
+}
+main {
+  padding: 2em 1em 3em 1em;
+  max-width: 850px;
+  margin: 2em auto 0 auto;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(108,99,255,0.09);
+  animation: fadeIn 1s;
