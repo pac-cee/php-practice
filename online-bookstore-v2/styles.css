@@ -93,3 +93,22 @@ section {
   flex-wrap: wrap;
 }
 .feature-card {
+  background: #f8f8ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #6c63ff13;
+  padding: 1.3em 1.2em;
+  flex: 1 1 200px;
+  min-width: 200px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 32px #6c63ff22;
+}
+.feature-card i {
+  font-size: 2em;
+  color: var(--primary);
+  margin-bottom: 0.5em;
+}
+p, label, th, td {
