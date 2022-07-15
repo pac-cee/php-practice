@@ -169,3 +169,22 @@ table {
 }
 th, td {
   border: 1px solid #e5e7eb;
+  padding: 0.9em 1em;
+  text-align: left;
+}
+th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+tr:nth-child(even) td {
+  background: #f6faff;
+}
+tr:hover td {
+  background: #ffb86b20;
+  transition: background 0.3s;
+}
+@media (max-width: 900px) {
+  main {
+    max-width: 98vw;
+    padding: 1em 0.2em;
