@@ -245,3 +245,22 @@ tr:hover td {
 .hero-description {
     font-size: 1.2em;
     line-height: 1.6;
+    margin-bottom: 1.5em;
+    color: var(--text);
+    opacity: 0.9;
+}
+
+.feature-list {
+    margin: 1em 0 1.5em 1em;
+    padding: 0;
+    list-style: none;
+}
+
+.feature-list li {
+    margin-bottom: 0.7em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.feature-list li i {
