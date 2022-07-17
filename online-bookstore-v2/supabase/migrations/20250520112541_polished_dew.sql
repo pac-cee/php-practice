@@ -36,3 +36,22 @@ BEGIN
     
     -- Add stock_threshold to books if it doesn't exist
     IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns 
+        WHERE table_name = 'books' 
+        AND column_name = 'stock_threshold'
+    ) THEN
+        ALTER TABLE books ADD COLUMN stock_threshold INT DEFAULT 5;
+    END IF;
+END $$;
+
+-- Create config table if it doesn't exist
+CREATE TABLE IF NOT EXISTS config (
+    key VARCHAR(50) PRIMARY KEY,
+    value TEXT NOT NULL,
+    description TEXT,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_by UUID REFERENCES auth.users(id)
+);
+
+-- Enable RLS
+ALTER TABLE config ENABLE ROW LEVEL SECURITY;
