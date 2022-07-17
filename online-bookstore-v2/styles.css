@@ -302,3 +302,15 @@ tr:hover td {
     transition: all 0.3s ease;
 }
 
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.toast-success {
+    background: var(--success);
+}
+
+.toast.toast-error {
+    background: var(--error);
+}
