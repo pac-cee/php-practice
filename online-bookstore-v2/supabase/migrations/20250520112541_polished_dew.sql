@@ -55,3 +55,18 @@ CREATE TABLE IF NOT EXISTS config (
 
 -- Enable RLS
 ALTER TABLE config ENABLE ROW LEVEL SECURITY;
+
+-- Create policy for admin access
+CREATE POLICY "Admins can manage config"
+    ON config
+    FOR ALL
+    TO authenticated
+    USING (auth.jwt() ->> 'role' = 'admin');
+
+-- Insert default config values
+INSERT INTO config (key, value, description) 
+VALUES 
+    ('default_stock_threshold', '5', 'Default threshold for low stock notifications'),
+    ('sales_tax_percentage', '10', 'Sales tax percentage'),
+    ('require_email_verification', 'false', 'Whether new users require email verification')
+ON CONFLICT (key) DO NOTHING;
