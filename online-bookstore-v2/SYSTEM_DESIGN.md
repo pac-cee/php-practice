@@ -36,3 +36,22 @@
 
 ## 5. Entity-Relationship Diagram (ERD)
 | Entity      | Attributes                                      | Relationships                     |
+|-------------|-------------------------------------------------|------------------------------------|
+| Users       | id, username, password, email, role, ...        | 1-to-many Orders, Progress, Quizzes|
+| Books       | id, title, author, price, description, ...      | 1-to-many Orders, AudioBooks, Quizzes|
+| Orders      | id, user_id, book_id, order_date, ...           | Many-to-1 User, Many-to-1 Book     |
+| AudioBooks  | id, book_id, audio_file, duration               | 1-to-1 Book                        |
+| Quizzes     | id, book_id, questions, ...                     | Many-to-1 Book, Many-to-1 User     |
+| Progress    | id, user_id, book_id, pages_read, ...           | Many-to-1 User, Many-to-1 Book     |
+
+*For a visual ERD, see ![ERD Diagram](docs/erd_diagram.png)*
+
+## 6. API Specifications
+### Auth Endpoints
+- **POST** `/api/register` — Register a user
+  - Body: `{ username, password, email, role }`
+  - Response: `{ success, user_id }`
+- **POST** `/api/login` — Login
+  - Body: `{ username, password }`
+  - Response: `{ success, session_token }`
+
