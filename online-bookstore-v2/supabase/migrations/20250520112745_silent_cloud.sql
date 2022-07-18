@@ -17,3 +17,16 @@ CREATE TABLE IF NOT EXISTS config (
     updated_by INT,
     FOREIGN KEY (updated_by) REFERENCES users(id)
 );
+
+-- Insert default config values
+INSERT INTO config (`key`, value, description) 
+VALUES 
+    ('default_stock_threshold', '5', 'Default threshold for low stock notifications'),
+    ('sales_tax_percentage', '10', 'Sales tax percentage'),
+    ('require_email_verification', 'false', 'Whether new users require email verification')
+ON DUPLICATE KEY UPDATE value = VALUES(value);
+
+-- Create initial admin user
+INSERT INTO users (username, email, password, role)
+VALUES ('admin', 'admin@example.com', SHA2('StrongPassword123', 256), 'admin')
+ON DUPLICATE KEY UPDATE role = 'admin';
