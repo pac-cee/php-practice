@@ -17,3 +17,22 @@
 - **Backend:** Technologies used, main controllers/services, authentication, business logic.
 - **Database:** Schema overview, key tables, and relationships.
 
+## 4. Data Flow Diagrams (DFD)
+### Context Diagram (Sample)
+| Actor        | Process            | Data Store      | Data Flow Description           |
+|--------------|--------------------|-----------------|-------------------------------|
+| User         | Register/Login     | Users           | Sends credentials, receives session |
+| User         | Browse Catalog     | Books           | Requests book list/details         |
+| User         | Place Order        | Orders          | Submits order, receives confirmation |
+| User         | Take Quiz          | Quizzes         | Submits answers, receives score     |
+
+### Level 1 DFD: Book Ordering
+| Step | Description                          |
+|------|--------------------------------------|
+| 1    | User selects book and clicks 'Order' |
+| 2    | Frontend sends order to backend      |
+| 3    | Backend validates and stores order   |
+| 4    | Order confirmation returned to user  |
+
+## 5. Entity-Relationship Diagram (ERD)
+| Entity      | Attributes                                      | Relationships                     |
