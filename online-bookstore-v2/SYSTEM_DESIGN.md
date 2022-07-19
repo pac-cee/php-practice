@@ -74,3 +74,22 @@
 
 ### Quiz Endpoints
 - **GET** `/api/quizzes` — List quizzes
+  - Response: `[ { id, book_id, ... }, ... ]`
+- **POST** `/api/quizzes/attempt` — Submit answers
+  - Body: `{ user_id, quiz_id, answers }`
+  - Response: `{ success, score }`
+
+## 7. Security Considerations
+- **Authentication:** Use PHP sessions, regenerate session IDs on login, expire sessions on logout.
+- **Password Storage:** Use `password_hash()` and `password_verify()`.
+- **SQL Injection:** All queries use prepared statements.
+- **XSS Protection:** Escape all user-generated content before display.
+- **File Uploads:** Restrict allowed file types (e.g., PDF, MP3), sanitize filenames, store outside web root.
+- **Role-Based Access:** Check user role before allowing admin/teacher actions.
+- **HTTPS:** Enforce HTTPS in production.
+
+## 8. Scalability & Performance
+- **Database:** Use indexes on frequently queried columns (e.g., `user_id`, `book_id`).
+- **Caching:** Cache book catalog and static resources.
+- **Load Balancing:** Deploy behind a load balancer for high traffic.
+- **Frontend:** Minify JS/CSS, lazy-load images, use CDN for static assets.
