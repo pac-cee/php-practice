@@ -93,3 +93,15 @@
 - **Caching:** Cache book catalog and static resources.
 - **Load Balancing:** Deploy behind a load balancer for high traffic.
 - **Frontend:** Minify JS/CSS, lazy-load images, use CDN for static assets.
+- **Async Tasks:** Offload heavy tasks (e.g., audio processing) to background jobs.
+
+## 9. Deployment Diagram
+![Deployment Diagram](docs/deployment_diagram.png)
+*Sample: Shows web server, database server, file storage, optional CDN, and user devices.*
+
+## 10. Appendix
+- Glossary, references, and links to related documents (README, API docs, etc.).
+
+---
+
+> **Tip:** Use draw.io, Lucidchart, or similar tools to create diagrams. Include images or links to diagrams as needed.
