@@ -55,3 +55,22 @@
   - Body: `{ username, password }`
   - Response: `{ success, session_token }`
 
+### Book Endpoints
+- **GET** `/api/books` — List/search books
+  - Query: `search`, `author`
+  - Response: `[ { id, title, author, ... }, ... ]`
+- **GET** `/api/books/{id}` — Book details
+  - Response: `{ id, title, author, description, ... }`
+- **POST** `/api/books` — Add book (admin)
+  - Body: `{ title, author, ... }`
+  - Response: `{ success, book_id }`
+
+### Order Endpoints
+- **POST** `/api/order` — Place order
+  - Body: `{ user_id, book_id }`
+  - Response: `{ success, order_id }`
+- **GET** `/api/orders` — List user orders
+  - Response: `[ { id, book_id, order_date, ... }, ... ]`
+
+### Quiz Endpoints
+- **GET** `/api/quizzes` — List quizzes
