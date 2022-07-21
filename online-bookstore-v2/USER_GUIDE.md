@@ -36,3 +36,19 @@
 
 ## 5. Admin/Teacher Features
 - Manage users, books, and quizzes (if you have the right role) from the admin dashboard.
+- Access analytics and generate reports.
+
+## 6. Accessibility Tips
+- Use keyboard navigation for all features.
+- Screen reader support is enabled for major UI components.
+- High contrast mode is available in settings.
+
+## 7. Troubleshooting
+- If you forget your password, use the password reset feature or contact support.
+- If you cannot access a feature, ensure you are logged in with the correct role.
+- For technical issues, check the FAQ or contact the maintainer.
+- Clear your browser cache if pages do not load correctly.
+
+---
+
+For more, see [README.md](README.md) and [FAQ.md](FAQ.md).
