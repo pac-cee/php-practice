@@ -36,3 +36,22 @@ $conn->close();
     <link rel="stylesheet" href="/assets/css/dashboard.css">
     <script src="/assets/js/main.js" defer></script>
     <style>
+.dashboard-book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.dashboard-book-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    border: 1px solid #eee;
+}
