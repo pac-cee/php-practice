@@ -55,3 +55,22 @@ $conn->close();
     position: relative;
     border: 1px solid #eee;
 }
+
+.dashboard-book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(42,82,152,0.15);
+}
+
+.book-card-img {
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
