@@ -93,3 +93,22 @@ $conn->close();
 }
 
 .dashboard-book-card:hover .book-title {
+    color: #1c3561;
+}
+
+.book-author {
+    color: #6c7a89;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+
+.book-price {
+    font-weight: 700;
+    color: #2a5298;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #f0f4f8;
+    border-radius: 20px;
