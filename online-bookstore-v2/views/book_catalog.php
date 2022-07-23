@@ -74,3 +74,22 @@ $conn->close();
     transition: transform 0.5s ease;
 }
 
+.dashboard-book-card:hover .book-card-img img {
+    transform: scale(1.08);
+}
+
+.book-card-content {
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), #fff);
+    flex: 1;
+}
+
+.book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2a5298;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.dashboard-book-card:hover .book-title {
