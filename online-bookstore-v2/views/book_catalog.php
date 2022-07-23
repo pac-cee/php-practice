@@ -131,3 +131,22 @@ $conn->close();
     flex-wrap: wrap;
     padding-top: 1rem;
     border-top: 1px solid #eee;
+}
+
+.quick-btn {
+    background: #2a5298;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
