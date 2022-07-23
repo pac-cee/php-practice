@@ -150,3 +150,22 @@ $conn->close();
     justify-content: center;
     gap: 0.5rem;
 }
+
+.quick-btn:hover {
+    background: #1c3561;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #f0f4f8;
+    color: #2a5298;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
