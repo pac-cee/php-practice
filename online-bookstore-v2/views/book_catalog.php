@@ -112,3 +112,22 @@ $conn->close();
     padding: 0.3rem 0.8rem;
     background: #f0f4f8;
     border-radius: 20px;
+}
+
+.book-desc {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
