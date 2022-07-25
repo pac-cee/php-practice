@@ -169,3 +169,22 @@ $conn->close();
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: #dbe4f0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .dashboard-book-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .book-card-img {
+        height: 250px;
+    }
+}
+    </style>
