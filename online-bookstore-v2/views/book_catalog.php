@@ -188,3 +188,22 @@ $conn->close();
     }
 }
     </style>
+    <script defer src="../assets/js/dashboard_custom.js"></script>
+</head>
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="main-nav">
+            <a href="../index.php" class="nav-logo"><i class="fas fa-house"></i> Home</a>
+            <div class="nav-links">
+                <a href="book_catalog.php" class="active"><i class="fas fa-book-open"></i> Book Catalog</a>
+                <a href="quiz.php"><i class="fas fa-question-circle"></i> Quizzes</a>
+                <a href="quiz_results.php"><i class="fas fa-list-ol"></i> Quiz Results</a>
+                <a href="orders.php"><i class="fas fa-shopping-cart"></i> My Orders</a>
+                <a href="progress.php"><i class="fas fa-chart-line"></i> My Progress</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-btn" title="Toggle theme"><span id="theme-icon">🌙</span></button>
+                <div class="profile-dropdown">
+                    <button id="profileBtn"><i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
+                    <div class="profile-menu" id="profileMenu">
