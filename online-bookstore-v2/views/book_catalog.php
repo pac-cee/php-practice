@@ -226,3 +226,22 @@ $conn->close();
                 <?php if (!empty($book['cover_image'])): ?>
                     <img src="<?php echo htmlspecialchars(strpos($book['cover_image'], 'http') === 0 ? 
                         $book['cover_image'] : '../assets/images/' . $book['cover_image']); ?>" 
+                        alt="<?php echo htmlspecialchars($book['title']); ?> Cover">
+                <?php else: ?>
+                    <img src="../assets/images/default_cover.png" alt="Default Cover">
+                <?php endif; ?>
+            </div>
+            <div class="book-card-content">
+                <h3 class="book-title"><?php echo htmlspecialchars($book['title']); ?></h3>
+                <p class="book-author">by <?php echo htmlspecialchars($book['author']); ?></p>
+                <div class="book-price">$<?php echo number_format($book['price'], 2); ?></div>
+                <p class="book-desc"><?php echo nl2br(htmlspecialchars($book['description'])); ?></p>
+                <div class="actions">
+                    <form method="POST" action="order_book.php" style="flex: 1;">
+                        <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
+                        <button type="submit" class="quick-btn">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </button>
+                    </form>
+                    <?php if (!empty($book['read_file'])): ?>
+                        <a href="../books/<?php echo htmlspecialchars($book['read_file']); ?>" 
