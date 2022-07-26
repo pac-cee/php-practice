@@ -207,3 +207,22 @@ $conn->close();
                 <div class="profile-dropdown">
                     <button id="profileBtn"><i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
                     <div class="profile-menu" id="profileMenu">
+                        <a href="#">Profile</a>
+                        <form action="logout.php" method="POST"><button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="dashboard-hero">
+            <h2>Book Catalog</h2>
+        </section>
+        <?php if (empty($books)): ?>
+            <div class="dashboard-book-list"><p>No books found.</p></div>
+        <?php else: ?>
+            <div class="dashboard-book-list">
+                <?php foreach ($books as $book): ?>
+                    <div class="dashboard-book-card">
+            <div class="book-card-img">
+                <?php if (!empty($book['cover_image'])): ?>
+                    <img src="<?php echo htmlspecialchars(strpos($book['cover_image'], 'http') === 0 ? 
+                        $book['cover_image'] : '../assets/images/' . $book['cover_image']); ?>" 
