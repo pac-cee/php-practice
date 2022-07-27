@@ -245,3 +245,23 @@ $conn->close();
                     </form>
                     <?php if (!empty($book['read_file'])): ?>
                         <a href="../books/<?php echo htmlspecialchars($book['read_file']); ?>" 
+                           class="btn-secondary" target="_blank">
+                            <i class="fas fa-book-open"></i> Read
+                        </a>
+                    <?php endif; ?>
+                    <?php if (!empty($book['audio_file'])): ?>
+                        <a href="../audio/<?php echo htmlspecialchars($book['audio_file']); ?>" 
+                           class="btn-secondary" target="_blank">
+                            <i class="fas fa-headphones"></i> Listen
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    <p><a href="dashboard.php" class="dashboard-link">&larr; Back to Dashboard</a></p>
+    </div>
+</body>
+</html>
