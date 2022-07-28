@@ -36,3 +36,22 @@ while ($row = $order_result->fetch_assoc()) {
     ];
 }
 $stmt->close();
+// Last 3 quiz attempts
+$stmt = $conn->prepare('SELECT q.title, qr.taken_at, qr.score, qr.total FROM quiz_results qr JOIN quizzes q ON qr.quiz_id = q.id WHERE qr.user_id = ? ORDER BY qr.taken_at DESC LIMIT 3');
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$quiz_result = $stmt->get_result();
+while ($row = $quiz_result->fetch_assoc()) {
+    $activity[] = [
+        'type' => 'quiz',
+        'title' => $row['title'],
+        'date' => $row['taken_at'],
+        'score' => $row['score'],
+        'total' => $row['total']
+    ];
+}
+$stmt->close();
+// Sort activity by date desc
+usort($activity, function($a, $b) {
+    return strtotime($b['date']) - strtotime($a['date']);
+});
