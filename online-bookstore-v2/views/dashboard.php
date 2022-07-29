@@ -74,3 +74,22 @@ $stmt->bind_param('i', $user_id);
 $stmt->execute();
 $rec_quiz_result = $stmt->get_result();
 if ($row = $rec_quiz_result->fetch_assoc()) {
+    $recommend_quiz = $row;
+}
+$stmt->close();
+// --- Currently Reading Widget ---
+$current_reading = null;
+$stmt = $conn->prepare('SELECT b.id, b.title, b.cover_image, b.read_file, a.audio_file, p.pages_read, p.last_read FROM progress p JOIN books b ON p.book_id = b.id LEFT JOIN audio_books a ON b.id = a.book_id WHERE p.user_id = ? ORDER BY p.last_read DESC LIMIT 1');
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$reading_result = $stmt->get_result();
+if ($row = $reading_result->fetch_assoc()) {
+    $current_reading = $row;
+}
+$stmt->close();
+$conn->close();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
