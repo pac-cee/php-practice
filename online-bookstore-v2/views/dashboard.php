@@ -55,3 +55,22 @@ $stmt->close();
 usort($activity, function($a, $b) {
     return strtotime($b['date']) - strtotime($a['date']);
 });
+$activity = array_slice($activity, 0, 5);
+// --- Dynamic Recommendations ---
+$recommend_books = [];
+$recommend_quiz = null;
+// Books user hasn't ordered
+$stmt = $conn->prepare('SELECT b.id, b.title, b.author FROM books b WHERE b.id NOT IN (SELECT o.book_id FROM orders o WHERE o.user_id = ?) LIMIT 2');
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$rec_books_result = $stmt->get_result();
+while ($row = $rec_books_result->fetch_assoc()) {
+    $recommend_books[] = $row;
+}
+$stmt->close();
+// Quiz user hasn't taken
+$stmt = $conn->prepare('SELECT q.id, q.title FROM quizzes q WHERE q.id NOT IN (SELECT qr.quiz_id FROM quiz_results qr WHERE qr.user_id = ?) LIMIT 1');
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$rec_quiz_result = $stmt->get_result();
+if ($row = $rec_quiz_result->fetch_assoc()) {
