@@ -207,3 +207,22 @@ $conn->close();
                 </div>
                 <div>
                     
+                </div>
+
+            </section>
+            <section class="dashboard-insights">
+                <div class="insight-card">
+                    <div class="insight-title">Books in Catalog</div>
+                    <div class="insight-value" id="books-count"><?php echo $book_count; ?></div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Quizzes Available</div>
+                    <div class="insight-value" id="quizzes-count"><?php echo $quiz_count; ?></div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">My Orders</div>
+                    <div class="insight-value" id="orders-count"><?php echo $order_count; ?></div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Last Quiz Score</div>
+                    <div class="insight-value" id="last-score">
