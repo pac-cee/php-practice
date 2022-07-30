@@ -188,3 +188,22 @@ $conn->close();
                     <div class="profile-menu" id="profileMenu">
                         <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
                         <form action="logout.php" method="POST"><button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <section class="hero dashboard-hero">
+                <div class="hero-text">
+                    <h1>Welcome back, <?php echo htmlspecialchars($username); ?>!</h1>
+                    <p class="subtitle">Your personalized Online Bookstore dashboard. See your stats, recent activity, and get recommendations.</p>
+                    <div class="quick-actions">
+                        <a href="quiz.php" class="quick-btn"><i class="fas fa-bolt"></i> Take a Quiz</a>
+                        <a href="book_catalog.php" class="quick-btn"><i class="fas fa-search"></i> Browse Books</a>
+                        <a href="progress.php" class="quick-btn"><i class="fas fa-book-reader"></i> View Progress</a>
+                        <a href="orders.php" class="quick-btn"><i class="fas fa-receipt"></i> Order History</a>
+                        <a href="quiz.php" class="quick-btn"><i class="fas fa-plus-circle"></i> Take New Quiz</a>
+                    </div>
+                </div>
+                <div>
+                    
