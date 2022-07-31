@@ -283,3 +283,22 @@ $conn->close();
                             <?php if (!empty($current_reading['read_file'])): ?>
                                 <a href="../books/<?= htmlspecialchars($current_reading['read_file']) ?>" class="quick-btn" target="_blank"><i class="fas fa-book-open"></i> Read Online</a>
                             <?php endif; ?>
+                            <?php if (!empty($current_reading['audio_file'])): ?>
+                                <a href="../audio/<?= htmlspecialchars($current_reading['audio_file']) ?>" class="quick-btn" target="_blank"><i class="fas fa-headphones"></i> Listen</a>
+                            <?php endif; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="reading-none">You are not currently reading any book.</div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <div class="insights">
+            <div class="insight-card">
+                <div class="insight-title">Books in Catalog</div>
+                <div class="insight-value" id="books-count"><?php echo $book_count; ?></div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-title">Quizzes Available</div>
