@@ -226,3 +226,22 @@ $conn->close();
                 <div class="insight-card">
                     <div class="insight-title">Last Quiz Score</div>
                     <div class="insight-value" id="last-score">
+                        <?php echo $score_row ? $score_row['score'] . ' / ' . $score_row['total'] : '--'; ?>
+                    </div>
+                </div>
+            </section>
+        <section class="dashboard-features">
+            <div class="dashboard-left">
+                <div class="recent-activity">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <ul id="activity-feed">
+                        <?php if (empty($activity)): ?>
+                            <li><i class="fas fa-info-circle"></i> No recent activity found.</li>
+                        <?php else: ?>
+                            <?php foreach ($activity as $item): ?>
+                                <?php if ($item['type'] === 'order'): ?>
+                                    <li class="activity-order"><i class="fas fa-shopping-cart"></i> Ordered: "<?= htmlspecialchars($item['title']) ?>" <span class="activity-date"><?= htmlspecialchars(date('M d, Y', strtotime($item['date']))) ?></span></li>
+                                <?php elseif ($item['type'] === 'quiz'): ?>
+                                    <li class="activity-quiz"><i class="fas fa-question-circle"></i> Quiz: "<?= htmlspecialchars($item['title']) ?>" (<?= $item['score'] ?>/<?= $item['total'] ?>) <span class="activity-date"><?= htmlspecialchars(date('M d, Y', strtotime($item['date']))) ?></span></li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
