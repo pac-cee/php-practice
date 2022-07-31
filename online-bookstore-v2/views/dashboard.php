@@ -321,3 +321,20 @@ $conn->close();
         // Animate counters
         function animateValue(id, start, end, duration) {
             let obj = document.getElementById(id);
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            if (isNaN(stepTime) || !isFinite(stepTime) || stepTime < 10) stepTime = 40;
+            let timer = setInterval(function() {
+                current += increment;
+                obj.textContent = current;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+        
+    </script>
+</body>
+</html>
