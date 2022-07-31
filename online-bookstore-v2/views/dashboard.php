@@ -245,3 +245,22 @@ $conn->close();
                                     <li class="activity-quiz"><i class="fas fa-question-circle"></i> Quiz: "<?= htmlspecialchars($item['title']) ?>" (<?= $item['score'] ?>/<?= $item['total'] ?>) <span class="activity-date"><?= htmlspecialchars(date('M d, Y', strtotime($item['date']))) ?></span></li>
                                 <?php endif; ?>
                             <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <div class="notifications">
+                    <h3><i class="fas fa-bell"></i> Notifications</h3>
+                    <ul id="notifications-feed"></ul>
+                </div>
+            </div>
+            <div class="dashboard-right">
+                <div class="recommendations">
+                    <h3><i class="fas fa-star"></i> Recommended for You</h3>
+                    <ul id="recommendations-list">
+                        <?php if (empty($recommend_books) && !$recommend_quiz): ?>
+                            <li><i class="fas fa-info-circle"></i> No new recommendations at this time.</li>
+                        <?php else: ?>
+                            <?php foreach ($recommend_books as $book): ?>
+                                <li class="recommend-book"><i class="fas fa-book"></i> "<?= htmlspecialchars($book['title']) ?>" by <?= htmlspecialchars($book['author']) ?> <a href="book_catalog.php" class="rec-action">View</a></li>
+                            <?php endforeach; ?>
+                            <?php if ($recommend_quiz): ?>
