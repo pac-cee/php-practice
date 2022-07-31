@@ -264,3 +264,22 @@ $conn->close();
                                 <li class="recommend-book"><i class="fas fa-book"></i> "<?= htmlspecialchars($book['title']) ?>" by <?= htmlspecialchars($book['author']) ?> <a href="book_catalog.php" class="rec-action">View</a></li>
                             <?php endforeach; ?>
                             <?php if ($recommend_quiz): ?>
+                                <li class="recommend-quiz"><i class="fas fa-question"></i> Try the quiz: "<?= htmlspecialchars($recommend_quiz['title']) ?>" <a href="quiz.php" class="rec-action">Start</a></li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <div class="stats-graphs">
+                    <h3><i class="fas fa-chart-bar"></i> Your Stats</h3>
+                    <canvas id="statsChart" height="160"></canvas>
+                </div>
+                <div class="dashboard-widget currently-reading">
+                    <h3><i class="fas fa-book-reader"></i> Currently Reading</h3>
+                    <?php if ($current_reading): ?>
+                        <div class="reading-title">"<?= htmlspecialchars($current_reading['title']) ?>"</div>
+                        <div class="reading-pages">Pages read: <?= htmlspecialchars($current_reading['pages_read']) ?></div>
+                        <div class="reading-date">Last read: <?= htmlspecialchars(date('M d, Y', strtotime($current_reading['last_read']))) ?></div>
+                        <div class="reading-actions" style="margin-top:0.7em;display:flex;gap:0.7em;">
+                            <?php if (!empty($current_reading['read_file'])): ?>
+                                <a href="../books/<?= htmlspecialchars($current_reading['read_file']) ?>" class="quick-btn" target="_blank"><i class="fas fa-book-open"></i> Read Online</a>
+                            <?php endif; ?>
