@@ -93,3 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="password">Password</label>
         <div class="password-input-group">
           <input type="password" id="password" name="password" required>
+          <i class="fas fa-lock icon"></i>
+        </div>
+      </div>
+
+      <button type="submit" class="auth-button">
+        Login <i class="fas fa-arrow-right"></i>
+      </button>
+    </form>
+
+    <div class="auth-links">
+      <p>Don't have an account? <a href="register.php">Register here</a></p>
+      <p><a href="forgot-password.php"><i class="fas fa-key"></i> Forgot Password?</a></p>
+    </div>
+    <div class="home-link" style="text-align:center; margin-bottom:1rem;">
+  <a href="/index.php" class="btn-home">
+    <i class="fas fa-home"></i> Home
+  </a>
+</div>
+    <div class="admin-login-link" style="text-align:center;">
