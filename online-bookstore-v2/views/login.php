@@ -112,3 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </a>
 </div>
     <div class="admin-login-link" style="text-align:center;">
+      <p>Are you an admin? <a href="../admin/admin_login.php">Login here</a></p>
+    </div>
+  </main>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
