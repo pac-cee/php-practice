@@ -74,3 +74,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="auth-message error">
         <?= htmlspecialchars($message) ?>
       </div>
+    <?php endif; ?>
+
+    <form method="POST" action="login.php" class="auth-form" id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+        >
+        <i class="fas fa-user icon"></i>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-group">
+          <input type="password" id="password" name="password" required>
