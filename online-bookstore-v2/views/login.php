@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     header('Location: dashboard.php');
                 }
+                exit;
+            } else {
+                $message = 'Incorrect password.';
+            }
+        } else {
+            $message = 'User not found.';
+        }
+        $stmt->close();
+        $conn->close();
+    } else {
+        $message = 'Please fill all fields.';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
