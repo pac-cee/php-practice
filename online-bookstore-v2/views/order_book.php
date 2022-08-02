@@ -17,3 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_id'])) {
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows > 0) {
+        $message = 'You have already ordered this book.';
+    } else {
+        $stmt = $conn->prepare('INSERT INTO orders (user_id, book_id, status) VALUES (?, ?, ?)');
+        $status = 'pending';
+        $stmt->bind_param('iis', $user_id, $book_id, $status);
+        if ($stmt->execute()) {
+            $message = 'Book ordered successfully!';
+        } else {
+            $message = 'Failed to order book. Please try again.';
+        }
+    }
+    $stmt->close();
+    $conn->close();
+} else {
+    $message = 'Invalid request.';
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
