@@ -112,3 +112,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_id'])) {
             .dashboard-insights { grid-template-columns: 1fr; }
             .dashboard { padding: 0.4em; }
             .main-nav { flex-direction: column; gap: 1em; padding: 1em 0.7em; }
+            .dashboard-hero { padding: 1em 0.4em 1em 0.4em; }
+        }
+    </style>
+    <script defer src="../assets/js/dashboard_custom.js"></script>
+</head>
+</head>
+<body>
+    <div class="order-result">
+        <h2>Order Book</h2>
+        <p><?php echo $message; ?></p>
+        <a href="book_catalog.php">&larr; Back to Catalog</a>
+    </div>
+</body>
+</html>
