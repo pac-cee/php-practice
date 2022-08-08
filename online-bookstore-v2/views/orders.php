@@ -131,3 +131,22 @@ $conn->close();
             <h2>My Orders</h2>
         </section>
         <div class="dashboard-orders-card">
+            <?php if (empty($orders)): ?>
+                <p>You have not ordered any books yet.</p>
+            <?php else: ?>
+                <table class="dashboard-orders-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Order Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($orders as $order): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($order['title']); ?></td>
+                                <td><?php echo htmlspecialchars($order['author']); ?></td>
+                                <td>$<?php echo htmlspecialchars($order['price']); ?></td>
