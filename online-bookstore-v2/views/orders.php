@@ -112,3 +112,22 @@ $conn->close();
             <div class="nav-links">
                 <a href="book_catalog.php"><i class="fas fa-book-open"></i> Book Catalog</a>
                 <a href="quiz.php"><i class="fas fa-question-circle"></i> Quizzes</a>
+                <a href="quiz_results.php"><i class="fas fa-list-ol"></i> Quiz Results</a>
+                <a href="orders.php" class="active"><i class="fas fa-shopping-cart"></i> My Orders</a>
+                <a href="progress.php"><i class="fas fa-chart-line"></i> My Progress</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-btn" title="Toggle theme"><span id="theme-icon">🌙</span></button>
+                <div class="profile-dropdown">
+                    <button id="profileBtn"><i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="#">Profile</a>
+                        <form action="logout.php" method="POST"><button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="dashboard-hero" style="margin-bottom: 2em;">
+            <h2>My Orders</h2>
+        </section>
+        <div class="dashboard-orders-card">
