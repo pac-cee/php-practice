@@ -150,3 +150,15 @@ $conn->close();
                                 <td><?php echo htmlspecialchars($order['title']); ?></td>
                                 <td><?php echo htmlspecialchars($order['author']); ?></td>
                                 <td>$<?php echo htmlspecialchars($order['price']); ?></td>
+                                <td><?php echo htmlspecialchars($order['order_date']); ?></td>
+                                <td><?php echo htmlspecialchars($order['status']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+            <p style="margin-top:2rem;"><a href="dashboard.php" class="dashboard-link">&larr; Back to Dashboard</a></p>
+        </div>
+    </div>
+</body>
+</html>
