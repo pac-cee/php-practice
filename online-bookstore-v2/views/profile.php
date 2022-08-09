@@ -55,3 +55,22 @@ if (isset($_POST['update_password'])) {
             $user['password'] = $newHash;
         } else {
             $error = 'Error updating password. Please try again later.';
+        }
+    }
+}
+// 5) Handle “Generate Report” request
+if (isset($_POST['generate_report'])) {
+    // a) Purchased Books
+    $stmtBooks = $conn->prepare("
+      SELECT b.title, b.author, oi.quantity, o.order_date
+      FROM orders o
+      JOIN order_items oi ON o.id = oi.order_id
+      JOIN books b ON oi.book_id = b.id
+      WHERE o.user_id = ?
+      ORDER BY o.order_date DESC
+    ");
+    $stmtBooks->bind_param('i', $uid);
+    $stmtBooks->execute();
+    $booksRes = $stmtBooks->get_result();
+    $bookRows = [];
+    while ($r = $booksRes->fetch_assoc()) {
