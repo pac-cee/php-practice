@@ -36,3 +36,22 @@ $user = $resUser->fetch_assoc();
 if (isset($_POST['update_password'])) {
     $currentPassword    = $_POST['current_password'] ?? '';
     $newPassword        = $_POST['new_password'] ?? '';
+    $confirmNewPassword = $_POST['confirm_new_password'] ?? '';
+
+    if (empty($currentPassword) || empty($newPassword) || empty($confirmNewPassword)) {
+        $error = 'All password fields are required.';
+    } elseif (!password_verify($currentPassword, $user['password'])) {
+        $error = 'Current password is incorrect.';
+    } elseif (strlen($newPassword) < 6) {
+        $error = 'New password must be at least 6 characters long.';
+    } elseif ($newPassword !== $confirmNewPassword) {
+        $error = 'New password and confirmation do not match.';
+    } else {
+        $newHash = password_hash($newPassword, PASSWORD_BCRYPT);
+        $stmtUpd = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmtUpd->bind_param('si', $newHash, $uid);
+        if ($stmtUpd->execute()) {
+            $message         = 'Password updated successfully.';
+            $user['password'] = $newHash;
+        } else {
+            $error = 'Error updating password. Please try again later.';
