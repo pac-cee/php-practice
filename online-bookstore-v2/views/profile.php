@@ -131,3 +131,22 @@ if (isset($_POST['generate_report'])) {
         }
         $pdf->Ln();
     }
+    $pdf->Ln(10);
+
+    // Section: Quiz Results
+    $pdf->SetFont('Arial','B',14);
+    $pdf->Cell(0,8,'Quiz Results',0,1);
+    $pdf->SetFont('Arial','B',12);
+    $colW2 = (int)(180 / count($quizCols));
+    foreach ($quizCols as $col) {
+        $pdf->Cell($colW2,7,iconv('UTF-8','ISO-8859-1',$col),1,0,'C');
+    }
+    $pdf->Ln();
+    $pdf->SetFont('Arial','',11);
+    foreach ($quizRows as $row) {
+        foreach ($row as $cell) {
+            $text = (string)$cell;
+            $pdf->Cell($colW2,6,iconv('UTF-8','ISO-8859-1',$text),1,0,'C');
+        }
+        $pdf->Ln();
+    }
