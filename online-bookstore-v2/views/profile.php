@@ -93,3 +93,22 @@ if (isset($_POST['generate_report'])) {
       WHERE qr.user_id = ?
       ORDER BY qr.taken_at DESC
     ");
+    $stmtQuiz->bind_param('i', $uid);
+    $stmtQuiz->execute();
+    $quizRes  = $stmtQuiz->get_result();
+    $quizRows = [];
+    while ($rq = $quizRes->fetch_assoc()) {
+        $quizRows[] = [
+            $rq['quiz_title'],
+            intval($rq['score']),
+            date('Y-m-d', strtotime($rq['taken_at']))
+        ];
+    }
+    $quizCols = ['Quiz Title','Score','Date Taken'];
+
+    // c) Build PDF using FPDF (unchanged)
+    require_once __DIR__ . '/../includes/fpdf/fpdf.php';
+    $pdf = new FPDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',16);
+    $pdf->Cell(0,10,'My Purchases & Quiz Report',0,1,'C');
