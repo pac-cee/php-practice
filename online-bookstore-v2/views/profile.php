@@ -150,3 +150,22 @@ if (isset($_POST['generate_report'])) {
         }
         $pdf->Ln();
     }
+
+    $pdf->Output('D', "profile_report_user_{$uid}.pdf");
+    exit;
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile • OnlineBookstore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Your CSS files -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+  <link rel="stylesheet" href="/assets/css/dashboard_custom.css">
+  <link rel="stylesheet" href="/assets/css/profile.css">
+</head>
