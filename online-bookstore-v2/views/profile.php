@@ -74,3 +74,22 @@ if (isset($_POST['generate_report'])) {
     $booksRes = $stmtBooks->get_result();
     $bookRows = [];
     while ($r = $booksRes->fetch_assoc()) {
+        $bookRows[] = [
+            $r['title'],
+            $r['author'],
+            intval($r['quantity']),
+            date('Y-m-d', strtotime($r['order_date']))
+        ];
+    }
+    $bookCols = ['Title','Author','Quantity','Purchased On'];
+
+    // b) Quiz Results (corrected: no qr.passed)
+    $stmtQuiz = $conn->prepare("
+      SELECT q.title AS quiz_title,
+             qr.score,
+             qr.taken_at
+      FROM quiz_results qr
+      JOIN quizzes q ON qr.quiz_id = q.id
+      WHERE qr.user_id = ?
+      ORDER BY qr.taken_at DESC
+    ");
