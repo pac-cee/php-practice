@@ -112,3 +112,22 @@ if (isset($_POST['generate_report'])) {
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
     $pdf->Cell(0,10,'My Purchases & Quiz Report',0,1,'C');
+    $pdf->Ln(5);
+
+    // Section: Purchased Books
+    $pdf->SetFont('Arial','B',14);
+    $pdf->Cell(0,8,'Books Purchased',0,1);
+    $pdf->SetFont('Arial','B',12);
+    $colW = (int)(180 / count($bookCols));
+    foreach ($bookCols as $col) {
+        $pdf->Cell($colW,7,iconv('UTF-8','ISO-8859-1',$col),1,0,'C');
+    }
+    $pdf->Ln();
+    $pdf->SetFont('Arial','',11);
+    foreach ($bookRows as $row) {
+        foreach ($row as $cell) {
+            $text = (string)$cell;
+            $pdf->Cell($colW,6,iconv('UTF-8','ISO-8859-1',$text),1,0,'C');
+        }
+        $pdf->Ln();
+    }
