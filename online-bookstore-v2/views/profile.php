@@ -169,3 +169,22 @@ if (isset($_POST['generate_report'])) {
   <link rel="stylesheet" href="/assets/css/dashboard_custom.css">
   <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
+<body>
+  <?php include __DIR__ . '/../views/includes/header.php'; ?>
+
+  <div class="container" style="max-width:800px; margin:2rem auto;">
+    <h1>My Profile</h1>
+
+    <!-- Display user details -->
+    <div class="profile-details" style="margin-bottom:1.5rem;">
+      <p><strong>Name:</strong> <?= htmlspecialchars($user['name']) ?></p>
+      <p><strong>Username:</strong> <?= htmlspecialchars($user['username']) ?></p>
+      <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
+    </div>
+
+    <!-- Update Password Form -->
+    <div class="profile-card" style="border:1px solid #ddd; padding:1rem; border-radius:0.5rem; margin-bottom:2rem;">
+      <h2>Change Password</h2>
+      <?php if ($message): ?>
+        <div class="alert-admin alert-success"><?= htmlspecialchars($message) ?></div>
+      <?php elseif ($error): ?>
