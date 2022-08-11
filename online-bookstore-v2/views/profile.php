@@ -188,3 +188,22 @@ if (isset($_POST['generate_report'])) {
       <?php if ($message): ?>
         <div class="alert-admin alert-success"><?= htmlspecialchars($message) ?></div>
       <?php elseif ($error): ?>
+        <div class="alert-admin alert-error"><?= htmlspecialchars($error) ?></div>
+      <?php endif; ?>
+
+      <form method="POST" action="profile.php" class="form-admin">
+        <label for="current_password">Current Password*</label>
+        <input type="password" name="current_password" id="current_password" required>
+
+        <label for="new_password">New Password* (min 6 chars)</label>
+        <input type="password" name="new_password" id="new_password" required>
+
+        <label for="confirm_new_password">Confirm New Password*</label>
+        <input type="password" name="confirm_new_password" id="confirm_new_password" required>
+
+        <button type="submit" name="update_password" class="btn-admin">Update Password</button>
+      </form>
+    </div>
+
+    <!-- Generate Report Button -->
+    <form method="POST" action="profile.php" style="margin-top:1.5rem;">
