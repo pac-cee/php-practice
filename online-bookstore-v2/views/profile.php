@@ -207,3 +207,12 @@ if (isset($_POST['generate_report'])) {
 
     <!-- Generate Report Button -->
     <form method="POST" action="profile.php" style="margin-top:1.5rem;">
+      <button type="submit" name="generate_report" class="btn-admin">
+        📄 Download My Purchases & Quiz Report
+      </button>
+    </form>
+  </div>
+
+  <?php include __DIR__ . '/../views/includes/footer.php'; ?>
+</body>
+</html>
