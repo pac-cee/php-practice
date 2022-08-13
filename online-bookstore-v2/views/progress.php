@@ -131,3 +131,22 @@ $conn->close();
         </section>
         <div class="dashboard-progress-card">
             <?php if (empty($progress)): ?>
+                <p>No reading progress found.</p>
+            <?php else: ?>
+                <table class="dashboard-progress-table">
+                    <thead>
+                        <tr>
+                            <th>Book</th>
+                            <th>Pages Read</th>
+                            <th>Last Read</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($progress as $item): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($item['title']); ?></td>
+                                <td><?php echo htmlspecialchars($item['pages_read']); ?></td>
+                                <td><?php echo htmlspecialchars($item['last_read']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
