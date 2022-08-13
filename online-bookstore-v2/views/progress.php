@@ -150,3 +150,10 @@ $conn->close();
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
+                </table>
+            <?php endif; ?>
+            <p style="margin-top:2rem;"><a href="dashboard.php" class="dashboard-link">&larr; Back to Dashboard</a></p>
+        </div>
+    </div>
+</body>
+</html>
