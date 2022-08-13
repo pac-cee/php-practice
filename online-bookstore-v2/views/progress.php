@@ -93,3 +93,22 @@ $conn->close();
         @media (max-width: 900px) {
             .dashboard-insights { grid-template-columns: repeat(2, 1fr); }
             .dashboard-hero { flex-direction: column; gap: 1.5em; padding: 1.2em 0.9em 1.2em 0.9em; }
+            .dashboard-hero-img { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .dashboard-insights { grid-template-columns: 1fr; }
+            .dashboard { padding: 0.4em; }
+            .main-nav { flex-direction: column; gap: 1em; padding: 1em 0.7em; }
+            .dashboard-hero { padding: 1em 0.4em 1em 0.4em; }
+        }
+    </style>
+    <script defer src="../assets/js/dashboard_custom.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="main-nav">
+            <a href="../index.php" class="nav-logo"><i class="fas fa-house"></i> Home</a>
+            <div class="nav-links">
+                <a href="book_catalog.php"><i class="fas fa-book-open"></i> Book Catalog</a>
+                <a href="quiz.php"><i class="fas fa-question-circle"></i> Quizzes</a>
+                <a href="quiz_results.php"><i class="fas fa-list-ol"></i> Quiz Results</a>
