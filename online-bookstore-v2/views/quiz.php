@@ -55,3 +55,22 @@ $conn->close();
             grid-template-columns: repeat(4, 1fr);
             gap: 1.2em;
             margin-bottom: 2em;
+        }
+        .insight-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(42,82,152,0.08);
+            padding: 1.4em 1.1em 1.2em 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .insight-title {
+            font-size: 1em;
+            color: #6c7a89;
+            margin-bottom: 0.4em;
+            font-weight: 600;
+        }
+        .insight-value {
+            font-size: 2em;
+            font-weight: 700;
