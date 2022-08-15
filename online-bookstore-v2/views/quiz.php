@@ -112,3 +112,22 @@ $conn->close();
                 <a href="orders.php"><i class="fas fa-shopping-cart"></i> My Orders</a>
                 <a href="progress.php"><i class="fas fa-chart-line"></i> My Progress</a>
             </div>
+            <div class="nav-actions">
+                <button id="theme-btn" title="Toggle theme"><span id="theme-icon">🌙</span></button>
+                <div class="profile-dropdown">
+                    <button id="profileBtn"><i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
+                    <div class="profile-menu" id="profileMenu">
+                        <a href="#">Profile</a>
+                        <form action="logout.php" method="POST"><button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="dashboard-hero" style="margin-bottom: 2em;">
+            <h2>Available Quizzes</h2>
+        </section>
+        <div class="dashboard-quiz-list">
+            <?php if (empty($quizzes)): ?>
+                <p>No quizzes available at this time.</p>
+            <?php else: ?>
+                <?php foreach ($quizzes as $quiz): ?>
