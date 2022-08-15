@@ -131,3 +131,21 @@ $conn->close();
                 <p>No quizzes available at this time.</p>
             <?php else: ?>
                 <?php foreach ($quizzes as $quiz): ?>
+                    <div class="dashboard-quiz-card">
+                        <h3><?php echo htmlspecialchars($quiz['title']); ?></h3>
+                        <?php if (!empty($quiz['description'])): ?>
+                            <p><?php echo nl2br(htmlspecialchars($quiz['description'])); ?></p>
+                        <?php endif; ?>
+                        <form method="GET" action="take_quiz.php">
+                            <input type="hidden" name="quiz_id" value="<?php echo $quiz['id']; ?>">
+                            <button type="submit" class="quick-btn">Start Quiz</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <div style="margin-top:2rem;"><a href="dashboard.php">&larr; Back to Dashboard</a></div>
+    </div>
+</body>
+</html>
+
