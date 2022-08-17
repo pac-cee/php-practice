@@ -131,3 +131,27 @@ $conn->close();
             <?php if (empty($results)): ?>
                 <p>You have not taken any quizzes yet.</p>
             <?php else: ?>
+                <table class="dashboard-results-table">
+                    <thead>
+                        <tr>
+                            <th>Quiz</th>
+                            <th>Score</th>
+                            <th>Date Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($results as $res): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($res['title']); ?></td>
+                                <td><?php echo htmlspecialchars($res['score']) . ' / ' . htmlspecialchars($res['total']); ?></td>
+                                <td><?php echo htmlspecialchars($res['taken_at']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+            <p style="margin-top:2rem;"><a href="dashboard.php" class="dashboard-link">&larr; Back to Dashboard</a></p>
+        </div>
+    </div>
+</body>
+</html>
