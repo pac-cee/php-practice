@@ -55,3 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <script src="../assets/js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+    <?php include 'includes/header.php'; ?>
+    
+    <main class="auth-container">
+        <h1><i class="fas fa-user-plus"></i> Create Account</h1>
+        
+        <?php if ($message): ?>
+            <div class="auth-message <?php echo strpos($message, 'success') !== false ? 'success' : 'error'; ?>">
+                <?php echo $message; ?>
+            </div>
+        <?php endif; ?>
+        
+        <form method="POST" class="auth-form" id="registerForm">
+            <div class="form-group">
