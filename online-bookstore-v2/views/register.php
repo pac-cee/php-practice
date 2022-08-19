@@ -74,3 +74,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <form method="POST" class="auth-form" id="registerForm">
             <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required>
+                    <i class="fas fa-user icon"></i>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required>
+                    <i class="fas fa-envelope icon"></i>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input-group">
+                    <input type="password" id="password" name="password" required>
