@@ -112,3 +112,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             
             <button type="submit" class="auth-button">
+                Register <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+        
+        <div class="auth-links">
+            <p>Already have an account? <a href="login.php">Login here</a></p>
+        </div>
+    </main>
+    
+    <?php include 'includes/footer.php'; ?>
+</body>
+</html>
+
