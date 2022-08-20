@@ -17,3 +17,22 @@ $db = new Database();
 $conn = $db->getConnection();
 // Fetch correct answers
 $sql = 'SELECT id, correct_answer FROM quiz_questions WHERE quiz_id = ?';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $quiz_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$correct = [];
+while ($row = $result->fetch_assoc()) {
+    $correct[$row['id']] = $row['correct_answer'];
+}
+$stmt->close();
+// Grade quiz
+$score = 0;
+$total = count($correct);
+foreach ($correct as $qid => $corr_idx) {
+    if (isset($answers[$qid]) && $answers[$qid] == $corr_idx) {
+        $score++;
+    }
+}
+// Save result
+$stmt = $conn->prepare('INSERT INTO quiz_results (user_id, quiz_id, score, total, taken_at) VALUES (?, ?, ?, ?, NOW())');
