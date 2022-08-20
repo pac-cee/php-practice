@@ -93,3 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="password">Password</label>
                 <div class="password-input-group">
                     <input type="password" id="password" name="password" required>
+                    <i class="fas fa-lock icon"></i>
+                    <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm">Confirm Password</label>
+                <div class="password-input-group">
+                    <input type="password" id="confirm" name="confirm" required>
+                    <i class="fas fa-lock icon"></i>
+                    <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" class="auth-button">
