@@ -55,3 +55,22 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/quiz.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="/assets/css/dashboard_custom.css">
+    <style>
+        /* Only keep unique dashboard layout tweaks, rely on styles.css for shared UI */
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg);
+            min-height: 100vh;
+            padding-bottom: 2em;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(42,82,152,0.10);
+        }
+        .dashboard-hero-img img {
+            max-width: 160px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(42,82,152,0.09);
+        }
+        .dashboard-insights {
