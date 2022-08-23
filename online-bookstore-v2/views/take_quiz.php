@@ -112,3 +112,22 @@ $conn->close();
             .dashboard-hero-img { justify-content: center; }
         }
         @media (max-width: 600px) {
+            .dashboard-insights { grid-template-columns: 1fr; }
+            .dashboard { padding: 0.4em; }
+            .main-nav { flex-direction: column; gap: 1em; padding: 1em 0.7em; }
+            .dashboard-hero { padding: 1em 0.4em 1em 0.4em; }
+        }
+    </style>
+    <script defer src="../assets/js/dashboard_custom.js"></script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2><?php echo htmlspecialchars($quiz['title']); ?></h2>
+        <?php if (isset($quiz['description']) && !empty($quiz['description'])): ?>
+            <p class="quiz-description"><?php echo nl2br(htmlspecialchars($quiz['description'])); ?></p>
+        <?php endif; ?>
+        
+        <?php if (empty($questions)): ?>
+            <p>No questions found for this quiz.</p>
+            <a href="quiz.php">&larr; Back to Quizzes</a>
+        <?php else: ?>
