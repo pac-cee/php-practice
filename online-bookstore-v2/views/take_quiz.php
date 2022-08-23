@@ -131,3 +131,27 @@ $conn->close();
             <p>No questions found for this quiz.</p>
             <a href="quiz.php">&larr; Back to Quizzes</a>
         <?php else: ?>
+            <form method="POST" action="submit_quiz.php">
+                <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
+                <?php foreach ($questions as $idx => $q): ?>
+                    <div class="question">
+                        <h4>Q<?php echo $idx+1; ?>. <?php echo htmlspecialchars($q['question']); ?></h4>
+                        <div class="choices">
+                            <?php
+                            $choices = json_decode($q['choices'], true);
+                            foreach ($choices as $choice_idx => $choice): ?>
+                                <label>
+                                    <input type="radio" name="answers[<?php echo $q['id']; ?>]" value="<?php echo $choice_idx; ?>" required>
+                                    <?php echo htmlspecialchars($choice); ?>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <button type="submit" class="btn-primary">Submit Quiz</button>
+            </form>
+        <?php endif; ?>
+        <div style="margin-top:2rem;"><a href="quiz.php">&larr; Back to Quizzes</a></div>
+    </div>
+</body>
+</html>
