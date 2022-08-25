@@ -36,3 +36,22 @@
             </a>
             <a href="#" class="notification-item unread">
               <div class="notification-icon stock-icon"></div>
+              <div class="notification-content">
+                <p class="notification-text">"The Great Gatsby" is now out of stock</p>
+                <p class="notification-time">1 hour ago</p>
+              </div>
+            </a>
+            <a href="#" class="notification-item unread">
+              <div class="notification-icon review-icon"></div>
+              <div class="notification-content">
+                <p class="notification-text">New review for "1984" (4★)</p>
+                <p class="notification-time">3 hours ago</p>
+              </div>
+            </a>
+            <a href="#" class="notification-item">
+              <div class="notification-icon user-icon"></div>
+              <div class="notification-content">
+                <p class="notification-text">New user registration: john.doe@example.com</p>
+                <p class="notification-time">Yesterday</p>
+              </div>
+            </a>
