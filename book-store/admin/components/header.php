@@ -55,3 +55,22 @@
                 <p class="notification-time">Yesterday</p>
               </div>
             </a>
+          </div>
+          <div class="dropdown-footer">
+            <a href="./notifications.php">View all notifications</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="admin-user dropdown">
+        <button class="user-toggle">
+          <img src="../assets/images/admin-avatar.jpg" alt="Admin User" class="user-avatar">
+          <span class="user-name"><?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'Admin'; ?></span>
+          <i class="icon-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="./profile.php">
+            <i class="icon-user-settings"></i> Profile
+          </a>
+          <a href="./settings.php">
+            <i class="icon-settings"></i> Settings
