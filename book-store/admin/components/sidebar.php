@@ -17,3 +17,22 @@
         </a>
       </li>
       <li>
+        <a href="../admin/orders.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'orders.php' ? 'active' : ''; ?>">
+          <i class="icon-orders"></i> Orders
+        </a>
+      </li>
+      <li>
+        <a href="../admin/books.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'books.php' || basename($_SERVER['PHP_SELF']) === 'edit-book.php' || basename($_SERVER['PHP_SELF']) === 'add-book.php' ? 'active' : ''; ?>">
+          <i class="icon-books"></i> Books
+        </a>
+      </li>
+      <li>
+        <a href="../admin/categories.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'categories.php' ? 'active' : ''; ?>">
+          <i class="icon-categories"></i> Categories
+        </a>
+      </li>
+      <li>
+        <a href="../admin/users.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'users.php' ? 'active' : ''; ?>">
+          <i class="icon-users"></i> Users
+        </a>
+      </li>
