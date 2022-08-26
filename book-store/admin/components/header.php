@@ -74,3 +74,15 @@
           </a>
           <a href="./settings.php">
             <i class="icon-settings"></i> Settings
+          </a>
+          <a href="../index.php">
+            <i class="icon-store"></i> View Store
+          </a>
+          <a href="../backend/api/logout.php">
+            <i class="icon-logout"></i> Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
