@@ -36,3 +36,22 @@
           <i class="icon-users"></i> Users
         </a>
       </li>
+      <li>
+        <a href="../admin/reviews.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'reviews.php' ? 'active' : ''; ?>">
+          <i class="icon-reviews"></i> Reviews
+        </a>
+      </li>
+      <li>
+        <a href="../admin/coupons.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'coupons.php' ? 'active' : ''; ?>">
+          <i class="icon-coupon"></i> Coupons
+        </a>
+      </li>
+      <li>
+        <a href="../admin/reports.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'reports.php' ? 'active' : ''; ?>">
+          <i class="icon-reports"></i> Reports
+        </a>
+      </li>
+      <li>
+        <a href="../admin/settings.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'settings.php' ? 'active' : ''; ?>">
+          <i class="icon-settings"></i> Settings
+        </a>
