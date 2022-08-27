@@ -55,3 +55,13 @@
         <a href="../admin/settings.php" class="<?php echo basename($_SERVER['PHP_SELF']) === 'settings.php' ? 'active' : ''; ?>">
           <i class="icon-settings"></i> Settings
         </a>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="sidebar-footer">
+    <a href="../backend/api/logout.php" class="logout-btn">
+      <i class="icon-logout"></i> Logout
+    </a>
+  </div>
+</aside>
