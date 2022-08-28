@@ -17,3 +17,22 @@
   $recentOrders = getRecentOrders($conn, 5);
   
   // Get low stock books
+  $lowStockBooks = getLowStockBooks($conn, 5);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - BookHaven</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <?php include './components/sidebar.php'; ?>
+    
+    <div class="admin-content">
+      <?php include './components/header.php'; ?>
+      
+      <main class="admin-main">
