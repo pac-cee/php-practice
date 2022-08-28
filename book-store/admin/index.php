@@ -55,3 +55,22 @@
             <div class="stat-content">
               <h3>Revenue</h3>
               <p class="stat-value">$<?php echo number_format($stats['total_revenue'], 2); ?></p>
+              <p class="stat-change positive">
+                <i class="icon-arrow-up"></i> <?php echo $stats['revenue_change']; ?>% from last month
+              </p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon users-icon"></div>
+            <div class="stat-content">
+              <h3>Total Users</h3>
+              <p class="stat-value"><?php echo $stats['total_users']; ?></p>
+              <p class="stat-change positive">
+                <i class="icon-arrow-up"></i> <?php echo $stats['users_change']; ?>% from last month
+              </p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon books-icon"></div>
