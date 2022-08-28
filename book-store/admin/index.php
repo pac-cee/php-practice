@@ -36,3 +36,22 @@
       <?php include './components/header.php'; ?>
       
       <main class="admin-main">
+        <h1>Dashboard</h1>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon orders-icon"></div>
+            <div class="stat-content">
+              <h3>Total Orders</h3>
+              <p class="stat-value"><?php echo $stats['total_orders']; ?></p>
+              <p class="stat-change positive">
+                <i class="icon-arrow-up"></i> <?php echo $stats['orders_change']; ?>% from last month
+              </p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon revenue-icon"></div>
+            <div class="stat-content">
+              <h3>Revenue</h3>
+              <p class="stat-value">$<?php echo number_format($stats['total_revenue'], 2); ?></p>
