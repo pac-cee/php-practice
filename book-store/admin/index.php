@@ -74,3 +74,22 @@
           
           <div class="stat-card">
             <div class="stat-icon books-icon"></div>
+            <div class="stat-content">
+              <h3>Total Books</h3>
+              <p class="stat-value"><?php echo $stats['total_books']; ?></p>
+              <p class="stat-change positive">
+                <i class="icon-arrow-up"></i> <?php echo $stats['books_change']; ?> new this month
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-row">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h2>Recent Orders</h2>
+              <a href="./orders.php" class="btn btn-link">View All</a>
+            </div>
+            <div class="card-content">
+              <table class="admin-table">
+                <thead>
