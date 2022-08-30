@@ -131,3 +131,22 @@
             </div>
             <div class="card-content">
               <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Book</th>
+                    <th>Stock</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($lowStockBooks as $book): ?>
+                    <tr>
+                      <td class="book-info">
+                        <img src="<?php echo $book['cover_image']; ?>" alt="<?php echo $book['title']; ?>">
+                        <div>
+                          <p class="book-title"><?php echo $book['title']; ?></p>
+                          <p class="book-author"><?php echo $book['author']; ?></p>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="stock-badge <?php echo ($book['stock_quantity'] === 0) ? 'out' : 'low'; ?>">
