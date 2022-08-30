@@ -169,3 +169,23 @@
             <div class="card-header">
               <h2>Sales Overview</h2>
               <div class="period-selector">
+                <button class="period-btn active" data-period="week">Week</button>
+                <button class="period-btn" data-period="month">Month</button>
+                <button class="period-btn" data-period="year">Year</button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="chart-container">
+                <canvas id="sales-chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <script src="../assets/js/admin/main.js"></script>
+  <script src="../assets/js/admin/dashboard.js"></script>
+</body>
+</html>
