@@ -112,3 +112,22 @@
                       <td>
                         <span class="status-badge <?php echo strtolower($order['status']); ?>">
                           <?php echo $order['status']; ?>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="./order-detail.php?id=<?php echo $order['id']; ?>" class="btn btn-sm btn-outline">View</a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h2>Low Stock Books</h2>
+              <a href="./books.php?filter=low-stock" class="btn btn-link">View All</a>
+            </div>
+            <div class="card-content">
+              <table class="admin-table">
