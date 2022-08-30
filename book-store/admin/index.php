@@ -150,3 +150,22 @@
                       </td>
                       <td>
                         <span class="stock-badge <?php echo ($book['stock_quantity'] === 0) ? 'out' : 'low'; ?>">
+                          <?php echo ($book['stock_quantity'] === 0) ? 'Out of Stock' : $book['stock_quantity'] . ' left'; ?>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="./edit-book.php?id=<?php echo $book['id']; ?>" class="btn btn-sm btn-primary">Update Stock</a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-row">
+          <div class="dashboard-card full-width">
+            <div class="card-header">
+              <h2>Sales Overview</h2>
+              <div class="period-selector">
