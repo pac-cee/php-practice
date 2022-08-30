@@ -74,3 +74,22 @@
   height: 3px;
   background-color: var(--primary-color);
 }
+
+/* New Arrivals Section */
+.new-arrivals {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.new-arrivals h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  display: inline-block;
+}
+
+.new-arrivals h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
