@@ -93,3 +93,22 @@
             <div class="card-content">
               <table class="admin-table">
                 <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($recentOrders as $order): ?>
+                    <tr>
+                      <td>#<?php echo $order['id']; ?></td>
+                      <td><?php echo $order['user_name']; ?></td>
+                      <td><?php echo date('M d, Y', strtotime($order['created_at'])); ?></td>
+                      <td>$<?php echo number_format($order['total_amount'], 2); ?></td>
+                      <td>
+                        <span class="status-badge <?php echo strtolower($order['status']); ?>">
+                          <?php echo $order['status']; ?>
