@@ -169,3 +169,22 @@
   }
   
   .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .hero .btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    height: 300px;
+  }
+  
+  .hero h1 {
