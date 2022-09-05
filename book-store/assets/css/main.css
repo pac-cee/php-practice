@@ -245,3 +245,22 @@ button, input, select, textarea {
 
 .btn-social i {
   margin-right: var(--spacing-sm);
+}
+
+.btn-google {
+  color: #EA4335;
+}
+
+.btn-facebook {
+  color: #1877F2;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
