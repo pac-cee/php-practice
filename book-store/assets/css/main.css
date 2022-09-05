@@ -264,3 +264,22 @@ button, input, select, textarea {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
