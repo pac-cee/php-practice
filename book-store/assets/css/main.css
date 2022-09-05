@@ -359,3 +359,22 @@ th {
   display: flex;
   flex-direction: column;
   background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--light-color);
+}
+
+.card-body {
+  padding: var(--spacing-md);
+  flex: 1 1 auto;
+}
+
+.card-footer {
+  padding: var(--spacing-md);
