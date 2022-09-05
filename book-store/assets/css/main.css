@@ -226,3 +226,22 @@ button, input, select, textarea {
 }
 
 .btn-link:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-sm);
+  padding: 0.75rem;
+}
+
+.btn-social i {
+  margin-right: var(--spacing-sm);
