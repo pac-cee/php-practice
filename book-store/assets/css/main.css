@@ -473,3 +473,22 @@ th {
   }
 }
 
+@media (min-width: 1200px) {
+  .hidden-xl {
+    display: none;
+  }
+}
+
+/* Site Header Styles */
+.site-header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
