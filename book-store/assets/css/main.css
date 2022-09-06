@@ -511,3 +511,22 @@ th {
   max-width: 500px;
   margin: 0 var(--spacing-xl);
 }
+
+.header-search form {
+  display: flex;
+  position: relative;
+}
+
+.header-search input {
+  width: 100%;
+  padding-right: 2.5rem;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+}
+
+.header-search button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2.5rem;
