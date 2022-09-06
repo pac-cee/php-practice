@@ -549,3 +549,22 @@ th {
 
 .header-nav li {
   margin-right: var(--spacing-md);
+  position: relative;
+}
+
+.header-nav a {
+  color: var(--text-color);
+  font-weight: 500;
+  padding: var(--spacing-sm);
+}
+
+.header-nav a:hover {
+  color: var(--primary-color);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-action {
