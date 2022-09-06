@@ -530,3 +530,22 @@ th {
   top: 0;
   bottom: 0;
   width: 2.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.header-search button:hover {
+  color: var(--primary-color);
+}
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav li {
+  margin-right: var(--spacing-md);
