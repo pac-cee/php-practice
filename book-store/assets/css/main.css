@@ -739,3 +739,22 @@ th {
   transition: all var(--transition-fast);
 }
 
+.social-links a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.footer-column h3 {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
