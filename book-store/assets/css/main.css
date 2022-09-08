@@ -682,3 +682,22 @@ th {
   
   .mobile-accordion.active .accordion-toggle::after {
     transform: rotate(180deg);
+  }
+  
+  .accordion-content {
+    display: none;
+    padding-left: var(--spacing-md);
+  }
+  
+  .mobile-accordion.active .accordion-content {
+    display: block;
+  }
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: var(--dark-color);
+  color: white;
+  margin-top: var(--spacing-xxl);
+}
+
