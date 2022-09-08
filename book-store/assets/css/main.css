@@ -644,3 +644,22 @@ th {
     background-color: white;
     z-index: var(--z-fixed);
     padding: var(--spacing-md);
+    overflow-y: auto;
+  }
+  
+  .mobile-menu.active {
+    display: block;
+  }
+  
+  .mobile-search {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mobile-nav a {
+    display: block;
