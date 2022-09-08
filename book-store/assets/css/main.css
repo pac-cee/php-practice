@@ -663,3 +663,22 @@ th {
   
   .mobile-nav a {
     display: block;
+    padding: var(--spacing-md);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .mobile-accordion .accordion-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mobile-accordion .accordion-toggle::after {
+    content: '\25BC';
+    font-size: 0.8rem;
+    transition: transform var(--transition-fast);
+  }
+  
+  .mobile-accordion.active .accordion-toggle::after {
+    transform: rotate(180deg);
