@@ -929,3 +929,22 @@ th {
   justify-content: center;
   padding: var(--spacing-lg);
   background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  color: var(--primary-color);
+}
+
+.category-icon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.category-card h3 {
+  margin: 0;
