@@ -568,3 +568,22 @@ th {
 }
 
 .header-action {
+  margin-left: var(--spacing-md);
+  position: relative;
+}
+
+.action-icon {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  height: 18px;
