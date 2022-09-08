@@ -891,3 +891,22 @@ th {
 
 .price {
   font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.book-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+@media (max-width: 576px) {
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  
+  .book-info h3 {
+    font-size: 1rem;
+  }
+  
