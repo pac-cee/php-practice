@@ -986,3 +986,22 @@ th {
   border-color: var(--primary-color);
   color: white;
 }
+
+/* Stars Rating */
+.stars {
+  display: inline-flex;
+  color: var(--text-light);
+}
+
+.star {
+  color: #d1d1d1;
+  font-size: 1.2rem;
+}
+
+.star.filled {
+  color: var(--accent-color);
+}
+
+/* Utility Classes */
+.highlight {
+  color: var(--primary-color);
