@@ -1005,3 +1005,22 @@ th {
 /* Utility Classes */
 .highlight {
   color: var(--primary-color);
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+/* Icons (Placeholder) */
+[class^="icon-"] {
+  font-family: "Font Awesome";
+  display: inline-block;
