@@ -1024,3 +1024,22 @@ th {
 [class^="icon-"] {
   font-family: "Font Awesome";
   display: inline-block;
+}
+
+.icon-search::before {
+  content: "🔍";
+}
+
+.icon-cart::before {
+  content: "🛒";
+}
+
+.icon-user::before {
+  content: "👤";
+}
+
+.icon-heart::before {
+  content: "❤️";
+}
+
+.icon-eye::before {
