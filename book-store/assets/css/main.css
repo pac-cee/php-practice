@@ -1081,3 +1081,23 @@ th {
 .icon-fiction::before {
   content: "📚";
 }
+
+.icon-non-fiction::before {
+  content: "📖";
+}
+
+.icon-mystery::before {
+  content: "🔍";
+}
+
+.icon-sci-fi::before {
+  content: "🚀";
+}
+
+.icon-biography::before {
+  content: "👤";
+}
+
+.icon-history::before {
+  content: "⏳";
+}
