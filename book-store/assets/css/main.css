@@ -1043,3 +1043,22 @@ th {
 }
 
 .icon-eye::before {
+  content: "👁️";
+}
+
+.icon-facebook::before {
+  content: "f";
+}
+
+.icon-twitter::before {
+  content: "t";
+}
+
+.icon-instagram::before {
+  content: "i";
+}
+
+.icon-pinterest::before {
+  content: "p";
+}
+
