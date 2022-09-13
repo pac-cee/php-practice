@@ -17,3 +17,22 @@ function initAddToCartButtons() {
     });
   });
 }
+
+/**
+ * Add a book to the cart
+ * @param {string} bookId - The ID of the book to add
+ * @param {number} quantity - The quantity to add
+ */
+function addToCart(bookId, quantity = 1) {
+  // Show loading state
+  const button = document.querySelector(`.add-to-cart[data-book-id="${bookId}"]`);
+  if (button) {
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Adding...';
+  }
+  
+  // Make AJAX request
+  fetch('./backend/api/cart.php', {
+    method: 'POST',
+    headers: {
