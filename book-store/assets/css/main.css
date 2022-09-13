@@ -1062,3 +1062,22 @@ th {
   content: "p";
 }
 
+.icon-google::before {
+  content: "G";
+}
+
+.icon-lock::before {
+  content: "🔒";
+}
+
+.icon-close::before {
+  content: "✕";
+}
+
+.icon-arrow-up::before {
+  content: "↑";
+}
+
+.icon-fiction::before {
+  content: "📚";
+}
