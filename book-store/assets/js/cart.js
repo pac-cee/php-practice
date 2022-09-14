@@ -188,3 +188,22 @@ function removeFromCart(bookId) {
   .catch(error => {
     console.error('Error removing from cart:', error);
     showNotification('Failed to remove item from cart. Please try again.', 'error');
+  });
+}
+
+/**
+ * Clear the entire cart
+ */
+function clearCart() {
+  if (!confirm('Are you sure you want to clear your cart?')) {
+    return;
+  }
+  
+  // Make AJAX request
+  fetch('./backend/api/cart.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'action=clear'
+  })
