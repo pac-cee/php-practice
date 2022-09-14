@@ -74,3 +74,22 @@ function addToCart(bookId, quantity = 1) {
       button.textContent = 'Add to Cart';
     }
   });
+}
+
+/**
+ * Update cart count in header
+ * @param {number} count - The new cart count
+ */
+function updateCartCount(count) {
+  let cartCountElement = document.querySelector('.cart-count');
+  
+  if (count > 0) {
+    if (!cartCountElement) {
+      cartCountElement = document.createElement('span');
+      cartCountElement.className = 'cart-count';
+      document.querySelector('.cart-action').appendChild(cartCountElement);
+    }
+    cartCountElement.textContent = count;
+  } else {
+    if (cartCountElement) {
+      cartCountElement.remove();
