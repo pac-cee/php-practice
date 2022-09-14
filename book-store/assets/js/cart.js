@@ -150,3 +150,22 @@ function updateCartQuantity(bookId, quantity) {
 function removeFromCart(bookId) {
   // Make AJAX request
   fetch('./backend/api/cart.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `action=remove&book_id=${bookId}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update cart count in header
+      updateCartCount(data.cartCount);
+      
+      // Show success notification
+      showNotification('Item removed from cart', 'success');
+      
+      // Remove item from cart page if we're on it
+      const cartItem = document.querySelector(`.cart-item[data-book-id="${bookId}"]`);
+      if (cartItem) {
+        cartItem.classList.add('removing');
