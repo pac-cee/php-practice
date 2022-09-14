@@ -36,3 +36,22 @@ function addToCart(bookId, quantity = 1) {
   fetch('./backend/api/cart.php', {
     method: 'POST',
     headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `action=add&book_id=${bookId}&quantity=${quantity}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update cart count in header
+      updateCartCount(data.cartCount);
+      
+      // Show success notification
+      showNotification(data.message, 'success');
+      
+      // Animate cart icon
+      animateCartIcon();
+    } else {
+      // Show error notification
+      showNotification(data.message, 'error');
+    }
