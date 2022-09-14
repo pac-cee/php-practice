@@ -112,3 +112,22 @@ function animateCartIcon() {
     }, 500);
   }
 }
+
+/**
+ * Update cart item quantity
+ * @param {string} bookId - The ID of the book to update
+ * @param {number} quantity - The new quantity
+ */
+function updateCartQuantity(bookId, quantity) {
+  // Make AJAX request
+  fetch('./backend/api/cart.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `action=update&book_id=${bookId}&quantity=${quantity}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update cart count in header
