@@ -131,3 +131,22 @@ function updateCartQuantity(bookId, quantity) {
   .then(data => {
     if (data.success) {
       // Update cart count in header
+      updateCartCount(data.cartCount);
+    } else {
+      // Show error notification
+      showNotification(data.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error updating cart:', error);
+    showNotification('Failed to update cart. Please try again.', 'error');
+  });
+}
+
+/**
+ * Remove an item from the cart
+ * @param {string} bookId - The ID of the book to remove
+ */
+function removeFromCart(bookId) {
+  // Make AJAX request
+  fetch('./backend/api/cart.php', {
