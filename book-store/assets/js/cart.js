@@ -55,3 +55,22 @@ function addToCart(bookId, quantity = 1) {
       // Show error notification
       showNotification(data.message, 'error');
     }
+    
+    // Reset button state
+    if (button) {
+      button.disabled = false;
+      button.textContent = 'Add to Cart';
+    }
+  })
+  .catch(error => {
+    console.error('Error adding to cart:', error);
+    
+    // Show error notification
+    showNotification('Failed to add item to cart. Please try again.', 'error');
+    
+    // Reset button state
+    if (button) {
+      button.disabled = false;
+      button.textContent = 'Add to Cart';
+    }
+  });
