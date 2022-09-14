@@ -93,3 +93,22 @@ function updateCartCount(count) {
   } else {
     if (cartCountElement) {
       cartCountElement.remove();
+    }
+  }
+}
+
+/**
+ * Animate cart icon when adding an item
+ */
+function animateCartIcon() {
+  const cartIcon = document.querySelector('.icon-cart');
+  if (cartIcon) {
+    // Add animation class
+    cartIcon.classList.add('cart-animated');
+    
+    // Remove class after animation completes
+    setTimeout(() => {
+      cartIcon.classList.remove('cart-animated');
+    }, 500);
+  }
+}
