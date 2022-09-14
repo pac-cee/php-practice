@@ -207,3 +207,22 @@ function clearCart() {
     },
     body: 'action=clear'
   })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update cart count in header
+      updateCartCount(0);
+      
+      // Show success notification
+      showNotification('Cart cleared successfully', 'success');
+      
+      // Reload page to show empty cart message
+      location.reload();
+    } else {
+      // Show error notification
+      showNotification(data.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error clearing cart:', error);
+    showNotification('Failed to clear cart. Please try again.', 'error');
