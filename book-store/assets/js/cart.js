@@ -169,3 +169,22 @@ function removeFromCart(bookId) {
       const cartItem = document.querySelector(`.cart-item[data-book-id="${bookId}"]`);
       if (cartItem) {
         cartItem.classList.add('removing');
+        setTimeout(() => {
+          cartItem.remove();
+          updateCartTotals();
+          
+          // Check if cart is empty
+          const cartItems = document.querySelectorAll('.cart-item');
+          if (cartItems.length === 0) {
+            location.reload(); // Reload to show empty cart message
+          }
+        }, 300);
+      }
+    } else {
+      // Show error notification
+      showNotification(data.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error removing from cart:', error);
+    showNotification('Failed to remove item from cart. Please try again.', 'error');
