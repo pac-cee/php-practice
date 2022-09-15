@@ -245,3 +245,13 @@ function updateCartTotals() {
     subtotal += total;
   });
   
+  const tax = subtotal * 0.08; // 8% tax
+  const shipping = (subtotal > 0) ? 5.99 : 0;
+  const total = subtotal + tax + shipping;
+  
+  // Update summary values
+  document.querySelector('.summary-item:nth-child(1) span:last-child').textContent = `$${subtotal.toFixed(2)}`;
+  document.querySelector('.summary-item:nth-child(2) span:last-child').textContent = `$${tax.toFixed(2)}`;
+  document.querySelector('.summary-item:nth-child(3) span:last-child').textContent = `$${shipping.toFixed(2)}`;
+  document.querySelector('.summary-total span:last-child').textContent = `$${total.toFixed(2)}`;
+}
