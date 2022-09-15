@@ -112,3 +112,22 @@ function initPasswordToggles() {
       const input = this.previousElementSibling;
       const icon = this.querySelector('i');
       
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = '👁️‍🗨️'; // Closed eye icon
+      } else {
+        input.type = 'password';
+        icon.textContent = '👁️'; // Open eye icon
+      }
+    });
+  });
+}
+
+/**
+ * Show a notification message
+ * @param {string} message - The message to display
+ * @param {string} type - The type of notification (success, error, info, warning)
+ * @param {number} duration - The duration to show the notification in milliseconds
+ */
+function showNotification(message, type = 'info', duration = 3000) {
+  // Check if notification container exists, create if not
