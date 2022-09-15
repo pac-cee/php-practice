@@ -169,3 +169,22 @@ function showNotification(message, type = 'info', duration = 3000) {
 function formatCurrency(amount, currency = 'USD') {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
+    currency: currency
+  }).format(amount);
+}
+
+/**
+ * Get URL parameter by name
+ * @param {string} name - Parameter name
+ * @returns {string|null} - Parameter value or null
+ */
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  const results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+/**
+ * Set cookie
+ * @param {string} name - Cookie name
