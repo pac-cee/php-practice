@@ -36,3 +36,22 @@ function initDropdowns() {
       
       // Toggle current dropdown
       parent.classList.toggle('active');
+      menu.style.display = parent.classList.contains('active') ? 'block' : 'none';
+    });
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+        dropdown.classList.remove('active');
+        dropdown.querySelector('.dropdown-menu').style.display = 'none';
+      });
+    }
+  });
+}
+
+/**
+ * Initialize mobile menu functionality
+ */
+function initMobileMenu() {
