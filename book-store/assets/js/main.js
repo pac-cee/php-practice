@@ -93,3 +93,22 @@ function initAccordions() {
       
       const content = this.nextElementSibling;
       if (parent.classList.contains('active')) {
+        content.style.display = 'block';
+      } else {
+        content.style.display = 'none';
+      }
+    });
+  });
+}
+
+/**
+ * Initialize password visibility toggles
+ */
+function initPasswordToggles() {
+  const toggleButtons = document.querySelectorAll('.toggle-password');
+  
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const input = this.previousElementSibling;
+      const icon = this.querySelector('i');
+      
