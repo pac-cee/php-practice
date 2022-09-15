@@ -74,3 +74,22 @@ function initMobileMenu() {
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
       }
+    });
+  }
+}
+
+/**
+ * Initialize accordion functionality for mobile menu
+ */
+function initAccordions() {
+  const accordionToggles = document.querySelectorAll('.accordion-toggle');
+  
+  accordionToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const parent = this.closest('.mobile-accordion');
+      parent.classList.toggle('active');
+      
+      const content = this.nextElementSibling;
+      if (parent.classList.contains('active')) {
