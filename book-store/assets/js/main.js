@@ -150,3 +150,22 @@ function showNotification(message, type = 'info', duration = 3000) {
   setTimeout(() => {
     notification.classList.add('show');
   }, 10);
+  
+  // Remove after duration
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, duration);
+}
+
+/**
+ * Format currency
+ * @param {number} amount - The amount to format
+ * @param {string} currency - The currency code (default: USD)
+ * @returns {string} - Formatted currency string
+ */
+function formatCurrency(amount, currency = 'USD') {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
