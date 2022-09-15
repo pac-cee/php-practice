@@ -131,3 +131,22 @@ function initPasswordToggles() {
  */
 function showNotification(message, type = 'info', duration = 3000) {
   // Check if notification container exists, create if not
+  let container = document.querySelector('.notification-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'notification-container';
+    document.body.appendChild(container);
+  }
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = message;
+  
+  // Add to container
+  container.appendChild(notification);
+  
+  // Show with animation
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
