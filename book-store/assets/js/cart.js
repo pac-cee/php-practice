@@ -226,3 +226,22 @@ function clearCart() {
   .catch(error => {
     console.error('Error clearing cart:', error);
     showNotification('Failed to clear cart. Please try again.', 'error');
+  });
+}
+
+/**
+ * Update cart totals on cart page
+ */
+function updateCartTotals() {
+  const cartItems = document.querySelectorAll('.cart-item');
+  let subtotal = 0;
+  
+  cartItems.forEach(item => {
+    const price = parseFloat(item.querySelector('.price').textContent.replace('$', ''));
+    const quantity = parseInt(item.querySelector('.quantity input').value);
+    const total = price * quantity;
+    
+    item.querySelector('.total').textContent = `$${total.toFixed(2)}`;
+    subtotal += total;
+  });
+  
