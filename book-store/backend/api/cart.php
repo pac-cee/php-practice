@@ -74,3 +74,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $response['success'] = true;
             $response['message'] = 'Cart updated successfully';
+            $response['cartCount'] = getCartCount($_SESSION['cart']);
+            break;
+            
+        case 'remove':
+            // Get parameters
+            $bookId = isset($_POST['book_id']) ? (int)$_POST['book_id'] : 0;
+            
+            // Validate book ID
+            if ($bookId <= 0 || !isset($_SESSION['cart'][$bookId])) {
+                $response['message'] = 'Item not found in cart';
+                break;
+            }
+            
+            // Remove from cart
+            $_SESSION['cart'] = removeFromCart($_SESSION['cart'], $bookId);
+            
+            $response['success'] = true;
+            $response['message'] = 'Item removed from cart successfully';
+            $response['cartCount'] = getCartCount($_SESSION['cart']);
