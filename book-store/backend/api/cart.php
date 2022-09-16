@@ -55,3 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'update':
             // Get parameters
             $bookId = isset($_POST['book_id']) ? (int)$_POST['book_id'] : 0;
+            $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+            
+            // Validate book ID
+            if ($bookId <= 0 || !isset($_SESSION['cart'][$bookId])) {
+                $response['message'] = 'Item not found in cart';
+                break;
+            }
+            
+            // Check if book exists and is in stock
+            if ($quantity > 0 && !isBookInStock($conn, $bookId, $quantity)) {
+                $response['message'] = 'Requested quantity is not available';
+                break;
+            }
+            
+            // Update cart
+            $_SESSION['cart'] = updateCartItem($_SESSION['cart'], $bookId, $quantity);
+            
+            $response['success'] = true;
+            $response['message'] = 'Cart updated successfully';
