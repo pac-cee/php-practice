@@ -17,3 +17,22 @@ $response = [
 ];
 
 // Process cart actions
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = isset($_POST['action']) ? $_POST['action'] : '';
+    
+    switch ($action) {
+        case 'add':
+            // Get parameters
+            $bookId = isset($_POST['book_id']) ? (int)$_POST['book_id'] : 0;
+            $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+            
+            // Validate book ID
+            if ($bookId <= 0) {
+                $response['message'] = 'Invalid book ID';
+                break;
+            }
+            
+            // Validate quantity
+            if ($quantity <= 0) {
+                $response['message'] = 'Quantity must be greater than zero';
+                break;
