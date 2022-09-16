@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($quantity <= 0) {
                 $response['message'] = 'Quantity must be greater than zero';
                 break;
+            }
+            
+            // Check if book exists and is in stock
+            if (!isBookInStock($conn, $bookId, $quantity)) {
+                $response['message'] = 'This book is out of stock or has insufficient quantity';
+                break;
+            }
+            
+            // Add to cart
+            $_SESSION['cart'] = addToCart($_SESSION['cart'], $bookId, $quantity);
+            
+            $response['success'] = true;
+            $response['message'] = 'Item added to cart successfully';
+            $response['cartCount'] = getCartCount($_SESSION['cart']);
+            break;
+            
+        case 'update':
+            // Get parameters
+            $bookId = isset($_POST['book_id']) ? (int)$_POST['book_id'] : 0;
