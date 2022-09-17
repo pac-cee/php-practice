@@ -93,3 +93,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response['success'] = true;
             $response['message'] = 'Item removed from cart successfully';
             $response['cartCount'] = getCartCount($_SESSION['cart']);
+            break;
+            
+        case 'clear':
+            // Clear cart
+            $_SESSION['cart'] = clearCart();
+            
+            $response['success'] = true;
+            $response['message'] = 'Cart cleared successfully';
+            $response['cartCount'] = 0;
+            break;
+            
+        default:
+            $response['message'] = 'Invalid action';
+            break;
+    }
+}
+
+// Return JSON response
+header('Content-Type: application/json');
+echo json_encode($response);
