@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Check if email already exists
     $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM users WHERE email = :email
+    ");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    
+    if ($stmt->fetchColumn() > 0) {
+        header("Location: ../../register.php?error=email" . ($redirect ? "&redirect=$redirect" : ''));
+        exit;
+    }
+    
+    // Hash password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+    // Insert new user
+    $stmt = $conn->prepare("
+        INSERT INTO users (name, email, password)
+        VALUES (:name, :email, :password)
+    ");
+    $stmt->bindParam(':name', $name);
