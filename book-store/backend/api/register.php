@@ -17,3 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : '';
     $terms = isset($_POST['terms']) ? (bool)$_POST['terms'] : false;
     $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : '';
+    
+    // Validate form data
+    if (empty($name) || empty($email) || empty($password) || empty($confirmPassword)) {
+        header("Location: ../../register.php?error=empty" . ($redirect ? "&redirect=$redirect" : ''));
+        exit;
+    }
+    
+    if ($password !== $confirmPassword) {
+        header("Location: ../../register.php?error=password" . ($redirect ? "&redirect=$redirect" : ''));
+        exit;
+    }
+    
+    if (!$terms) {
+        header("Location: ../../register.php?error=terms" . ($redirect ? "&redirect=$redirect" : ''));
+        exit;
+    }
+    
+    // Check if email already exists
+    $stmt = $conn->prepare("
