@@ -36,3 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$user || !password_verify($password, $user['password'])) {
         header("Location: ../../login.php?error=invalid" . ($redirect ? "&redirect=$redirect" : ''));
         exit;
+    }
+    
+    // Set session variables
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['user_name'] = $user['name'];
+    $_SESSION['user_email'] = $user['email'];
+    $_SESSION['is_admin'] = (bool)$user['is_admin'];
+    
+    // Set remember me cookie if requested
+    if ($remember) {
+        $token = bin2hex(random_bytes(32));
+        $expires = time() + (30 * 24 * 60 * 60); // 30 days
+        
+        // Save token in database
+        $stmt = $conn->prepare("
+            INSERT INTO remember_tokens (user_id, token, expires_at)
+            VALUES (:user_id, :token, :expires_at)
+        ");
+        $stmt->bindParam(':user_id', $user['id']);
