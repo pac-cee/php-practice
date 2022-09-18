@@ -55,3 +55,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             VALUES (:user_id, :token, :expires_at)
         ");
         $stmt->bindParam(':user_id', $user['id']);
+        $stmt->bindParam(':token', $token);
+        $stmt->bindValue(':expires_at', date('Y-m-d H:i:s', $expires));
+        $stmt->execute();
+        
+        // Set cookie
+        setcookie('remember_token', $token, $expires, '/', '', false, true);
+    }
+    
+    // Redirect based on user type and redirect parameter
+    if (!empty($redirect)) {
+        header("Location: ../../$redirect.php");
+    } elseif ($user['is_admin']) {
+        header("Location: ../../admin/index.php");
+    } else {
+        header("Location: ../../index.php");
+    }
+    exit;
+}
+
+// If not a POST request, redirect to login page
+header("Location: ../../login.php");
+exit;
