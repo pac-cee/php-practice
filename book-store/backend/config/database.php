@@ -17,3 +17,18 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
+// Connect to database
+try {
+    $conn = new PDO($dsn, $username, $password, $options);
+} catch (PDOException $e) {
+    // Display error message in development
+    die("Connection failed: " . $e->getMessage());
+    
+    // In production, we would use a more generic error message
+    // die("Sorry, there was a problem connecting to the database. Please try again later.");
+}
+
+// Create necessary tables if they don't exist
+require_once __DIR__ . "/create_tables.php";
+
+
