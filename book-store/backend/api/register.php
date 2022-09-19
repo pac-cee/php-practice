@@ -55,3 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         VALUES (:name, :email, :password)
     ");
     $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $hashedPassword);
+    
+    if ($stmt->execute()) {
+        // Get new user ID
+        $userId = $conn->lastInsertId();
+        
+        // Set session variables
+        $_SESSION['user_id'] = $userId;
+        $_SESSION['user_name'] = $name;
+        $_SESSION['user_email'] = $email;
+        $_SESSION['is_admin'] = false;
+        
+        // Redirect based on redirect parameter
+        if (!empty($redirect)) {
+            header("Location: ../../$redirect.php");
+        } else {
+            header("Location: ../../index.php");
+        }
