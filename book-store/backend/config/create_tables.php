@@ -112,3 +112,22 @@ $stmt = $conn->prepare("
 $stmt->execute();
 
 // Order items table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `order_items` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `order_id` INT NOT NULL,
+        `book_id` INT NOT NULL,
+        `quantity` INT NOT NULL,
+        `price` DECIMAL(10,2) NOT NULL,
+        FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`) ON DELETE CASCADE,
+        FOREIGN KEY (`book_id`) REFERENCES `books`(`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Reviews table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `reviews` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `book_id` INT NOT NULL,
+        `user_id` INT NOT NULL,
