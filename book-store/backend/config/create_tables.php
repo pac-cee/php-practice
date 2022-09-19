@@ -150,3 +150,26 @@ $stmt = $conn->prepare("
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UNIQUE KEY `user_book` (`user_id`, `book_id`),
         FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+        FOREIGN KEY (`book_id`) REFERENCES `books`(`id`) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Coupons table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `coupons` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `code` VARCHAR(20) NOT NULL UNIQUE,
+        `type` ENUM('percentage', 'fixed') NOT NULL,
+        `value` DECIMAL(10,2) NOT NULL,
+        `min_order_amount` DECIMAL(10,2) DEFAULT 0,
+        `starts_at` DATETIME NOT NULL,
+        `expires_at` DATETIME NOT NULL,
+        `is_active` BOOLEAN DEFAULT TRUE,
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Sample data for development
+// require_once __DIR__ . "/sample_data.php";
