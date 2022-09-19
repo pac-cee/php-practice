@@ -36,3 +36,22 @@ $stmt = $conn->prepare("
         `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE SET NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Users table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `users` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(100) NOT NULL,
+        `email` VARCHAR(100) NOT NULL UNIQUE,
+        `password` VARCHAR(255) NOT NULL,
+        `is_admin` BOOLEAN DEFAULT FALSE,
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Addresses table
+$stmt = $conn->prepare("
