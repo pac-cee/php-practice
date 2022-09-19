@@ -74,3 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             header("Location: ../../index.php");
         }
+        exit;
+    } else {
+        header("Location: ../../register.php?error=unknown" . ($redirect ? "&redirect=$redirect" : ''));
+        exit;
+    }
+}
+
+// If not a POST request, redirect to registration page
+header("Location: ../../register.php");
+exit;
