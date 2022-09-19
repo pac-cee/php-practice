@@ -74,3 +74,22 @@ $stmt = $conn->prepare("
 $stmt->execute();
 
 // Payment methods table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `payment_methods` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `user_id` INT NOT NULL,
+        `card_type` VARCHAR(50) NOT NULL,
+        `last_four` VARCHAR(4) NOT NULL,
+        `expiry_month` VARCHAR(2) NOT NULL,
+        `expiry_year` VARCHAR(4) NOT NULL,
+        `is_default` BOOLEAN DEFAULT FALSE,
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Orders table
+$stmt = $conn->prepare("
+    CREATE TABLE IF NOT EXISTS `orders` (
