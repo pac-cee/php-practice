@@ -93,3 +93,22 @@ $stmt->execute();
 // Orders table
 $stmt = $conn->prepare("
     CREATE TABLE IF NOT EXISTS `orders` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `user_id` INT NOT NULL,
+        `status` ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') NOT NULL DEFAULT 'pending',
+        `total_amount` DECIMAL(10,2) NOT NULL,
+        `shipping_address_id` INT NOT NULL,
+        `payment_method_id` INT NOT NULL,
+        `shipping_method` VARCHAR(50) NOT NULL,
+        `shipping_cost` DECIMAL(10,2) NOT NULL,
+        `tax_amount` DECIMAL(10,2) NOT NULL,
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+        FOREIGN KEY (`shipping_address_id`) REFERENCES `addresses`(`id`),
+        FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods`(`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+");
+$stmt->execute();
+
+// Order items table
