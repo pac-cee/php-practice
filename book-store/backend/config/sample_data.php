@@ -17,3 +17,22 @@ if ($categoryCount === 0) {
     ];
     
     $stmt = $conn->prepare("INSERT INTO categories (name, slug, description) VALUES (:name, :slug, :description)");
+    
+    foreach ($categories as $category) {
+        $stmt->bindParam(':name', $category['name']);
+        $stmt->bindParam(':slug', $category['slug']);
+        $stmt->bindParam(':description', $category['description']);
+        $stmt->execute();
+    }
+    
+    // Insert sample books
+    $books = [
+        [
+            'title' => 'To Kill a Mockingbird',
+            'author' => 'Harper Lee',
+            'description' => 'Set in the American South during the 1930s, the novel tells the story of a lawyer who defends a Black man falsely accused of rape, as seen through the eyes of the lawyer\'s young daughter.',
+            'price' => 12.99,
+            'original_price' => 15.99,
+            'cover_image' => 'https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 1, // Fiction
+            'isbn' => '9780061120084',
