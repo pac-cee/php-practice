@@ -74,3 +74,22 @@ if ($categoryCount === 0) {
             'language' => 'English',
             'stock_quantity' => 0,
             'featured' => false
+        ],
+        [
+            'title' => 'Pride and Prejudice',
+            'author' => 'Jane Austen',
+            'description' => 'A romantic novel following the character development of Elizabeth Bennet, who learns about the repercussions of hasty judgments.',
+            'price' => 9.99,
+            'original_price' => 12.99,
+            'cover_image' => 'https://images.pexels.com/photos/1130980/pexels-photo-1130980.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 1, // Fiction
+            'isbn' => '9780141439518',
+            'publisher' => 'Penguin Classics',
+            'publication_date' => '1813-01-28',
+            'pages' => 432,
+            'language' => 'English',
+            'stock_quantity' => 32,
+            'featured' => true
+        ],
+        [
+            'title' => 'The Hobbit',
