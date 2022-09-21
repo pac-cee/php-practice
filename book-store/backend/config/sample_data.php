@@ -36,3 +36,22 @@ if ($categoryCount === 0) {
             'cover_image' => 'https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg?auto=compress&cs=tinysrgb&w=1600',
             'category_id' => 1, // Fiction
             'isbn' => '9780061120084',
+            'publisher' => 'Harper Perennial Modern Classics',
+            'publication_date' => '1960-07-11',
+            'pages' => 336,
+            'language' => 'English',
+            'stock_quantity' => 25,
+            'featured' => true
+        ],
+        [
+            'title' => '1984',
+            'author' => 'George Orwell',
+            'description' => 'A dystopian novel set in a totalitarian society ruled by the Party, which has total control over every aspect of people\'s lives.',
+            'price' => 10.99,
+            'original_price' => 14.99,
+            'cover_image' => 'https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 4, // Science Fiction
+            'isbn' => '9780451524935',
+            'publisher' => 'Signet Classic',
+            'publication_date' => '1949-06-08',
+            'pages' => 328,
