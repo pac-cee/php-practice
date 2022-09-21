@@ -55,3 +55,22 @@ if ($categoryCount === 0) {
             'publisher' => 'Signet Classic',
             'publication_date' => '1949-06-08',
             'pages' => 328,
+            'language' => 'English',
+            'stock_quantity' => 18,
+            'featured' => true
+        ],
+        [
+            'title' => 'The Great Gatsby',
+            'author' => 'F. Scott Fitzgerald',
+            'description' => 'Set in the Jazz Age, the novel tells the tragic story of Jay Gatsby and his pursuit of Daisy Buchanan.',
+            'price' => 11.99,
+            'original_price' => 13.99,
+            'cover_image' => 'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 1, // Fiction
+            'isbn' => '9780743273565',
+            'publisher' => 'Scribner',
+            'publication_date' => '1925-04-10',
+            'pages' => 180,
+            'language' => 'English',
+            'stock_quantity' => 0,
+            'featured' => false
