@@ -93,3 +93,22 @@ if ($categoryCount === 0) {
         ],
         [
             'title' => 'The Hobbit',
+            'author' => 'J.R.R. Tolkien',
+            'description' => 'A fantasy novel about the adventures of hobbit Bilbo Baggins, who is hired as a "burglar" by a group of dwarves seeking to reclaim their treasure from a dragon.',
+            'price' => 14.99,
+            'original_price' => 17.99,
+            'cover_image' => 'https://images.pexels.com/photos/1563075/pexels-photo-1563075.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 4, // Science Fiction
+            'isbn' => '9780547928227',
+            'publisher' => 'Houghton Mifflin Harcourt',
+            'publication_date' => '1937-09-21',
+            'pages' => 304,
+            'language' => 'English',
+            'stock_quantity' => 28,
+            'featured' => true
+        ],
+        [
+            'title' => 'The Da Vinci Code',
+            'author' => 'Dan Brown',
+            'description' => 'A mystery thriller novel following symbologist Robert Langdon as he investigates a murder in the Louvre Museum.',
+            'price' => 11.99,
