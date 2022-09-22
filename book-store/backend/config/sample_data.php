@@ -169,3 +169,22 @@ if ($categoryCount === 0) {
             'pages' => 422,
             'language' => 'English',
             'stock_quantity' => 19,
+            'featured' => false
+        ],
+        [
+            'title' => 'The Catcher in the Rye',
+            'author' => 'J.D. Salinger',
+            'description' => 'A novel about a teenage boy\'s experiences in New York City after being expelled from his prep school.',
+            'price' => 10.99,
+            'original_price' => 13.99,
+            'cover_image' => 'https://images.pexels.com/photos/358532/pexels-photo-358532.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 1, // Fiction
+            'isbn' => '9780316769488',
+            'publisher' => 'Little, Brown and Company',
+            'publication_date' => '1951-07-16',
+            'pages' => 240,
+            'language' => 'English',
+            'stock_quantity' => 27,
+            'featured' => false
+        ],
+        [
