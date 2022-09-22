@@ -226,3 +226,22 @@ if ($categoryCount === 0) {
             title, author, description, price, original_price, cover_image, 
             category_id, isbn, publisher, publication_date, pages, 
             language, stock_quantity, featured
+        ) VALUES (
+            :title, :author, :description, :price, :original_price, :cover_image, 
+            :category_id, :isbn, :publisher, :publication_date, :pages, 
+            :language, :stock_quantity, :featured
+        )
+    ");
+    
+    foreach ($books as $book) {
+        $stmt->bindParam(':title', $book['title']);
+        $stmt->bindParam(':author', $book['author']);
+        $stmt->bindParam(':description', $book['description']);
+        $stmt->bindParam(':price', $book['price']);
+        $stmt->bindParam(':original_price', $book['original_price']);
+        $stmt->bindParam(':cover_image', $book['cover_image']);
+        $stmt->bindParam(':category_id', $book['category_id']);
+        $stmt->bindParam(':isbn', $book['isbn']);
+        $stmt->bindParam(':publisher', $book['publisher']);
+        $stmt->bindParam(':publication_date', $book['publication_date']);
+        $stmt->bindParam(':pages', $book['pages']);
