@@ -188,3 +188,22 @@ if ($categoryCount === 0) {
             'featured' => false
         ],
         [
+            'title' => 'The Lord of the Rings',
+            'author' => 'J.R.R. Tolkien',
+            'description' => 'An epic high-fantasy novel set in Middle-earth, following the hobbit Frodo Baggins and the Fellowship of the Ring on a quest to destroy the One Ring.',
+            'price' => 29.99,
+            'original_price' => 34.99,
+            'cover_image' => 'https://images.pexels.com/photos/2437299/pexels-photo-2437299.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 4, // Science Fiction
+            'isbn' => '9780618640157',
+            'publisher' => 'Houghton Mifflin Harcourt',
+            'publication_date' => '1954-07-29',
+            'pages' => 1178,
+            'language' => 'English',
+            'stock_quantity' => 22,
+            'featured' => false
+        ],
+        [
+            'title' => 'A Brief History of Time',
+            'author' => 'Stephen Hawking',
+            'description' => 'A book that explores the nature of time, space, and the universe.',
