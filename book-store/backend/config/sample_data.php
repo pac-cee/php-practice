@@ -150,3 +150,22 @@ if ($categoryCount === 0) {
             'isbn' => '9780062316097',
             'publisher' => 'Harper',
             'publication_date' => '2015-02-10',
+            'pages' => 464,
+            'language' => 'English',
+            'stock_quantity' => 23,
+            'featured' => true
+        ],
+        [
+            'title' => 'Gone Girl',
+            'author' => 'Gillian Flynn',
+            'description' => 'A thriller novel about the disappearance of a woman on her fifth wedding anniversary.',
+            'price' => 12.99,
+            'original_price' => 15.99,
+            'cover_image' => 'https://images.pexels.com/photos/256450/pexels-photo-256450.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 3, // Mystery
+            'isbn' => '9780307588371',
+            'publisher' => 'Crown Publishing Group',
+            'publication_date' => '2012-06-05',
+            'pages' => 422,
+            'language' => 'English',
+            'stock_quantity' => 19,
