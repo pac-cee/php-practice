@@ -207,3 +207,22 @@ if ($categoryCount === 0) {
             'title' => 'A Brief History of Time',
             'author' => 'Stephen Hawking',
             'description' => 'A book that explores the nature of time, space, and the universe.',
+            'price' => 15.99,
+            'original_price' => 18.99,
+            'cover_image' => 'https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 2, // Non-Fiction
+            'isbn' => '9780553380163',
+            'publisher' => 'Bantam',
+            'publication_date' => '1988-04-01',
+            'pages' => 212,
+            'language' => 'English',
+            'stock_quantity' => 3,
+            'featured' => false
+        ]
+    ];
+    
+    $stmt = $conn->prepare("
+        INSERT INTO books (
+            title, author, description, price, original_price, cover_image, 
+            category_id, isbn, publisher, publication_date, pages, 
+            language, stock_quantity, featured
