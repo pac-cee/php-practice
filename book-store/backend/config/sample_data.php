@@ -131,3 +131,22 @@ if ($categoryCount === 0) {
             'original_price' => 24.99,
             'cover_image' => 'https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=1600',
             'category_id' => 5, // Biography
+            'isbn' => '9781451648539',
+            'publisher' => 'Simon & Schuster',
+            'publication_date' => '2011-10-24',
+            'pages' => 656,
+            'language' => 'English',
+            'stock_quantity' => 15,
+            'featured' => false
+        ],
+        [
+            'title' => 'Sapiens: A Brief History of Humankind',
+            'author' => 'Yuval Noah Harari',
+            'description' => 'A book that explores the history of the human species, from the evolution of archaic human species to the present.',
+            'price' => 16.99,
+            'original_price' => 19.99,
+            'cover_image' => 'https://images.pexels.com/photos/4666751/pexels-photo-4666751.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 2, // Non-Fiction
+            'isbn' => '9780062316097',
+            'publisher' => 'Harper',
+            'publication_date' => '2015-02-10',
