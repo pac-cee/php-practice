@@ -112,3 +112,22 @@ if ($categoryCount === 0) {
             'author' => 'Dan Brown',
             'description' => 'A mystery thriller novel following symbologist Robert Langdon as he investigates a murder in the Louvre Museum.',
             'price' => 11.99,
+            'original_price' => 14.99,
+            'cover_image' => 'https://images.pexels.com/photos/46792/the-ball-stadion-football-the-pitch-46792.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 3, // Mystery
+            'isbn' => '9780307474278',
+            'publisher' => 'Anchor',
+            'publication_date' => '2003-03-18',
+            'pages' => 597,
+            'language' => 'English',
+            'stock_quantity' => 42,
+            'featured' => false
+        ],
+        [
+            'title' => 'Steve Jobs',
+            'author' => 'Walter Isaacson',
+            'description' => 'The exclusive biography of Steve Jobs, based on more than forty interviews with Jobs conducted over two years.',
+            'price' => 19.99,
+            'original_price' => 24.99,
+            'cover_image' => 'https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=1600',
+            'category_id' => 5, // Biography
