@@ -264,3 +264,10 @@ if ($categoryCount === 0) {
     // Insert sample regular user (email: user@example.com, password: user123)
     $userPassword = password_hash('user123', PASSWORD_DEFAULT);
     
+    $stmt = $conn->prepare("
+        INSERT INTO users (name, email, password, is_admin) 
+        VALUES ('Regular User', 'user@example.com', :password, 0)
+    ");
+    $stmt->bindParam(':password', $userPassword);
+    $stmt->execute();
+}
