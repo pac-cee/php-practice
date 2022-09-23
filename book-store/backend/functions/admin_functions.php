@@ -283,3 +283,22 @@ function getAllOrders($conn, $status = '', $limit = 10, $offset = 0) {
     // Prepare and execute
     $stmt = $conn->prepare($sql);
     foreach ($params as $key => $value) {
+        if ($key === ':limit' || $key === ':offset') {
+            $stmt->bindValue($key, $value, PDO::PARAM_INT);
+        } else {
+            $stmt->bindValue($key, $value, PDO::PARAM_STR);
+        }
+    }
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get total orders count
+ * @param PDO $conn Database connection
+ * @param string $status Filter by status (optional)
+ * @return int Total orders
+ */
+function getTotalOrders($conn, $status = '') {
+    $sql = "SELECT COUNT(*) FROM orders WHERE 1=1";
