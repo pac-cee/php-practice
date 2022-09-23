@@ -74,3 +74,22 @@ function getAdminStats($conn) {
         WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
         AND YEAR(created_at) = YEAR(CURRENT_DATE())
     ");
+    $stmt->execute();
+    $usersThisMonth = $stmt->fetchColumn();
+    
+    // Users last month
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM users
+        WHERE MONTH(created_at) = MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+        AND YEAR(created_at) = YEAR(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+    ");
+    $stmt->execute();
+    $usersLastMonth = $stmt->fetchColumn();
+    
+    // Calculate users change percentage
+    $usersChange = 0;
+    if ($usersLastMonth > 0) {
+        $usersChange = round((($usersThisMonth - $usersLastMonth) / $usersLastMonth) * 100);
+    }
+    
+    // Total books
