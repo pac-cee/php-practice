@@ -55,3 +55,22 @@ function getAdminStats($conn) {
         AND YEAR(created_at) = YEAR(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
     ");
     $stmt->execute();
+    $revenueLastMonth = $stmt->fetchColumn() ?: 0;
+    
+    // Calculate revenue change percentage
+    $revenueChange = 0;
+    if ($revenueLastMonth > 0) {
+        $revenueChange = round((($revenueThisMonth - $revenueLastMonth) / $revenueLastMonth) * 100);
+    }
+    
+    // Total users
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users");
+    $stmt->execute();
+    $totalUsers = $stmt->fetchColumn();
+    
+    // Users this month
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM users
+        WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
+        AND YEAR(created_at) = YEAR(CURRENT_DATE())
+    ");
