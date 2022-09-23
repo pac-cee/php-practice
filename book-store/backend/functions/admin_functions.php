@@ -245,3 +245,22 @@ function toggleUserAdminStatus($conn, $userId) {
         UPDATE users
         SET is_admin = NOT is_admin
         WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $userId);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Get all orders for admin
+ * @param PDO $conn Database connection
+ * @param string $status Filter by status (optional)
+ * @param int $limit Number of orders to return
+ * @param int $offset Offset for pagination
+ * @return array Orders
+ */
+function getAllOrders($conn, $status = '', $limit = 10, $offset = 0) {
+    $params = [];
+    $sql = "
+        SELECT o.*, u.name as user_name,
+               (SELECT COUNT(*) FROM order_items WHERE order_id = o.id) as item_count
