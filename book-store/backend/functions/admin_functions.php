@@ -112,3 +112,22 @@ function getAdminStats($conn) {
         'orders_change' => $ordersChange,
         'total_revenue' => $totalRevenue,
         'revenue_this_month' => $revenueThisMonth,
+        'revenue_change' => $revenueChange,
+        'total_users' => $totalUsers,
+        'users_this_month' => $usersThisMonth,
+        'users_change' => $usersChange,
+        'total_books' => $totalBooks,
+        'books_change' => $booksThisMonth
+    ];
+}
+
+/**
+ * Get recent orders for admin
+ * @param PDO $conn Database connection
+ * @param int $limit Number of orders to return
+ * @return array Recent orders
+ */
+function getRecentOrders($conn, $limit = 5) {
+    $stmt = $conn->prepare("
+        SELECT o.*, u.name as user_name
+        FROM orders o
