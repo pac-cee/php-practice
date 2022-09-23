@@ -302,3 +302,22 @@ function getAllOrders($conn, $status = '', $limit = 10, $offset = 0) {
  */
 function getTotalOrders($conn, $status = '') {
     $sql = "SELECT COUNT(*) FROM orders WHERE 1=1";
+    $params = [];
+    
+    // Add status filter
+    if (!empty($status)) {
+        $sql .= " AND status = :status";
+        $params[':status'] = $status;
+    }
+    
+    // Prepare and execute
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+    $stmt->execute();
+    
+    return $stmt->fetchColumn();
+}
+
+/**
