@@ -207,3 +207,22 @@ function createAdminUser($conn, $userData) {
     // Check if email already exists
     $stmt = $conn->prepare("
         SELECT COUNT(*) FROM users WHERE email = :email
+    ");
+    $stmt->bindParam(':email', $userData['email']);
+    $stmt->execute();
+    
+    if ($stmt->fetchColumn() > 0) {
+        return false; // Email already exists
+    }
+    
+    // Hash password
+    $hashedPassword = password_hash($userData['password'], PASSWORD_DEFAULT);
+    
+    // Insert new admin user
+    $stmt = $conn->prepare("
+        INSERT INTO users (name, email, password, is_admin)
+        VALUES (:name, :email, :password, 1)
+    ");
+    $stmt->bindParam(':name', $userData['name']);
+    $stmt->bindParam(':email', $userData['email']);
+    $stmt->bindParam(':password', $hashedPassword);
