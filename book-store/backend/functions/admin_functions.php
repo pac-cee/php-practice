@@ -264,3 +264,22 @@ function getAllOrders($conn, $status = '', $limit = 10, $offset = 0) {
     $sql = "
         SELECT o.*, u.name as user_name,
                (SELECT COUNT(*) FROM order_items WHERE order_id = o.id) as item_count
+        FROM orders o
+        JOIN users u ON o.user_id = u.id
+        WHERE 1=1
+    ";
+    
+    // Add status filter
+    if (!empty($status)) {
+        $sql .= " AND o.status = :status";
+        $params[':status'] = $status;
+    }
+    
+    // Add sorting and pagination
+    $sql .= " ORDER BY o.created_at DESC LIMIT :limit OFFSET :offset";
+    $params[':limit'] = $limit;
+    $params[':offset'] = $offset;
+    
+    // Prepare and execute
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
