@@ -226,3 +226,22 @@ function createAdminUser($conn, $userData) {
     $stmt->bindParam(':name', $userData['name']);
     $stmt->bindParam(':email', $userData['email']);
     $stmt->bindParam(':password', $hashedPassword);
+    
+    if ($stmt->execute()) {
+        return $conn->lastInsertId();
+    }
+    
+    return false;
+}
+
+/**
+ * Toggle user admin status
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @return bool Success or failure
+ */
+function toggleUserAdminStatus($conn, $userId) {
+    $stmt = $conn->prepare("
+        UPDATE users
+        SET is_admin = NOT is_admin
+        WHERE id = :id
