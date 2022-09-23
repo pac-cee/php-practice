@@ -188,3 +188,22 @@ function getAllUsers($conn, $limit = 10, $offset = 0) {
 /**
  * Get total users count
  * @param PDO $conn Database connection
+ * @return int Total users
+ */
+function getTotalUsers($conn) {
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users");
+    $stmt->execute();
+    
+    return $stmt->fetchColumn();
+}
+
+/**
+ * Create a new admin user
+ * @param PDO $conn Database connection
+ * @param array $userData User data
+ * @return int|false New user ID or false on failure
+ */
+function createAdminUser($conn, $userData) {
+    // Check if email already exists
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM users WHERE email = :email
