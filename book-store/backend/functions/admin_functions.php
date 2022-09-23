@@ -93,3 +93,22 @@ function getAdminStats($conn) {
     }
     
     // Total books
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM books");
+    $stmt->execute();
+    $totalBooks = $stmt->fetchColumn();
+    
+    // Books added this month
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM books
+        WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
+        AND YEAR(created_at) = YEAR(CURRENT_DATE())
+    ");
+    $stmt->execute();
+    $booksThisMonth = $stmt->fetchColumn();
+    
+    return [
+        'total_orders' => $totalOrders,
+        'orders_this_month' => $ordersThisMonth,
+        'orders_change' => $ordersChange,
+        'total_revenue' => $totalRevenue,
+        'revenue_this_month' => $revenueThisMonth,
