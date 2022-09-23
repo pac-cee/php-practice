@@ -150,3 +150,22 @@ function getRecentOrders($conn, $limit = 5) {
  */
 function getLowStockBooks($conn, $limit = 5, $threshold = 5) {
     $stmt = $conn->prepare("
+        SELECT *
+        FROM books
+        WHERE stock_quantity <= :threshold
+        ORDER BY stock_quantity ASC
+        LIMIT :limit
+    ");
+    $stmt->bindParam(':threshold', $threshold, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get all users for admin
+ * @param PDO $conn Database connection
+ * @param int $limit Number of users to return
+ * @param int $offset Offset for pagination
+ * @return array Users
