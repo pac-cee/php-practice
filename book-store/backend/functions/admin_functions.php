@@ -17,3 +17,22 @@ function getAdminStats($conn) {
         AND YEAR(created_at) = YEAR(CURRENT_DATE())
     ");
     $stmt->execute();
+    $ordersThisMonth = $stmt->fetchColumn();
+    
+    // Orders last month
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM orders
+        WHERE MONTH(created_at) = MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+        AND YEAR(created_at) = YEAR(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+    ");
+    $stmt->execute();
+    $ordersLastMonth = $stmt->fetchColumn();
+    
+    // Calculate orders change percentage
+    $ordersChange = 0;
+    if ($ordersLastMonth > 0) {
+        $ordersChange = round((($ordersThisMonth - $ordersLastMonth) / $ordersLastMonth) * 100);
+    }
+    
+    // Total revenue
+    $stmt = $conn->prepare("SELECT SUM(total_amount) FROM orders");
