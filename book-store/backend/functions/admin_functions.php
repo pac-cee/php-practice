@@ -131,3 +131,22 @@ function getRecentOrders($conn, $limit = 5) {
     $stmt = $conn->prepare("
         SELECT o.*, u.name as user_name
         FROM orders o
+        JOIN users u ON o.user_id = u.id
+        ORDER BY o.created_at DESC
+        LIMIT :limit
+    ");
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get low stock books
+ * @param PDO $conn Database connection
+ * @param int $limit Number of books to return
+ * @param int $threshold Low stock threshold
+ * @return array Low stock books
+ */
+function getLowStockBooks($conn, $limit = 5, $threshold = 5) {
+    $stmt = $conn->prepare("
