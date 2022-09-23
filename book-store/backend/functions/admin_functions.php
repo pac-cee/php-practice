@@ -36,3 +36,22 @@ function getAdminStats($conn) {
     
     // Total revenue
     $stmt = $conn->prepare("SELECT SUM(total_amount) FROM orders");
+    $stmt->execute();
+    $totalRevenue = $stmt->fetchColumn() ?: 0;
+    
+    // Revenue this month
+    $stmt = $conn->prepare("
+        SELECT SUM(total_amount) FROM orders
+        WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
+        AND YEAR(created_at) = YEAR(CURRENT_DATE())
+    ");
+    $stmt->execute();
+    $revenueThisMonth = $stmt->fetchColumn() ?: 0;
+    
+    // Revenue last month
+    $stmt = $conn->prepare("
+        SELECT SUM(total_amount) FROM orders
+        WHERE MONTH(created_at) = MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+        AND YEAR(created_at) = YEAR(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH))
+    ");
+    $stmt->execute();
