@@ -245,3 +245,22 @@ if ($categoryCount === 0) {
         $stmt->bindParam(':publisher', $book['publisher']);
         $stmt->bindParam(':publication_date', $book['publication_date']);
         $stmt->bindParam(':pages', $book['pages']);
+        $stmt->bindParam(':language', $book['language']);
+        $stmt->bindParam(':stock_quantity', $book['stock_quantity']);
+        $stmt->bindParam(':featured', $book['featured']);
+        $stmt->execute();
+    }
+    
+    // Insert sample admin user (email: admin@example.com, password: admin123)
+    $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
+    
+    $stmt = $conn->prepare("
+        INSERT INTO users (name, email, password, is_admin) 
+        VALUES ('Admin User', 'admin@example.com', :password, 1)
+    ");
+    $stmt->bindParam(':password', $adminPassword);
+    $stmt->execute();
+    
+    // Insert sample regular user (email: user@example.com, password: user123)
+    $userPassword = password_hash('user123', PASSWORD_DEFAULT);
+    
