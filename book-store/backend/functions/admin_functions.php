@@ -169,3 +169,22 @@ function getLowStockBooks($conn, $limit = 5, $threshold = 5) {
  * @param int $limit Number of users to return
  * @param int $offset Offset for pagination
  * @return array Users
+ */
+function getAllUsers($conn, $limit = 10, $offset = 0) {
+    $stmt = $conn->prepare("
+        SELECT id, name, email, is_admin, created_at,
+               (SELECT COUNT(*) FROM orders WHERE user_id = users.id) as order_count
+        FROM users
+        ORDER BY created_at DESC
+        LIMIT :limit OFFSET :offset
+    ");
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get total users count
+ * @param PDO $conn Database connection
