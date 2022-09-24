@@ -359,3 +359,22 @@ function getOrderDetails($conn, $orderId) {
     $order['items'] = $stmt->fetchAll();
     
     return $order;
+}
+
+/**
+ * Update order status
+ * @param PDO $conn Database connection
+ * @param int $orderId Order ID
+ * @param string $status New status
+ * @return bool Success or failure
+ */
+function updateOrderStatus($conn, $orderId, $status) {
+    $validStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
+    
+    if (!in_array($status, $validStatuses)) {
+        return false;
+    }
+    
+    $stmt = $conn->prepare("
+        UPDATE orders
+        SET status = :status, updated_at = CURRENT_TIMESTAMP
