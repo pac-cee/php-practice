@@ -378,3 +378,22 @@ function updateOrderStatus($conn, $orderId, $status) {
     $stmt = $conn->prepare("
         UPDATE orders
         SET status = :status, updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $orderId);
+    $stmt->bindParam(':status', $status);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Get all reviews for admin
+ * @param PDO $conn Database connection
+ * @param int $limit Number of reviews to return
+ * @param int $offset Offset for pagination
+ * @return array Reviews
+ */
+function getAllReviews($conn, $limit = 10, $offset = 0) {
+    $stmt = $conn->prepare("
+        SELECT r.*, u.name as user_name, b.title as book_title
+        FROM reviews r
