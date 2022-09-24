@@ -416,3 +416,22 @@ function getAllReviews($conn, $limit = 10, $offset = 0) {
  */
 function getTotalReviews($conn) {
     $stmt = $conn->prepare("SELECT COUNT(*) FROM reviews");
+    $stmt->execute();
+    
+    return $stmt->fetchColumn();
+}
+
+/**
+ * Get sales data for chart
+ * @param PDO $conn Database connection
+ * @param string $period Period (week, month, year)
+ * @return array Sales data
+ */
+function getSalesData($conn, $period = 'month') {
+    $sql = "";
+    $labels = [];
+    
+    if ($period === 'week') {
+        // Last 7 days
+        $sql = "
+            SELECT 
