@@ -321,3 +321,22 @@ function getTotalOrders($conn, $status = '') {
 }
 
 /**
+ * Get order details
+ * @param PDO $conn Database connection
+ * @param int $orderId Order ID
+ * @return array|false Order details or false if not found
+ */
+function getOrderDetails($conn, $orderId) {
+    // Get order header
+    $stmt = $conn->prepare("
+        SELECT o.*, u.name as user_name, u.email as user_email,
+               a.name as shipping_name, a.street_address, a.city, a.state, 
+               a.zip_code, a.country, a.phone
+        FROM orders o
+        JOIN users u ON o.user_id = u.id
+        JOIN addresses a ON o.shipping_address_id = a.id
+        WHERE o.id = :id
+    ");
+    $stmt->bindParam(':id', $orderId);
+    $stmt->execute();
+    
