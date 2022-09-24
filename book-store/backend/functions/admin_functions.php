@@ -340,3 +340,22 @@ function getOrderDetails($conn, $orderId) {
     $stmt->bindParam(':id', $orderId);
     $stmt->execute();
     
+    $order = $stmt->fetch();
+    
+    if (!$order) {
+        return false;
+    }
+    
+    // Get order items
+    $stmt = $conn->prepare("
+        SELECT oi.*, b.title as book_title, b.author as book_author, b.cover_image
+        FROM order_items oi
+        JOIN books b ON oi.book_id = b.id
+        WHERE oi.order_id = :order_id
+    ");
+    $stmt->bindParam(':order_id', $orderId);
+    $stmt->execute();
+    
+    $order['items'] = $stmt->fetchAll();
+    
+    return $order;
