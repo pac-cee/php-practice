@@ -397,3 +397,22 @@ function getAllReviews($conn, $limit = 10, $offset = 0) {
     $stmt = $conn->prepare("
         SELECT r.*, u.name as user_name, b.title as book_title
         FROM reviews r
+        JOIN users u ON r.user_id = u.id
+        JOIN books b ON r.book_id = b.id
+        ORDER BY r.created_at DESC
+        LIMIT :limit OFFSET :offset
+    ");
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get total reviews count
+ * @param PDO $conn Database connection
+ * @return int Total reviews
+ */
+function getTotalReviews($conn) {
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM reviews");
