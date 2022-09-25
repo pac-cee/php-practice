@@ -454,3 +454,22 @@ function getSalesData($conn, $period = 'month') {
             SELECT 
                 DATE(created_at) as date,
                 SUM(total_amount) as total
+            FROM orders
+            WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+            GROUP BY DATE(created_at)
+            ORDER BY DATE(created_at)
+        ";
+        
+        // Generate labels for last 30 days
+        for ($i = 29; $i >= 0; $i--) {
+            $date = date('Y-m-d', strtotime("-$i days"));
+            $labels[$date] = date('M d', strtotime($date));
+        }
+    } else { // year
+        // Last 12 months
+        $sql = "
+            SELECT 
+                DATE_FORMAT(created_at, '%Y-%m') as month,
+                SUM(total_amount) as total
+            FROM orders
+            WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 12 MONTH)
