@@ -435,3 +435,22 @@ function getSalesData($conn, $period = 'month') {
         // Last 7 days
         $sql = "
             SELECT 
+                DATE(created_at) as date,
+                SUM(total_amount) as total
+            FROM orders
+            WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+            GROUP BY DATE(created_at)
+            ORDER BY DATE(created_at)
+        ";
+        
+        // Generate labels for last 7 days
+        for ($i = 6; $i >= 0; $i--) {
+            $date = date('Y-m-d', strtotime("-$i days"));
+            $labels[$date] = date('D', strtotime($date));
+        }
+    } elseif ($period === 'month') {
+        // Last 30 days
+        $sql = "
+            SELECT 
+                DATE(created_at) as date,
+                SUM(total_amount) as total
