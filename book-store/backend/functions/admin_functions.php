@@ -492,3 +492,18 @@ function getSalesData($conn, $period = 'month') {
     $data = [];
     foreach ($labels as $key => $label) {
         $data[$key] = 0;
+    }
+    
+    // Fill in actual data
+    foreach ($results as $row) {
+        $key = $period === 'year' ? $row['month'] : $row['date'];
+        if (isset($data[$key])) {
+            $data[$key] = (float)$row['total'];
+        }
+    }
+    
+    return [
+        'labels' => array_values($labels),
+        'data' => array_values($data)
+    ];
+}
