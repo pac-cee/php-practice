@@ -473,3 +473,22 @@ function getSalesData($conn, $period = 'month') {
                 SUM(total_amount) as total
             FROM orders
             WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 12 MONTH)
+            GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+            ORDER BY DATE_FORMAT(created_at, '%Y-%m')
+        ";
+        
+        // Generate labels for last 12 months
+        for ($i = 11; $i >= 0; $i--) {
+            $date = date('Y-m', strtotime("-$i months"));
+            $labels[$date] = date('M Y', strtotime("$date-01"));
+        }
+    }
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Initialize data array with zeros
+    $data = [];
+    foreach ($labels as $key => $label) {
+        $data[$key] = 0;
