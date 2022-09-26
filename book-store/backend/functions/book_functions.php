@@ -74,3 +74,22 @@ function getNewArrivals($conn, $limit = 8) {
     return $stmt->fetchAll();
 }
 
+/**
+ * Get books with filters
+ * @param PDO $conn Database connection
+ * @param string $category Category slug
+ * @param string $search Search term
+ * @param int $page Current page for pagination
+ * @param int $perPage Items per page
+ * @return array Array of filtered books
+ */
+function getFilteredBooks($conn, $category = '', $search = '', $page = 1, $perPage = 12) {
+    $offset = ($page - 1) * $perPage;
+    $params = [];
+    $sql = "
+        SELECT b.*, c.name as category_name, c.slug as category_slug
+        FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        WHERE 1=1
+    ";
+    
