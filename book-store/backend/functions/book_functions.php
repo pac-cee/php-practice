@@ -17,3 +17,22 @@ function getAllBooks($conn, $limit = 12, $offset = 0) {
     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get total number of books
+ * @param PDO $conn Database connection
+ * @return int Total number of books
+ */
+function getTotalBooks($conn) {
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM books");
+    $stmt->execute();
+    
+    return $stmt->fetchColumn();
+}
+
+/**
+ * Get featured books
+ * @param PDO $conn Database connection
