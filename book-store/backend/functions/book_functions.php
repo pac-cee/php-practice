@@ -55,3 +55,22 @@ function getFeaturedBooks($conn, $limit = 4) {
 }
 
 /**
+ * Get new arrivals
+ * @param PDO $conn Database connection
+ * @param int $limit Number of books to return
+ * @return array Array of new arrival books
+ */
+function getNewArrivals($conn, $limit = 8) {
+    $stmt = $conn->prepare("
+        SELECT b.*, c.name as category_name, c.slug as category_slug
+        FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        ORDER BY b.created_at DESC
+        LIMIT :limit
+    ");
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
