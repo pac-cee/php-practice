@@ -93,3 +93,22 @@ function getFilteredBooks($conn, $category = '', $search = '', $page = 1, $perPa
         WHERE 1=1
     ";
     
+    // Add category filter
+    if (!empty($category)) {
+        $sql .= " AND c.slug = :category";
+        $params[':category'] = $category;
+    }
+    
+    // Add search filter
+    if (!empty($search)) {
+        $sql .= " AND (b.title LIKE :search OR b.author LIKE :search OR b.isbn LIKE :search)";
+        $params[':search'] = "%$search%";
+    }
+    
+    // Add sorting (default to newest)
+    $sql .= " ORDER BY b.created_at DESC";
+    
+    // Add pagination
+    $sql .= " LIMIT :limit OFFSET :offset";
+    $params[':limit'] = $perPage;
+    $params[':offset'] = $offset;
