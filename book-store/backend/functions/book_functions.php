@@ -150,3 +150,22 @@ function getTotalFilteredBooks($conn, $category = '', $search = '') {
     
     // Add search filter
     if (!empty($search)) {
+        $sql .= " AND (b.title LIKE :search OR b.author LIKE :search OR b.isbn LIKE :search)";
+        $params[':search'] = "%$search%";
+    }
+    
+    // Prepare and execute
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+    $stmt->execute();
+    
+    return $stmt->fetchColumn();
+}
+
+/**
+ * Get book by ID
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @return array|false Book data or false if not found
