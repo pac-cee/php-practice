@@ -112,3 +112,22 @@ function getFilteredBooks($conn, $category = '', $search = '', $page = 1, $perPa
     $sql .= " LIMIT :limit OFFSET :offset";
     $params[':limit'] = $perPage;
     $params[':offset'] = $offset;
+    
+    // Prepare and execute
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+        if ($key === ':limit' || $key === ':offset') {
+            $stmt->bindValue($key, $value, PDO::PARAM_INT);
+        } else {
+            $stmt->bindValue($key, $value, PDO::PARAM_STR);
+        }
+    }
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get total filtered books count
+ * @param PDO $conn Database connection
+ * @param string $category Category slug
