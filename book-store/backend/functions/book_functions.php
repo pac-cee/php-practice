@@ -131,3 +131,22 @@ function getFilteredBooks($conn, $category = '', $search = '', $page = 1, $perPa
  * Get total filtered books count
  * @param PDO $conn Database connection
  * @param string $category Category slug
+ * @param string $search Search term
+ * @return int Total number of filtered books
+ */
+function getTotalFilteredBooks($conn, $category = '', $search = '') {
+    $params = [];
+    $sql = "
+        SELECT COUNT(*) FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        WHERE 1=1
+    ";
+    
+    // Add category filter
+    if (!empty($category)) {
+        $sql .= " AND c.slug = :category";
+        $params[':category'] = $category;
+    }
+    
+    // Add search filter
+    if (!empty($search)) {
