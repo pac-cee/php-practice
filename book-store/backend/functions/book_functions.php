@@ -188,3 +188,22 @@ function getBookById($conn, $bookId) {
  * @param PDO $conn Database connection
  * @param int $bookId Current book ID
  * @param int $categoryId Category ID for related books
+ * @param int $limit Number of books to return
+ * @return array Array of related books
+ */
+function getRelatedBooks($conn, $bookId, $categoryId, $limit = 4) {
+    $stmt = $conn->prepare("
+        SELECT b.*, c.name as category_name, c.slug as category_slug
+        FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        WHERE b.id != :book_id AND b.category_id = :category_id
+        ORDER BY RAND()
+        LIMIT :limit
+    ");
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
