@@ -207,3 +207,22 @@ function getRelatedBooks($conn, $bookId, $categoryId, $limit = 4) {
     
     return $stmt->fetchAll();
 }
+
+/**
+ * Search books
+ * @param PDO $conn Database connection
+ * @param string $query Search query
+ * @param int $limit Number of books to return
+ * @return array Array of matching books
+ */
+function searchBooks($conn, $query, $limit = 12) {
+    $stmt = $conn->prepare("
+        SELECT b.*, c.name as category_name, c.slug as category_slug
+        FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        WHERE b.title LIKE :query OR b.author LIKE :query OR b.isbn LIKE :query
+        ORDER BY 
+            CASE 
+                WHEN b.title LIKE :exact THEN 1
+                WHEN b.title LIKE :start THEN 2
+                ELSE 3
