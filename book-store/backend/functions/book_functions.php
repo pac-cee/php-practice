@@ -169,3 +169,22 @@ function getTotalFilteredBooks($conn, $category = '', $search = '') {
  * @param PDO $conn Database connection
  * @param int $bookId Book ID
  * @return array|false Book data or false if not found
+ */
+function getBookById($conn, $bookId) {
+    $stmt = $conn->prepare("
+        SELECT b.*, c.name as category_name, c.slug as category_slug
+        FROM books b
+        LEFT JOIN categories c ON b.category_id = c.id
+        WHERE b.id = :id
+    ");
+    $stmt->bindParam(':id', $bookId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetch();
+}
+
+/**
+ * Get related books
+ * @param PDO $conn Database connection
+ * @param int $bookId Current book ID
+ * @param int $categoryId Category ID for related books
