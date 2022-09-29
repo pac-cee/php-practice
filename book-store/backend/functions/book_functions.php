@@ -264,3 +264,22 @@ function getBooksByCategory($conn, $categorySlug, $limit = 12, $offset = 0) {
     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Add a new book
+ * @param PDO $conn Database connection
+ * @param array $bookData Book data
+ * @return int|false New book ID or false on failure
+ */
+function addBook($conn, $bookData) {
+    $stmt = $conn->prepare("
+        INSERT INTO books (
+            title, author, description, price, original_price, cover_image, 
+            category_id, isbn, publisher, publication_date, pages, 
+            language, stock_quantity, featured
+        ) VALUES (
+            :title, :author, :description, :price, :original_price, :cover_image, 
+            :category_id, :isbn, :publisher, :publication_date, :pages, 
