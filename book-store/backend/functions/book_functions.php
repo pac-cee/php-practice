@@ -226,3 +226,22 @@ function searchBooks($conn, $query, $limit = 12) {
                 WHEN b.title LIKE :exact THEN 1
                 WHEN b.title LIKE :start THEN 2
                 ELSE 3
+            END,
+            b.title
+        LIMIT :limit
+    ");
+    $searchParam = "%$query%";
+    $exactParam = $query;
+    $startParam = "$query%";
+    
+    $stmt->bindParam(':query', $searchParam, PDO::PARAM_STR);
+    $stmt->bindParam(':exact', $exactParam, PDO::PARAM_STR);
+    $stmt->bindParam(':start', $startParam, PDO::PARAM_STR);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get books by category
