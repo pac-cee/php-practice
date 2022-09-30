@@ -74,3 +74,22 @@ function getCartCount($cart) {
  * @param array $cart Cart array
  * @return array Cart items with details
  */
+function getCartItems($conn, $cart) {
+    if (empty($cart)) {
+        return [];
+    }
+    
+    $bookIds = array_keys($cart);
+    $placeholders = implode(',', array_fill(0, count($bookIds), '?'));
+    
+    $stmt = $conn->prepare("
+        SELECT * FROM books WHERE id IN ($placeholders)
+    ");
+    
+    // Bind all book IDs as parameters
+    $index = 1;
+    foreach ($bookIds as $id) {
+        $stmt->bindValue($index++, $id, PDO::PARAM_INT);
+    }
+    
+    $stmt->execute();
