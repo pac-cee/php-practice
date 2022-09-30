@@ -169,3 +169,10 @@ function applyCoupon($conn, $couponCode, $subtotal) {
         }
     }
     
+    return [
+        'success' => true,
+        'message' => 'Coupon applied successfully.',
+        'discount' => $discount,
+        'coupon' => $coupon
+    ];
+}
