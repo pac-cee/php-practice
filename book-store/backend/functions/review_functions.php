@@ -55,3 +55,22 @@ function addReview($conn, $bookId, $userId, $rating, $title, $content) {
     // Check if user has already reviewed this book
     $stmt = $conn->prepare("
         SELECT COUNT(*) FROM reviews
+        WHERE book_id = :book_id AND user_id = :user_id
+    ");
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    if ($stmt->fetchColumn() > 0) {
+        // Update existing review
+        $stmt = $conn->prepare("
+            UPDATE reviews
+            SET rating = :rating, title = :title, content = :content, created_at = CURRENT_TIMESTAMP
+            WHERE book_id = :book_id AND user_id = :user_id
+        ");
+    } else {
+        // Insert new review
+        $stmt = $conn->prepare("
+            INSERT INTO reviews (book_id, user_id, rating, title, content)
+            VALUES (:book_id, :user_id, :rating, :title, :content)
+        ");
