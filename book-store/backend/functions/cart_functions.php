@@ -131,3 +131,22 @@ function calculateCartTotal($cartItems) {
 function applyCoupon($conn, $couponCode, $subtotal) {
     $stmt = $conn->prepare("
         SELECT * FROM coupons 
+        WHERE code = :code 
+        AND is_active = 1
+        AND starts_at <= NOW()
+        AND expires_at >= NOW()
+    ");
+    $stmt->bindParam(':code', $couponCode);
+    $stmt->execute();
+    
+    $coupon = $stmt->fetch();
+    
+    if (!$coupon) {
+        return [
+            'success' => false,
+            'message' => 'Invalid or expired coupon code.'
+        ];
+    }
+    
+    // Check minimum order amount
+    if ($subtotal < $coupon['min_order_amount']) {
