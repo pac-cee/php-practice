@@ -397,3 +397,12 @@ function updateBookStock($conn, $bookId, $quantity) {
  */
 function isBookInStock($conn, $bookId, $quantity = 1) {
     $stmt = $conn->prepare("
+        SELECT stock_quantity FROM books WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $bookId);
+    $stmt->execute();
+    
+    $available = $stmt->fetchColumn();
+    
+    return $available >= $quantity;
+}
