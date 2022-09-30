@@ -321,3 +321,22 @@ function updateBook($conn, $bookId, $bookData) {
         UPDATE books SET
             title = :title,
             author = :author,
+            description = :description,
+            price = :price,
+            original_price = :original_price,
+            cover_image = :cover_image,
+            category_id = :category_id,
+            isbn = :isbn,
+            publisher = :publisher,
+            publication_date = :publication_date,
+            pages = :pages,
+            language = :language,
+            stock_quantity = :stock_quantity,
+            featured = :featured,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    
+    $stmt->bindParam(':id', $bookId);
+    $stmt->bindParam(':title', $bookData['title']);
+    $stmt->bindParam(':author', $bookData['author']);
