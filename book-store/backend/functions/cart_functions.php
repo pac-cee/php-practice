@@ -93,3 +93,22 @@ function getCartItems($conn, $cart) {
     }
     
     $stmt->execute();
+    $books = $stmt->fetchAll();
+    
+    // Add quantity to each book
+    $cartItems = [];
+    foreach ($books as $book) {
+        $bookId = $book['id'];
+        $book['quantity'] = $cart[$bookId];
+        $cartItems[] = $book;
+    }
+    
+    return $cartItems;
+}
+
+/**
+ * Calculate cart total
+ * @param array $cartItems Cart items with details
+ * @return float Cart total
+ */
+function calculateCartTotal($cartItems) {
