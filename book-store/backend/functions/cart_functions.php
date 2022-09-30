@@ -36,3 +36,22 @@ function updateCartItem($cart, $bookId, $quantity) {
 /**
  * Remove item from cart
  * @param array $cart Current cart array
+ * @param int $bookId Book ID
+ * @return array Updated cart array
+ */
+function removeFromCart($cart, $bookId) {
+    if (isset($cart[$bookId])) {
+        unset($cart[$bookId]);
+    }
+    
+    return $cart;
+}
+
+/**
+ * Clear cart
+ * @return array Empty cart array
+ */
+function clearCart() {
+    return [];
+}
+
