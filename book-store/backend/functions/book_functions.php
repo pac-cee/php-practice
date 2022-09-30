@@ -359,3 +359,22 @@ function updateBook($conn, $bookId, $bookData) {
 /**
  * Delete a book
  * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @return bool Success or failure
+ */
+function deleteBook($conn, $bookId) {
+    $stmt = $conn->prepare("DELETE FROM books WHERE id = :id");
+    $stmt->bindParam(':id', $bookId);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Update book stock
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @param int $quantity New stock quantity
+ * @return bool Success or failure
+ */
+function updateBookStock($conn, $bookId, $quantity) {
+    $stmt = $conn->prepare("
