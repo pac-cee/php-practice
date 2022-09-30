@@ -17,3 +17,22 @@ function getBookReviews($conn, $bookId, $limit = 10, $offset = 0) {
         LIMIT :limit OFFSET :offset
     ");
     $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Get average rating for a book
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @return float Average rating
+ */
+function getAverageRating($conn, $bookId) {
+    $stmt = $conn->prepare("
+        SELECT AVG(rating) FROM reviews WHERE book_id = :book_id
+    ");
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->execute();
