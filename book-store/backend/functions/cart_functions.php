@@ -112,3 +112,22 @@ function getCartItems($conn, $cart) {
  * @return float Cart total
  */
 function calculateCartTotal($cartItems) {
+    $total = 0;
+    
+    foreach ($cartItems as $item) {
+        $total += $item['price'] * $item['quantity'];
+    }
+    
+    return $total;
+}
+
+/**
+ * Apply coupon to cart
+ * @param PDO $conn Database connection
+ * @param string $couponCode Coupon code
+ * @param float $subtotal Cart subtotal
+ * @return array Discount information or error
+ */
+function applyCoupon($conn, $couponCode, $subtotal) {
+    $stmt = $conn->prepare("
+        SELECT * FROM coupons 
