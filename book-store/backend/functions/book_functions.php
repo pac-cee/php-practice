@@ -378,3 +378,22 @@ function deleteBook($conn, $bookId) {
  */
 function updateBookStock($conn, $bookId, $quantity) {
     $stmt = $conn->prepare("
+        UPDATE books 
+        SET stock_quantity = :quantity, updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $bookId);
+    $stmt->bindParam(':quantity', $quantity);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Check if a book is in stock
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @param int $quantity Quantity to check
+ * @return bool True if in stock, false otherwise
+ */
+function isBookInStock($conn, $bookId, $quantity = 1) {
+    $stmt = $conn->prepare("
