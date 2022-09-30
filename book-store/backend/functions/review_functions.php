@@ -36,3 +36,22 @@ function getAverageRating($conn, $bookId) {
     ");
     $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
     $stmt->execute();
+    
+    $avg = $stmt->fetchColumn();
+    return $avg ? round($avg, 1) : 0;
+}
+
+/**
+ * Add a review
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @param int $userId User ID
+ * @param int $rating Rating (1-5)
+ * @param string $title Review title
+ * @param string $content Review content
+ * @return int|false New review ID or false on failure
+ */
+function addReview($conn, $bookId, $userId, $rating, $title, $content) {
+    // Check if user has already reviewed this book
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM reviews
