@@ -150,3 +150,22 @@ function applyCoupon($conn, $couponCode, $subtotal) {
     
     // Check minimum order amount
     if ($subtotal < $coupon['min_order_amount']) {
+        return [
+            'success' => false,
+            'message' => 'Minimum order amount of $' . number_format($coupon['min_order_amount'], 2) . ' required for this coupon.'
+        ];
+    }
+    
+    // Calculate discount
+    $discount = 0;
+    if ($coupon['type'] === 'percentage') {
+        $discount = $subtotal * ($coupon['value'] / 100);
+    } else { // fixed amount
+        $discount = $coupon['value'];
+        
+        // Don't allow discount greater than subtotal
+        if ($discount > $subtotal) {
+            $discount = $subtotal;
+        }
+    }
+    
