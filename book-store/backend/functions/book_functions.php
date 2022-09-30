@@ -340,3 +340,22 @@ function updateBook($conn, $bookId, $bookData) {
     $stmt->bindParam(':id', $bookId);
     $stmt->bindParam(':title', $bookData['title']);
     $stmt->bindParam(':author', $bookData['author']);
+    $stmt->bindParam(':description', $bookData['description']);
+    $stmt->bindParam(':price', $bookData['price']);
+    $stmt->bindParam(':original_price', $bookData['original_price']);
+    $stmt->bindParam(':cover_image', $bookData['cover_image']);
+    $stmt->bindParam(':category_id', $bookData['category_id']);
+    $stmt->bindParam(':isbn', $bookData['isbn']);
+    $stmt->bindParam(':publisher', $bookData['publisher']);
+    $stmt->bindParam(':publication_date', $bookData['publication_date']);
+    $stmt->bindParam(':pages', $bookData['pages']);
+    $stmt->bindParam(':language', $bookData['language']);
+    $stmt->bindParam(':stock_quantity', $bookData['stock_quantity']);
+    $stmt->bindParam(':featured', $bookData['featured']);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Delete a book
+ * @param PDO $conn Database connection
