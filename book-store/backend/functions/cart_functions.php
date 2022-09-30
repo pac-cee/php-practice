@@ -55,3 +55,22 @@ function clearCart() {
     return [];
 }
 
+/**
+ * Get total items in cart
+ * @param array $cart Cart array
+ * @return int Total number of items
+ */
+function getCartCount($cart) {
+    if (!$cart) {
+        return 0;
+    }
+    
+    return array_sum($cart);
+}
+
+/**
+ * Get cart items with book details
+ * @param PDO $conn Database connection
+ * @param array $cart Cart array
+ * @return array Cart items with details
+ */
