@@ -302,3 +302,22 @@ function addBook($conn, $bookData) {
     $stmt->bindParam(':stock_quantity', $bookData['stock_quantity']);
     $stmt->bindParam(':featured', $bookData['featured']);
     
+    if ($stmt->execute()) {
+        return $conn->lastInsertId();
+    }
+    
+    return false;
+}
+
+/**
+ * Update a book
+ * @param PDO $conn Database connection
+ * @param int $bookId Book ID
+ * @param array $bookData Updated book data
+ * @return bool Success or failure
+ */
+function updateBook($conn, $bookId, $bookData) {
+    $stmt = $conn->prepare("
+        UPDATE books SET
+            title = :title,
+            author = :author,
