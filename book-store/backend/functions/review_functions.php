@@ -74,3 +74,22 @@ function addReview($conn, $bookId, $userId, $rating, $title, $content) {
             INSERT INTO reviews (book_id, user_id, rating, title, content)
             VALUES (:book_id, :user_id, :rating, :title, :content)
         ");
+    }
+    
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':content', $content, PDO::PARAM_STR);
+    
+    if ($stmt->execute()) {
+        return $conn->lastInsertId();
+    }
+    
+    return false;
+}
+
+/**
+ * Delete a review
+ * @param PDO $conn Database connection
+ * @param int $reviewId Review ID
