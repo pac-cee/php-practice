@@ -17,3 +17,22 @@ function getUserById($conn, $userId) {
     return $stmt->fetch();
 }
 
+/**
+ * Get user by email
+ * @param PDO $conn Database connection
+ * @param string $email User email
+ * @return array|false User data or false if not found
+ */
+function getUserByEmail($conn, $email) {
+    $stmt = $conn->prepare("
+        SELECT id, name, email, is_admin, created_at
+        FROM users
+        WHERE email = :email
+    ");
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    return $stmt->fetch();
+}
+
+/**
