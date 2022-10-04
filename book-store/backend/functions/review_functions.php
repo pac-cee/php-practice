@@ -112,3 +112,22 @@ function deleteReview($conn, $reviewId, $userId, $isAdmin = false) {
             return false; // User doesn't own this review
         }
     }
+    
+    // Delete the review
+    $stmt = $conn->prepare("DELETE FROM reviews WHERE id = :id");
+    $stmt->bindParam(':id', $reviewId, PDO::PARAM_INT);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Get recent reviews
+ * @param PDO $conn Database connection
+ * @param int $limit Number of reviews to return
+ * @return array Array of recent reviews
+ */
+function getRecentReviews($conn, $limit = 10) {
+    $stmt = $conn->prepare("
+        SELECT r.*, u.name as user_name, b.title as book_title
+        FROM reviews r
+        JOIN users u ON r.user_id = u.id
