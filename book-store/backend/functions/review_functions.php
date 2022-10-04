@@ -93,3 +93,22 @@ function addReview($conn, $bookId, $userId, $rating, $title, $content) {
  * Delete a review
  * @param PDO $conn Database connection
  * @param int $reviewId Review ID
+ * @param int $userId User ID (for permission check)
+ * @param bool $isAdmin Whether the user is an admin
+ * @return bool Success or failure
+ */
+function deleteReview($conn, $reviewId, $userId, $isAdmin = false) {
+    // Check if user owns the review or is admin
+    if (!$isAdmin) {
+        $stmt = $conn->prepare("
+            SELECT COUNT(*) FROM reviews
+            WHERE id = :id AND user_id = :user_id
+        ");
+        $stmt->bindParam(':id', $reviewId, PDO::PARAM_INT);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        if ($stmt->fetchColumn() === 0) {
+            return false; // User doesn't own this review
+        }
+    }
