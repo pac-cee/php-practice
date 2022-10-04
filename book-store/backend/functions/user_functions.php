@@ -36,3 +36,22 @@ function getUserByEmail($conn, $email) {
 }
 
 /**
+ * Update user profile
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param array $userData User data to update
+ * @return bool Success or failure
+ */
+function updateUserProfile($conn, $userId, $userData) {
+    $stmt = $conn->prepare("
+        UPDATE users
+        SET name = :name, updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $userData['name'], PDO::PARAM_STR);
+    
+    return $stmt->execute();
+}
+
+/**
