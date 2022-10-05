@@ -112,3 +112,22 @@ function getUserAddresses($conn, $userId) {
     
     return $stmt->fetchAll();
 }
+
+/**
+ * Add user address
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param array $addressData Address data
+ * @param bool $isDefault Whether this is the default address
+ * @return int|false New address ID or false on failure
+ */
+function addUserAddress($conn, $userId, $addressData, $isDefault = false) {
+    // If this is the default address, unset other default addresses
+    if ($isDefault) {
+        $stmt = $conn->prepare("
+            UPDATE addresses
+            SET is_default = 0
+            WHERE user_id = :user_id
+        ");
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
