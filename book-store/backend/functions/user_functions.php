@@ -55,3 +55,22 @@ function updateUserProfile($conn, $userId, $userData) {
 }
 
 /**
+ * Change user password
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param string $currentPassword Current password
+ * @param string $newPassword New password
+ * @return bool|string Success or error message
+ */
+function changeUserPassword($conn, $userId, $currentPassword, $newPassword) {
+    // Get current password hash
+    $stmt = $conn->prepare("
+        SELECT password FROM users WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $user = $stmt->fetch();
+    
+    if (!$user) {
+        return 'User not found';
