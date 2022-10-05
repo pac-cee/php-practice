@@ -74,3 +74,22 @@ function changeUserPassword($conn, $userId, $currentPassword, $newPassword) {
     
     if (!$user) {
         return 'User not found';
+    }
+    
+    // Verify current password
+    if (!password_verify($currentPassword, $user['password'])) {
+        return 'Current password is incorrect';
+    }
+    
+    // Update to new password
+    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+    $stmt = $conn->prepare("
+        UPDATE users
+        SET password = :password, updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+    
+    return $stmt->execute();
