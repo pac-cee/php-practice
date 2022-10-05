@@ -93,3 +93,22 @@ function changeUserPassword($conn, $userId, $currentPassword, $newPassword) {
     $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
     
     return $stmt->execute();
+}
+
+/**
+ * Get user addresses
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @return array User addresses
+ */
+function getUserAddresses($conn, $userId) {
+    $stmt = $conn->prepare("
+        SELECT * FROM addresses
+        WHERE user_id = :user_id
+        ORDER BY is_default DESC, created_at DESC
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
