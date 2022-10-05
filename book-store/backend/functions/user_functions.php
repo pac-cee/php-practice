@@ -131,3 +131,22 @@ function addUserAddress($conn, $userId, $addressData, $isDefault = false) {
         ");
         $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $stmt->execute();
+    }
+    
+    // Insert new address
+    $stmt = $conn->prepare("
+        INSERT INTO addresses (
+            user_id, name, street_address, city, state, 
+            zip_code, country, phone, is_default
+        ) VALUES (
+            :user_id, :name, :street_address, :city, :state, 
+            :zip_code, :country, :phone, :is_default
+        )
+    ");
+    
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $addressData['name'], PDO::PARAM_STR);
+    $stmt->bindParam(':street_address', $addressData['street_address'], PDO::PARAM_STR);
+    $stmt->bindParam(':city', $addressData['city'], PDO::PARAM_STR);
+    $stmt->bindParam(':state', $addressData['state'], PDO::PARAM_STR);
+    $stmt->bindParam(':zip_code', $addressData['zip_code'], PDO::PARAM_STR);
