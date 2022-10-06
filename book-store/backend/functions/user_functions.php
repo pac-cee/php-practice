@@ -188,3 +188,22 @@ function updateUserAddress($conn, $addressId, $userId, $addressData, $isDefault 
     if ($isDefault) {
         $stmt = $conn->prepare("
             UPDATE addresses
+            SET is_default = 0
+            WHERE user_id = :user_id
+        ");
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
+    // Update address
+    $stmt = $conn->prepare("
+        UPDATE addresses
+        SET name = :name, street_address = :street_address, city = :city, 
+            state = :state, zip_code = :zip_code, country = :country, 
+            phone = :phone, is_default = :is_default, updated_at = CURRENT_TIMESTAMP
+        WHERE id = :id
+    ");
+    
+    $stmt->bindParam(':id', $addressId, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $addressData['name'], PDO::PARAM_STR);
+    $stmt->bindParam(':street_address', $addressData['street_address'], PDO::PARAM_STR);
