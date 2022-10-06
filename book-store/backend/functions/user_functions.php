@@ -169,3 +169,22 @@ function addUserAddress($conn, $userId, $addressData, $isDefault = false) {
  * @param array $addressData Updated address data
  * @param bool $isDefault Whether this is the default address
  * @return bool Success or failure
+ */
+function updateUserAddress($conn, $addressId, $userId, $addressData, $isDefault = false) {
+    // Check if address belongs to user
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM addresses
+        WHERE id = :id AND user_id = :user_id
+    ");
+    $stmt->bindParam(':id', $addressId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    if ($stmt->fetchColumn() === 0) {
+        return false; // Address doesn't belong to this user
+    }
+    
+    // If this is the default address, unset other default addresses
+    if ($isDefault) {
+        $stmt = $conn->prepare("
+            UPDATE addresses
