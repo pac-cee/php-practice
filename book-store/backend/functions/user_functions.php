@@ -226,3 +226,22 @@ function updateUserAddress($conn, $addressId, $userId, $addressData, $isDefault 
  */
 function deleteUserAddress($conn, $addressId, $userId) {
     $stmt = $conn->prepare("
+        DELETE FROM addresses
+        WHERE id = :id AND user_id = :user_id
+    ");
+    $stmt->bindParam(':id', $addressId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Get user payment methods
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @return array User payment methods
+ */
+function getUserPaymentMethods($conn, $userId) {
+    $stmt = $conn->prepare("
+        SELECT * FROM payment_methods
+        WHERE user_id = :user_id
