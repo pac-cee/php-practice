@@ -207,3 +207,22 @@ function updateUserAddress($conn, $addressId, $userId, $addressData, $isDefault 
     $stmt->bindParam(':id', $addressId, PDO::PARAM_INT);
     $stmt->bindParam(':name', $addressData['name'], PDO::PARAM_STR);
     $stmt->bindParam(':street_address', $addressData['street_address'], PDO::PARAM_STR);
+    $stmt->bindParam(':city', $addressData['city'], PDO::PARAM_STR);
+    $stmt->bindParam(':state', $addressData['state'], PDO::PARAM_STR);
+    $stmt->bindParam(':zip_code', $addressData['zip_code'], PDO::PARAM_STR);
+    $stmt->bindParam(':country', $addressData['country'], PDO::PARAM_STR);
+    $stmt->bindParam(':phone', $addressData['phone'], PDO::PARAM_STR);
+    $stmt->bindParam(':is_default', $isDefault, PDO::PARAM_BOOL);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Delete user address
+ * @param PDO $conn Database connection
+ * @param int $addressId Address ID
+ * @param int $userId User ID (for permission check)
+ * @return bool Success or failure
+ */
+function deleteUserAddress($conn, $addressId, $userId) {
+    $stmt = $conn->prepare("
