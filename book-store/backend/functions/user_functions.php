@@ -264,3 +264,22 @@ function getUserPaymentMethods($conn, $userId) {
 function addUserPaymentMethod($conn, $userId, $paymentData, $isDefault = false) {
     // If this is the default payment method, unset other default payment methods
     if ($isDefault) {
+        $stmt = $conn->prepare("
+            UPDATE payment_methods
+            SET is_default = 0
+            WHERE user_id = :user_id
+        ");
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
+    // Insert new payment method
+    $stmt = $conn->prepare("
+        INSERT INTO payment_methods (
+            user_id, card_type, last_four, expiry_month, expiry_year, is_default
+        ) VALUES (
+            :user_id, :card_type, :last_four, :expiry_month, :expiry_year, :is_default
+        )
+    ");
+    
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
