@@ -245,3 +245,22 @@ function getUserPaymentMethods($conn, $userId) {
     $stmt = $conn->prepare("
         SELECT * FROM payment_methods
         WHERE user_id = :user_id
+        ORDER BY is_default DESC, created_at DESC
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
+ * Add user payment method
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param array $paymentData Payment method data
+ * @param bool $isDefault Whether this is the default payment method
+ * @return int|false New payment method ID or false on failure
+ */
+function addUserPaymentMethod($conn, $userId, $paymentData, $isDefault = false) {
+    // If this is the default payment method, unset other default payment methods
+    if ($isDefault) {
