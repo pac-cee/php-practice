@@ -321,3 +321,22 @@ function deleteUserPaymentMethod($conn, $paymentId, $userId) {
  * @param int $limit Number of orders to return
  * @param int $offset Offset for pagination
  * @return array User orders
+ */
+function getUserOrders($conn, $userId, $limit = 10, $offset = 0) {
+    $stmt = $conn->prepare("
+        SELECT o.*, 
+               (SELECT COUNT(*) FROM order_items WHERE order_id = o.id) as item_count
+        FROM orders o
+        WHERE o.user_id = :user_id
+        ORDER BY o.created_at DESC
+        LIMIT :limit OFFSET :offset
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
+/**
