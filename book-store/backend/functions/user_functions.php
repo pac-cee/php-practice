@@ -302,3 +302,22 @@ function addUserPaymentMethod($conn, $userId, $paymentData, $isDefault = false) 
  * @param int $paymentId Payment method ID
  * @param int $userId User ID (for permission check)
  * @return bool Success or failure
+ */
+function deleteUserPaymentMethod($conn, $paymentId, $userId) {
+    $stmt = $conn->prepare("
+        DELETE FROM payment_methods
+        WHERE id = :id AND user_id = :user_id
+    ");
+    $stmt->bindParam(':id', $paymentId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Get user orders
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param int $limit Number of orders to return
+ * @param int $offset Offset for pagination
+ * @return array User orders
