@@ -283,3 +283,22 @@ function addUserPaymentMethod($conn, $userId, $paymentData, $isDefault = false) 
     ");
     
     $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':card_type', $paymentData['card_type'], PDO::PARAM_STR);
+    $stmt->bindParam(':last_four', $paymentData['last_four'], PDO::PARAM_STR);
+    $stmt->bindParam(':expiry_month', $paymentData['expiry_month'], PDO::PARAM_STR);
+    $stmt->bindParam(':expiry_year', $paymentData['expiry_year'], PDO::PARAM_STR);
+    $stmt->bindParam(':is_default', $isDefault, PDO::PARAM_BOOL);
+    
+    if ($stmt->execute()) {
+        return $conn->lastInsertId();
+    }
+    
+    return false;
+}
+
+/**
+ * Delete user payment method
+ * @param PDO $conn Database connection
+ * @param int $paymentId Payment method ID
+ * @param int $userId User ID (for permission check)
+ * @return bool Success or failure
