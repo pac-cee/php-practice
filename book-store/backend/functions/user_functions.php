@@ -340,3 +340,22 @@ function getUserOrders($conn, $userId, $limit = 10, $offset = 0) {
 }
 
 /**
+ * Get user wishlist
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @return array User wishlist
+ */
+function getUserWishlist($conn, $userId) {
+    $stmt = $conn->prepare("
+        SELECT b.*, w.created_at as added_at
+        FROM wishlists w
+        JOIN books b ON w.book_id = b.id
+        WHERE w.user_id = :user_id
+        ORDER BY w.created_at DESC
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll();
+}
+
