@@ -36,3 +36,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $book['title']; ?> - BookHaven</title>
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/book.css">
+</head>
+<body>
+  <?php include './frontend/components/header.php'; ?>
+  
+  <main class="container">
+    <div class="book-detail-container">
+      <div class="book-image">
+        <img src="<?php echo $book['cover_image']; ?>" alt="<?php echo $book['title']; ?>">
+      </div>
+      
+      <div class="book-details">
+        <div class="breadcrumbs">
+          <a href="./catalog.php">Catalog</a> &gt; 
+          <a href="./catalog.php?category=<?php echo $book['category_slug']; ?>"><?php echo $book['category_name']; ?></a> &gt; 
+          <span><?php echo $book['title']; ?></span>
+        </div>
+        
+        <h1><?php echo $book['title']; ?></h1>
