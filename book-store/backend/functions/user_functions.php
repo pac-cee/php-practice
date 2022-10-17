@@ -397,3 +397,22 @@ function addToWishlist($conn, $userId, $bookId) {
  * @param int $userId User ID
  * @param int $bookId Book ID
  * @return bool Success or failure
+ */
+function removeFromWishlist($conn, $userId, $bookId) {
+    $stmt = $conn->prepare("
+        DELETE FROM wishlists
+        WHERE user_id = :user_id AND book_id = :book_id
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Check if book is in user's wishlist
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param int $bookId Book ID
+ * @return bool True if in wishlist, false otherwise
+ */
