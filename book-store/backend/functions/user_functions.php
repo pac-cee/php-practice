@@ -378,3 +378,22 @@ function addToWishlist($conn, $userId, $bookId) {
     
     if ($stmt->fetchColumn() > 0) {
         return true; // Already in wishlist
+    }
+    
+    // Add to wishlist
+    $stmt = $conn->prepare("
+        INSERT INTO wishlists (user_id, book_id)
+        VALUES (:user_id, :book_id)
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    
+    return $stmt->execute();
+}
+
+/**
+ * Remove book from wishlist
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param int $bookId Book ID
+ * @return bool Success or failure
