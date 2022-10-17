@@ -359,3 +359,22 @@ function getUserWishlist($conn, $userId) {
     return $stmt->fetchAll();
 }
 
+/**
+ * Add book to wishlist
+ * @param PDO $conn Database connection
+ * @param int $userId User ID
+ * @param int $bookId Book ID
+ * @return bool Success or failure
+ */
+function addToWishlist($conn, $userId, $bookId) {
+    // Check if already in wishlist
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM wishlists
+        WHERE user_id = :user_id AND book_id = :book_id
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    if ($stmt->fetchColumn() > 0) {
+        return true; // Already in wishlist
