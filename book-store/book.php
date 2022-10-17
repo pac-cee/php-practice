@@ -17,3 +17,22 @@
   $book = getBookById($conn, $bookId);
   
   // Redirect if book not found
+  if(!$book) {
+    header("Location: ./catalog.php");
+    exit;
+  }
+  
+  // Get related books
+  $relatedBooks = getRelatedBooks($conn, $bookId, $book['category_id'], 4);
+  
+  // Get reviews
+  $reviews = getBookReviews($conn, $bookId);
+  $avgRating = getAverageRating($conn, $bookId);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php echo $book['title']; ?> - BookHaven</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
