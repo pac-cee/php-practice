@@ -416,3 +416,14 @@ function removeFromWishlist($conn, $userId, $bookId) {
  * @param int $bookId Book ID
  * @return bool True if in wishlist, false otherwise
  */
+function isInWishlist($conn, $userId, $bookId) {
+    $stmt = $conn->prepare("
+        SELECT COUNT(*) FROM wishlists
+        WHERE user_id = :user_id AND book_id = :book_id
+    ");
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchColumn() > 0;
+}
