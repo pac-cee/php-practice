@@ -93,3 +93,22 @@
         <div class="book-availability">
           <p><strong>Availability:</strong> <?php echo ($book['stock_quantity'] > 0) ? 'In Stock' : 'Out of Stock'; ?></p>
           <?php if($book['stock_quantity'] > 0 && $book['stock_quantity'] < 10): ?>
+            <p class="stock-warning">Only <?php echo $book['stock_quantity']; ?> left in stock - order soon</p>
+          <?php endif; ?>
+        </div>
+        
+        <div class="book-description">
+          <h3>Description</h3>
+          <div class="description-content">
+            <?php echo $book['description']; ?>
+          </div>
+        </div>
+        
+        <div class="book-details-table">
+          <h3>Book Details</h3>
+          <table>
+            <tr>
+              <th>Publisher</th>
+              <td><?php echo $book['publisher']; ?></td>
+            </tr>
+            <tr>
