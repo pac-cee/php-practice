@@ -55,3 +55,22 @@
         </div>
         
         <h1><?php echo $book['title']; ?></h1>
+        <p class="author">by <a href="./catalog.php?author=<?php echo urlencode($book['author']); ?>"><?php echo $book['author']; ?></a></p>
+        
+        <div class="book-meta">
+          <div class="rating">
+            <div class="stars" data-rating="<?php echo $avgRating; ?>">
+              <?php for($i = 1; $i <= 5; $i++): ?>
+                <span class="star <?php echo ($i <= $avgRating) ? 'filled' : ''; ?>">★</span>
+              <?php endfor; ?>
+            </div>
+            <span class="rating-count">(<?php echo count($reviews); ?> reviews)</span>
+          </div>
+          
+          <div class="price-container">
+            <span class="price">$<?php echo number_format($book['price'], 2); ?></span>
+            <?php if($book['original_price'] > $book['price']): ?>
+              <span class="original-price">$<?php echo number_format($book['original_price'], 2); ?></span>
+              <span class="discount">Save <?php echo round((($book['original_price'] - $book['price']) / $book['original_price']) * 100); ?>%</span>
+            <?php endif; ?>
+          </div>
