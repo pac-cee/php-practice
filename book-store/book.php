@@ -112,3 +112,22 @@
               <td><?php echo $book['publisher']; ?></td>
             </tr>
             <tr>
+              <th>Publication Date</th>
+              <td><?php echo date('F j, Y', strtotime($book['publication_date'])); ?></td>
+            </tr>
+            <tr>
+              <th>ISBN</th>
+              <td><?php echo $book['isbn']; ?></td>
+            </tr>
+            <tr>
+              <th>Pages</th>
+              <td><?php echo $book['pages']; ?></td>
+            </tr>
+            <tr>
+              <th>Language</th>
+              <td><?php echo $book['language']; ?></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
