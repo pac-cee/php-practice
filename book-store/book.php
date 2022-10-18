@@ -74,3 +74,22 @@
               <span class="discount">Save <?php echo round((($book['original_price'] - $book['price']) / $book['original_price']) * 100); ?>%</span>
             <?php endif; ?>
           </div>
+        </div>
+        
+        <div class="book-actions">
+          <div class="quantity">
+            <button class="quantity-btn" id="decrease-quantity">-</button>
+            <input type="number" id="quantity" value="1" min="1" max="99">
+            <button class="quantity-btn" id="increase-quantity">+</button>
+          </div>
+          <button class="btn btn-primary" id="add-to-cart" data-book-id="<?php echo $book['id']; ?>">
+            Add to Cart
+          </button>
+          <button class="btn btn-outline" id="add-to-wishlist" data-book-id="<?php echo $book['id']; ?>">
+            <i class="icon-heart"></i> Add to Wishlist
+          </button>
+        </div>
+        
+        <div class="book-availability">
+          <p><strong>Availability:</strong> <?php echo ($book['stock_quantity'] > 0) ? 'In Stock' : 'Out of Stock'; ?></p>
+          <?php if($book['stock_quantity'] > 0 && $book['stock_quantity'] < 10): ?>
