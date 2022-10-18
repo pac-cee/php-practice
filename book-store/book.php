@@ -131,3 +131,22 @@
         </div>
       </div>
     </div>
+    
+    <div class="book-tabs">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="reviews">Reviews</button>
+        <button class="tab-btn" data-tab="related">Related Books</button>
+      </div>
+      
+      <div class="tab-content reviews-tab active" id="reviews">
+        <?php if(count($reviews) > 0): ?>
+          <div class="reviews-container">
+            <?php foreach($reviews as $review): ?>
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-user">
+                    <div class="user-avatar">
+                      <img src="./assets/images/avatar-placeholder.jpg" alt="User">
+                    </div>
+                    <div class="user-info">
+                      <h4><?php echo $review['user_name']; ?></h4>
