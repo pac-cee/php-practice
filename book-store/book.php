@@ -150,3 +150,22 @@
                     </div>
                     <div class="user-info">
                       <h4><?php echo $review['user_name']; ?></h4>
+                      <p class="review-date"><?php echo date('F j, Y', strtotime($review['created_at'])); ?></p>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <?php for($i = 1; $i <= 5; $i++): ?>
+                      <span class="star <?php echo ($i <= $review['rating']) ? 'filled' : ''; ?>">★</span>
+                    <?php endfor; ?>
+                  </div>
+                </div>
+                <div class="review-content">
+                  <h4><?php echo $review['title']; ?></h4>
+                  <p><?php echo $review['content']; ?></p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        <?php else: ?>
+          <div class="no-reviews">
+            <p>No reviews yet. Be the first to review this book!</p>
