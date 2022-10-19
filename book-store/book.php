@@ -188,3 +188,22 @@
                 <div class="rating-input">
                   <?php for($i = 1; $i <= 5; $i++): ?>
                     <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" <?php echo ($i === 5) ? 'checked' : ''; ?>>
+                    <label for="star<?php echo $i; ?>">★</label>
+                  <?php endfor; ?>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="review-content">Review</label>
+                <textarea id="review-content" name="content" rows="4" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+          </div>
+        <?php else: ?>
+          <div class="login-to-review">
+            <p><a href="./login.php">Sign in</a> to write a review</p>
+          </div>
+        <?php endif; ?>
+      </div>
