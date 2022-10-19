@@ -169,3 +169,22 @@
         <?php else: ?>
           <div class="no-reviews">
             <p>No reviews yet. Be the first to review this book!</p>
+          </div>
+        <?php endif; ?>
+        
+        <?php if(isset($_SESSION['user_id'])): ?>
+          <div class="add-review">
+            <h3>Write a Review</h3>
+            <form id="review-form" action="./backend/api/add_review.php" method="POST">
+              <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
+              
+              <div class="form-group">
+                <label for="review-title">Title</label>
+                <input type="text" id="review-title" name="title" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="rating">Rating</label>
+                <div class="rating-input">
+                  <?php for($i = 1; $i <= 5; $i++): ?>
+                    <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" <?php echo ($i === 5) ? 'checked' : ''; ?>>
