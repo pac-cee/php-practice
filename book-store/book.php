@@ -207,3 +207,22 @@
           </div>
         <?php endif; ?>
       </div>
+      
+      <div class="tab-content related-tab" id="related">
+        <?php if(count($relatedBooks) > 0): ?>
+          <div class="book-grid">
+            <?php foreach($relatedBooks as $relatedBook): ?>
+              <div class="book-card" data-book-id="<?php echo $relatedBook['id']; ?>">
+                <div class="book-cover">
+                  <img src="<?php echo $relatedBook['cover_image']; ?>" alt="<?php echo $relatedBook['title']; ?>">
+                </div>
+                <div class="book-info">
+                  <h3><?php echo $relatedBook['title']; ?></h3>
+                  <p class="author">by <?php echo $relatedBook['author']; ?></p>
+                  <p class="price">$<?php echo number_format($relatedBook['price'], 2); ?></p>
+                  <div class="book-actions">
+                    <button class="btn btn-primary add-to-cart" data-book-id="<?php echo $relatedBook['id']; ?>">Add to Cart</button>
+                    <a href="./book.php?id=<?php echo $relatedBook['id']; ?>" class="btn btn-secondary">Details</a>
+                  </div>
+                </div>
+              </div>
