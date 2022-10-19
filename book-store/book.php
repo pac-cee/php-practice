@@ -226,3 +226,19 @@
                   </div>
                 </div>
               </div>
+            <?php endforeach; ?>
+          </div>
+        <?php else: ?>
+          <p>No related books found.</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/book.js"></script>
+  <script src="./assets/js/cart.js"></script>
+</body>
+</html>
