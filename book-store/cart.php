@@ -36,3 +36,22 @@
     
     <?php if(count($cartItems) > 0): ?>
       <div class="cart-container">
+        <div class="cart-items">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($cartItems as $item): ?>
+                <tr class="cart-item" data-book-id="<?php echo $item['id']; ?>">
+                  <td class="product-info">
+                    <img src="<?php echo $item['cover_image']; ?>" alt="<?php echo $item['title']; ?>">
+                    <div>
+                      <h3><?php echo $item['title']; ?></h3>
+                      <p class="author">by <?php echo $item['author']; ?></p>
