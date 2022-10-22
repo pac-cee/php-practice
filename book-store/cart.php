@@ -112,3 +112,21 @@
           </a>
         </div>
       </div>
+    <?php else: ?>
+      <div class="empty-cart">
+        <div class="empty-cart-icon">
+          <i class="icon-cart-empty"></i>
+        </div>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any books to your cart yet.</p>
+        <a href="./catalog.php" class="btn btn-primary">Browse Books</a>
+      </div>
+    <?php endif; ?>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/cart-page.js"></script>
+</body>
+</html>
