@@ -112,3 +112,26 @@
                 <a href="?page=<?php echo $i; ?>&category=<?php echo $category; ?>&search=<?php echo urlencode($search); ?>" class="pagination-item <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
               <?php endfor; ?>
               
+              <?php if($page < $totalPages): ?>
+                <a href="?page=<?php echo $page+1; ?>&category=<?php echo $category; ?>&search=<?php echo urlencode($search); ?>" class="pagination-item">Next</a>
+              <?php endif; ?>
+            </div>
+          <?php endif; ?>
+        <?php else: ?>
+          <div class="no-results">
+            <h3>No books found</h3>
+            <p>Try adjusting your search or browse all categories.</p>
+            <a href="./catalog.php" class="btn btn-primary">Browse All Books</a>
+          </div>
+        <?php endif; ?>
+      </section>
+    </div>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/catalog.js"></script>
+  <script src="./assets/js/cart.js"></script>
+</body>
+</html>
