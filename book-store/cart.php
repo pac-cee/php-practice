@@ -55,3 +55,22 @@
                     <div>
                       <h3><?php echo $item['title']; ?></h3>
                       <p class="author">by <?php echo $item['author']; ?></p>
+                    </div>
+                  </td>
+                  <td class="price">$<?php echo number_format($item['price'], 2); ?></td>
+                  <td class="quantity">
+                    <div class="quantity-control">
+                      <button class="quantity-btn decrease" data-book-id="<?php echo $item['id']; ?>">-</button>
+                      <input type="number" value="<?php echo $item['quantity']; ?>" min="1" max="99" data-book-id="<?php echo $item['id']; ?>">
+                      <button class="quantity-btn increase" data-book-id="<?php echo $item['id']; ?>">+</button>
+                    </div>
+                  </td>
+                  <td class="total">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                  <td class="action">
+                    <button class="remove-item" data-book-id="<?php echo $item['id']; ?>">Remove</button>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          
