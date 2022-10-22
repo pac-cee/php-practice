@@ -93,3 +93,22 @@
           <div class="summary-item">
             <span>Shipping</span>
             <span>$<?php echo number_format($shipping, 2); ?></span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span>$<?php echo number_format($total, 2); ?></span>
+          </div>
+          
+          <div class="promo-code">
+            <h3>Promo Code</h3>
+            <div class="promo-input">
+              <input type="text" id="promo-code" placeholder="Enter promo code">
+              <button id="apply-promo" class="btn btn-secondary">Apply</button>
+            </div>
+          </div>
+          
+          <a href="<?php echo isset($_SESSION['user_id']) ? './checkout.php' : './login.php?redirect=checkout'; ?>" class="btn btn-primary checkout-btn">
+            <?php echo isset($_SESSION['user_id']) ? 'Proceed to Checkout' : 'Login to Checkout'; ?>
+          </a>
+        </div>
+      </div>
