@@ -74,3 +74,22 @@
             <label for="sort">Sort by:</label>
             <select id="sort" class="sort-select">
               <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
+          </div>
+        </div>
+
+        <?php if(count($books) > 0): ?>
+          <div class="book-grid">
+            <?php foreach($books as $book): ?>
+              <div class="book-card" data-book-id="<?php echo $book['id']; ?>">
+                <div class="book-cover">
+                  <img src="<?php echo $book['cover_image']; ?>" alt="<?php echo $book['title']; ?>">
+                </div>
+                <div class="book-info">
+                  <h3><?php echo $book['title']; ?></h3>
+                  <p class="author">by <?php echo $book['author']; ?></p>
+                  <p class="price">$<?php echo number_format($book['price'], 2); ?></p>
