@@ -55,3 +55,22 @@
         <div class="filter-section">
           <h3>Price Range</h3>
           <div class="price-slider">
+            <input type="range" id="price-min" min="0" max="100" value="0">
+            <input type="range" id="price-max" min="0" max="100" value="100">
+            <div class="price-values">
+              <span id="price-min-value">$0</span> - <span id="price-max-value">$100</span>
+            </div>
+            <button class="btn btn-sm btn-secondary" id="apply-price-filter">Apply</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="catalog-books">
+        <div class="catalog-controls">
+          <div class="book-count">
+            Showing <span><?php echo count($books); ?></span> of <span><?php echo $totalBooks; ?></span> books
+          </div>
+          <div class="sort-control">
+            <label for="sort">Sort by:</label>
+            <select id="sort" class="sort-select">
+              <option value="newest">Newest</option>
