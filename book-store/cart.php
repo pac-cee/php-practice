@@ -74,3 +74,22 @@
             </tbody>
           </table>
           
+          <div class="cart-actions">
+            <a href="./catalog.php" class="btn btn-secondary">Continue Shopping</a>
+            <button id="clear-cart" class="btn btn-outline">Clear Cart</button>
+          </div>
+        </div>
+        
+        <div class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-item">
+            <span>Subtotal</span>
+            <span>$<?php echo number_format($subtotal, 2); ?></span>
+          </div>
+          <div class="summary-item">
+            <span>Tax (8%)</span>
+            <span>$<?php echo number_format($tax, 2); ?></span>
+          </div>
+          <div class="summary-item">
+            <span>Shipping</span>
+            <span>$<?php echo number_format($shipping, 2); ?></span>
