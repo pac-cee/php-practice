@@ -93,3 +93,22 @@
                   <h3><?php echo $book['title']; ?></h3>
                   <p class="author">by <?php echo $book['author']; ?></p>
                   <p class="price">$<?php echo number_format($book['price'], 2); ?></p>
+                  <div class="book-actions">
+                    <button class="btn btn-primary add-to-cart" data-book-id="<?php echo $book['id']; ?>">Add to Cart</button>
+                    <a href="./book.php?id=<?php echo $book['id']; ?>" class="btn btn-secondary">Details</a>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          
+          <?php if($totalPages > 1): ?>
+            <div class="pagination">
+              <?php if($page > 1): ?>
+                <a href="?page=<?php echo $page-1; ?>&category=<?php echo $category; ?>&search=<?php echo urlencode($search); ?>" class="pagination-item">Previous</a>
+              <?php endif; ?>
+              
+              <?php for($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?php echo $i; ?>&category=<?php echo $category; ?>&search=<?php echo urlencode($search); ?>" class="pagination-item <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+              <?php endfor; ?>
+              
