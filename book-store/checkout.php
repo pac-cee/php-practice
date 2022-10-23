@@ -17,3 +17,22 @@
     $cartItems = getCartItems($conn, $_SESSION['cart']);
   }
   
+  // Redirect if cart is empty
+  if(count($cartItems) === 0) {
+    header("Location: ./cart.php");
+    exit;
+  }
+  
+  // Calculate totals
+  $subtotal = 0;
+  foreach($cartItems as $item) {
+    $subtotal += $item['price'] * $item['quantity'];
+  }
+  
+  $tax = $subtotal * 0.08; // 8% tax
+  $shipping = 5.99; // $5.99 shipping
+  $total = $subtotal + $tax + $shipping;
+  
+  // Get user information
+  $user = getUserById($conn, $_SESSION['user_id']);
+  $addresses = getUserAddresses($conn, $_SESSION['user_id']);
