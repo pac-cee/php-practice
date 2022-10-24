@@ -36,3 +36,22 @@
   // Get user information
   $user = getUserById($conn, $_SESSION['user_id']);
   $addresses = getUserAddresses($conn, $_SESSION['user_id']);
+  $paymentMethods = getUserPaymentMethods($conn, $_SESSION['user_id']);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - BookHaven</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/checkout.css">
+</head>
+<body>
+  <?php include './frontend/components/header.php'; ?>
+  
+  <main class="container">
+    <h1>Checkout</h1>
+    
+    <div class="checkout-container">
+      <div class="checkout-main">
