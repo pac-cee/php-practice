@@ -188,3 +188,22 @@
                 <div class="form-group card-expiry">
                   <label>Expiration Date</label>
                   <div class="expiry-inputs">
+                    <select id="expiry-month" name="expiry_month" required>
+                      <?php for($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?php echo sprintf("%02d", $i); ?>"><?php echo sprintf("%02d", $i); ?></option>
+                      <?php endfor; ?>
+                    </select>
+                    <span>/</span>
+                    <select id="expiry-year" name="expiry_year" required>
+                      <?php $currentYear = (int)date('Y'); ?>
+                      <?php for($i = $currentYear; $i <= $currentYear + 10; $i++): ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <?php endfor; ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group security-code">
+                  <label for="security-code">Security Code (CVV)</label>
