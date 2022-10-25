@@ -112,3 +112,22 @@
                   <input type="text" id="state" name="state" required>
                 </div>
               </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="zip">ZIP/Postal Code</label>
+                  <input type="text" id="zip" name="zip" required>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select id="country" name="country" required>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                  </select>
+                </div>
+              </div>
+              
