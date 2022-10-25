@@ -55,3 +55,22 @@
     
     <div class="checkout-container">
       <div class="checkout-main">
+        <form id="checkout-form" action="./backend/api/place_order.php" method="POST">
+          <div class="checkout-section shipping-address">
+            <h2>Shipping Address</h2>
+            
+            <?php if(count($addresses) > 0): ?>
+              <div class="saved-addresses">
+                <h3>Select a Saved Address</h3>
+                <?php foreach($addresses as $index => $address): ?>
+                  <div class="address-option">
+                    <input type="radio" name="selected_address" id="address-<?php echo $address['id']; ?>" value="<?php echo $address['id']; ?>" <?php echo ($index === 0) ? 'checked' : ''; ?>>
+                    <label for="address-<?php echo $address['id']; ?>" class="address-card">
+                      <div class="address-info">
+                        <p><strong><?php echo $address['name']; ?></strong></p>
+                        <p><?php echo $address['street_address']; ?></p>
+                        <p><?php echo $address['city']; ?>, <?php echo $address['state']; ?> <?php echo $address['zip_code']; ?></p>
+                        <p><?php echo $address['country']; ?></p>
+                        <p>Phone: <?php echo $address['phone']; ?></p>
+                      </div>
+                    </label>
