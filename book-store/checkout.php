@@ -169,3 +169,22 @@
               
               <div class="payment-toggle">
                 <button type="button" id="new-payment-toggle" class="btn btn-link">
+                  + Add New Payment Method
+                </button>
+              </div>
+            <?php endif; ?>
+            
+            <div class="new-payment-form <?php echo (count($paymentMethods) > 0) ? 'hidden' : ''; ?>">
+              <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" required>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-holder">Cardholder Name</label>
+                  <input type="text" id="card-holder" name="card_holder" required>
+                </div>
+                <div class="form-group card-expiry">
+                  <label>Expiration Date</label>
+                  <div class="expiry-inputs">
