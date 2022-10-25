@@ -150,3 +150,22 @@
           <div class="checkout-section payment-method">
             <h2>Payment Method</h2>
             
+            <?php if(count($paymentMethods) > 0): ?>
+              <div class="saved-payment-methods">
+                <h3>Select a Saved Payment Method</h3>
+                <?php foreach($paymentMethods as $index => $method): ?>
+                  <div class="payment-option">
+                    <input type="radio" name="selected_payment" id="payment-<?php echo $method['id']; ?>" value="<?php echo $method['id']; ?>" <?php echo ($index === 0) ? 'checked' : ''; ?>>
+                    <label for="payment-<?php echo $method['id']; ?>" class="payment-card">
+                      <div class="card-type <?php echo strtolower($method['card_type']); ?>"></div>
+                      <div class="card-info">
+                        <p>**** **** **** <?php echo $method['last_four']; ?></p>
+                        <p>Expires: <?php echo $method['expiry_month']; ?>/<?php echo $method['expiry_year']; ?></p>
+                      </div>
+                    </label>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+              
+              <div class="payment-toggle">
+                <button type="button" id="new-payment-toggle" class="btn btn-link">
