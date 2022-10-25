@@ -93,3 +93,22 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required value="<?php echo $user['email']; ?>">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" id="address" name="address" required>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="state">State/Province</label>
+                  <input type="text" id="state" name="state" required>
+                </div>
+              </div>
