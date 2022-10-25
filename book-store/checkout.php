@@ -131,3 +131,22 @@
                 </div>
               </div>
               
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              
+              <?php if(count($addresses) > 0): ?>
+                <div class="form-group save-address">
+                  <label>
+                    <input type="checkbox" name="save_address" value="1" checked>
+                    Save this address for future orders
+                  </label>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+          
+          <div class="checkout-section payment-method">
+            <h2>Payment Method</h2>
+            
