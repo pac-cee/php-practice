@@ -74,3 +74,22 @@
                         <p>Phone: <?php echo $address['phone']; ?></p>
                       </div>
                     </label>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+              
+              <div class="address-toggle">
+                <button type="button" id="new-address-toggle" class="btn btn-link">
+                  + Add New Address
+                </button>
+              </div>
+            <?php endif; ?>
+            
+            <div class="new-address-form <?php echo (count($addresses) > 0) ? 'hidden' : ''; ?>">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required value="<?php echo $user['name']; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
