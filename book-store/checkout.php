@@ -207,3 +207,22 @@
               <div class="form-row">
                 <div class="form-group security-code">
                   <label for="security-code">Security Code (CVV)</label>
+                  <input type="text" id="security-code" name="security_code" required>
+                </div>
+                <div class="form-group">
+                  <label for="card-zip">Billing ZIP/Postal Code</label>
+                  <input type="text" id="card-zip" name="card_zip" required>
+                </div>
+              </div>
+              
+              <?php if(count($paymentMethods) > 0): ?>
+                <div class="form-group save-payment">
+                  <label>
+                    <input type="checkbox" name="save_payment" value="1" checked>
+                    Save this payment method for future orders
+                  </label>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+          
