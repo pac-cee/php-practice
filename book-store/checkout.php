@@ -226,3 +226,22 @@
             </div>
           </div>
           
+          <div class="checkout-section shipping-method">
+            <h2>Shipping Method</h2>
+            <div class="shipping-options">
+              <div class="shipping-option">
+                <input type="radio" name="shipping_method" id="shipping-standard" value="standard" checked>
+                <label for="shipping-standard">
+                  <div class="shipping-info">
+                    <h3>Standard Shipping</h3>
+                    <p>Delivery in 3-5 business days</p>
+                  </div>
+                  <div class="shipping-price">$5.99</div>
+                </label>
+              </div>
+              <div class="shipping-option">
+                <input type="radio" name="shipping_method" id="shipping-express" value="express">
+                <label for="shipping-express">
+                  <div class="shipping-info">
+                    <h3>Express Shipping</h3>
+                    <p>Delivery in 1-2 business days</p>
