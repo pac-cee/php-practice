@@ -245,3 +245,22 @@
                   <div class="shipping-info">
                     <h3>Express Shipping</h3>
                     <p>Delivery in 1-2 business days</p>
+                  </div>
+                  <div class="shipping-price">$12.99</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="checkout-sidebar">
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          
+          <div class="cart-items-summary">
+            <h3>Items (<?php echo count($cartItems); ?>)</h3>
+            <?php foreach($cartItems as $item): ?>
+              <div class="cart-item-summary">
+                <div class="item-image">
+                  <img src="<?php echo $item['cover_image']; ?>" alt="<?php echo $item['title']; ?>">
