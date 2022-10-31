@@ -264,3 +264,22 @@
               <div class="cart-item-summary">
                 <div class="item-image">
                   <img src="<?php echo $item['cover_image']; ?>" alt="<?php echo $item['title']; ?>">
+                </div>
+                <div class="item-details">
+                  <h4><?php echo $item['title']; ?></h4>
+                  <p>Qty: <?php echo $item['quantity']; ?></p>
+                  <p class="item-price">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          
+          <div class="summary-breakdown">
+            <div class="summary-item">
+              <span>Subtotal</span>
+              <span>$<?php echo number_format($subtotal, 2); ?></span>
+            </div>
+            <div class="summary-item">
+              <span>Tax</span>
+              <span>$<?php echo number_format($tax, 2); ?></span>
+            </div>
