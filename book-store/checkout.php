@@ -302,3 +302,13 @@
           </div>
           <p>Secure Checkout</p>
         </div>
+      </div>
+    </div>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/checkout.js"></script>
+</body>
+</html>
