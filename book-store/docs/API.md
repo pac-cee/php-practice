@@ -55,3 +55,22 @@ GET /api/books/{id}
 
 Response:
 ```json
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "title": "Book Title",
+    "author": "Author Name",
+    "description": "Book description",
+    "price": 29.99,
+    "category": "Fiction",
+    "isbn": "978-3-16-148410-0",
+    "publisher": "Publisher Name",
+    "published_date": "2023-01-01",
+    "pages": 300,
+    "language": "English",
+    "reviews": []
+  }
+}
+```
+
