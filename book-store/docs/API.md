@@ -74,3 +74,22 @@ Response:
 }
 ```
 
+### Orders
+
+#### Create Order
+```http
+POST /api/orders
+```
+
+Request:
+```json
+{
+  "items": [
+    {
+      "book_id": 1,
+      "quantity": 2
+    }
+  ],
+  "shipping_address_id": 1,
+  "payment_method_id": 1
+}
