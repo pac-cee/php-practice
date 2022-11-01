@@ -283,3 +283,22 @@
               <span>Tax</span>
               <span>$<?php echo number_format($tax, 2); ?></span>
             </div>
+            <div class="summary-item">
+              <span>Shipping</span>
+              <span>$<?php echo number_format($shipping, 2); ?></span>
+            </div>
+            <div class="summary-item total">
+              <span>Total</span>
+              <span>$<?php echo number_format($total, 2); ?></span>
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" form="checkout-form" class="btn btn-primary place-order-btn">Place Order</button>
+        
+        <div class="secure-checkout">
+          <div class="secure-icon">
+            <i class="icon-lock"></i>
+          </div>
+          <p>Secure Checkout</p>
+        </div>
