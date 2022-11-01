@@ -17,3 +17,22 @@ Authorization: Bearer <token>
 ### Books
 
 #### List Books
+```http
+GET /api/books
+```
+
+Query Parameters:
+- `page` (integer): Page number
+- `limit` (integer): Items per page
+- `category` (string): Filter by category
+- `search` (string): Search term
+
+Response:
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "title": "Book Title",
+      "author": "Author Name",
