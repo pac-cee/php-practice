@@ -36,3 +36,22 @@ Response:
       "id": 1,
       "title": "Book Title",
       "author": "Author Name",
+      "price": 29.99,
+      "category": "Fiction"
+    }
+  ],
+  "meta": {
+    "total": 100,
+    "page": 1,
+    "pages": 10
+  }
+}
+```
+
+#### Get Book Details
+```http
+GET /api/books/{id}
+```
+
+Response:
+```json
