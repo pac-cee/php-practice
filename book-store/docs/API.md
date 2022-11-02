@@ -93,3 +93,22 @@ Request:
   "shipping_address_id": 1,
   "payment_method_id": 1
 }
+```
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "order_id": "ORD123456",
+    "total": 59.98,
+    "status": "pending"
+  }
+}
+```
+
+## Error Handling
+
+All errors follow this format:
+
+```json
