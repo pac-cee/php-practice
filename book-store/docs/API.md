@@ -112,3 +112,17 @@ Response:
 All errors follow this format:
 
 ```json
+{
+  "success": false,
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Error description"
+  }
+}
+```
+
+Common Error Codes:
+- `UNAUTHORIZED`: Authentication required
+- `FORBIDDEN`: Insufficient permissions
+- `NOT_FOUND`: Resource not found
+- `VALIDATION_ERROR`: Invalid input data
