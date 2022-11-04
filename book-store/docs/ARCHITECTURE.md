@@ -112,3 +112,22 @@ sequenceDiagram
 
 3. Backend
    - Response caching
+   - Query caching
+   - Optimized algorithms
+   - Resource pooling
+
+
+
+
+   # System Architecture
+
+## Overview
+
+This document outlines the technical architecture and system design of BookHaven.
+
+## System Components
+
+```mermaid
+graph TB
+    Client[Web Browser]
+    WebServer[PHP Web Server]
