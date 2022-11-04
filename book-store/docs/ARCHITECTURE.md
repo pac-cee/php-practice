@@ -17,3 +17,22 @@ graph TD
 
 ## Components
 
+### Frontend Layer
+- HTML5 templates with PHP integration
+- CSS3 with responsive design
+- JavaScript for dynamic interactions
+- AJAX for asynchronous operations
+
+### Application Layer
+- PHP controllers for request handling
+- Business logic implementation
+- Authentication and authorization
+- Session management
+- API endpoints
+
+### Data Layer
+- MySQL database
+- PDO for database operations
+- Prepared statements for security
+- Transaction management
+
