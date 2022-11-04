@@ -188,3 +188,22 @@ graph TB
         DBS[(Replica DB)]
         FS[File Storage]
         
+        LB --> WS1
+        LB --> WS2
+        WS1 --> DB
+        WS2 --> DB
+        DB --> DBS
+        WS1 --> FS
+        WS2 --> FS
+    end
+```
+
+## Cart System Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> EmptyCart
+    EmptyCart --> CartWithItems: Add Item
+    CartWithItems --> CartWithItems: Update Quantity
+    CartWithItems --> EmptyCart: Remove All Items
+    CartWithItems --> Checkout: Proceed to Checkout
