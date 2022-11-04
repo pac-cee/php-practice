@@ -245,3 +245,23 @@ graph TD
 ```
 
 ## Admin Dashboard Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Dashboard
+    Dashboard --> OrderManagement
+    Dashboard --> BookManagement
+    Dashboard --> UserManagement
+    Dashboard --> Reports
+    
+    OrderManagement --> ViewOrder
+    OrderManagement --> UpdateStatus
+    
+    BookManagement --> AddBook
+    BookManagement --> EditBook
+    BookManagement --> ManageInventory
+    
+    Reports --> SalesReport
+    Reports --> InventoryReport
+    Reports --> UserReport
+```
