@@ -74,3 +74,22 @@ sequenceDiagram
     Cart->>Order: Checkout
     Order->>Payment: Process Payment
     Payment->>Database: Store Transaction
+    Database-->>User: Confirmation
+```
+
+## Security Measures
+
+1. Authentication
+   - Session-based authentication
+   - Password hashing with bcrypt
+   - Remember-me functionality
+   - Password reset capability
+
+2. Authorization
+   - Role-based access control
+   - Resource-level permissions
+   - API authentication
+
+3. Data Protection
+   - HTTPS enforcement
+   - SQL injection prevention
