@@ -169,3 +169,22 @@ sequenceDiagram
     participant D as Database
     
     U->>F: Browse Books
+    F->>B: GET /api/books
+    B->>D: Query Books
+    D-->>B: Return Results
+    B-->>F: JSON Response
+    F-->>U: Display Books
+```
+
+## Deployment Architecture
+
+```mermaid
+graph TB
+    subgraph Production
+        LB[Load Balancer]
+        WS1[Web Server 1]
+        WS2[Web Server 2]
+        DB[(Primary DB)]
+        DBS[(Replica DB)]
+        FS[File Storage]
+        
