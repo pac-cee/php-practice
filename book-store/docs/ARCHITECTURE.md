@@ -55,3 +55,22 @@ sequenceDiagram
     
     User->>Frontend: Initiates Action
     Frontend->>Backend: HTTP Request
+    Backend->>Database: Query Data
+    Database-->>Backend: Return Results
+    Backend-->>Frontend: Process & Format
+    Frontend-->>User: Display Results
+```
+
+2. Order Processing Flow
+```mermaid
+sequenceDiagram
+    participant User
+    participant Cart
+    participant Order
+    participant Payment
+    participant Database
+    
+    User->>Cart: Add Items
+    Cart->>Order: Checkout
+    Order->>Payment: Process Payment
+    Payment->>Database: Store Transaction
