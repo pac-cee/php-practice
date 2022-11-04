@@ -36,3 +36,22 @@ graph TD
 - Prepared statements for security
 - Transaction management
 
+### Security Layer
+- Password hashing
+- CSRF protection
+- XSS prevention
+- Input validation
+- Session security
+
+## Data Flow
+
+1. User Request Flow
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Backend
+    participant Database
+    
+    User->>Frontend: Initiates Action
+    Frontend->>Backend: HTTP Request
