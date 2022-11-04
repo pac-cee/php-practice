@@ -150,3 +150,22 @@ stateDiagram-v2
     BrowseCatalog --> ViewBook
     ViewBook --> AddToCart
     AddToCart --> ViewCart
+    ViewCart --> Checkout
+    Checkout --> Login: If not logged in
+    Login --> EnterShipping
+    EnterShipping --> EnterPayment
+    EnterPayment --> PlaceOrder
+    PlaceOrder --> OrderConfirmation
+    OrderConfirmation --> [*]
+```
+
+## Component Interaction
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant B as Backend
+    participant D as Database
+    
+    U->>F: Browse Books
