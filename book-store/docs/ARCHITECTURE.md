@@ -131,3 +131,22 @@ This document outlines the technical architecture and system design of BookHaven
 graph TB
     Client[Web Browser]
     WebServer[PHP Web Server]
+    Database[(MySQL Database)]
+    FileSystem[File System]
+    Cache[Cache Layer]
+    
+    Client -->|HTTP/HTTPS| WebServer
+    WebServer -->|SQL| Database
+    WebServer -->|Read/Write| FileSystem
+    WebServer -->|Cache Operations| Cache
+    Cache -->|Cache Miss| Database
+```
+
+## User Flow Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> BrowseCatalog
+    BrowseCatalog --> ViewBook
+    ViewBook --> AddToCart
+    AddToCart --> ViewCart
