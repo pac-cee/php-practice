@@ -207,3 +207,22 @@ stateDiagram-v2
     CartWithItems --> CartWithItems: Update Quantity
     CartWithItems --> EmptyCart: Remove All Items
     CartWithItems --> Checkout: Proceed to Checkout
+    Checkout --> OrderPlaced: Payment Success
+    Checkout --> CartWithItems: Payment Failed
+    OrderPlaced --> [*]
+```
+
+## Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant B as Backend
+    participant D as Database
+    
+    U->>F: Enter Credentials
+    F->>B: POST /api/login
+    B->>D: Verify Credentials
+    D-->>B: User Data
+    B->>B: Generate Session
