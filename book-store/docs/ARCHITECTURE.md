@@ -226,3 +226,22 @@ sequenceDiagram
     B->>D: Verify Credentials
     D-->>B: User Data
     B->>B: Generate Session
+    B-->>F: Session Token
+    F-->>U: Redirect to Dashboard
+```
+
+## Order Processing
+
+```mermaid
+graph TD
+    A[Order Placed] -->|Validate| B{Stock Check}
+    B -->|In Stock| C[Process Payment]
+    B -->|Out of Stock| D[Notify User]
+    C -->|Success| E[Create Order]
+    C -->|Failure| F[Payment Failed]
+    E --> G[Update Inventory]
+    E --> H[Send Confirmation]
+    H --> I[Order Complete]
+```
+
+## Admin Dashboard Flow
