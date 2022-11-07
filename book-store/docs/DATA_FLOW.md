@@ -112,3 +112,22 @@ graph TD
     Orders -->|Update Status| OrderDB
     Reports -->|Analytics| Books
     Reports -->|Sales Data| OrderDB
+    Users -->|Manage| UserDB
+```
+
+## Data Store Details
+
+### Books Database
+
+- Book ID
+- Title
+- Author
+- Price
+- Stock
+- Category
+- Description
+- Cover Image
+
+### Orders Database
+
+- Order ID
