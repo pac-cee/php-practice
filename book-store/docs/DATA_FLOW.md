@@ -93,3 +93,22 @@ graph TD
     Profile -->|Update| Users
     Users -->|User Data| Orders
     Orders -->|Fetch History| OrderDB
+```
+
+## Level 5: Admin Flow
+
+```mermaid
+graph TD
+    Inventory[Inventory Management]
+    Orders[Order Management]
+    Reports[Generate Reports]
+    Users[User Management]
+  
+    Books[(Books DB)]
+    OrderDB[(Orders DB)]
+    UserDB[(Users DB)]
+  
+    Inventory -->|CRUD Operations| Books
+    Orders -->|Update Status| OrderDB
+    Reports -->|Analytics| Books
+    Reports -->|Sales Data| OrderDB
