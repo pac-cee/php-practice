@@ -74,3 +74,22 @@ graph TD
     Inventory -->|Check Stock| Books
     Checkout -->|Process| Payment
     Payment -->|Success| Orders
+    Orders -->|Update| Inventory
+```
+
+## Level 4: User Management Flow
+
+```mermaid
+graph TD
+    Register[Registration]
+    Login[Login]
+    Profile[Profile Management]
+    Orders[Order History]
+    Users[(Users DB)]
+    OrderDB[(Orders DB)]
+  
+    Register -->|Create| Users
+    Login -->|Verify| Users
+    Profile -->|Update| Users
+    Users -->|User Data| Orders
+    Orders -->|Fetch History| OrderDB
