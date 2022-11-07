@@ -55,3 +55,22 @@ graph TD
     Search -->|Query| Books
     Filter -->|Filter Criteria| Books
     Books -->|Book Data| View
+    View -->|Add Book| Cart
+```
+
+## Level 3: Order Processing Flow
+
+```mermaid
+graph TD
+    Cart[Shopping Cart]
+    Checkout[Checkout Process]
+    Payment[Payment Processing]
+    Inventory[Inventory Management]
+    Orders[(Orders DB)]
+    Books[(Books DB)]
+  
+    Cart -->|Items| Checkout
+    Checkout -->|Validate| Inventory
+    Inventory -->|Check Stock| Books
+    Checkout -->|Process| Payment
+    Payment -->|Success| Orders
