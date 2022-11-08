@@ -55,3 +55,22 @@ erDiagram
     }
 
     CATEGORIES {
+        int id PK
+        string name
+        string slug
+        text description
+    }
+
+    REVIEWS {
+        int id PK
+        int user_id FK
+        int book_id FK
+        int rating
+        text content
+        timestamp created_at
+    }
+```
+
+## Tables
+
+### users
