@@ -93,3 +93,22 @@ erDiagram
 | price | DECIMAL(10,2) | Price |
 | category_id | INT | Foreign Key |
 | isbn | VARCHAR(20) | ISBN number |
+| stock | INT | Stock quantity |
+| created_at | TIMESTAMP | Creation date |
+
+[Additional tables omitted for brevity]
+
+## Indexes
+
+### Primary Indexes
+- All `id` columns are primary keys
+- Auto-incrementing integers
+
+### Secondary Indexes
+- books(isbn)
+- users(email)
+- categories(slug)
+- orders(user_id)
+
+## Constraints
+
