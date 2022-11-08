@@ -17,3 +17,22 @@ erDiagram
     ORDERS ||--|{ ORDER_ITEMS : includes
     CATEGORIES ||--o{ BOOKS : categorizes
 
+    USERS {
+        int id PK
+        string name
+        string email
+        string password
+        boolean is_admin
+        timestamp created_at
+    }
+
+    BOOKS {
+        int id PK
+        string title
+        string author
+        text description
+        decimal price
+        int category_id FK
+        string isbn
+        int stock
+        timestamp created_at
