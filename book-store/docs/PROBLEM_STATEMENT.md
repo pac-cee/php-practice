@@ -55,3 +55,22 @@ BookHaven addresses these challenges through:
 ## Competitive Advantage
 
 ### What Sets BookHaven Apart
+
+1. User Experience
+   - Clean, intuitive interface
+   - Fast, responsive design
+   - Seamless checkout process
+   - Mobile-first approach
+
+2. Smart Features
+   - Intelligent search
+   - Personalized recommendations
+   - Reading lists
+   - Social sharing
+
+3. Customer Focus
+   - Detailed book information
+   - Verified reviews
+   - Easy returns
+   - Loyalty program
+
