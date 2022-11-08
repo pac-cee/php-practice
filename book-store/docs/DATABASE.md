@@ -131,3 +131,12 @@ erDiagram
    - Write efficient queries
    - Avoid N+1 problems
 
+2. Data Integrity
+   - Foreign key constraints
+   - NOT NULL constraints
+   - Default values
+
+3. Performance
+   - Regular maintenance
+   - Query monitoring
+   - Index optimization
