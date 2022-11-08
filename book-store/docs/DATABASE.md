@@ -74,3 +74,22 @@ erDiagram
 ## Tables
 
 ### users
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INT | Primary Key |
+| name | VARCHAR(100) | User's full name |
+| email | VARCHAR(100) | Unique email |
+| password | VARCHAR(255) | Hashed password |
+| is_admin | BOOLEAN | Admin status |
+| created_at | TIMESTAMP | Creation date |
+
+### books
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INT | Primary Key |
+| title | VARCHAR(255) | Book title |
+| author | VARCHAR(100) | Author name |
+| description | TEXT | Book description |
+| price | DECIMAL(10,2) | Price |
+| category_id | INT | Foreign Key |
+| isbn | VARCHAR(20) | ISBN number |
