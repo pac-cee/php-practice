@@ -112,3 +112,22 @@ erDiagram
 
 ## Constraints
 
+### Foreign Keys
+- ORDER_ITEMS.order_id → ORDERS.id
+- ORDER_ITEMS.book_id → BOOKS.id
+- BOOKS.category_id → CATEGORIES.id
+- REVIEWS.user_id → USERS.id
+- REVIEWS.book_id → BOOKS.id
+
+### Unique Constraints
+- users.email
+- books.isbn
+- categories.slug
+
+## Optimization
+
+1. Query Optimization
+   - Use appropriate indexes
+   - Write efficient queries
+   - Avoid N+1 problems
+
