@@ -150,3 +150,23 @@ graph TD
 
 ## Data Flow Rules
 
+1. **Authentication**
+
+   - All user operations require valid session
+   - Admin operations require admin privileges
+   - Session timeout after inactivity
+2. **Data Validation**
+
+   - Input sanitization at all entry points
+   - Business rule validation before storage
+   - Referential integrity in database
+3. **Error Handling**
+
+   - Graceful error recovery
+   - User-friendly error messages
+   - Error logging for debugging
+4. **Performance**
+
+   - Caching for frequent queries
+   - Pagination for large datasets
+   - Optimized database queries
