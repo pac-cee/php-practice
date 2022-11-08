@@ -131,3 +131,22 @@ graph TD
 ### Orders Database
 
 - Order ID
+- User ID
+- Items
+- Total Amount
+- Status
+- Payment Info
+- Shipping Details
+
+### Users Database
+
+- User ID
+- Name
+- Email
+- Password Hash
+- Role
+- Address
+- Order History
+
+## Data Flow Rules
+
