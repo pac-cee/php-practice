@@ -36,3 +36,22 @@ erDiagram
         string isbn
         int stock
         timestamp created_at
+    }
+
+    ORDERS {
+        int id PK
+        int user_id FK
+        decimal total
+        string status
+        timestamp created_at
+    }
+
+    ORDER_ITEMS {
+        int id PK
+        int order_id FK
+        int book_id FK
+        int quantity
+        decimal price
+    }
+
+    CATEGORIES {
