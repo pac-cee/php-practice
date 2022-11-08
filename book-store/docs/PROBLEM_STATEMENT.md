@@ -36,3 +36,22 @@ BookHaven addresses these challenges through:
 
 ### 2. Smart Discovery
 - Advanced search functionality
+- Detailed book information
+- Category-based browsing
+- Personalized recommendations
+
+### 3. Enhanced Customer Experience
+- User reviews and ratings
+- Multiple payment options
+- Real-time order tracking
+- Wishlist functionality
+
+### 4. Efficient Management
+- Automated inventory tracking
+- Sales analytics
+- Order management system
+- Customer insights
+
+## Competitive Advantage
+
+### What Sets BookHaven Apart
