@@ -55,3 +55,22 @@ sequenceDiagram
 ## Access Control
 
 ### Role-Based Access
+- User roles:
+  - Admin
+  - Customer
+  - Guest
+- Resource-level permissions
+- Least privilege principle
+- Regular access reviews
+
+### API Security
+- Token-based authentication
+- Rate limiting
+- Request validation
+- Error handling
+
+## Security Headers
+
+```apache
+# Apache Configuration
+Header set X-Frame-Options "SAMEORIGIN"
