@@ -17,3 +17,22 @@ BookHaven is a modern, feature-rich online bookstore application built with PHP 
 - Frontend: HTML5, CSS3, JavaScript
 - Backend: PHP 8.0+
 - Database: MySQL 8.0+
+- Additional: PDO, JSON, AJAX
+
+## Prerequisites
+
+- PHP 8.0 or higher
+- MySQL 8.0 or higher
+- Web server (Apache/Nginx)
+- Composer (for dependencies)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/bookhaven.git
+   ```
+
+2. Create MySQL database:
+   ```sql
+   CREATE DATABASE bookapp;
