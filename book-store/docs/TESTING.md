@@ -17,3 +17,22 @@ public function testBookPrice()
     $this->assertEquals(29.99, $book->getPrice());
 }
 ```
+
+### 2. Integration Testing
+
+```php
+// Example Integration Test
+public function testOrderCreation()
+{
+    $user = $this->createUser();
+    $book = $this->createBook();
+    $order = $this->orderService->createOrder($user, [$book]);
+    $this->assertNotNull($order->getId());
+}
+```
+
+### 3. End-to-End Testing
+
+```javascript
+// Example E2E Test
+describe('Checkout Flow', () => {
