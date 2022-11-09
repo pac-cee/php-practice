@@ -36,3 +36,22 @@ BookHaven is a modern, feature-rich online bookstore application built with PHP 
 2. Create MySQL database:
    ```sql
    CREATE DATABASE bookapp;
+   ```
+
+3. Configure database connection:
+   - Open `backend/config/database.php`
+   - Update database credentials if needed
+
+4. Import database schema:
+   ```bash
+   mysql -u root -p bookapp < database/schema.sql
+   ```
+
+5. Start the development server:
+   ```bash
+   php -S localhost:8000
+   ```
+
+6. Access the application:
+   - Website: http://localhost:8000
+   - Admin: http://localhost:8000/admin (credentials below)
