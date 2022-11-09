@@ -17,3 +17,22 @@ sequenceDiagram
     User->>Frontend: Login Request
     Frontend->>Backend: Validate Credentials
     Backend->>Database: Verify User
+    Database-->>Backend: User Data
+    Backend->>Backend: Generate Session
+    Backend-->>Frontend: Session Token
+    Frontend-->>User: Login Success
+```
+
+### Password Security
+- Passwords hashed using bcrypt
+- Minimum password requirements:
+  - 8 characters minimum
+  - Mix of letters, numbers, symbols
+  - Case sensitivity required
+- Regular password rotation encouraged
+- Secure password reset flow
+
+### Session Management
+- Secure session handling
+- Session timeout after inactivity
+- Session regeneration on privilege level change
