@@ -74,3 +74,22 @@ pie title Test Coverage by Component
 ```mermaid
 graph LR
     A[Code Push] -->|Trigger| B[Build]
+    B --> C[Unit Tests]
+    C --> D[Integration Tests]
+    D --> E[E2E Tests]
+    E --> F[Code Analysis]
+    F --> G[Deploy]
+```
+
+## Performance Testing
+
+1. Load Testing
+   - Apache JMeter
+   - K6
+
+2. Stress Testing
+   - Artillery
+   - Gatling
+
+## Security Testing
+
