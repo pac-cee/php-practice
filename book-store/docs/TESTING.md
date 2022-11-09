@@ -93,3 +93,24 @@ graph LR
 
 ## Security Testing
 
+1. Static Analysis
+   - SonarQube
+   - PHP_CodeSniffer
+
+2. Vulnerability Scanning
+   - OWASP ZAP
+   - Snyk
+
+## Test Environment
+
+1. Local Development
+   - Docker containers
+   - Test database
+
+2. Staging
+   - Mirror of production
+   - Sanitized data
+
+3. Production
+   - Monitoring
+   - Logging
