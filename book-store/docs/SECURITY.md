@@ -36,3 +36,22 @@ sequenceDiagram
 - Secure session handling
 - Session timeout after inactivity
 - Session regeneration on privilege level change
+- Concurrent session control
+
+## Data Protection
+
+### Input Validation
+- Server-side validation
+- Prepared statements for SQL
+- XSS prevention
+- CSRF protection
+
+### Data Encryption
+- TLS for data in transit
+- Sensitive data encryption at rest
+- Secure key management
+- Regular security audits
+
+## Access Control
+
+### Role-Based Access
