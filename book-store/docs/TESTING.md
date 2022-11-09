@@ -55,3 +55,22 @@ pie title Test Coverage by Component
     "API" : 88
 ```
 
+## Testing Tools
+
+1. Unit Testing
+   - PHPUnit
+   - Jest
+
+2. Integration Testing
+   - PHPUnit
+   - API Testing Suite
+
+3. E2E Testing
+   - Cypress
+   - Selenium
+
+## CI/CD Pipeline
+
+```mermaid
+graph LR
+    A[Code Push] -->|Trigger| B[Build]
