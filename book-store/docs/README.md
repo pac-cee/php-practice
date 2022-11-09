@@ -55,3 +55,24 @@ BookHaven is a modern, feature-rich online bookstore application built with PHP 
 6. Access the application:
    - Website: http://localhost:8000
    - Admin: http://localhost:8000/admin (credentials below)
+
+## Default Admin Credentials
+
+- Email: admin@example.com
+- Password: admin123
+
+## Project Structure
+
+```
+bookhaven/
+├── admin/              # Admin dashboard files
+├── assets/            # Static assets (CSS, JS, images)
+├── backend/           # PHP backend files
+│   ├── api/          # API endpoints
+│   ├── config/       # Configuration files
+│   └── functions/    # Helper functions
+├── docs/             # Documentation
+├── frontend/         # Frontend components
+└── vendor/           # Dependencies
+```
+ 
