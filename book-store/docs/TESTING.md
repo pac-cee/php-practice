@@ -36,3 +36,22 @@ public function testOrderCreation()
 ```javascript
 // Example E2E Test
 describe('Checkout Flow', () => {
+    it('should complete purchase successfully', () => {
+        cy.login();
+        cy.addToCart('Book Title');
+        cy.checkout();
+        cy.get('.confirmation').should('be.visible');
+    });
+});
+```
+
+## Test Coverage
+
+```mermaid
+pie title Test Coverage by Component
+    "Frontend" : 85
+    "Backend" : 90
+    "Database" : 75
+    "API" : 88
+```
+
