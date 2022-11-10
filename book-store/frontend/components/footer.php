@@ -36,3 +36,22 @@
             <li><a href="./privacy.php">Privacy Policy</a></li>
           </ul>
         </div>
+        
+        <div class="footer-column">
+          <h3>My Account</h3>
+          <ul class="footer-links">
+            <li><a href="./login.php">Sign In</a></li>
+            <li><a href="./register.php">Register</a></li>
+            <li><a href="./orders.php">Order History</a></li>
+            <li><a href="./wishlist.php">Wishlist</a></li>
+            <li><a href="./account.php">Account Settings</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
