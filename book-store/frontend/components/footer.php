@@ -55,3 +55,22 @@
             <input type="email" placeholder="Enter your email" required>
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <p class="copyright">&copy; <?php echo date('Y'); ?> BookHaven. All rights reserved.</p>
+        <div class="payment-methods">
+          <img src="./assets/images/payment-visa.svg" alt="Visa">
+          <img src="./assets/images/payment-mastercard.svg" alt="Mastercard">
+          <img src="./assets/images/payment-amex.svg" alt="American Express">
+          <img src="./assets/images/payment-paypal.svg" alt="PayPal">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
