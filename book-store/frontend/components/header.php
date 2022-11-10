@@ -36,3 +36,22 @@
     </nav>
     
     <div class="header-actions">
+      <div class="header-action cart-action">
+        <a href="./cart.php" class="action-icon" aria-label="Shopping Cart">
+          <i class="icon-cart"></i>
+          <?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
+            <span class="cart-count"><?php echo array_sum($_SESSION['cart']); ?></span>
+          <?php endif; ?>
+        </a>
+      </div>
+      
+      <div class="header-action user-action">
+        <?php if(isset($_SESSION['user_id'])): ?>
+          <div class="dropdown">
+            <button class="action-icon dropdown-toggle" aria-label="User Menu">
+              <i class="icon-user"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-user-info">
+                <p>Hello, <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'User'; ?>!</p>
+              </div>
