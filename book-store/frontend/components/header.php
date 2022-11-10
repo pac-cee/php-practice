@@ -55,3 +55,22 @@
               <div class="dropdown-user-info">
                 <p>Hello, <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'User'; ?>!</p>
               </div>
+              <a href="./account.php">My Account</a>
+              <a href="./orders.php">My Orders</a>
+              <a href="./wishlist.php">Wishlist</a>
+              <?php if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                <a href="./admin/index.php">Admin Dashboard</a>
+              <?php endif; ?>
+              <a href="./backend/api/logout.php">Logout</a>
+            </div>
+          </div>
+        <?php else: ?>
+          <a href="./login.php" class="action-icon" aria-label="Login">
+            <i class="icon-user"></i>
+          </a>
+        <?php endif; ?>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
