@@ -55,3 +55,22 @@
       <div class="book-grid">
         <?php foreach($newArrivals as $book): ?>
           <div class="book-card" data-book-id="<?php echo $book['id']; ?>">
+            <div class="book-cover">
+              <img src="<?php echo $book['cover_image']; ?>" alt="<?php echo $book['title']; ?>">
+            </div>
+            <div class="book-info">
+              <h3><?php echo $book['title']; ?></h3>
+              <p class="author">by <?php echo $book['author']; ?></p>
+              <p class="price">$<?php echo number_format($book['price'], 2); ?></p>
+              <div class="book-actions">
+                <button class="btn btn-primary add-to-cart" data-book-id="<?php echo $book['id']; ?>">Add to Cart</button>
+                <a href="./book.php?id=<?php echo $book['id']; ?>" class="btn btn-secondary">Details</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+
+    <section class="categories container">
+      <h2>Browse Categories</h2>
