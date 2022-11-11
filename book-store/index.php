@@ -74,3 +74,22 @@
 
     <section class="categories container">
       <h2>Browse Categories</h2>
+      <div class="category-grid">
+        <a href="./catalog.php?category=fiction" class="category-card">
+          <div class="category-icon"><i class="icon-fiction"></i></div>
+          <h3>Fiction</h3>
+        </a>
+        <a href="./catalog.php?category=non-fiction" class="category-card">
+          <div class="category-icon"><i class="icon-non-fiction"></i></div>
+          <h3>Non-Fiction</h3>
+        </a>
+        <a href="./catalog.php?category=mystery" class="category-card">
+          <div class="category-icon"><i class="icon-mystery"></i></div>
+          <h3>Mystery</h3>
+        </a>
+        <a href="./catalog.php?category=science-fiction" class="category-card">
+          <div class="category-icon"><i class="icon-sci-fi"></i></div>
+          <h3>Sci-Fi</h3>
+        </a>
+        <a href="./catalog.php?category=biography" class="category-card">
+          <div class="category-icon"><i class="icon-biography"></i></div>
