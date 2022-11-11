@@ -112,3 +112,20 @@
       <?php if(isset($_SESSION['user_id'])): ?>
         <li class="mobile-accordion">
           <a href="#" class="accordion-toggle">My Account</a>
+          <div class="accordion-content">
+            <a href="./account.php">Account Settings</a>
+            <a href="./orders.php">My Orders</a>
+            <a href="./wishlist.php">Wishlist</a>
+            <?php if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+              <a href="./admin/index.php">Admin Dashboard</a>
+            <?php endif; ?>
+            <a href="./backend/api/logout.php">Logout</a>
+          </div>
+        </li>
+      <?php else: ?>
+        <li><a href="./login.php">Login</a></li>
+        <li><a href="./register.php">Register</a></li>
+      <?php endif; ?>
+    </ul>
+  </nav>
+</div>
