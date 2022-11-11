@@ -74,3 +74,22 @@
       <button class="mobile-menu-toggle" aria-label="Toggle Menu">
         <span></span>
         <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <div class="mobile-search">
+    <form action="./catalog.php" method="GET">
+      <input type="text" name="search" placeholder="Search..." aria-label="Search">
+      <button type="submit" aria-label="Search">
+        <i class="icon-search"></i>
+      </button>
+    </form>
+  </div>
+  
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="./index.php">Home</a></li>
