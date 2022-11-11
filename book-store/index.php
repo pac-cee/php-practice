@@ -93,3 +93,19 @@
         </a>
         <a href="./catalog.php?category=biography" class="category-card">
           <div class="category-icon"><i class="icon-biography"></i></div>
+          <h3>Biography</h3>
+        </a>
+        <a href="./catalog.php?category=history" class="category-card">
+          <div class="category-icon"><i class="icon-history"></i></div>
+          <h3>History</h3>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/cart.js"></script>
+</body>
+</html>
