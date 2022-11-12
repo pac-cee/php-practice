@@ -17,3 +17,22 @@
   if($error === 'invalid') {
     $errorMsg = 'Invalid email or password.';
   } elseif($error === 'empty') {
+    $errorMsg = 'Please fill in all fields.';
+  }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - BookHaven</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/auth.css">
+</head>
+<body>
+  <?php include './frontend/components/header.php'; ?>
+  
+  <main class="auth-container">
+    <div class="auth-form-container">
+      <div class="auth-header">
+        <h1>Login to Your Account</h1>
