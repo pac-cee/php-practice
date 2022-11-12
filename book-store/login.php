@@ -36,3 +36,22 @@
     <div class="auth-form-container">
       <div class="auth-header">
         <h1>Login to Your Account</h1>
+        <p>Welcome back! Please enter your details.</p>
+      </div>
+      
+      <?php if($errorMsg !== ''): ?>
+        <div class="alert alert-error">
+          <?php echo $errorMsg; ?>
+        </div>
+      <?php endif; ?>
+      
+      <form action="./backend/api/login.php" method="POST" class="auth-form">
+        <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($redirect); ?>">
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
