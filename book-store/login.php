@@ -55,3 +55,22 @@
         
         <div class="form-group">
           <label for="password">Password</label>
+          <div class="password-input">
+            <input type="password" id="password" name="password" required>
+            <button type="button" class="toggle-password">
+              <i class="icon-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-options">
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember" value="1">
+            <label for="remember">Remember me</label>
+          </div>
+          <a href="./forgot-password.php" class="forgot-password">Forgot password?</a>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+      
