@@ -74,3 +74,22 @@
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
       </form>
       
+      <div class="auth-divider">
+        <span>or</span>
+      </div>
+      
+      <div class="social-auth">
+        <button class="btn btn-social btn-google">
+          <i class="icon-google"></i> Sign in with Google
+        </button>
+        <button class="btn btn-social btn-facebook">
+          <i class="icon-facebook"></i> Sign in with Facebook
+        </button>
+      </div>
+      
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="./register.php<?php echo $redirect ? "?redirect=$redirect" : ''; ?>">Sign up</a></p>
+      </div>
+    </div>
+    
+    <div class="auth-image">
