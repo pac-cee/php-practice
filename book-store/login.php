@@ -93,3 +93,20 @@
     </div>
     
     <div class="auth-image">
+      <div class="image-overlay">
+        <div class="auth-quote">
+          <blockquote>
+            "A reader lives a thousand lives before he dies. The man who never reads lives only one."
+          </blockquote>
+          <cite>- George R.R. Martin</cite>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/auth.js"></script>
+</body>
+</html>
