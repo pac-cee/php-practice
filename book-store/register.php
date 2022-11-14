@@ -55,3 +55,22 @@
           <input type="text" id="name" name="name" required>
         </div>
         
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-input">
+            <input type="password" id="password" name="password" required minlength="8">
+            <button type="button" class="toggle-password">
+              <i class="icon-eye"></i>
+            </button>
+          </div>
+          <div class="password-requirements">
+            <p>Password must be at least 8 characters</p>
+          </div>
+        </div>
+        
+        <div class="form-group">
