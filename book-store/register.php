@@ -36,3 +36,22 @@
   
   <main class="auth-container">
     <div class="auth-form-container">
+      <div class="auth-header">
+        <h1>Create an Account</h1>
+        <p>Join BookHaven to start exploring our collection.</p>
+      </div>
+      
+      <?php if($errorMsg !== ''): ?>
+        <div class="alert alert-error">
+          <?php echo $errorMsg; ?>
+        </div>
+      <?php endif; ?>
+      
+      <form action="./backend/api/register.php" method="POST" class="auth-form">
+        <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($redirect); ?>">
+        
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
