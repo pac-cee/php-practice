@@ -74,3 +74,22 @@
         </div>
         
         <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <div class="password-input">
+            <input type="password" id="confirm-password" name="confirm_password" required minlength="8">
+            <button type="button" class="toggle-password">
+              <i class="icon-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group terms">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">
+            I agree to the <a href="./terms.php" target="_blank">Terms of Service</a> and <a href="./privacy.php" target="_blank">Privacy Policy</a>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      </form>
+      
