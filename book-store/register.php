@@ -112,3 +112,20 @@
     </div>
     
     <div class="auth-image">
+      <div class="image-overlay">
+        <div class="auth-quote">
+          <blockquote>
+            "Books are a uniquely portable magic."
+          </blockquote>
+          <cite>- Stephen King</cite>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <?php include './frontend/components/footer.php'; ?>
+  
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/auth.js"></script>
+</body>
+</html>
