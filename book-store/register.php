@@ -93,3 +93,22 @@
         <button type="submit" class="btn btn-primary btn-block">Create Account</button>
       </form>
       
+      <div class="auth-divider">
+        <span>or</span>
+      </div>
+      
+      <div class="social-auth">
+        <button class="btn btn-social btn-google">
+          <i class="icon-google"></i> Sign up with Google
+        </button>
+        <button class="btn btn-social btn-facebook">
+          <i class="icon-facebook"></i> Sign up with Facebook
+        </button>
+      </div>
+      
+      <div class="auth-footer">
+        <p>Already have an account? <a href="./login.php<?php echo $redirect ? "?redirect=$redirect" : ''; ?>">Sign in</a></p>
+      </div>
+    </div>
+    
+    <div class="auth-image">
